@@ -16,8 +16,9 @@
 <![endif]-->
      
 <head>
-    <!-- Set up Meta -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" charset="<?php bloginfo('charset'); ?>" />
+	<meta name="theme-color" content="#216CB7">
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Add Favicon -->
     <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
@@ -54,7 +55,7 @@
                             $link = get_sub_field('social_link','options');
                             // Use variables below ?>
                             <li>
-                                <a href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" /></a>
+                                <a target="_blank" href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" /></a>
                             </li>
                         <?php endwhile; ?>
                     <?php endif; wp_reset_query(); ?>

@@ -97,7 +97,7 @@ body.remodal_active .remodal-overlay {
 /* Modal dialog default theme styles */
 
 .remodal {
-    width: 100%;
+    width: auto;
     min-height: 100%;
     padding: 70px 35px;
     -webkit-box-sizing: border-box;

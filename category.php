@@ -2,14 +2,14 @@
 /**
  * Category
  *
- * Standard loop for verticals/categories
+ * Standard loop for the verticals
  */
 get_header(); ?>
     <section id="hero-inner" class="sub-header">
         <div class="container inner-content">
             <div class="row">
                 <div class="col-md-8 col-sm-9">
-                   <h1><?php  single_cat_title( '', true );  ?></h1>
+                   <h1> <?php  single_cat_title( '', true );  ?></h1>
                 </div>
                 <!-- /.col -->
             </div>
@@ -35,6 +35,7 @@ get_header(); ?>
                                 <?php global $post;
                                     $categories = get_the_category($post->ID);
                                     $catPost =  $categories[0]->cat_name;
+                                    $catID = get_cat_ID( $catPost )
                                 ?>
 
                                 <?php $arg = array(
@@ -60,18 +61,36 @@ get_header(); ?>
 
 
                             </div>
-                            <div class="custom-line"> | <span class="custom-line-links"><?php the_field('tags_text', get_option('page_for_posts')); ?> </span></div>
+                            <div class="custom-line">
+                                <?php if($labelInfo  = get_field('label_info')) : ?>
+                                    <?php echo $labelInfo; ?>
+                                <?php endif; ?>
+                                <?php if($postAuthor = get_field('post_author')) {?>
+                                    <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                <?php } ?>
+                                <?php if( $siteTitle = get_field('site_title')) {?>
+                                    <a href="<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?> | </a>
+                                <?php } ?>
+                                <?php if($twitterTitle = get_field('twitter_title')) {?>
+                                    <a href="<?php the_field('twitter_url'); ?>" class="custom-line-links"> <i class="icon-twitter"></i> <?php echo $twitterTitle; ?> </a>
+                                <?php } ?>
 
+                            </div>
 
                             <?php if (have_posts()) : ?>
                                 <?php while (have_posts()) : the_post(); ?><!-- BEGIN of Post -->
                                     <article class="post-content" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                                        <h3>
+                                        <h2>
                                             <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(sprintf(__('Permalink to %s'), the_title_attribute('echo=0'))); ?>" rel="bookmark">
                                                 <?php the_title(); ?>
                                             </a>
-                                        </h3>
-                                        <h6 class="story-info">By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a>  <span>| POSTED: <?php echo ap_date(); ?></span> </h6>
+                                        </h2>
+                                        <h6 class="story-info">
+                                            <?php if($postAuthor = get_field('post_author')) {?>
+                                                By   <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                            <?php } ?>
+                                            <span> <?php echo ap_date(); ?></span>
+                                        </h6>
                                         <?php echo the_excerpt(); ?> <!-- 51 is number of symbol -->
 
                                         <div><?php the_field('field_text'); ?></div>
@@ -105,7 +124,14 @@ get_header(); ?>
                 </div>
 
                 <div class="col-md-3 sidebar">
-                    <?php dynamic_sidebar('Sidebar Right'); ?>
+                    <?php dynamic_sidebar('Sidebar Category'); ?>
+                    <aside class="widget widget_archive">
+                        <h5>Archives</h5>
+                        <ul>
+                            <?php wp_get_archives('cat='.$catID); ?>
+                        </ul>
+                    </aside>
+
                 </div>
             </div>
         </div>

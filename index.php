@@ -39,7 +39,21 @@ get_header(); ?>
 
                                <?php }  ?>
 
-                            <div class="custom-line">Photo Credit: <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a> | <span class="custom-line-links"><?php the_field('tags_text', get_option('page_for_posts')); ?> </span></div>
+                            <div class="custom-line">
+                                <?php if($labelInfo  = get_field('label_info')) : ?>
+                                    <?php echo $labelInfo; ?>
+                                <?php endif; ?>
+                                <?php if($postAuthor = get_field('post_author')) {?>
+                                    <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                <?php } ?>
+                                <?php if( $siteTitle = get_field('site_title')) {?>
+                                    <a href="<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?> | </a>
+                                <?php } ?>
+                                <?php if($twitterTitle = get_field('twitter_title')) {?>
+                                    <a href="<?php the_field('twitter_url'); ?>" class="custom-line-links"> <i class="icon-twitter"></i> <?php echo $twitterTitle; ?> </a>
+                                <?php } ?>
+
+                            </div>
 
                             <?php if (have_posts()) : ?>
                                 <?php while (have_posts()) : the_post(); ?><!-- BEGIN of POST-->
@@ -50,9 +64,14 @@ get_header(); ?>
                                                     <?php the_title(); ?>
                                                 </a>
                                             </h3>
-                                            <h6 class="story-info">By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php the_author(); ?></a>  <span>| POSTED:  <?php the_time(get_option('date_format')); ?></span> </h6>
-                                            <?php echo the_excerpt(); ?> <!-- 51 is number of symbol -->
 
+                                            <h6 class="story-info">
+                                                <?php if($postAuthor = get_field('post_author')) {?>
+                                                    By   <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                                <?php } ?>
+                                                <span> <?php echo ap_date(); ?></span>
+                                            </h6>
+                                           <?php echo the_excerpt(); ?> <!-- 51 is number of symbol -->
                                             <div><?php the_field('field_text'); ?></div>
                                     </article>
 

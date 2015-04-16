@@ -41,7 +41,7 @@ get_header(); ?>
                                    ), 
 
     
-                            );
+                                ));
                             $the_query = new WP_Query( $arg );
                             if ( $the_query->have_posts() ) : ?>
                                <div id="post-<?php the_ID(); ?>" class="posts">
@@ -52,8 +52,14 @@ get_header(); ?>
                                     
                                         <?php the_exerpt(); ?>
                                         <p align="right"><a href="<?php the_permalink(); ?>">Read     More</a></p>
-                                        <span class="post-meta"> Post By <?php the_author(); ?>
-                                            | Date : <?php echo ap_date(); ?></span>
+
+                                      <h6 class="story-info">
+                                          <?php if($postAuthor = get_field('post_author')) {?>
+                                              By   <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                          <?php } ?>
+                                          <span> <?php echo ap_date(); ?></span>
+                                      </h6>
+
                                     
                                     <?php endwhile; ?><!-- END of POST -->
                                 </article><!-- #post -->

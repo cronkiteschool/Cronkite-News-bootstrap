@@ -38,7 +38,14 @@ get_header(); ?>
                                                 <?php the_title(); ?>
                                             </a>
                                         </h3>
-                                        <h6 class="story-info">By <?php the_author_link(); ?> <span>| POSTED:  <?php echo ap_date(); ?></span> </h6>
+
+                                        <h6 class="story-info">
+                                            <?php if($postAuthor = get_field('post_author')) {?>
+                                                By   <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                            <?php } ?>
+                                            <span> <?php echo ap_date(); ?></span>
+                                        </h6>
+
                                         <?php echo the_excerpt(); ?> <!-- 51 is number of symbol -->
                                     </article>
                                 <?php endwhile; ?><!-- END of POST-->

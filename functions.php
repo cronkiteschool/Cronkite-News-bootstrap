@@ -7,37 +7,6 @@
                         Global Functions
 ******************************************************************************/
 
-// Turn off visual editor for everything but sliders
-	add_filter( 'user_can_richedit', 'disable_visual_editor' );	
-	function disable_visual_editor() {
-    if ( 'slider' == get_post_type() ) {
-        return true;
-    }
-    return false;
-}
-
-// Make months AP style
-	function ap_date() {
-		if (get_the_time('m')=='01') :
-			$apmonth = 'Jan. ';
-		elseif (get_the_time('m')=='02') :
-			$apmonth = 'Feb. ';
-		elseif (get_the_time('m')=='08') :
-			$apmonth = 'Aug. ';
-		elseif (get_the_time('m')=='09') :
-			$apmonth = 'Sept. ';
-		elseif (get_the_time('m')=='10') :
-			$apmonth = 'Oct. ';
-		elseif (get_the_time('m')=='11') :
-			$apmonth = 'Nov. ';
-		elseif (get_the_time('m')=='12') :
-			$apmonth = 'Dec. ';
-		else:
-			$apmonth = (get_the_time('F'));
-		endif;
-	$thedate = get_the_time('l') . ', ' . $apmonth . ' ' . get_the_time('j') . ', ' . get_the_time('Y');
-	return $thedate;
-}
 // Enable shortcodes
     require_once('lib/shortcodes.php');
     
@@ -166,6 +135,31 @@
             'before_title' => '<h5>',
             'after_title' => '</h5>',
         ));
+
+        /* Sidebar Archive */
+        register_sidebar( array(
+            'id' => 'sidebar_archive',
+            'name' => __( 'Sidebar Archive' ),
+            'description' => __( 'This sidebar is located on the right-hand side of each page.'),
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => '</aside>',
+            'before_title' => '<h5>',
+            'after_title' => '</h5>',
+        ));
+
+        /* Sidebar Category */
+        register_sidebar( array(
+            'id' => 'sidebar_category',
+            'name' => __( 'Sidebar Category' ),
+            'description' => __( 'This sidebar is located on the right-hand side of each page.'),
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => '</aside>',
+            'before_title' => '<h5>',
+            'after_title' => '</h5>',
+        ));
+
+
+
 
 
 // Remove #more anchor from posts
@@ -387,7 +381,7 @@ function new_excerpt_more( $more ) {
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
-
+http://cn2.niclindh.com/category/education/
 
 
 add_filter('mce_css', 'tuts_mcekit_editor_style');
@@ -467,6 +461,54 @@ function tuts_mce_before_init( $settings ) {
 add_action('wp_enqueue_scripts', 'tuts_mcekit_editor_enqueue');
 
 
+// Turn off visual editor for everything but sliders
+add_filter( 'user_can_richedit', 'disable_visual_editor' );
+function disable_visual_editor() {
+   if ( 'slider' == get_post_type() ) {
+       return true;
+   }
+   return false;
+}
+
+// Make months AP style
+function ap_date() {
+    if (get_the_time('m')=='01') :
+        $apmonth = 'Jan. ';
+    elseif (get_the_time('m')=='02') :
+        $apmonth = 'Feb. ';
+    elseif (get_the_time('m')=='08') :
+        $apmonth = 'Aug. ';
+    elseif (get_the_time('m')=='09') :
+        $apmonth = 'Sept. ';
+    elseif (get_the_time('m')=='10') :
+        $apmonth = 'Oct. ';
+    elseif (get_the_time('m')=='11') :
+        $apmonth = 'Nov. ';
+    elseif (get_the_time('m')=='12') :
+        $apmonth = 'Dec. ';
+    else:
+        $apmonth = (get_the_time('F'));
+    endif;
+    $thedate = get_the_time('l') . ', ' . $apmonth . ' ' . get_the_time('j') . ', ' . get_the_time('Y');
+    return $thedate;
+}
+
+add_image_size( 'single-post', 840, 560, true );
+
+// Enable single category custom template. Currently for Big Boy template but others can be added
+// To use: Create a category, then name the template file single-cat-slug.php
+// From http://justintadlock.com/archives/2008/12/06/creating-single-post-templates-in-wordpress
+define('SINGLE_PATH', TEMPLATEPATH . '/templates');
+add_filter('single_template', 'my_single_template'); 
+function my_single_template($single) {
+	global $wp_query, $post;
+	foreach((array)get_the_category() as $cat) :
+		if(file_exists(SINGLE_PATH . '/single-cat-' . $cat->slug . '.php'))
+			return SINGLE_PATH . '/single-cat-' . $cat->slug . '.php';
+	endforeach;
+	return $single;
+}	
+	    
     
 /*******************************************************************************/
     

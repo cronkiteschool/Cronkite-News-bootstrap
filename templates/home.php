@@ -49,15 +49,24 @@ get_header(); ?>
                         $title = get_sub_field('area_works_title');
                         $text = get_sub_field('area_works_description');
                         $link = get_sub_field('area_works_link');
+                        $customLinks = get_sub_field('custom_link');
 
                         // Use variables below ?>
                         <div class="col-sm-6 inner-top-sm ">
                             <div class="kicker">
                                 <h3><?php echo $title; ?></h3>
                                 <p><?php echo $text; ?></p>
-                                <a href="<?php echo $link; ?>">
-                                     <img class='awards_image' src="<?php echo $icon['sizes']['awards_logo']; ?>" />
-                                </a>
+
+                                <?php if($customLinks) { ?>
+                                    <a target="_blank" href="http://<?php echo $customLinks; ?>">
+                                         <img class='awards_image' src="<?php echo $icon['sizes']['awards_logo']; ?>" />
+                                    </a>
+                                <?php } else { ?>
+                                    <a href="<?php echo $link; ?>">
+                                        <img class='awards_image' src="<?php echo $icon['sizes']['awards_logo']; ?>" />
+                                    </a>
+                                <?php } ?>
+
                             </div>
 
                         </div><!--end of .col-->
@@ -92,41 +101,61 @@ get_header(); ?>
 
                                 <?php while ( have_rows('latest_news_box')) : the_row(); // loop through the repeater fields ?>
 
-                                    <?php // set up post object
-                                    $post_object = get_sub_field('post_box');
-                                    if( $post_object ) :
-                                        $post = $post_object;
-                                        setup_postdata($post);
-                                        ?>
-                                        <div class="item">
-                                            <figure>
+<!--                                    --><?php //// set up post object
+//                                    $post_object = get_sub_field('post_box');
+//                                    if( $post_object ) :
+//                                        $post = $post_object;
+//                                        setup_postdata($post);
+//                                        ?>
+<!---->
 
-                                                <?php  if( get_field( "url_link" ) ): ?>
-                                                    <a target="_blank" href="http://<?php the_field( "url_link" ); ?>"><?php the_post_thumbnail('slider', array('class' => 'img-responsive')); ?></a>
-                                                <?php else: ?>
-                                                    <a href="<?php the_permalink(); ?>">  <?php the_post_thumbnail('slider', array('class' => 'img-responsive')); ?></a>
-                                                <?php endif; ?>
 
-                                                <figcaption class="bordered no-top-border matchHeight">
-                                                    <div class="info">
-                                                        <h4>
+
+                                        <?php
+
+                                        $posts = get_sub_field('post_box');
+
+                                        if( $posts ): ?>
+
+                                                <?php foreach( $posts as $post): ?>
+                                                    <?php setup_postdata($post); ?>
+                                                    <div class="item">
+                                                        <figure>
+
                                                             <?php  if( get_field( "url_link" ) ): ?>
-                                                                <a target="_blank" href="http://<?php the_field( "url_link" ); ?>"><?php the_title(); ?></a>
+                                                                <a target="_blank" href="http://<?php the_field( "url_link" ); ?>"><?php the_post_thumbnail('slider', array('class' => 'img-responsive')); ?></a>
                                                             <?php else: ?>
-                                                                <a href="<?php the_permalink(); ?>">  <?php the_title(); ?></a>
+                                                                <a href="<?php the_permalink(); ?>">  <?php the_post_thumbnail('slider', array('class' => 'img-responsive')); ?></a>
                                                             <?php endif; ?>
-                                                        </h4>
-                                                        <p> <?php the_field('sub_title'); ?></p>
+
+                                                            <figcaption class="bordered no-top-border matchHeight">
+                                                                <div class="info">
+                                                                    <h4>
+                                                                        <?php  if( get_field( "url_link" ) ): ?>
+                                                                            <a target="_blank" href="http://<?php the_field( "url_link" ); ?>"><?php the_title(); ?></a>
+                                                                        <?php else: ?>
+                                                                            <a href="<?php the_permalink(); ?>">  <?php the_title(); ?></a>
+                                                                        <?php endif; ?>
+                                                                    </h4>
+                                                                    <p> <?php the_field('sub_title'); ?></p>
+                                                                </div>
+                                                                <!-- /.info -->
+                                                            </figcaption>
+                                                        </figure>
                                                     </div>
-                                                    <!-- /.info -->
-                                                </figcaption>
-                                            </figure>
-                                        </div>
+                                                <?php endforeach; ?>
 
-
-                                        <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
-
-                                    <?php endif; ?>
+                                            <?php wp_reset_postdata(); ?>
+                                        <?php endif; ?>
+<!---->
+<!--                                        -->
+<!---->
+<!--                                        -->
+<!---->
+<!---->
+<!--                                        --><?php //wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+<!---->
+<!--                                    --><?php //endif; ?>
 
                                 <?php endwhile; ?>
 

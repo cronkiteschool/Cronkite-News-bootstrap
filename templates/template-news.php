@@ -1,7 +1,7 @@
 <?php
 /*
  * Template Name: News Page
- * Loads newscast archive
+ * Newscast archive
  */
 get_header(); ?>
 
@@ -45,7 +45,11 @@ get_header(); ?>
                                         <?php while ( have_posts() ) : the_post(); ?>
                                             <div class="row news-box">
                                                 <div class="col-sm-3 inner-right-xs-archive text-left">
-                                                    <figure>  <?php the_post_thumbnail('thumbnail', array('class' => 'img-responsive')); ?></figure>
+                                                    <figure>
+                                                        <a href="#modal-members" class="watch" member-number="<?= $number; ?>" >
+                                                    <?php the_post_thumbnail('thumbnail', array('class' => 'img-responsive')); ?>
+                                                        </a>
+                                                            </figure>
                                                 </div>
                                                 <!-- /.col -->
 

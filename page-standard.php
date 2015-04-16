@@ -29,7 +29,7 @@ get_header(); ?>
                     <div class="col-md-12 inner-right-sm">
                         <div class="sidemeta">
                             <div class="post format-gallery">
-                                <div  class="content-blog">
+                                <div  class="content-blog page-nosidebar">
                                     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
                                     <?php the_content(); ?>

@@ -162,7 +162,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #283645;
     color: #73879C;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 150%;
     -webkit-font-smoothing: antialiased;
     -webkit-text-size-adjust: 100%;
@@ -182,8 +182,12 @@ main {
 p {
     margin-bottom: 20px;
 }
+
+
+
 p a {
     /*border-bottom: 1px solid #73879C;*/
+    color:#133595;
 }
 p a:hover {
     border-color: transparent;
@@ -207,7 +211,7 @@ h4,
 h5,
 h6 {
     font-family: 'Lato', sans-serif;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.025em;
     color: #234384;
     margin-top: 0;
@@ -982,6 +986,8 @@ iframe + iframe {
 .dark-bg .item-details li:before {
     color: #A3B1BF;
 }
+
+
 .dark-bg h1,
 .dark-bg h2,
 .dark-bg h3,
@@ -1122,6 +1128,15 @@ footer {
 footer.dark-bg {
     color: #A3B1BF;
 }
+
+footer.dark-bg a {
+    color: #fff;
+}
+
+footer.dark-bg a:hover {
+    color: #A3B1BF;
+}
+
 footer .inner {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -3616,7 +3631,7 @@ footer .social li {
 }
 .post-content {
     border-top: 1px solid #ccc;
-    padding: 20px 0;
+    padding: 0;
 }
 .post-content:first-child {
     border: 0;
@@ -3742,6 +3757,12 @@ footer .widget_black_studio_tinymce .textwidget {
     margin-bottom: 0;
     border-top:0;
 }
+
+.page-nosidebar {
+    padding: 20px 10px;
+}
+
+
 .content-blog   p a
 {
     border: 0;
@@ -3800,6 +3821,7 @@ footer .widget_black_studio_tinymce .textwidget {
 .home .inner-top-md .item img {
     height: 142px;
     width: auto;
+    min-width: 204px;
 }
 
 .single-post-box .post-content {
@@ -3855,7 +3877,7 @@ footer .widget_black_studio_tinymce .textwidget {
     border: 0;
 }
 .category-post .story-info {
-    padding-left: 15px;
+    padding-left: 10px;
 }
 
 .post-content-blog:last-child {
@@ -3885,10 +3907,6 @@ footer .widget_black_studio_tinymce .textwidget {
     display: block;
 }
 
-
-.remodal iframe {
-    width: 100%;
-}
 
 .remodal{
     padding: 0;
@@ -5340,18 +5358,10 @@ footer .widget_black_studio_tinymce .textwidget {
 @media (min-width: 320px) and (max-height: 768px) {
 
     .remodal {
-        width: 80%;
+        width: auto;
     }
 
-    /*.format-news article  p:not(iframe) {*/
-        /*padding: 0 45px;*/
-    /*}*/
-
-    /*.format-news article h3 {*/
-        /*padding: 0 45px;*/
-    /*}*/
-
-    .format-news article  p:first-child {
+   .format-news article  p:first-child {
         padding: 0;
     }
 
@@ -5669,6 +5679,7 @@ footer .social img {
 #blog-post .post img {
     margin-bottom: 15px;
     max-width: 100%;
+    margin-top: 0;
 }
 
 .awards_image {
@@ -5916,4 +5927,11 @@ ul.circled li:before,
 
 .single-news .owl-pagination {
     display: none;
+}
+
+.format-archives h5 {
+    margin-bottom: 5px;
+}
+.format-archives aside {
+    margin-bottom: 20px;
 }

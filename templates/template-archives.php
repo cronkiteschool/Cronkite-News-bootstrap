@@ -1,8 +1,7 @@
 <?php
-/**
- * Archive
- *
- * Standard archive page
+/*
+ * Template Name: Archives Page
+ *  archive
  */
 get_header(); ?>
 
@@ -10,7 +9,7 @@ get_header(); ?>
         <div class="container inner-content">
             <div class="row">
                 <div class="col-md-8 col-sm-9">
-                    <h1>Archives</h1>
+                    <h1><?php the_title(); ?></h1>
                 </div>
                 <!-- /.col -->
             </div>
@@ -25,38 +24,9 @@ get_header(); ?>
                 <div class="row">
                     <div class="col-md-9 inner-right-sm">
                         <div class="sidemeta">
-                            <div class="post format-gallery ">
-
+                            <div class="post format-archives ">
                                 <div class="post-content post-content-news">
-                                    <?php query_posts('post_type=news&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
-
-                                    <?php if ( have_posts() ) : ?>
-                                        <?php $number = 0; ?>
-
-                                        <?php while ( have_posts() ) : the_post(); ?>
-                                            <div class="row news-box">
-                                                <div class="col-sm-3 inner-right-xs-archive text-left">
-                                                    <figure>  <?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></figure>
-                                                </div>
-                                                <!-- /.col -->
-
-                                                <div class="col-sm-9 inner-top-xs inner-left-xs-archive">
-                                                    <a href="#modal-members" class="watch" member-number="<?= $number; ?>" >
-                                                        <h2><span class="post-title"><?php the_title(); ?></span></h2>
-                                                    </a>
-                                                    <?php the_excerpt(); ?>
-                                                    <a href="#modal-members" member-number="<?= $number; ?>" class="watch"><i class="icon-videocam"></i></a>
-                                                </div>
-
-
-                                            </div><!-- END of .post-type-->
-                                            <?php $number++; ?>
-                                        <?php endwhile; ?><!-- END of Post -->
-                                        <div class="blog-pagination"> <?php bootstrap_pagination(); ?></div>
-
-                                    <?php endif; wp_reset_query(); ?>
-
-
+                                    <?php dynamic_sidebar('Sidebar Archive'); ?>
                                 </div>
                             </div>
                             <!-- END of .col-->
@@ -86,8 +56,6 @@ get_header(); ?>
                     </div>
                     <div class="col-md-3 sidebar">
                         <?php dynamic_sidebar('Sidebar Right'); ?>
-
-
                     </div>
                     <!-- END of .container-->
                 </div>
@@ -106,8 +74,6 @@ get_header(); ?>
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=438575732820089&version=v2.0";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-
-
 
 
 <?php get_footer(); ?>

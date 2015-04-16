@@ -21,7 +21,22 @@ get_header(); ?>
                                         $text = get_sub_field('author_text');  // Use variables below ?>
                                         <div class="item">
                                             <img src="<?php echo $icon; ?>" />
-                                            <div class="custom-line"> | <span class="custom-line-links"><?php the_field('tags_text', get_option('page_for_posts')); ?> </span></div>
+                                            <div class="custom-line">
+                                                <?php if($labelInfo  = get_field('label_info')) : ?>
+                                                    <?php echo $labelInfo; ?>
+                                                <?php endif; ?>
+                                                <?php if($postAuthor = get_field('post_author')) {?>
+                                                    <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                                <?php } ?>
+                                                <?php if( $siteTitle = get_field('site_title')) {?>
+                                                    <a href="<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?> | </a>
+                                                <?php } ?>
+                                                <?php if($twitterTitle = get_field('twitter_title')) {?>
+                                                    <a href="<?php the_field('twitter_url'); ?>" class="custom-line-links"> <i class="icon-twitter"></i> <?php echo $twitterTitle; ?> </a>
+                                                <?php } ?>
+
+                                            </div>
+
                                         </div>
                                     <?php endwhile; ?>
                                 <?php endif; wp_reset_query(); ?>
@@ -32,7 +47,12 @@ get_header(); ?>
                                     <?php while (have_posts()) : the_post(); ?><!-- BEGIN of POST-->
                                         <article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                                             <h2><?php the_title(); ?></h2>
-                                            <h6 class="story-info">By <?php the_author_link(); ?> <span>| POSTED:  <?php the_time(get_option('date_format')); ?></span> </h6>
+                                            <h6 class="story-info">
+                                                <?php if($postAuthor = get_field('post_author')) {?>
+                                                    By   <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                                <?php } ?>
+                                                <span> <?php echo ap_date(); ?></span>
+                                            </h6>
                                             <?php the_content(); ?>
                                             <?php the_field('second_text'); ?>
                                         </article>
