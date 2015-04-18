@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: News Page
+ * Template Name: En Espanol
  * Newscast archive
  */
 get_header(); ?>
@@ -37,7 +37,7 @@ get_header(); ?>
 
                                 </div>
                                 <div class="post-content post-content-news">
-                                    <?php query_posts('post_type=post&category_name=newscast&post_status=publish&posts_per_page=8&paged='. get_query_var('paged')); ?>
+                                    <?php query_posts('post_type=post&category_name=cronkite-news-en-espanol&post_status=publish&posts_per_page=8&paged='. get_query_var('paged')); ?>
 
                                     <?php if ( have_posts() ) : ?>
                                         <?php $number = 0; ?>
@@ -57,10 +57,8 @@ get_header(); ?>
                                                     <a href="#modal-members" class="watch" member-number="<?= $number; ?>" >
                                                         <h2><span class="post-title"><?php the_title(); ?></span></h2>
                                                     </a>
-                                                    <div class="show-link clearfix">
-                                                        <?php the_excerpt(); ?>
-                                                        <a href="#modal-members" member-number="<?= $number; ?>" class="watch"><i class="icon-videocam"></i></a>
-                                                    </div>
+                                                    <?php the_excerpt(); ?>
+                                                    <a href="#modal-members" member-number="<?= $number; ?>" class="watch"><i class="icon-videocam"></i></a>
                                                 </div>
 
 
@@ -87,14 +85,18 @@ get_header(); ?>
                                     <h3>Search for more stories and video:</h3>
                                     <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                                         <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search Stories and Videos' ); ?>" />
+                                        <input type="hidden" name="post_type" value="news" />
                                         <button type="submit"  class="btn btn-default btn-submit icon-right-open" name="submit" id="searchsubmit"></button>
                                     </form>
                                 </figcaption>
                             </figure>
                         </div>
 
-                        <!-- Removed facebook comments  -->
-
+                        <div class="comment-form-wrapper">
+                            <h2>Leave a Comment</h2>
+                            <div class="fb-comments" data-href="http://cronkitenewsonline.com/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+                            <div id="response"></div>
+                        </div>
                         <!-- /.comment-form-wrapper -->
 
                         <!-- END of .row-->
@@ -110,11 +112,19 @@ get_header(); ?>
         </section>
     </main>
 
-                       <!-- Removed facebook comments  -->
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=438575732820089&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 
 
     <div class="remodal" data-remodal-id="modal-members" >
-        <?php query_posts('post_type=post&category_name=newscast&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
+        <?php query_posts('post_type=post&category_name=cronkite-news-en-espanol&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
 
                 <?php if ( have_posts() ) : ?>
                     <?php $number = 0; ?>

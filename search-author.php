@@ -68,11 +68,8 @@ get_header(); ?>
                             </figcaption>
                         </figure>
                     </div>
-                    <div class="comment-form-wrapper">
-                        <h2>Leave a Comment</h2>
-                        <div class="fb-comments" data-href="http://cronkitenewsonline.com/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
-                        <div id="response"></div>
-                    </div>
+                    <!-- Removed facebook comments  -->
+
                     <!-- /.comment-form-wrapper -->
                 </div>
                <div class="col-md-3 sidebar">
@@ -87,12 +84,6 @@ get_header(); ?>
     </main>
 
 
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=438575732820089&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+                 <!-- Removed facebook comments  -->
+
 <?php get_footer(); ?>

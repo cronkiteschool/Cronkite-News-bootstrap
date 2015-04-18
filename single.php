@@ -28,21 +28,7 @@ get_header(); ?>
 
                                 </div>
 
-                                <div class="custom-line">
-                                    <?php if($labelInfo  = get_field('label_info')) : ?>
-                                        <?php echo $labelInfo; ?>
-                                    <?php endif; ?>
-                                    <?php if($postAuthor = get_field('post_author')) {?>
-                                        <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
-                                    <?php } ?>
-                                    <?php if( $siteTitle = get_field('site_title')) {?>
-                                        <a href="<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?> | </a>
-                                    <?php } ?>
-                                    <?php if($twitterTitle = get_field('twitter_title')) {?>
-                                        <a href="<?php the_field('twitter_url'); ?>" class="custom-line-links"> <i class="icon-twitter"></i> <?php echo $twitterTitle; ?> </a>
-                                    <?php } ?>
-
-                                </div>
+<!-- Remove author custom line field  -->
 
                                 <div class="post-content post-content-single clearfix">
                                     <?php if (have_posts()) : ?>
@@ -50,12 +36,13 @@ get_header(); ?>
                                             <article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                                                 <h2><?php the_title(); ?></h2>
                                                 <h6 class="story-info">       <?php if($postAuthor = get_field('post_author')) {?>
-                                                        By   <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                                        By   <?php echo $postAuthor; ?> |
                                                     <?php } ?>
                                                     <span> <?php echo ap_date(); ?></span>
                                                 </h6>
                                                 <?php the_content(); ?>
                                                 <?php the_field('second_text'); ?>
+                                                <?php the_field('video_file'); ?>
                                             </article>
                                         <?php endwhile; ?><!-- END of POST-->
                                     <?php endif; ?>
@@ -65,23 +52,15 @@ get_header(); ?>
                             <div class="post-author">
                                 <figure>
                                     <figcaption class="author-details">
-                                        <h3>Search for more stories by this reporter:</h3>
+                                        <h3>Search for more stories and video:</h3>
                                         <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                                            
-                                            <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search stories by Author' ); ?>" />
-                                            <input type="hidden" class="form-control" name="author_name" />
-                                            
+                                            <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search Stories and Videos' ); ?>" />
                                             <button type="submit"  class="btn btn-default btn-submit icon-right-open" name="submit" id="searchsubmit"></button>
                                         </form>
                                     </figcaption>
                                 </figure>
                             </div>
-
-                            <div class="comment-form-wrapper">
-                                <h2>Leave a Comment</h2>
-                                <div class="fb-comments" data-href="http://cronkitenewsonline.com/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
-                                <div id="response"></div>
-                            </div>
+                            <!-- Removed facebook comments  -->
                             <!-- /.comment-form-wrapper -->
 
                         <!-- END of .row-->
@@ -98,14 +77,7 @@ get_header(); ?>
         </section>
     </main>
 
+                            <!-- Removed facebook comments  -->
 
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=438575732820089&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
 
 <?php get_footer(); ?>

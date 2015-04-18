@@ -179,7 +179,7 @@
 	    $content = explode(' ', get_the_content(), $limit);
 	    if (count($content)>=$limit) {
 	        array_pop($content);
-	        $content = implode(" ",$content).'...<a href="'. get_permalink($post->ID) . '" class="read_more">Read More</a>';
+	        $content = implode(" ",$content).'...<a href="'. get_permalink($post->ID) . '" class="read_more">The Latest</a>';
 	    } else {
 	        $content = implode(" ",$content);
 	    }
@@ -461,14 +461,26 @@ function tuts_mce_before_init( $settings ) {
 add_action('wp_enqueue_scripts', 'tuts_mcekit_editor_enqueue');
 
 
-// Turn off visual editor for everything but sliders
-add_filter( 'user_can_richedit', 'disable_visual_editor' );
-function disable_visual_editor() {
-   if ( 'slider' == get_post_type() ) {
-       return true;
-   }
-   return false;
+if (!is_admin()) {
+    add_filter('pre_get_posts', 'cpt_search');
+    function cpt_search($query)
+    {
+        if ($query->is_search) {
+            $query->set('post_type', array('post', 'page'));
+        }
+        return $query;
+    }
 }
+
+
+// Turn off visual editor for everything but sliders
+//add_filter( 'user_can_richedit', 'disable_visual_editor' );
+//function disable_visual_editor() {
+//   if ( 'slider' == get_post_type() ) {
+//       return true;
+//   }
+//   return false;
+//}
 
 // Make months AP style
 function ap_date() {

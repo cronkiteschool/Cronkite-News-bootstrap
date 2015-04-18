@@ -21,119 +21,55 @@ get_header(); ?>
                     <div class="sidemeta">
                       <div class="post format-search">
 
+                          <div class="post-content post-content-news">
 
-                          <?php
-                                if($_GET['post_type'] == 'news'){
-                                    $postType = 'news';
-                                } elseif ($_GET['author_name']){
-                                    $postType = 'post';
-                                } else {
-                                    $postType = 'post';
-                                }
 
-                               
-                                $arg                    = array();
-                                $arg['post_type']       = $postType;
+                              <?php if ( have_posts() ) : ?>
+                                  <?php while ( have_posts() ) : the_post(); ?><!-- BEGIN of Post -->
+                                      <article class="post-content" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                                          <h2>
+                                              <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(sprintf(__('Permalink to %s'), the_title_attribute('echo=0'))); ?>" rel="bookmark">
+                                                  <?php the_title(); ?>
+                                              </a>
+                                          </h2>
+                                          <h6 class="story-info">
+                                              <?php if($postAuthor = get_field('post_author')) {?>
+                                                  By   <?php echo $postAuthor; ?> |
+                                              <?php } ?>
+                                              <span> <?php echo ap_date(); ?></span>
+                                          </h6>
+                                          <?php echo the_excerpt(); ?> <!-- 51 is number of symbol -->
 
-                                $arg['posts_per_page']	= -1;
-                                $arg['order']           = 'ASC';
-                                $arg['orderby']         = 'date';
+                                          <div><?php the_field('field_text'); ?></div>
+                                      </article>
+                                  <?php endwhile; ?><!-- END of Post -->
+                                  <div class="blog-pagination"><?php bootstrap_pagination(); ?></div>
 
-                               
-                                if (isset($_GET['author_name'])){
-                                    $arg['author_name'] =  $_GET['s'];
-                                }
-
-                                 if($_GET['post_type'] == 'news'){
-
-                                    $arg['meta_query'] = array(
-                                       array(
-                                           'key'       => 'video_file',
-                                           'value'     => $_GET['s'],
-                                           'compare'   => 'LIKE',
-
-                                       ),
-                                  );
+                              <?php else : ?>
+                                  <h1>Sorry, no results found</h1>
+                              <?php endif; ?>
 
 
 
-
-                                };
-
-
-                            $the_query = new WP_Query( $arg );
-                            if ( $the_query->have_posts() ) : ?>
-
-                                    <?php while ( $the_query->have_posts() ) : $the_query->the_post();
-                                    $do_not_duplicate = $post->ID; ?>
-
-                                       <article  class="post-content post-content-news" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                                        <figure class="icon-overlay icn-link post-media">
-                                            <?php if (has_post_thumbnail()) : ?>
-                                                <a href="<?php the_permalink(); ?>"
-                                                   title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></a>
-                                            <?php endif; ?>
-                                        </figure>
-                                        <div class="credit-box"><?php the_field('field_text'); ?></div>
-                                        <h3>
-                                            <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(sprintf(__('Permalink to %s'), the_title_attribute('echo=0'))); ?>" rel="bookmark">
-                                                <?php the_title(); ?>
-                                            </a>
-                                        </h3>
-                                        <h6 class="story-info">By <?php the_author_link(); ?> <span>| POSTED:  <?php the_time(get_option('date_format')); ?></span> </h6>
-                                        <?php echo the_excerpt(); ?> <!-- 51 is number of symbol -->
-                                    </article>
-
-                                    <?php endwhile; ?><!-- END of POST -->
-
-                                    <?php else : ?>
-                               <div class="post-content">
-                                    <h1>Sorry, no results found</h1>
-                               </div>
-
-                            <?php endif; wp_reset_query(); ?>
-
+                            </div>
                         </div>
                     </div>
 
 
-                  <?php   if($_GET['post_type'] == 'news'){ ?>
-                      <div class="post-author">
-                          <figure>
-                              <figcaption class="author-details">
-                                  <h3>Search for more stories and video:</h3>
-                                  <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                                      <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search Stories and Videos' ); ?>" />
-                                      <input type="hidden" name="post_type" value="news" />
-                                      <button type="submit"  class="btn btn-default btn-submit icon-right-open" name="submit" id="searchsubmit"></button>
-                                  </form>
-                              </figcaption>
-                          </figure>
-                      </div>
-                   <?php  }else{ ?>
-
-                      <div class="post-author">
+                    <div class="post-author">
                         <figure>
                             <figcaption class="author-details">
-                                <h3>Search for more stories by this reporter:</h3>
+                                <h3>Search for more stories and video:</h3>
                                 <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                                    <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search stories by Author' ); ?>" />
-                                    <input type="hidden" class="form-control" name="author_name" />
-                                    <button type="submit"  class="btn btn-default btn-submit icon-right-open" id="searchsubmit"></button>
+                                    <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search Stories and Videos' ); ?>" />
+                                    <button type="submit"  class="btn btn-default btn-submit icon-right-open" name="submit" id="searchsubmit"></button>
                                 </form>
                             </figcaption>
                         </figure>
                     </div>
 
+                    <!-- Removed facebook comments  -->
 
-                 <?php   }?>
-
-
-                    <div class="comment-form-wrapper">
-                        <h2>Leave a Comment</h2>
-                        <div class="fb-comments" data-href="http://cronkitenewsonline.com/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
-                        <div id="response"></div>
-                    </div>
                     <!-- /.comment-form-wrapper -->
                 </div>
                <div class="col-md-3 sidebar">
@@ -147,13 +83,6 @@ get_header(); ?>
     </section>
     </main>
 
+                    <!-- Removed facebook comments  -->
 
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=438575732820089&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
 <?php get_footer(); ?>

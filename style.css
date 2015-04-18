@@ -14,12 +14,17 @@
 .alignleft {float:left; margin:0 1em 1em 0}
 .aligncenter {display: block; margin-left: auto; margin-right: auto}
 .wp-caption {
-    background: #fff;
-    border: 1px solid #f0f0f0;
-    max-width: 96%; /* Image does not overflow the content area */
-    padding: 5px 3px 10px;
-    text-align: center;
+  background: #fff;
+  /* border: 1px solid #DADEE7; */
+  max-width: 96%;
+  padding: 5px 3px 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #666666;
+  font-style: italic;
 }
+
 .wp-caption img {
     border: 0 none;
     height: auto;
@@ -35,8 +40,19 @@
 /* -----------------------------------------
    General fixes
 ----------------------------------------- */
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+
+
 #wpadminbar {
-    opacity: 0.3;
+    opacity: 0.8;
     transition: 0.2s opacity linear;
     -webkit-transform: translateZ(0);
 }
@@ -3507,10 +3523,12 @@ body .spanh1 {
 }
 
 h1.dark-bg {
-    background: #234384!important;
+    background: rgba(35,67,132,.6) !important;
+   /* background: #234384!important; */
     display: block!important;
     float: left;
     margin-bottom: 10px!important;
+    border-radius: 5px;
 }
 
 h1.dark-bg  + p{
@@ -5934,4 +5952,44 @@ ul.circled li:before,
 }
 .format-archives aside {
     margin-bottom: 20px;
+}
+
+.at-above-post-homepage-recommended:empty, .at-above-post-homepage:empty,
+.at-below-post-homepage-recommended:empty, .at-below-post-homepage:empty
+{
+    display: none;
+}
+
+.show-link a {
+    display: inline;
+}
+.show-link p {
+    display: inline;
+    padding-right: 5px;
+}
+
+.archive-list ul {
+    margin: 0 0 0 10px;
+    padding: 0;
+}
+
+.archive-list {
+    border-top: 1px solid #ccc;
+    margin:10px 0!important;
+    padding: 10px 0 20px 0;
+}
+.archive-list > * {
+    margin: 0 10px;
+}
+.archive-list:first-child {
+    border: 0;
+}
+
+.filter-box +  .archive-list{
+    border: 0;
+}
+#form-filter  select  {
+    width: 160px;
+    float: left;
+    margin: 0 20px 20px 0;
 }

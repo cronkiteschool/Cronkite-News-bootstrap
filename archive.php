@@ -28,7 +28,13 @@ get_header(); ?>
                             <div class="post format-gallery ">
 
                                 <div class="post-content post-content-news">
-                                    <?php query_posts('post_type=news&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
+                                    <?php global $post;
+                                        $categories = get_the_category($post->ID);
+                                        $catPost =  $categories[0]->cat_name;
+                                        $catID = get_cat_ID( $catPost )
+                                    ?>
+
+                                    <?php query_posts('post_type=post&category_name='.$catPost.'&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
 
                                     <?php if ( have_posts() ) : ?>
                                         <?php $number = 0; ?>
@@ -44,18 +50,17 @@ get_header(); ?>
                                                     <a href="#modal-members" class="watch" member-number="<?= $number; ?>" >
                                                         <h2><span class="post-title"><?php the_title(); ?></span></h2>
                                                     </a>
-                                                    <?php the_excerpt(); ?>
-                                                    <a href="#modal-members" member-number="<?= $number; ?>" class="watch"><i class="icon-videocam"></i></a>
+                                                    <div class="show-link clearfix">
+                                                        <?php the_excerpt(); ?>
+                                                        <a href="#modal-members" member-number="<?= $number; ?>" class="watch"><i class="icon-videocam"></i></a>
+                                                    </div>
                                                 </div>
-
 
                                             </div><!-- END of .post-type-->
                                             <?php $number++; ?>
                                         <?php endwhile; ?><!-- END of Post -->
                                         <div class="blog-pagination"> <?php bootstrap_pagination(); ?></div>
-
                                     <?php endif; wp_reset_query(); ?>
-
 
                                 </div>
                             </div>
@@ -68,26 +73,20 @@ get_header(); ?>
                                     <h3>Search for more stories and video:</h3>
                                     <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                                         <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search Stories and Video' ); ?>" />
-                                        <input type="hidden" name="post_type" value="news" />
                                         <button type="submit"  class="btn btn-default btn-submit icon-right-open" name="submit" id="searchsubmit"></button>
                                     </form>
                                 </figcaption>
                             </figure>
                         </div>
 
-                        <div class="comment-form-wrapper">
-                            <h2>Leave a Comment</h2>
-                            <div class="fb-comments" data-href="http://cronkitenewsonline.com/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
-                            <div id="response"></div>
-                        </div>
+                        <!-- Remove Facebook Comments -->
+
                         <!-- /.comment-form-wrapper -->
 
                         <!-- END of .row-->
                     </div>
                     <div class="col-md-3 sidebar">
                         <?php dynamic_sidebar('Sidebar Right'); ?>
-
-
                     </div>
                     <!-- END of .container-->
                 </div>
@@ -98,16 +97,22 @@ get_header(); ?>
     </main>
 
 
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=438575732820089&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
 
+    <div class="remodal" data-remodal-id="modal-members" >
+        <?php query_posts('post_type=post&category_name='.$catPost.'&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
 
+        <?php if ( have_posts() ) : ?>
+            <?php $number = 0; ?>
 
+            <?php while ( have_posts() ) : the_post(); ?>
+                <div class="popup-box" member-number="<?= $number; ?>">
+                    <?php the_field('video_file');?>
+                </div>
+                <?php $number++; ?>
+            <?php endwhile; ?><!-- END of Post -->
+        <?php endif; wp_reset_query(); ?>
+    </div>
+
+   <!-- Remove Facebook Comments -->
 
 <?php get_footer(); ?>
