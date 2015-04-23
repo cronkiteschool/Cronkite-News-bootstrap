@@ -317,7 +317,7 @@ if (!is_admin()) {
         return $options;
     }
 
-/*********************** PUT YOU FUNCTIONS BELOW ********************************/
+/*********************** PUT YOUR FUNCTIONS BELOW ********************************/
 
 // Stick Admin Bar To The Top
 if (!is_admin()) {
@@ -474,13 +474,13 @@ if (!is_admin()) {
 
 
 // Turn off visual editor for everything but sliders
-//add_filter( 'user_can_richedit', 'disable_visual_editor' );
-//function disable_visual_editor() {
-//   if ( 'slider' == get_post_type() ) {
-//       return true;
-//   }
-//   return false;
-//}
+add_filter( 'user_can_richedit', 'disable_visual_editor' );
+function disable_visual_editor() {
+  if ( 'slider' == get_post_type() ) {
+      return true;
+  }
+  return false;
+}
 
 // Make months AP style
 function ap_date() {

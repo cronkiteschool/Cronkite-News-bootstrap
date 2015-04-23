@@ -20,7 +20,7 @@ get_header(); ?>
                     <?php while ( $the_query->have_posts() ) : $the_query->the_post();
                     $do_not_duplicate = $post->ID; ?><!-- BEGIN of Post -->
 
-                    <div class="item" style="background: url(<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ;?>) center top  no-repeat; background-size: cover">
+                    <div class="item" style="background: url(<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ;?>) center top  no-repeat; background-size: cover;">
 
                         <div class="container">
                             <div class="caption vertical-center text-center">
@@ -37,6 +37,9 @@ get_header(); ?>
         </div>
         <!-- /.owl-carousel -->
     </section>
+
+
+    <!-- START Verticals Section  -->
 
     <section id="latest-works" class="light-bg">
         <div class="container inner">
@@ -55,7 +58,7 @@ get_header(); ?>
                         <div class="col-sm-6 inner-top-sm ">
                             <div class="kicker">
                                 <h3><?php echo $title; ?></h3>
-                                <p><?php echo $text; ?></p>
+                                <p><a href="<?php the_field('area_works_link'); ?>"><?php echo $text; ?></a></p>
 
                                 <?php if($customLinks) { ?>
                                     <a target="_blank" href="http://<?php echo $customLinks; ?>">
@@ -81,6 +84,7 @@ get_header(); ?>
 
     </section>
 
+    <!-- END Verticals Section  -->
 
 
     <section id="carousels" class="medium-bg">
@@ -183,6 +187,7 @@ get_header(); ?>
                 <!-- /.col -->
 
                 <div class="col-md-5 col-md-pull-5 col-sm-6 col-sm-pull-6 inner-top-xs inner-right-xs">
+                    <span class="special-report">SPECIAL REPORT</span>
                     <h1><?php the_field('special_area_title'); ?></h1>
                     <p><?php  the_field('special_area_description');?></p>
                 </div>
@@ -205,6 +210,7 @@ get_header(); ?>
                     </div>
                     <div class="col-sm-6 inner-top-sm">
                         <div class="row thumbs gap-xs">
+                            
                             <?php if( have_rows('images_box') ): ?>
                                 <?php while( have_rows('images_box') ): the_row();
                                     // Declare variables below

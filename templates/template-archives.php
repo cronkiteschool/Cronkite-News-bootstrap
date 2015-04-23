@@ -77,7 +77,7 @@ get_header(); ?>
                                             <?php while ( $the_query->have_posts() ) : $the_query->the_post();
                                             $do_not_duplicate = $post->ID; ?><!-- BEGIN of POST -->
                                             <div class="archive-list">
-                                                <h3><?php the_title(); ?></h3>
+                                                <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                                 <?php global $post;
                                                     $categories = get_the_category($post->ID);
                                                     $catPost =  $categories[0]->cat_name;
@@ -85,7 +85,7 @@ get_header(); ?>
                                                 ?>
                                                 <h5>Category: <?php echo $catPost ?></h5>
                                                 <ul>
-                                                    <?php wp_get_archives('cat='.$catID); ?>
+                                                    <li><?php wp_get_archives('cat='.$catID); ?></li>
                                                 </ul>
                                                 </div><!-- END of .post-type-->
                                             <?php endwhile; ?><!-- END of POST -->
