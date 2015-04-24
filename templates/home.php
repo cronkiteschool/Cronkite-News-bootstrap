@@ -21,7 +21,7 @@ get_header(); ?>
                     $do_not_duplicate = $post->ID; ?><!-- BEGIN of Post -->
 
                     <div class="item" style="background: url(<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ;?>) center top  no-repeat; background-size: cover;">
-
+                        <div class="bg-slider"></div>
                         <div class="container">
                             <div class="caption vertical-center text-center">
                                 <p class="fadeInDown-2 light-color"><?php the_content(); ?></p>

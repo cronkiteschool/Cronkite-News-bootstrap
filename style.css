@@ -390,7 +390,7 @@ footer ul.contacts li {
 #hero #owl-main .caption h1.medium-bg,
 #hero #owl-main .caption h1.dark-bg,
 #hero #owl-main .caption h1.tint-bg {
-    font-size: 73px;
+    font-size: 53px;
 }
 #hero h4 {
     font-size: 33px;
@@ -3865,6 +3865,7 @@ footer .widget_black_studio_tinymce .textwidget {
 
 .custom-line {
     padding: 5px 15px;
+    text-align: left;
 }
 .custom-line-links {
     display: inline-block;
@@ -6004,6 +6005,16 @@ ul.circled li:before,
 	border-radius: 4px;
 }
 
+.bg-slider {
+    background: rgba(35,67,132,0.4);
+    width: 100%;
+    height:100%;
+    position: absolute;
+    top: 0;
+}
+.custom-line.text-center {
+    text-align: center;
+}
 
 .item:before {
 opacity: 0.5;

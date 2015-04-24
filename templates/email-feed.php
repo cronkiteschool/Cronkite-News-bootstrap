@@ -2,10 +2,13 @@
 /*
 Template Name: Email Feed
 */
+$ACCEPTHOST = 'cn2.niclindh.com';
+$NEWSCASTURL = $ACCEPTHOST . '/sitenewscast/';
+echo $NEWSCASTURL;
 
 header("Content-Type: application/rss+xml; charset=UTF-8");
+echo '<?xml version="1.0"?><rss version="2.0">';
 ?>
-<?php print '<?xml version="1.0"?>'; ?><rss version="2.0">
 
 <channel>
   <title>Cronkite News Service</title>
@@ -24,21 +27,40 @@ header("Content-Type: application/rss+xml; charset=UTF-8");
             );
 	$loop = new WP_Query( $args );
 	while ( $loop->have_posts() ) : $loop->the_post();
-		//Capture the post ID so we can extract
-		//feature image, author, blurb
+		//Extract slider html and find the link
+		$content = get_the_content();
 		
-		echo $post->ID;
-		//the_post_thumbnail('medium');
-		// echo '<title>' . the_title() . '</title>';
-// 		echo '<link>' . the_permalink() . '</link>';
-		echo '<description><![CDATA[';
-		echo the_content();
-		echo ']]></description>';
-		?>
-		<pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false); ?></pubDate>
-		<guid><?php echo get_permalink($post->ID); ?></guid>
-		</item>
-		<?php
+		//echo $content;
+		$DOM = new DOMDocument;
+		$DOM->loadHTML($content);
+		$anchors = $DOM->getElementsByTagName('a');		
+		$postlink =  $anchors->item(0)->getAttribute('href');
+		
+		$host = parse_url($postlink, PHP_URL_HOST);
+		$scheme = parse_url($postlink, PHP_URL_SCHEME);		
+		$newscastwithscheme = $scheme . '://' . $NEWSCASTURL;
+
+		if (($postlink != $newscastwithscheme) and ($host == $ACCEPTHOST)) { 
+			//Only include CN stories, not external and not the newscast. Change $ACCEPTHOST and $NEWSCASTURL at top of page
+			$thepostid = url_to_postid($postlink);
+			echo '<title>' . get_the_title($thepostid) . '</title>';
+			echo '<link>' . $postlink . '</link>';
+			echo '<item>';
+			echo '<pubDate>' . mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false) . '</pubDate>';
+			echo '<guid>' . $postlink . '</guid>';
+
+			//Extract feature image, author, blurb
+			$featureimage = get_the_post_thumbnail($thepostid, 'medium');
+			$author = get_post_custom_values('post_author', $thepostid);
+			$blurb = get_post_field('post_content', $thepostid);
+			echo '<description><![CDATA[';			
+			echo $featureimage;
+			echo '<br /><h3><strong><a href="' . $postlink . '">' . get_the_title($thepostid) . '</a></strong></h3>';
+			echo 'By ' . $author[0] . '<br />';
+			echo $blurb;
+			echo '<br />]]></description>';
+			echo '</item>';		
+		}
 		endwhile;
 		wp_reset_query();
 				
@@ -60,7 +82,9 @@ header("Content-Type: application/rss+xml; charset=UTF-8");
 				echo '<item>';
 				echo '<guid>' . $link . '</guid>';
 				echo '<title>' . $title . '</title>';
-				echo '<pubDate>' . mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false) . '</pubDate>';
+				?>
+				<pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></pubDate>
+				 <?php
 				echo '<description><![CDATA[';
 				
 				echo '<h3><strong><a href="' . $link . '">' . $title . '</a></strong></h3>';
