@@ -34,6 +34,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
+    
+    <link rel="alternate" type="application/rss+xml" href="/rss-feed/" title="Subscribe to updates with RSS.">
 
 <!--  ADD THIS CODE -->
 <!-- Go to www.addthis.com/dashboard to customize your tools -->

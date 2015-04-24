@@ -521,23 +521,12 @@ function my_single_template($single) {
 	endforeach;
 	return $single;
 }	
-	    
-    
-/*******************************************************************************/
-// Load custom RSS
-// From https://katz.co/custom-rss-feed-in-wordpress/
-function create_my_customfeed() {
-	load_template( TEMPLATEPATH . 'templates/rss2.php');
+// Remove auto generated feed links
+function my_remove_feeds() {
+	remove_action( 'wp_head', 'feed_links_extra', 3 );
+	remove_action( 'wp_head', 'feed_links', 2 );
 }
-add_action('do_feed_customfeed', 'create_my_customfeed', 10, 1); 
-
-function custom_feed_rewrite($wp_rewrite) {
-$feed_rules = array(
-'feed/(.+)' => 'index.php?feed=' . $wp_rewrite->preg_index(1),
-'(.+).xml' => 'index.php?feed='. $wp_rewrite->preg_index(1)
-);
-$wp_rewrite->rules = $feed_rules + $wp_rewrite->rules;
-}
-add_filter('generate_rewrite_rules', 'custom_feed_rewrite');
+add_action( 'after_setup_theme', 'my_remove_feeds' );	    
     
+/*******************************************************************************/  
 ?>
