@@ -4,7 +4,6 @@ Template Name: Email Feed
 */
 $ACCEPTHOST = 'cn2.niclindh.com';
 $NEWSCASTURL = $ACCEPTHOST . '/sitenewscast/';
-echo $NEWSCASTURL;
 
 header("Content-Type: application/rss+xml; charset=UTF-8");
 echo '<?xml version="1.0"?><rss version="2.0">';
