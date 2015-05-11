@@ -25,14 +25,14 @@ get_header(); ?>
                                                
                                                 <div class="custom-line text-center">
                                                  <?php echo $text; ?>
-                                                <?php if($labelInfo  = get_field('label_info')) : ?>
-                                                    <?php echo $labelInfo; ?> |
+                                                <?php //if($labelInfo  = get_field('label_info')) : ?>
+                                                    <?php //echo $labelInfo; ?>
                                                     
-                                                <?php endif; ?>
+                                                <?php //endif; ?>
                                            
-                                                <?php if($twitterTitle = get_field('twitter_title')) {?>
-                                                    <a href="<?php the_field('twitter_url'); ?>" class="custom-line-links"> <i class="icon-twitter"></i> <?php echo $twitterTitle; ?> </a>
-                                                <?php } ?>
+                                                <?php //if($twitterTitle = get_field('twitter_title')) {?>
+                                                    <a href="<?php //the_field('twitter_url'); ?>" class="custom-line-links"> <!-- <i class="icon-twitter"></i> --> <?php //echo $twitterTitle; ?> </a>
+                                                <?php// } ?>
 
                                             </div>
 
@@ -77,7 +77,9 @@ get_header(); ?>
 
                             <div class="comment-form-wrapper">
                                 <h2>Leave a Comment</h2>
-                                <div class="fb-comments" data-href="http://cronkitenewsonline.com/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+
+					<?php echo do_shortcode('[fbcomments]'); ?>
+                            
                                 <div id="response"></div>
                             </div>
                             <!-- /.comment-form-wrapper -->
@@ -95,15 +97,5 @@ get_header(); ?>
             <!-- /.container -->
         </section>
     </main>
-
-
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=438575732820089&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
 
 <?php get_footer(); ?>

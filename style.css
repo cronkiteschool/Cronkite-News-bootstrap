@@ -1,7 +1,7 @@
 /**
  * Theme Name: Bootstrap    
- * Author: Twitter Bootstrap  
- * Author URI: http://getbootstrap.com/
+ * Author: Kevin Brown Design 
+ * Author URI: http://kevinbrowndesign.com/
  * Version: 2.0
 **/
 
@@ -241,7 +241,7 @@ h1 {
 h2 {
     font-size: 26px;
     line-height: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 h3 {
     font-size: 20px;
@@ -2459,7 +2459,7 @@ blockquote:before {
 .owl-inner-pagination.owl-inner-nav .owl-next {
     margin: auto;
     top: 0;
-    bottom: 43px;
+    bottom: 123px;
 }
 
 .owl-inner-pagination .owl-pagination {
@@ -2476,7 +2476,7 @@ blockquote:before {
 
 .owl-inner-pagination.owl-inner-nav .owl-pagination,
 .owl-inner-pagination.owl-outer-nav .owl-pagination {
-    top: -45px;
+    top: -145px;
 }
 
 .owl-inner-pagination.owl-inner-nav.owl-ui-md .owl-pagination,
@@ -2491,7 +2491,7 @@ blockquote:before {
 
 .owl-inner-pagination.owl-inner-nav:hover .owl-pagination,
 .owl-inner-pagination.owl-outer-nav:hover .owl-pagination {
-    top: -60px;
+    top: -160px;
 }
 
 .owl-inner-pagination.owl-inner-nav.owl-ui-md:hover .owl-pagination,
@@ -4985,8 +4985,8 @@ footer .widget_black_studio_tinymce .textwidget {
     .grid-blog.col-3 .post-content > *,
     .grid-blog.col-2.no-sidebar .post-content > *,
     .grid-blog.col-3.no-sidebar .post-content > * {
-        margin-left: 0;
-        margin-right: 30px;
+        margin-left: 15px;
+        margin-right: 15px;
     }
 
     .classic-blog .post-content .meta,
