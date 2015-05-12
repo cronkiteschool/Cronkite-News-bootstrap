@@ -2415,7 +2415,7 @@ blockquote:before {
 .owl-outer-nav .owl-next,
 .owl-inner-nav .owl-prev,
 .owl-inner-nav .owl-next {
-    bottom: 70px;
+    bottom: 60px;
 }
 
 .owl-outer-nav.owl-ui-md .owl-prev,
@@ -2514,7 +2514,7 @@ blockquote:before {
     background-size: cover;
 }
 #owl-main.height-md .item {
-    height: 61vh;
+    /*height: 61vh;*/
 }
 
 #owl-main.height-lg .item {

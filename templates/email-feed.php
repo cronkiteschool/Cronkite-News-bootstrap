@@ -2,7 +2,7 @@
 /*
 Template Name: Email Feed
 */
-$ACCEPTHOST = 'cn2.niclindh.com';
+$ACCEPTHOST = 'cronkitenews.azpbs.org';
 $NEWSCASTURL = $ACCEPTHOST . '/sitenewscast/';
 
 header("Content-Type: application/rss+xml; charset=UTF-8");
@@ -11,12 +11,13 @@ echo '<?xml version="1.0"?><rss version="2.0">';
 
 <channel>
   <title>Cronkite News Service</title>
-  <link>http://cn2.niclindh.com/email-feed/</link>
+  <link>http://cronkitenews.azpbs.org/email-feed/</link>
   <description>Feed for consumption by MailChimp</description>
   <language>en-us</language>
   <pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></pubDate>
   <lastBuildDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></lastBuildDate>
   <managingEditor>cronkitenews@asu.edu</managingEditor>
+  
 <?php
 	$args = array(
                 'post_type'	    => 'slider',
@@ -33,15 +34,16 @@ echo '<?xml version="1.0"?><rss version="2.0">';
 		$DOM = new DOMDocument;
 		$DOM->loadHTML($content);
 		$anchors = $DOM->getElementsByTagName('a');		
-		$postlink =  $anchors->item(0)->getAttribute('href');
-		
+		$postlink =  'http:' . $anchors->item(0)->getAttribute('href');			
 		$host = parse_url($postlink, PHP_URL_HOST);
-		$scheme = parse_url($postlink, PHP_URL_SCHEME);		
-		$newscastwithscheme = $scheme . '://' . $NEWSCASTURL;
+	
+		$newscastwithscheme = 'http://' . $NEWSCASTURL;
+
 
 		if (($postlink != $newscastwithscheme) and ($host == $ACCEPTHOST)) { 
 			//Only include CN stories, not external and not the newscast. Change $ACCEPTHOST and $NEWSCASTURL at top of page
 			$thepostid = url_to_postid($postlink);
+
 			echo '<title>' . get_the_title($thepostid) . '</title>';
 			echo '<link>' . $postlink . '</link>';
 			echo '<item>';
