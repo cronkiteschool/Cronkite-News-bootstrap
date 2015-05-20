@@ -27,14 +27,32 @@ get_header(); ?>
                             <div class="post format-gallery ">
 
                                 <div class="format-news">
-                                    <?php if (have_posts()) : ?>
-                                        <?php while (have_posts()) : the_post(); ?><!-- BEGIN of POST-->
-                                            <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-                                                <?php the_content(); ?>
-                                            </article>
-                                        <?php endwhile; ?><!-- END of POST-->
-                                    <?php endif; ?>
-
+                                    <div class="content-blog">
+                                        <?php global $post;?>
+        
+                                        <?php $arg = array(
+                                            'post_type'	    => 'post',
+                                            'order'		    => 'DESC',
+                                            'orderby'	    => 'date',
+                                            'posts_per_page'    => 1,
+                                            'category_name' =>  'newscast'
+                                        );
+                                        $the_query = new WP_Query( $arg );
+                                        if ( $the_query->have_posts() ) : ?>
+        
+                                                <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+                                                           <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'>
+                                                           <?php the_field('video_file');?>
+                                                     
+                                                            
+                                                           </div>
+                                                           
+                                                           <h3 style="padding-left: 10px;"><strong> <?php the_title(); ?></strong></h3>
+                                                           <?php the_excerpt(); ?>
+                                                <?php endwhile;?>
+        
+                                        <?php endif; wp_reset_query(); ?>
+                                    </div>
                                 </div>
                                 <div class="post-content post-content-news">
                                     <?php query_posts('post_type=post&category_name=newscast&post_status=publish&posts_per_page=8&paged='. get_query_var('paged')); ?>
@@ -114,7 +132,7 @@ get_header(); ?>
 
 
     <div class="remodal" data-remodal-id="modal-members" >
-        <?php query_posts('post_type=post&category_name=newscast&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
+        <?php query_posts('post_type=post&category_name=newscast&post_status=publish&posts_per_page=8&paged='. get_query_var('paged')); ?>
 
                 <?php if ( have_posts() ) : ?>
                     <?php $number = 0; ?>

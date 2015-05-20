@@ -144,7 +144,7 @@ body.remodal_active .remodal {
 
     background: none repeat scroll 0 0 transparent;
     border:0;
-    bottom: -28px;
+   /* bottom: -28px;*/
     height: 30px;
     position: absolute;
     right: -11px;

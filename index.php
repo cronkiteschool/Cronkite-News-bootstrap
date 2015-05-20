@@ -32,6 +32,7 @@ get_header(); ?>
                     <div class="sidemeta">
                         <div class="post format-gallery">
 
+		
                             <?php
                             if( is_home() && get_option('page_for_posts') ) {
                                 $blog_page_id = get_option('page_for_posts');

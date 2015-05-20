@@ -161,8 +161,6 @@
 
 
 
-
-
 // Remove #more anchor from posts
     function remove_more_jump_link($link) { 
         $offset = strpos($link, '#more-');
@@ -452,18 +450,6 @@ function tuts_mce_before_init( $settings ) {
 
     return $settings;
 
-}
-
-
-if (!is_admin()) {
-    add_filter('pre_get_posts', 'cpt_search');
-    function cpt_search($query)
-    {
-        if ($query->is_search) {
-            $query->set('post_type', array('post', 'page'));
-        }
-        return $query;
-    }
 }
 
 

@@ -358,7 +358,6 @@ footer ul.contacts li {
     line-height: 110%;
     font-weight: 900;
     letter-spacing: .05em;
-    text-transform: uppercase;
     margin-bottom: 0;
     -webkit-transition: font 200ms ease-out;
     -moz-transition: font 200ms ease-out;
@@ -3747,6 +3746,13 @@ footer .widget_black_studio_tinymce .textwidget {
     margin-top: 10px!important;
 }
 
+.post-content-news article {
+	 width: auto!important;
+	 box-sizing: border-box;
+	 padding:20px;
+ 
+}
+
 .owl-inner-pagination p {
     margin-bottom: 0;
 }
@@ -6017,5 +6023,13 @@ ul.circled li:before,
 }
 
 .item:before {
-opacity: 0.5;
+    opacity: 0.5;
 }
+
+
+.format-news  .content-blog .embed-container p { padding-left: 0;}
+.format-news iframe { width: 100%!important;}
+.format-news  .content-blog h3 {
+    padding-left: 10px;
+}
+

@@ -48,13 +48,17 @@
 
        </script>
 
-   <!-- Customize your tools -->
-   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55303e2b3679dd42" async="async"></script>
+
 
     <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
+
+   <!-- Add This Social Sharing -->
+   <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55303e2b3679dd42" async="async"></script>
+
 
     <!-- ============================================================= HEADER ============================================================= -->
 

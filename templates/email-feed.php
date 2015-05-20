@@ -34,11 +34,10 @@ echo '<?xml version="1.0"?><rss version="2.0">';
 		$DOM = new DOMDocument;
 		$DOM->loadHTML($content);
 		$anchors = $DOM->getElementsByTagName('a');		
-		$postlink =  'http:' . $anchors->item(0)->getAttribute('href');			
+		$postlink =  $anchors->item(0)->getAttribute('href');			
 		$host = parse_url($postlink, PHP_URL_HOST);
 	
 		$newscastwithscheme = 'http://' . $NEWSCASTURL;
-
 
 		if (($postlink != $newscastwithscheme) and ($host == $ACCEPTHOST)) { 
 			//Only include CN stories, not external and not the newscast. Change $ACCEPTHOST and $NEWSCASTURL at top of page
@@ -91,7 +90,8 @@ echo '<?xml version="1.0"?><rss version="2.0">';
 				echo '<h3><strong><a href="' . $link . '">' . $title . '</a></strong></h3>';
 				
 				echo ']]></description>';
-				echo '</item>';
+				echo '</item>
+				';
 			
 			endforeach;
 			endif;
