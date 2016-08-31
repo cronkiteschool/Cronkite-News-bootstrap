@@ -44,6 +44,12 @@ get_header(); ?>
                                                 <div><?php the_field('field_text'); ?></div>
                                             </article>
 										<?php endwhile; ?><!-- END of Post -->
+
+
+  <div class="blog-pagination"> <?php bootstrap_pagination(); ?></div>
+
+
+
 									<?php else : ?>
 									   <h1>Sorry, no results found</h1>
 									<?php endif; ?>

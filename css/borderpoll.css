@@ -1,0 +1,238 @@
+.story-info{
+color: white;
+margin-top: -15px;
+font-size: 0px;
+}
+.container{
+padding: 0;
+width: 100%;
+}
+body{
+margin-top: 0;
+width: 100%;
+}
+.ig-items{
+padding: 10px;
+}
+.minus-100{
+margin-top: -10px;
+}
+.layoutSingleColumn{
+    width: 75%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+img {
+    width: 100%;
+    margin: auto auto;
+    padding: 0px;
+}
+.list-group {
+    padding-left: 0;
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin: auto;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+p{
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+.layoutSingleColumn a {
+    text-decoration: underline;
+}
+.btn1{
+    margin-left: 15%;
+    border: none;
+    float: left;
+    background-color: #555;
+    color: white;
+}
+.btn2 {
+    margin-right: 15%;
+    border: none;
+    float: right;
+    background-color: #555;
+    color: white;
+}
+div#sticker{
+padding: 0px;
+right: 0;
+float: right;
+}
+.clear {
+    clear:both;
+}
+.stick {
+    position:fixed;
+    top:0;
+    margin-top:100px;
+    z-index: 10;
+}
+ul.sticker{
+font-size: 100%;
+list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    width: 200px;
+    background-color: #234384;
+}
+
+.top-nav {
+  padding-bottom: 8px;
+}
+
+.sticker a {
+	color: white;
+}
+
+.sticker h3 {
+  color: white;
+}
+li.sli a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+li.sli a:hover {
+    background-color: #555;
+    color: white;
+}
+@media screen and (min-width: 782px){
+	nav.navbar{
+		height: 0;
+		width: 0;
+		visibility: collapse;
+		}
+	}
+@media screen and (max-width: 1040px){ 
+    div#sticker {
+        height: 0;
+        width: 0;
+	}
+}
+.padding-0{
+    padding: 0;
+}
+.btns{
+    padding-bottom: 25%;
+    padding-top: 25%;
+}
+h1.main-head{
+font-weight: 700;
+font-size: 4rem;
+-webkit-font-smoothing: antialiased;
+color:black;
+width: 100%;
+max-width: 700px;
+margin: 0 auto;
+text-align: left;
+padding-bottom: 10px;
+}
+figure * + figcaption {
+    padding-top: 0;
+    padding-bottom: 0;
+    display: none;
+    position: relative;
+    z-index: 110;
+    float: right;
+    margin: -2em 1em 0 1em;
+    font-size: 0.9em;
+    color: #ccc;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 0 1px 1px #000;
+    display: block;
+    padding: 0;
+}
+ul.nav, ul.sticker{
+    text-align: center;
+    }
+li.top-nav a:visited{
+background-color: black;
+color: white;
+}
+li.top-nav a:active{
+background-color: black;
+color: white;
+}
+li.top-nav a:hover{
+background-color:black;
+color: white;
+}
+li>a:hover{
+color:white;
+}
+.bd-head{
+font-weight: 700;
+font-size: 5rem;
+-webkit-font-smoothing: antialiased;
+color:black;
+width: 75%;
+max-width: 700px;
+margin: auto auto;
+text-align: center;
+padding-bottom: 10px;
+}
+h2{
+font-weight: 700;
+-webkit-font-smoothing: antialiased;
+color:black;
+width: 100%;
+max-width: 700px;
+margin: 0 auto;
+text-align: left;
+padding-bottom: 10px;
+}
+.padding-10{
+padding:10px;
+}
+.circle{
+	list-style-type: disc;
+	padding-left: 0;
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin: auto;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+.nocircle{
+	list-style-type: none;
+	padding-left: 0;
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin: auto;
+    padding-bottom: 20px;
+    padding-top: 10px;
+}
+.breakoutbox {
+    padding-bottom: 20px;
+    padding-left: 10px;
+	float: right;
+    }
+
+.herocaption {
+    position: relative;
+	float: right;
+    font-size: 0.8em;
+    color: white;
+    text-shadow: 0 1px 1px #000;
+    top: 10px;
+    right: 10px;
+}
+
+  @media only screen and (min-width:768px) {
+  	.breakoutbox {
+  		width: 300px;
+
+  	}
+  }
+
+  @media only screen and (max-width:767px) {
+  	.breakoutbox {
+  		width: 100%
+  	}
+  }

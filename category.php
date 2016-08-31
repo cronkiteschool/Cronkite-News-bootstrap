@@ -30,12 +30,20 @@ get_header(); ?>
                     <div class="sidemeta">
                         <div class=" post category-post format-gallery">
 
-                            <div  class="content-blog">
+                            <!-- removed custom line info  -->
 
-                                <?php global $post;
-                                    $categories = get_the_category($post->ID);
-                                    $catPost =  $categories[0]->cat_name;
-                                    $catID = get_cat_ID( $catPost )
+                            <div  class="content-blog">
+                        
+
+                                <?php
+                                $paged = get_query_var('paged');
+                                if ($paged < 2) { ?>
+                                <?php 
+                                global $post;
+                                $categories = get_the_category();
+                                $category_id = $categories[0]->cat_ID;
+                                $category_id = get_queried_object()->term_id;
+      
                                 ?>
 
                                 <?php $arg = array(
@@ -43,25 +51,27 @@ get_header(); ?>
                                     'order'		    => 'DESC',
                                     'orderby'	    => 'date',
                                     'posts_per_page'    => 1,
-                                    'category_name' => $catPost
+                                    'cat' => $category_id
                                 );
                                 $the_query = new WP_Query( $arg );
                                 if ( $the_query->have_posts() ) : ?>
 
                                         <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
-                                            <a href="<?php the_permalink(); ?>">
+                                            
                                                 <div class="post-image">
-                                                    <?php the_post_thumbnail(); ?>
+                                                    <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
                                                 </div>
-                                            </a>
+                                        
                                         <?php endwhile;?>
-
 
                                 <?php endif; wp_reset_query(); ?>
 
+                                <?php  } ?>
+                                
 
                             </div>
-                            <!-- removed custom line info  -->
+                    
+            
 
                             <?php if (have_posts()) : ?>
                                 <?php while (have_posts()) : the_post(); ?><!-- BEGIN of Post -->

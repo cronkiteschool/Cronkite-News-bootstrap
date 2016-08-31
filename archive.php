@@ -47,12 +47,20 @@ get_header(); ?>
                                                 <!-- /.col -->
 
                                                 <div class="col-sm-9 inner-top-xs inner-left-xs-archive">
-                                                    <a href="#modal-members" class="watch" member-number="<?= $number; ?>" >
+                                                    <!--<a href="#modal-members" class="watch" member-number="<?= $number; ?>" >
                                                         <h2><span class="post-title"><?php the_title(); ?></span></h2>
-                                                    </a>
+                                                    </a> -->
+													<a href="<?php the_permalink(); ?>" class="watch">
+                                                        <h2><span class="post-title"><?php the_title(); ?></span></h2>
+                                                    </a> 
+													
                                                     <div class="show-link clearfix">
                                                         <?php the_excerpt(); ?>
-                                                        <a href="#modal-members" member-number="<?= $number; ?>" class="watch"><i class="icon-videocam"></i></a>
+                                                       
+                                                       
+                                                       <?php if( have_rows('video_file') ): ?>
+                                                           <a href="#modal-members" member-number="<?= $number; ?>" class="watch"><i class="icon-videocam"></i></a>
+                                                        <?php endif; ?>
                                                     </div>
                                                 </div>
 
@@ -87,6 +95,7 @@ get_header(); ?>
                     </div>
                     <div class="col-md-3 sidebar">
                         <?php dynamic_sidebar('Sidebar Right'); ?>
+                        <a href="http://cronkitenewsonline.com/" target="_blank">Archives 2011-2014</a>
                     </div>
                     <!-- END of .container-->
                 </div>
@@ -97,21 +106,22 @@ get_header(); ?>
     </main>
 
 
-
-    <div class="remodal" data-remodal-id="modal-members" >
-        <?php query_posts('post_type=post&category_name='.$catPost.'&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
-
-        <?php if ( have_posts() ) : ?>
-            <?php $number = 0; ?>
-
-            <?php while ( have_posts() ) : the_post(); ?>
-                <div class="popup-box" member-number="<?= $number; ?>">
-                    <?php the_field('video_file');?>
-                </div>
-                <?php $number++; ?>
-            <?php endwhile; ?><!-- END of Post -->
-        <?php endif; wp_reset_query(); ?>
-    </div>
+      <?php if( have_rows('video_file') ): ?>
+        <div class="remodal" data-remodal-id="modal-members" >
+            <?php query_posts('post_type=post&category_name='.$catPost.'&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
+    
+            <?php if ( have_posts() ) : ?>
+                <?php $number = 0; ?>
+    
+                <?php while ( have_posts() ) : the_post(); ?>
+                    <div class="popup-box" member-number="<?= $number; ?>">
+                        <?php the_field('video_file');?>
+                    </div>
+                    <?php $number++; ?>
+                <?php endwhile; ?><!-- END of Post -->
+            <?php endif; wp_reset_query(); ?>
+        </div>
+    <?php endif; ?>
 
    <!-- Remove Facebook Comments -->
 

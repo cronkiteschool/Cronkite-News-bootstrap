@@ -807,11 +807,16 @@ $(document).ready(function () {
     $('#form-filter select').change(function(){
         $('#form-filter').submit();
     });
+	
+	
+		$('.widget_wp-category-archive a').append('<i class="icon-videocam"></i>');
 
 });
 
 
     $(window).load(function() {
+		
+		$('.widget_wp-category-archive br').remove();
         $('.watch-icon li ').append('<i class="icon-videocam"></i>');
 
         $('.at-above-post-homepage-recommended:empty, .at-above-post-cat-page-recommended:empty, .at-above-post-cat-page:empty, .at-below-post-cat-page-recommended:empty, .at-below-post-cat-page:empty, .at-above-post-homepage:empty,.at-below-post-homepage-recommended:empty,.at-below-post-homepage:empty').remove();

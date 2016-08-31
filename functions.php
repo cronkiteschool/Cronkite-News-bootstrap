@@ -158,6 +158,16 @@
             'before_title' => '<h5>',
             'after_title' => '</h5>',
         ));
+		
+		   register_sidebar( array(
+            'id' => 'sidebar_newscast',
+            'name' => __( 'Sidebar Archive Newscast' ),
+            'description' => __( ''),
+            'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+            'after_widget' => '</aside>',
+            'before_title' => '<h5>',
+            'after_title' => '</h5>',
+        ));
 
 
 
@@ -380,7 +390,7 @@ function new_excerpt_more( $more ) {
 }
 add_filter('excerpt_more', 'new_excerpt_more');
 
-http://cn2.niclindh.com/category/education/
+//http://cronkitenews.azpbs.org/category/education/
 
 
 add_filter('mce_css', 'tuts_mcekit_editor_style');

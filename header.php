@@ -14,7 +14,7 @@
     .gradient {filter: none;}
   </style>
 <![endif]-->
-     
+
 <head>
 
 	<!-- Chartbeat Analytics  -->
@@ -37,6 +37,28 @@
 
     <!-- Google Analytics Tracking Code  -->
 
+		<?php
+	// get the category for GA
+		$post = get_post();
+		$categories = get_the_category ($post -> ID);
+		$output = '';
+
+		if ( ! empty( $categories ) ) {
+			foreach( $categories as $category ) {
+
+			if ($category->name == "Borderlands") {
+			// $output = "ga('set', 'contentGroup1', '"  . esc_html( $category->name ) . "');";
+			$output = "ga('set', 'contentGroup1', 'My Group Name');";
+		}
+		if ($category->name == "Sustainability") {
+		// $output = "ga('set', 'contentGroup2', '"  . esc_html( $category->name ) . "');";
+		$output = "ga('set', 'contentGroup2', 'My Group Name');";
+	}
+	}
+}
+
+		?>
+
 	<script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -45,19 +67,47 @@
 
            ga('create', 'UA-3145657-18', 'auto');
            ga('send', 'pageview');
+					 <?php
+					 if ($output) {
+						 echo $output;
+					 }
+					 ?>
 
        </script>
 
-
+       <!-- Hotjar Tracking Code for http://cronkitenews.azpbs.org -->
+       <script>
+           (function(h,o,t,j,a,r){
+               h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+               h._hjSettings={hjid:247844,hjsv:5};
+               a=o.getElementsByTagName('head')[0];
+               r=o.createElement('script');r.async=1;
+               r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+               a.appendChild(r);
+           })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+       </script>
+	<!-- FB instant articles -->
+	<meta property="fb:pages" content="305166330794" />
 
     <?php wp_head(); ?>
+		<script src="<?php bloginfo('template_directory');?>/js/plugins/jquery.scrolldepth.js"></script>
+	 <script>
+	 jQuery(function() {
+		 jQuery.scrollDepth({
+		  minHeight: 1000,
+		  userTiming: false
+		});
+});
+	 </script>
+
 </head>
 
 <body <?php body_class(); ?>>
 
    <!-- Add This Social Sharing -->
    <!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55303e2b3679dd42" async="async"></script>
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-555a00cd1124129e" async="async"></script>
+
 
 
     <!-- ============================================================= HEADER ============================================================= -->
