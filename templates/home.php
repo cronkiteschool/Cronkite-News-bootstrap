@@ -70,7 +70,7 @@ get_header(); ?>
 
                 <div class="col-sm-4 inner-top-sm ">
                   <div class="kicker-modern">
-                    <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>sitenewscast/">Video</a></h3>
+                    <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>sitenewscast/">NEWSCAST</a></h3>
                     <div class="embed-responsive embed-responsive-16by9">
                       <?php
                         $vid = get_field('video_file', false, false);
@@ -167,7 +167,7 @@ get_header(); ?>
         echo '<div style="font-size: 14px; font-weight: bold;">';
         foreach( $verticals as $category ) {
 
-          if (($category->name != "Uncategorized") && ($category->name != "Longform") && ($category->name != "Longform No Title") && ($category->name != "Sports")) {
+          if (($category->name != "Uncategorized") && ($category->name != "Longform") && ($category->name != "Longform No Title") && ($category->name != "Sports")  && ($category->name != "Editor's Picks")) {
         $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ). '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . strtoupper(esc_html( $category->name )) . '</a>' . $separator;
       }
 

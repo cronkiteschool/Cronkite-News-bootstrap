@@ -3573,6 +3573,13 @@ input:focus:-ms-input-placeholder {
     opacity: 1;
 }
 
+@media (max-width:1024px)
+{
+    #scrollUp
+    {
+        bottom: 50px;
+    }
+}
 
 /*===================================================================================*/
 /*	FEATURES / STYLES
@@ -4109,6 +4116,27 @@ footer .widget_black_studio_tinymce .textwidget {
 /*	RESPONSIVE
 /*===================================================================================*/
 
+/*SPECIAL REPORTS BOX FIX */
+
+@media (min-width:990px) and (max-width:1200px)
+{
+    .img-responsive p a img
+    {
+        margin-top: 50px;
+        width: 300px;
+        height: 250px;
+    }
+}
+
+@media (min-width:768px) and (max-width:989px)
+{
+     .img-responsive p a img
+    {
+        margin-top: 50px;
+        width: 250px;
+        height: 200px;
+    }
+}
 @media (min-width: 1200px) {
     .container {
         padding-right: 0;
@@ -4457,9 +4485,11 @@ footer .widget_black_studio_tinymce .textwidget {
         padding-left: 50px;
     }
 
+/*
     br {
         display: none;
     }
+*/
 
     #team .inner-left {
         padding-left: 30px;
@@ -5918,6 +5948,26 @@ footer .social img {
 .format-search .story-info {
     padding: 8px 10px;
 }
+
+/*===================================================================================*/
+/*	WIDGET : RECENT POSTS
+/*===================================================================================*/
+
+.rpwe-block
+    {
+    background-color: #fff;
+    border-radius: 4px 4px 0 0;
+    border-top: 8px solid #234384;
+    box-shadow: 4px 4px 2px 1px rgba(0,0,0,0.1);
+    padding: 10px;
+    }
+
+.rpwe-ul li a
+    {
+    font-size: 15px;
+    font-weight: 600;
+    }
+
 
 /****************************  THEME COLORS *****************************
 
