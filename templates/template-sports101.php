@@ -113,7 +113,7 @@ get_header(); ?>
 
                         <div class="comment-form-wrapper">
                             <h2>Leave a Comment</h2>
-                            <div class="fb-comments" data-href="http://cronkitenewsonline.com/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
+                            <div class="fb-comments" data-href="//cronkitenewsonline.com/" data-width="100%" data-numposts="5" data-colorscheme="light"></div>
                             <div id="response"></div>
                         </div>
                         <!-- /.comment-form-wrapper -->

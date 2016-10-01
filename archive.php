@@ -95,7 +95,7 @@ get_header(); ?>
                     </div>
                     <div class="col-md-3 sidebar">
                         <?php dynamic_sidebar('Sidebar Right'); ?>
-                        <a href="http://cronkitenewsonline.com/" target="_blank">Archives 2011-2014</a>
+                        <a href="//cronkitenewsonline.com/" target="_blank">Archives 2011-2014</a>
                     </div>
                     <!-- END of .container-->
                 </div>
