@@ -127,7 +127,7 @@ else {
                                 By <?php echo $postAuthor; ?> |
                                 <?php } ?>
                                 <?php if( $siteTitle = get_field('site_title')) {?>
-                                    <a href="http://<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?></a></h6>
+                                    <a href="//<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?></a></h6>
                                 <?php } ?>
                                 <h6 class="story-info-date"><?php echo ap_date(); ?></h6>
 

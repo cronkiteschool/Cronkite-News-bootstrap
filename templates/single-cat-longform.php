@@ -49,7 +49,7 @@ get_header(); ?>
                                                     <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
                                                 <?php } ?>      
                                                 <?php if( $siteTitle = get_field('site_title')) {?>
-                                                    <a href="http://<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?> | </a>
+                                                    <a href="//<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?> | </a>
                                                 <?php } ?> <span> POSTED:  <?php the_time(get_option('date_format')); ?></span> </h6>
                                                 <?php the_content(); ?>
                                                 <?php the_field('second_text'); ?>

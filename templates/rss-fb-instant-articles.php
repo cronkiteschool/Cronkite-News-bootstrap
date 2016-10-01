@@ -3,7 +3,7 @@
 Template Name: FB Instant Articles Feed
 */
 header("Content-Type: application/rss+xml; charset=UTF-8");
-echo '<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+echo '<rss version="2.0" xmlns:content="https://purl.org/rss/1.0/modules/content/">
 ';
 ?>
 
@@ -33,7 +33,7 @@ echo '<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/
     <content:encoded>
 		<![CDATA[
 		<!doctype html>
-        <html lang="en" prefix="op: http://media.facebook.com/op#">
+        <html lang="en" prefix="op: https://media.facebook.com/op#">
           <head>
             <meta charset="utf-8">
 			<link rel="canonical" href="<?php echo the_permalink(); ?>">

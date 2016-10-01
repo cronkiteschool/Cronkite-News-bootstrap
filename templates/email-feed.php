@@ -6,7 +6,7 @@ Updated: May 27, 2016 to support new home page
 #$ACCEPTHOST = 'cn2.niclindh.com';
 $ACCEPTHOST = 'cronkitenews.azpbs.org';
 //$ACCEPTHOST = 'cn.countzero.xyz';
-$NEWSCASTURL = 'http://' . $ACCEPTHOST . '/sitenewscast';
+$NEWSCASTURL = '//' . $ACCEPTHOST . '/sitenewscast';
 
 header("Content-Type: application/rss+xml; charset=UTF-8");
 echo '<?xml version="1.0"?><rss version="2.0">';
@@ -14,7 +14,7 @@ echo '<?xml version="1.0"?><rss version="2.0">';
 
 <channel>
   <title>Cronkite News Service</title>
-  <link>http://cronkitenews.azpbs.org/email-feed/</link>
+  <link>https://cronkitenews.azpbs.org/email-feed/</link>
   <description>Feed for consumption by MailChimp</description>
   <language>en-us</language>
   <pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></pubDate>
@@ -40,7 +40,7 @@ echo '<?xml version="1.0"?><rss version="2.0">';
 		$postlinkRaw =  $anchors->item(0)->getAttribute('href');
 		$host = parse_url($postlinkRaw, PHP_URL_HOST);
 		$path =  parse_url($postlinkRaw, PHP_URL_PATH);
-		$postlink = 'http://' . $host . $path;
+		$postlink = 'https://' . $host . $path;
 
 
 		if (($postlink != $NEWSCASTURL) and ($host == $ACCEPTHOST)) {

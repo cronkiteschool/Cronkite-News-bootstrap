@@ -142,7 +142,7 @@
 
                     <!-- ============================================================= LOGO MOBILE ============================================================= -->
 
-                    <a class="navbar-brand logo"  href="<?php bloginfo('url'); ?>"><img class="img-responsive" src="https://cn.countzero.xyz/wp-content/uploads/2016/09/election_stretched-1.gif" /></a>
+                    <a class="navbar-brand logo"  href="<?php bloginfo('url'); ?>"><img class="img-responsive" src="//cn.countzero.xyz/wp-content/uploads/2016/09/election_stretched-1.gif" /></a>
 
                     <!-- ============================================================= LOGO MOBILE : END ============================================================= -->
 
@@ -157,7 +157,7 @@
 
                                 <!-- ============================================================= LOGO ============================================================= -->
 
-                                <a class="navbar-brand" id='election_logo' href="<?php bloginfo('url'); ?>"><img class="img-responsive" src="https://cn.countzero.xyz/wp-content/uploads/2016/09/election_stretched-1.gif" /></a>
+                                <a class="navbar-brand" id='election_logo' href="<?php bloginfo('url'); ?>"><img class="img-responsive" src="//cn.countzero.xyz/wp-content/uploads/2016/09/election_stretched-1.gif" /></a>
 
                                 <!-- ============================================================= LOGO : END ============================================================= -->
 

@@ -28,7 +28,7 @@ echo '<?xml version="1.0"?><rss version="2.0">';
 		$postlink =  $anchors->item(0)->getAttribute('href');			
 		$host = parse_url($postlink, PHP_URL_HOST);
 	
-		$newscastwithscheme = 'http://' . $NEWSCASTURL;
+		$newscastwithscheme = 'https://' . $NEWSCASTURL;
 
 		if (($postlink != $newscastwithscheme) and ($host == $ACCEPTHOST)) { 
 			//Only include CN stories, not external and not the newscast. Change $ACCEPTHOST and $NEWSCASTURL at top of page

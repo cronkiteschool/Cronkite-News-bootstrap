@@ -32,7 +32,7 @@ get_header( 'election'); ?>
 
       if( $url_link ): // post goes offsite (extremely rare)
 
-        echo '<a target="_blank" href="http://';
+        echo '<a target="_blank" href="//';
           echo $url_link;
           echo '">';
           echo get_the_post_thumbnail($postid, 'full', array('class' => 'img-responsive'));
@@ -49,7 +49,7 @@ get_header( 'election'); ?>
         echo '<div class="info"><h4>';
 
       if( $url_link ): // post goes offsite (extremely rare)
-            echo '<a target="_blank" href="http://';
+            echo '<a target="_blank" href="//';
             echo $url_link;
             echo '">';
             echo get_the_title($postid);
@@ -117,7 +117,7 @@ get_header( 'election'); ?>
            <div class="kicker-modern" id="episode_cast">
            <!--     <div class="embed-responsive embed-responsive-16by9">
 -->
-                 <a target="_blank" href="http://www.azpbs.org/arizonahorizon/"> <h3 style="margin-bottom:20px;"> ARIZONA HORIZON</h3></a>
+                 <a target="_blank" href="//www.azpbs.org/arizonahorizon/"> <h3 style="margin-bottom:20px;"> ARIZONA HORIZON</h3></a>
      <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('header-1') ) : 
 
                 endif; ?>
@@ -156,7 +156,7 @@ get_header( 'election'); ?>
                       <div class="kicker-modern">
     
                         <?php if($customLinks) { ?>
-                          <a target="_blank" href="http://<?php echo $customLinks; ?>">
+                          <a target="_blank" href="//<?php echo $customLinks; ?>">
                                          <img class='awards_image' src="<?php echo $icon['sizes']['awards_logo']; ?>" />
                                     </a>
                           <?php } else { ?>
@@ -284,7 +284,7 @@ get_header( 'election'); ?>
     <div class="container">
         <div class="col-xs-12">
             
-            <a href='https://cronkitenews.azpbs.org/category/election-2016/' style="color:white;padding-top:10px; line-height:3;margin-left:30%;"> Complete Election Coverage Here</a>
+            <a href='//cronkitenews.azpbs.org/category/election-2016/' style="color:white;padding-top:10px; line-height:3;margin-left:30%;"> Complete Election Coverage Here</a>
         
         
         </div>

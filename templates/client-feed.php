@@ -8,7 +8,7 @@ echo '<?xml version="1.0"?><rss version="2.0">';
 
 <channel>
   <title>Cronkite News Client Feed</title>
-  <link>http://cronkitenews.azpbs.org</link>
+  <link>https://cronkitenews.azpbs.org</link>
   <description>This feed is for consumption by the client site.</description>
   <language>en-us</language>
   <pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></pubDate>

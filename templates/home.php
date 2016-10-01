@@ -118,7 +118,7 @@ get_header(); ?>
 
 
                         <?php if($customLinks) { ?>
-                          <a target="_blank" href="http://<?php echo $customLinks; ?>">
+                          <a target="_blank" href="//<?php echo $customLinks; ?>">
                                          <img class='awards_image' src="<?php echo $icon['sizes']['awards_logo']; ?>" />
                                     </a>
                           <?php } else { ?>
@@ -178,7 +178,7 @@ get_header(); ?>
 
       if( $url_link ): // post goes offsite (extremely rare)
 
-        echo '<a target="_blank" href="http://';
+        echo '<a target="_blank" href="//';
           echo $url_link;
           echo '">';
           echo get_the_post_thumbnail($postid, 'full', array('class' => 'img-responsive'));
@@ -195,7 +195,7 @@ get_header(); ?>
         echo '<div class="info"><h4>';
 
       if( $url_link ): // post goes offsite (extremely rare)
-            echo '<a target="_blank" href="http://';
+            echo '<a target="_blank" href="//';
             echo $url_link;
             echo '">';
             echo get_the_title($postid);
