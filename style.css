@@ -1,15 +1,10 @@
 /**
- Theme Name: bootstrap
- Author: Cronkite School ASU
- Author URI: http://cronkite.asu.edu/
- Version: 2.0
- GitHub Theme URI: https://github.com/cronkiteschool/Cronkite-News-bootstrap
- GitHub Branch: master
- License:      GNU General Public License v2 or later
- License URI:  http://www.gnu.org/licenses/gpl-2.0.html
- Tags: black, white, blue, grey, one-column, four-columns, right-sidebar, flexible-width, theme-options, custom-menu, responsive-layout
- Text Domain: bootstrap 
+ * Theme Name: Bootstrap
+ * Author: Kevin Brown Design
+ * Author URI: http://kevinbrowndesign.com/
+ * Version: 2.0
 **/
+
 
 .kicker-modern {
     padding: 10px;
@@ -80,6 +75,17 @@
 	.hero-caption {
 		height: 110px;
 	}
+    .menuClass
+    {
+        position: fixed;
+        top: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #import-sec
+    {
+        margin-left:40px;
+    }
 
 }
 
@@ -89,6 +95,7 @@
 		height: 90px;
 	}
 }
+
 
 .wp-caption-text {
 	text-align: left;
@@ -142,6 +149,11 @@
 	font-weight: 400;
 }
 
+.pinContent
+{
+    display:inherit;  
+}
+/* Custom menu */
 /* -----------------------------------------
    WordPress Core Classes
 ----------------------------------------- */
@@ -1683,6 +1695,8 @@ img.img-responsive {
     position: relative;
     z-index: 8000;
     min-height: inherit;
+    
+
 }
 .navbar ul {
     list-style: none;
@@ -1692,7 +1706,9 @@ img.img-responsive {
     display: table-cell;
     vertical-align: middle;
     padding: 0;
-    max-width: 250px;
+    max-width: 280px;
+    margin-top: 30px;
+    margin-left: 30px;
 }
 /*.navbar-brand img {
 	max-height: 23px;
@@ -1707,6 +1723,7 @@ img.img-responsive {
     background: transparent;
     border-bottom: 1px solid #E6E9ED;
     z-index: 0;
+    
 }
 .navbar-header li,
 .navbar-header a {
@@ -1732,13 +1749,16 @@ img.img-responsive {
     vertical-align: middle;
     padding-left: 0px;
     margin: 0;
+    background-color: #234384;
+    
 }
 .navbar-nav > li > a {
     font-size: 13px;
     line-height: 20px;
     font-weight: 700;
     text-transform: uppercase;
-    color: #234384;
+ /*   color: #234384;    */
+    color: white;
     padding: 10px 15px;
     margin-right: 2px;
     border: 1px solid rgba(255,255,255,0);
@@ -1863,6 +1883,7 @@ img.img-responsive {
     padding: 0;
     margin: 30px 0 0 0;
 }
+
 
 
 /*===================================================================================*/
@@ -2789,7 +2810,41 @@ blockquote:before {
     background: none;
 }
 
+/*===================================================================================*/
+/*	SECTION DROPDOWN
+/*===================================================================================*/
+.sectionDropDown {
+    position: relative;
+    right: 0;
+    display: none;
+}
 
+.d-content {
+    
+    display: none;
+    position: relative;
+    right: 200px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.d-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.d-content a:hover {background-color: #f1f1f1}
+
+.sectionDropDown:hover .d-content {
+    display: block;
+}
+
+.sectionDropDown:hover .dbtn {
+    background-color: ;
+}
 
 /*===================================================================================*/
 /*	FORMS
@@ -2941,7 +2996,9 @@ textarea.form-control {
 }
 header .search {
     position: relative;
-    margin: 15px 15px 0 15px;
+    left: 190%;
+    margin: 55px 40px 0 15px;
+    width: 300px;
 }
 
 footer .search {
@@ -3585,8 +3642,8 @@ input:focus:-ms-input-placeholder {
     {
         bottom: 50px;
     }
+    
 }
-
 /*===================================================================================*/
 /*	FEATURES / STYLES
 /*===================================================================================*/
@@ -3642,7 +3699,7 @@ input:focus:-ms-input-placeholder {
 }
 
 #menu-header-menu li:last-child a  {
-    background-color: #234384;
+    background-color: red;
     color: #fff !important;
 }
 .navbar-nav li.current-menu-item a:hover {
@@ -4118,32 +4175,246 @@ footer .widget_black_studio_tinymce .textwidget {
     box-shadow: 0 10px 10px rgba(0%, 0%, 0%, 0.1);
 }
 
+  /*POLLING BUTTON */
+#poll-btn
+{
+    width: 100%;
+    margin: 10px 0 0 0;
+    background-color: #002868;
+}
+#poll-btn-text
+{
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 2.5;
+    font-family: 'Taviraj', serif;
+
+   
+}
+/*===================================================================================*/
+/*	WIDGET : RECENT POSTS
+/*===================================================================================*/
+
+.rpwe-block
+    {
+    background-color: #fff;
+    border-radius: 4px 4px 0 0;
+    border-top: 8px solid #234384;
+    box-shadow: 4px 4px 2px 1px rgba(0,0,0,0.1);
+    padding: 10px;
+    }
+
+.rpwe-ul li a
+    {
+    font-size: 15px;
+    font-weight: 600;
+    }
+
+
 /*===================================================================================*/
 /*	RESPONSIVE
 /*===================================================================================*/
+/*CUSTOM STYLES FOR SPECIAL REPORT FIX*/
 
-/*SPECIAL REPORTS BOX FIX */
-
-@media (min-width:990px) and (max-width:1200px)
+@media (min-width:768px) and (max-width:990px)
 {
-    .img-responsive p a img
+    #special_report_img > img
     {
-        margin-top: 50px;
-        width: 300px;
-        height: 250px;
-    }
-}
-
-@media (min-width:768px) and (max-width:989px)
-{
-     .img-responsive p a img
-    {
-        margin-top: 50px;
         width: 250px;
-        height: 200px;
+        height: 190px;
+        margin-top: 50px;
+    }
+   
+}
+@media (min-width:990px) and (max-width:1195px)
+{
+
+    #special_report_img > img
+{
+    width: 320px;
+    height: 250px;
+    margin-top: 50px;
+}
+    
+}
+
+/*1024 PX MENU PROBLEM*/
+
+@media (width:1024px)
+{
+    .menuClass
+    {
+        margin-left: -167px;
+    }
+    #header-search-parent
+    {
+        margin-bottom: 100px;
+    }
+    header .search
+    {
+        width: 400px !important;
     }
 }
+
+/*SEARCH BAR FIX START - COZ IPHONE 5 IS JUST TOO GOOD*/
+@media (min-width:320px) and (max-width:418px)
+{
+    header .search
+    {
+        left: 15%;
+        width: 100% !important;
+
+    }
+}
+
+@media (min-width:360px) and (max-width:420px)
+{
+    header .search
+    {
+        left: 30%;
+        width: 100%;
+    }
+}
+
+@media (min-width:421px) and (max-width:1000px)
+{
+    header .search
+    {
+        left: 10%;
+        width: 150%;
+    }
+}
+
+
+    
+@media (min-width:1024px) and (max-width:1200px)
+{
+    header .search
+    {
+        left: 80%;
+    }
+}
+@media (min-width:1201px) and (max-width:1320px)
+{
+   header .search
+    {
+        left: 75%;
+    }
+}
+
+@media (min-width:1321px) and (max-width:1450px)
+{
+    header .search
+    {
+        left: 150%;
+    }
+}
+
+/*SEARCH BAR FIX END  */
+
+@media (min-width:1024px)
+{
+   .navbar-brand
+    {
+    margin-left: 7%;
+    }
+    .search-parent
+    {
+        display: inline-flex;
+        height: 0;
+        width: 0;
+    }
+    .menu-header-menu-container
+    {
+        display: block;
+        vertical-align: none;
+        margin-left: 150px;
+    }
+}
+
+
+/*LARGE SCREEN MENU FIX*/
+@media (min-width:1520px)
+{
+    .menu-header-menu-container 
+    {
+        padding-left: 80px;
+    }
+    .menu-header-menu-container ul li a
+    {
+        font-size: 15px;
+    }
+    
+}
+
+
+/*EXTRA LARGE SCREEN */
+@media (min-width:1800px)
+{
+    .menu-header-menu-container 
+    {
+        padding-left: 120px;
+    }
+}
+
+/* PULL QUOTE MOBILE FIX*/
+
+@media (max-width:361px)
+{
+    .su-pullquote-align-right
+    {
+        width: 45%;
+        padding-left: 5px;
+    }
+}
+
+/* MENU HEADER FIX START*/
+
+@media (min-width:990px) and (max-width:1024px)
+    
+{
+    .menuClass
+    {
+        position: relative;
+    }
+    
+}
+@media (min-width:1024px) and (max-width:1199px)
+{
+ 
+.menuClass
+    {
+        display: block;
+        background-color: #234384;
+         left: 0;
+        width: 100%;
+    }
+
+.navbar-nav > li > a 
+    {
+        font-size: 12px;
+    }
+ 
+}
+
+@media (min-width:1335px)
+{ 
+    .menuClass a
+    {
+      margin-left: 25px;
+    }
+    
+}
+
 @media (min-width: 1200px) {
+    .menuClass
+    {
+        width: 100%;
+        background-color: #234384;
+        left: 0;
+    }
+/*MENU HEADER FIX END    */
     .container {
         padding-right: 0;
         padding-left: 0;
@@ -4466,14 +4737,56 @@ footer .widget_black_studio_tinymce .textwidget {
         }
     }
 }
-
+@media (max-width:600px)
+{
+/*
+    header .search
+    {
+        left: -25%;
+    }
+*/
+    br
+    {
+        display: block;
+    }
+}
 @media (max-width: 1024px) {
 
     html {
         overflow-x: hidden;
     }
-
-
+    #secondary_menu
+    {
+        display: none;
+    }
+    .sectionDropDown
+    {
+        display: none;  
+    }
+    .menu-header-menu-container
+    {
+        width: 1000px;
+      
+    }
+    
+    header .search 
+    {
+        width: 200%; !important
+        left: 50%;
+        
+    }
+    
+    
+    .menu-header-menu-container ul li a
+    {
+        text-align: center;
+        border-bottom: .5px outset white;
+    }
+    
+    .menu-header-menu-container ul li:first-child
+    {
+        margin-top: -10px;
+    }
     #hero .info,
     #hero .info,
     #hero .info,
@@ -4491,11 +4804,9 @@ footer .widget_black_studio_tinymce .textwidget {
         padding-left: 50px;
     }
 
-/*
     br {
-        display: none;
+      !  display: none;
     }
-*/
 
     #team .inner-left {
         padding-left: 30px;
@@ -4778,11 +5089,14 @@ footer .widget_black_studio_tinymce .textwidget {
     .navbar-nav .dropdown-menu > li:last-child {
         margin-bottom: 20px;
     }
-    .navbar-nav .searchbox {
+/*
+    .navbar-nav .
+    box {
         float: left !important;
         display: block;
         width: 100%;
     }
+*/
     .navbar-header {
         float: left;
         width: 100%;
@@ -4793,6 +5107,11 @@ footer .widget_black_studio_tinymce .textwidget {
         height: 0;
         clear: both;
         visibility: hidden;
+    }
+    .navbar-brand
+    {
+        margin-top: 0;
+        margin-left: 0;
     }
 }
 
@@ -5955,26 +6274,6 @@ footer .social img {
     padding: 8px 10px;
 }
 
-/*===================================================================================*/
-/*	WIDGET : RECENT POSTS
-/*===================================================================================*/
-
-.rpwe-block
-    {
-    background-color: #fff;
-    border-radius: 4px 4px 0 0;
-    border-top: 8px solid #234384;
-    box-shadow: 4px 4px 2px 1px rgba(0,0,0,0.1);
-    padding: 10px;
-    }
-
-.rpwe-ul li a
-    {
-    font-size: 15px;
-    font-weight: 600;
-    }
-
-
 /****************************  THEME COLORS *****************************
 
 ************************************************************************/
@@ -6133,6 +6432,11 @@ ul.circled li:before,
     background: #B6DBF2; /* Firefox */
 }
 
+/*ACTIVE MENU LIST ITEM*/
+#menu-header-menu li.active a
+{
+    color: #234384;
+}
 
 /* Portrait tablets and small desktops */
 @media (min-width: 768px){
@@ -6316,4 +6620,153 @@ li:empty { display: none;}
 }
 .widget_wp-category-archive a i {
 	margin-left: 8px;
+}
+
+
+/****************************  ELECTION PAGE STYLING *****************************
+
+************************************************************************/
+
+#election_header_img
+{
+    width: 50%;
+}
+.recent-news-area
+{
+    width: 40%;
+    display: block;
+    float: right;
+    margin-top: -420px;
+}
+/*TOP BOX STYLING */
+@media (min-width:990px) and (max-width:1195px)
+{
+
+.main_head_image p a img
+{
+    width: 300px;
+    height: 250px;
+}
+    .main_head_image img
+{
+    width: 300px;
+    height: 250px;
+}
+    
+}
+@media (min-width:768px) and (max-width:1023px)
+{
+
+.main_head_image p a img
+{
+    width: 250px;
+    height: 190px;
+}
+    
+    .main_head_image img
+{
+    width: 250px;
+    height: 190px;
+}
+}
+
+@media (min-width:769px)
+{
+    #episode_cast
+    {
+        margin-top: -8px;
+        min-height: 365px;
+    }
+}
+
+#election_special_desc
+{
+    margin-top: -30px;
+}
+
+@media (max-width:767px)
+{
+   .main_head_image p a img
+    {
+        width: 100%;
+        
+    }
+    #special_report_img > img
+    {
+        width: 100%;
+    }
+}
+@media (min-width:1024px)
+{
+#election_logo
+    {
+        margin-top: 10px;
+    }
+    
+header .search
+    {
+        margin-top: 40px;
+    }
+}
+.widget-title
+{
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+
+#horizon_box
+{
+    background-color: #FFF;
+    margin-top: -10px;
+    height: 370px;
+}
+/****************************  STATE RESULTS PAGE STYLING *****************************
+
+************************************************************************/
+
+.race
+{
+    font-weight: bold;
+    padding-top: 50px;
+    border-bottom: 1px solid black;
+}
+td
+{
+    width: 100%;
+}
+td:nth-child(even)
+{
+    padding-right: 30px;
+}
+.raceTable tbody tr:nth-child(2)
+{
+    color: #FFF;
+}
+#g2-container
+{
+    padding-top: 20px;
+}
+
+tr:nth-child(even)
+{
+    background-color:black;
+}
+.full-res
+{
+   background: rgba(36,120,255,1);
+background: -moz-linear-gradient(left, rgba(36,120,255,1) 0%, rgba(36,120,255,1) 29%, rgba(235,52,52,1) 64%, rgba(235,52,52,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(36,120,255,1)), color-stop(29%, rgba(36,120,255,1)), color-stop(64%, rgba(235,52,52,1)), color-stop(100%, rgba(235,52,52,1)));
+background: -webkit-linear-gradient(left, rgba(36,120,255,1) 0%, rgba(36,120,255,1) 29%, rgba(235,52,52,1) 64%, rgba(235,52,52,1) 100%);
+background: -o-linear-gradient(left, rgba(36,120,255,1) 0%, rgba(36,120,255,1) 29%, rgba(235,52,52,1) 64%, rgba(235,52,52,1) 100%);
+background: -ms-linear-gradient(left, rgba(36,120,255,1) 0%, rgba(36,120,255,1) 29%, rgba(235,52,52,1) 64%, rgba(235,52,52,1) 100%);
+background: linear-gradient(to right, rgba(36,120,255,1) 0%, rgba(36,120,255,1) 29%, rgba(235,52,52,1) 64%, rgba(235,52,52,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2478ff', endColorstr='#eb3434', GradientType=1 );
+}
+
+#import-sec
+{
+    background-color:#FFF;
 }

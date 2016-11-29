@@ -125,7 +125,7 @@ else {
                                 <h6 class="story-info"><?php if($postAuthor = get_field('post_author')) {?>
                                 <a href="<?php echo site_url(); ?>?s=<?php echo $postAuthor; ?>">
                                 By <?php echo $postAuthor; ?> |
-                                <?php } ?>
+                                    <?php } ?></a>
                                 <?php if( $siteTitle = get_field('site_title')) {?>
                                     <a href="//<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?></a></h6>
                                 <?php } ?>

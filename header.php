@@ -19,6 +19,7 @@
 
 	<!-- Chartbeat Analytics  -->
 	<script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#216CB7">
@@ -29,11 +30,14 @@
     <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="icon">
     <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="shortcut icon">
     <link type="image/png" href="<?php the_field('favicon','options'); ?>"  rel="apple-touch-icon">
+    
 
     <!-- Load Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href="//fonts.googleapis.com/css?family=Lato:400,900,300,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre:700|Taviraj:400,700" rel="stylesheet">
 
     <!-- Google Analytics Tracking Code  -->
 
@@ -45,16 +49,31 @@
 
 		if ( ! empty( $categories ) ) {
 			foreach( $categories as $category ) {
-
+                
+                if($output == '')
+                {    
 			if ($category->name == "Borderlands") {
-			// $output = "ga('set', 'contentGroup1', '"  . esc_html( $category->name ) . "');";
-			$output = "ga('set', 'contentGroup1', 'My Group Name');";
-		}
+			 //$output = "ga('set', 'Borderlands', '"  . esc_html( $category->name ) . "');";
+			$output = "ga('set', 'contentGroup1', 'Borderlands');";
+		      }
 		if ($category->name == "Sustainability") {
-		// $output = "ga('set', 'contentGroup2', '"  . esc_html( $category->name ) . "');";
-		$output = "ga('set', 'contentGroup2', 'My Group Name');";
-	}
-	}
+		
+		$output = "ga('set', 'contentGroup2', 'Sustainability');";
+	       }
+        if ($category->name == "Education") {
+		
+		$output = "ga('set', 'contentGroup3', 'Education');";
+	       }
+            if ($category->name == "Consumer") {
+	
+		$output = "ga('set', 'contentGroup4', 'Consumer');";
+	       }
+            if ($category->name == "Future") {
+	
+		$output = "ga('set', 'contentGroup5', 'Future');";
+	       }
+	     }
+        }
 }
 
 		?>
@@ -66,12 +85,10 @@
            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
            ga('create', 'UA-3145657-18', 'auto');
+           <?php echo $output ?>
            ga('send', 'pageview');
-					 <?php
-					 if ($output) {
-						 echo $output;
-					 }
-					 ?>
+          
+				
 
        </script>
 
@@ -116,8 +133,11 @@
         <div class="navbar">
             <div class="navbar-header">
                 <div class="container">
-                    <ul class="social pull-right">
+                 
 
+<!--
+                    <ul class="social pull-right">
+                    
                     <?php if( have_rows('social_box','options') ): ?>
                         <?php while( have_rows('social_box','options') ): the_row();
                             // Declare variables below
@@ -131,6 +151,8 @@
                     <?php endif; wp_reset_query(); ?>
 
                     </ul>
+-->
+
 
                     <!-- /.social -->
 
@@ -147,7 +169,7 @@
 
             <div class="yamm">
                 <div class="navbar-collapse collapse">
-                    <div class="container">
+                    <div class="container-fluid">
 
                                 <!-- ============================================================= LOGO ============================================================= -->
 
@@ -156,21 +178,29 @@
                                 <!-- ============================================================= LOGO : END ============================================================= -->
 
                                 <!-- ============================================================= MAIN NAVIGATION ============================================================= -->
-
-                                  <?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'fallback_cb' => 'bootstrap_menu', 'menu_class' => 'nav navbar-nav', 'walker' => new bootstrap_navigation() ) ); ?>
-
+                        <div class="menuClass">
+                          <?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'fallback_cb' => 'bootstrap_menu', 'menu_class' => 'nav navbar-nav', 'walker' => new bootstrap_navigation() ) ); ?>
+                                 </div>
                                 <!-- ============================================================= MAIN NAVIGATION : END ============================================================= -->
-                      <div class="search-parent">
+                      <div class="search-parent" id="header-search-parent">
                            <div class="searchbox">
+<!--
                                <i class="icon-search"></i>
                                 <div class="dropdown-menu">
+-->
                                    <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                                        <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Type to search' ); ?>" />
                                        <button type="submit"  class="btn btn-default btn-submit icon-right-open" name="submit" id="searchsubmit"></button>
                                    </form>
-                                </div>
+<!--                                </div>-->
                            </div>
                       </div>
+                        <div class="sectionDropDown">
+                            <button class="dbtn"><span class="glyphicon glyphicon-ok"></span> </button>
+                            <div class="d-content">
+                          <?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'fallback_cb' => 'bootstrap_menu', 'menu_class' => 'nav navbar-nav', 'walker' => new bootstrap_navigation() ) ); ?>
+                        </div></div>
+                        
                     </div>
                     <!-- /.container -->
                 </div>

@@ -40,10 +40,12 @@
                <h4><?php the_field('area_4_title','options'); ?></h4>
                 <?php the_field('area_4_description','options'); ?>
 
+<!--
                 <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                     <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Type to search' ); ?>" />
                     <button  id="searchsubmit" type="submit" class="btn btn-default btn-submit icon-right-open"></button>
                 </form>
+-->
             </div><!-- END of .col -->
         </div><!-- END of .row-->
     </div><!-- END of .container-->

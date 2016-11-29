@@ -42,9 +42,8 @@ get_header(); ?>
 
 
             <!-- /.owl-carousel -->
+
   </section>
-
-
   <!-- START Verticals Section  -->
 
   <section id="latest-works" class="light-bg">
@@ -114,8 +113,12 @@ get_header(); ?>
                     <div class="col-sm-4 inner-top-sm ">
                       <div class="kicker-modern">
                         <?php // hacky way to link to the category ?>
+                          <?php if($title == "ELECTION 2016") { ?>
+                          <h3><a href="https://cronkitenews.azpbs.org/election2016/"><?php echo $title; ?></a></h3>
+                          
+                          <?php } else { ?>
                         <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>category/<?php echo strtolower ($title); ?>"><?php echo $title; ?></a></h3>
-
+                          <?php } ?>
 
                         <?php if($customLinks) { ?>
                           <a target="_blank" href="//<?php echo $customLinks; ?>">
@@ -167,9 +170,14 @@ get_header(); ?>
         echo '<div style="font-size: 14px; font-weight: bold;">';
         foreach( $verticals as $category ) {
 
-          if (($category->name != "Uncategorized") && ($category->name != "Longform") && ($category->name != "Longform No Title") && ($category->name != "Sports")  && ($category->name != "Editor's Picks")) {
+          if (($category->name != "Uncategorized") && ($category->name != "Longform") && ($category->name != "Longform No Title") && ($category->name != "Sports")  && ($category->name != "Editor's Picks")   && ($category->name != "election 2016")) {
         $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ). '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . strtoupper(esc_html( $category->name )) . '</a>' . $separator;
       }
+             if (($category->name == "election 2016") || ($category->name == "ELECTION 2016 |") || ($category->name == "| ELECTION 2016") )
+             {
+                      $output .= '<a href="https://cronkitenews.azpbs.org/election2016" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . strtoupper(esc_html( $category->name )) . '</a>' . $separator;
+             }
+                 
 
     }
     echo trim( $output, $separator );
@@ -242,7 +250,7 @@ get_header(); ?>
                   <div style="font-size: 14px; font-weight: bold;">
                     <p>SPECIAL REPORT</p>
                   </div>
-                  <div class="img-responsive">
+                  <div class="img-responsive" id="special_report_img">
                   <?php the_field('special_area_image');?>
                 </div>
                 </div>
