@@ -6,7 +6,7 @@ get_header(); ?>
 
 
 
-
+<!-- hero image start -->
   <section id="hero">
 
     <?php $arg = array(
@@ -21,8 +21,16 @@ get_header(); ?>
       <?php while ( $the_query->have_posts() ) : $the_query->the_post();
                     $do_not_duplicate = $post->ID; ?>
         <!-- BEGIN of Post -->
-
-        <div class="item" style="background: url(<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ;?>) center top no-repeat; background-size: cover;">
+<!--
+      
+        ?php
+        $hero_image = wp_get_attachment_url( get_post_thumbnail_id($post->ID), 'medium' ) ;
+        $hero_image_srcset = wp_get_attachment_image_srcset( get_post_thumbnail_id($post->ID), 'medium');
+      ?>
+      
+-->
+      
+        <div class="item" style="background: url(<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ;?>) center top no-repeat; background-size:cover;">
 
           <div class="tinter" style="height: 429px;">
 
@@ -32,18 +40,24 @@ get_header(); ?>
 
             </div>
             <!-- /.caption -->
-          </div>
+<!--          </div>-->
           <!-- /.item -->
         </div>
         <!-- tinter -->
+        
+<!-- end hero image  -->
+
+
+
         <?php endwhile; ?>
           <!-- END of Post -->
           <?php endif; wp_reset_query(); ?>
 
 
             <!-- /.owl-carousel -->
-
   </section>
+
+
   <!-- START Verticals Section  -->
 
   <section id="latest-works" class="light-bg">
@@ -113,15 +127,11 @@ get_header(); ?>
                     <div class="col-sm-4 inner-top-sm ">
                       <div class="kicker-modern">
                         <?php // hacky way to link to the category ?>
-                          <?php if($title == "ELECTION 2016") { ?>
-                          <h3><a href="https://cronkitenews.azpbs.org/election2016/"><?php echo $title; ?></a></h3>
-                          
-                          <?php } else { ?>
                         <h3><a href="<?php echo esc_url( home_url( '/' ) ); ?>category/<?php echo strtolower ($title); ?>"><?php echo $title; ?></a></h3>
-                          <?php } ?>
+
 
                         <?php if($customLinks) { ?>
-                          <a target="_blank" href="//<?php echo $customLinks; ?>">
+                          <a target="_blank" href="http://<?php echo $customLinks; ?>">
                                          <img class='awards_image' src="<?php echo $icon['sizes']['awards_logo']; ?>" />
                                     </a>
                           <?php } else { ?>
@@ -170,14 +180,9 @@ get_header(); ?>
         echo '<div style="font-size: 14px; font-weight: bold;">';
         foreach( $verticals as $category ) {
 
-          if (($category->name != "Uncategorized") && ($category->name != "Longform") && ($category->name != "Longform No Title") && ($category->name != "Sports")  && ($category->name != "Editor's Picks")   && ($category->name != "election 2016")) {
+          if (($category->name != "Uncategorized") && ($category->name != "Longform") && ($category->name != "Longform No Title") && ($category->name != "Sports")) {
         $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ). '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . strtoupper(esc_html( $category->name )) . '</a>' . $separator;
       }
-             if (($category->name == "election 2016") || ($category->name == "ELECTION 2016 |") || ($category->name == "| ELECTION 2016") )
-             {
-                      $output .= '<a href="https://cronkitenews.azpbs.org/election2016" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . strtoupper(esc_html( $category->name )) . '</a>' . $separator;
-             }
-                 
 
     }
     echo trim( $output, $separator );
@@ -186,7 +191,7 @@ get_header(); ?>
 
       if( $url_link ): // post goes offsite (extremely rare)
 
-        echo '<a target="_blank" href="//';
+        echo '<a target="_blank" href="http://';
           echo $url_link;
           echo '">';
           echo get_the_post_thumbnail($postid, 'full', array('class' => 'img-responsive'));
@@ -203,7 +208,7 @@ get_header(); ?>
         echo '<div class="info"><h4>';
 
       if( $url_link ): // post goes offsite (extremely rare)
-            echo '<a target="_blank" href="//';
+            echo '<a target="_blank" href="http://';
             echo $url_link;
             echo '">';
             echo get_the_title($postid);

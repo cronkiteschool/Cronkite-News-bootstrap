@@ -4,7 +4,9 @@
  */
 get_header( 'election'); ?>
 
+
 <?php
+
 
   function gridpost($item) {
 
@@ -89,15 +91,15 @@ get_header( 'election'); ?>
                   
                   <div class="img-responsive main_head_image">
                   <?php the_field('special_area_image');?>
-                      <h2 style="color: black; padding-top: 0; padding-bottom: 10px; font-size: 26px; font-weight: 600; margin-top:-20px; font-family: 'Source Sans Pro', sans-serif;"><?php the_field('special_area_title'); ?></h2>
+                      <h2 style="color: black; padding-top: 0; padding-bottom: 10px; font-size: 26px; font-weight: 600; margin-top: 8px; font-family: 'Source Sans Pro', sans-serif;"><?php the_field('special_area_title'); ?></h2>
                 </div>
                 </div>
                 <div class="col-xs-12 col-sm-offset-1 col-sm-5">
 
-                <div class="info" style="padding-top: 20px;">
+                <div class="info">
                   <figcaption id="voter_desc">
-                        <h3><?php the_field('special_area_title'); ?></h3>
-                    <?php the_field('special_area_description');?>
+                        <h3>LATEST ELECTION NEWS</h3>
+                    <b><?php the_field('special_area_description');?></b>
 
                 </figcaption>
                 </div>
@@ -113,14 +115,62 @@ get_header( 'election'); ?>
      
 <!--     BEGIN NEW SPECIAL REPORTS SECTION -->
 
+<!--
             <div class="col-xs-12 col-sm-4 inner-top-sm "> 
-           <div class="kicker-modern" id="episode_cast">
+           <div class="kicker-modern" id="horizon-box">
+-->
            <!--     <div class="embed-responsive embed-responsive-16by9">
 -->
-                 <a target="_blank" href="//www.azpbs.org/arizonahorizon/"> <h3 style="margin-bottom:20px;"> ARIZONA HORIZON</h3></a>
-     <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('header-1') ) : 
+<!--                 <a target="_blank" href="//www.azpbs.org/arizonahorizon/"> <h3 style="margin-bottom:20px;"> ARIZONA HORIZON</h3></a>-->
+<!--                <div>-->
+<!--                    <h3 style="text-align:center;">ARIZONA HORIZON</h3>-->
+<!--                  </div>-->
+<!--     -->
 
-                endif; ?>
+                    
+                <?php if( have_rows('horizon_box') ): ?>
+                  <?php while( have_rows('horizon_box') ): the_row();
+                        // Declare variables below
+                        $icon = get_sub_field('horizon_box_image');
+                        $title = get_sub_field('horizon_box_title');
+                        $text = get_sub_field('horizon_box_description');
+                        $link = get_sub_field('horizon_box_link');
+                        $customLinks = get_sub_field('h_custom_link');
+
+                        // Use variables below ?>
+                    <div class="col-xs-12 col-sm-4 inner-top-sm ">
+                      <div class="kicker-modern" id="horizon_box">
+    
+                        <?php if($customLinks) { ?>
+                          <a target="_blank" href='https://www.azpbs.org/arizonahorizon'>
+                             <h3> ARIZONA HORIZON </h3></a>
+                          <a target="_blank" href="//<?php echo $customLinks; ?>">
+                                         <img class='awards_image' src="<?php echo $icon['sizes']['awards_logo']; ?>" />
+                                    </a>
+                          <?php } else { ?>
+                         <a target="_blank" href='https://www.azpbs.org/arizonahorizon'>
+                             <h3> ARIZONA HORIZON </h3></a>
+                            <a href="<?php echo $link; ?>">
+                                        <img class='awards_image' src="<?php echo $icon['sizes']['awards_logo']; ?>" />
+                                    </a>
+                            <?php } ?>
+                            <p>
+                              <a href="<?php the_field('horizon_box_link'); ?>">
+                                <?php echo $text; ?>
+                              </a>
+                            </p>
+                      </div>
+
+                    </div>
+                    <!--end of .col-->
+                    <?php endwhile; ?>
+                      <?php endif; wp_reset_query(); ?>
+                    
+                    
+                    
+      
+
+<!--                endif; ?>-->
       
 
                   </div>
@@ -129,9 +179,11 @@ get_header( 'election'); ?>
 <!--
            </div>
 -->
+<!--
     </div>
     </div>
-          <!-- END of Post -->
+           END of Post 
+-->
 
 
             <!-- /.owl-carousel -->
@@ -199,7 +251,7 @@ get_header( 'election'); ?>
         <div class="row" style="padding-top: 10px;">
           <div class="col-sm-3">
 
-            <?php gridpost($posts[0]); ?>
+            <?php gridpost($posts[1]); ?>
 
           </div>
 
@@ -209,7 +261,7 @@ get_header( 'election'); ?>
 
               <div class="row">
                 <div class="col-xs-12 col-sm-6">
-                  <div class="img-responsive main_head_ima  ge">
+                  <div class="img-responsive main_head_image">
                   <?php the_field('voter_area_image');?>
                 </div>
                 </div>
@@ -232,20 +284,20 @@ get_header( 'election'); ?>
         <div class="row">
           <div class="col-xs-6 col-sm-3">
 
-            <?php gridpost($posts[1]); ?>
-
-          </div>
-          <div class="col-xs-6 col-sm-3">
             <?php gridpost($posts[2]); ?>
 
           </div>
           <div class="col-xs-6 col-sm-3">
-
             <?php gridpost($posts[3]); ?>
 
           </div>
           <div class="col-xs-6 col-sm-3">
+
             <?php gridpost($posts[4]); ?>
+
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <?php gridpost($posts[5]); ?>
 
           </div>
         </div>
@@ -253,20 +305,20 @@ get_header( 'election'); ?>
         <div class="row" style="padding-bottom: 10px;">
           <div class="col-xs-6 col-sm-3">
 
-            <?php gridpost($posts[5]); ?>
-
-          </div>
-          <div class="col-xs-6 col-sm-3">
             <?php gridpost($posts[6]); ?>
 
           </div>
           <div class="col-xs-6 col-sm-3">
-
             <?php gridpost($posts[7]); ?>
 
           </div>
           <div class="col-xs-6 col-sm-3">
+
             <?php gridpost($posts[8]); ?>
+
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <?php gridpost($posts[9]); ?>
 
           </div>
         </div>
@@ -284,7 +336,7 @@ get_header( 'election'); ?>
     <div class="container">
         <div class="col-xs-12">
             
-            <a href='//cronkitenews.azpbs.org/category/election-2016/' style="color:white;padding-top:10px; line-height:3;margin-left:30%;"> Complete Election Coverage Here</a>
+          <a href='https://cronkitenews.azpbs.org/category/election-2016/' style="color:white;padding:10px; line-height:3;margin-left:40%; background-color:#BF0A30; border-radius:15px;"> More Election News</a>
         
         
         </div>

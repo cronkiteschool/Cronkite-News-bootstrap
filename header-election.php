@@ -142,7 +142,7 @@
 
                     <!-- ============================================================= LOGO MOBILE ============================================================= -->
 
-                    <a class="navbar-brand logo"  href="<?php bloginfo('url'); ?>"><img class="img-responsive" src="//cn.countzero.xyz/wp-content/uploads/2016/09/election_stretched-1.gif" /></a>
+                    <a class="navbar-brand logo"  href="<?php bloginfo('url'); ?>"><img class="img-responsive" src="https://cronkitenews.azpbs.org/wp-content/uploads/2016/10/election_stretched.gif" /></a>
 
                     <!-- ============================================================= LOGO MOBILE : END ============================================================= -->
 
@@ -157,7 +157,7 @@
 
                                 <!-- ============================================================= LOGO ============================================================= -->
 
-                                <a class="navbar-brand" id='election_logo' href="<?php bloginfo('url'); ?>"><img class="img-responsive" src="//cn.countzero.xyz/wp-content/uploads/2016/09/election_stretched-1.gif" /></a>
+                                <a style="margin-top:40px;" class="navbar-brand" id='election_logo' href="<?php bloginfo('url'); ?>"><img class="img-responsive" src="https://cronkitenews.azpbs.org/wp-content/uploads/2016/10/election_stretched.gif" /></a>
 
                                 <!-- ============================================================= LOGO : END ============================================================= -->
 
@@ -166,7 +166,7 @@
                           <?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'fallback_cb' => 'bootstrap_menu', 'menu_class' => 'nav navbar-nav', 'walker' => new bootstrap_navigation() ) ); ?>
                                  </div>
                                 <!-- ============================================================= MAIN NAVIGATION : END ============================================================= -->
-                      <div class="search-parent">
+                      <div class="search-parent" id="header-search-parent">
                            <div class="searchbox">
 <!--
                                <i class="icon-search"></i>
