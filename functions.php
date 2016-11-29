@@ -238,7 +238,7 @@ if (!is_admin()) {
       //Custom Scripts
     wp_enqueue_script( 'viewport', get_template_directory_uri() . '/js/plugins/viewport-units-buggyfill.js', null, null, true );
 //    wp_enqueue_script( 'google', get_template_directory_uri() . '/js/plugins/_google.maps.api.v3.js', null, null, true );
-    wp_enqueue_script( 'easing', get_template_directory_uri() . '/js/plugins/jquery.easing.1.3.min.js', null, null, true );
+    wp_enqueue_script( 'easing', get_template_directory_uri() . '/js/plugins/jquery.easing.1.3.js', null, '1.3', true );
     wp_enqueue_script( 'scroll', get_template_directory_uri() . '/js/plugins/skrollr.js', null, '0.6.29', true );
     wp_enqueue_script( 'scroll_style', get_template_directory_uri() . '/js/plugins/skrollr.stylesheets.js', null, '0.0.4', true );
     wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/plugins/waypoints.js', null, '2.0.3', true );
