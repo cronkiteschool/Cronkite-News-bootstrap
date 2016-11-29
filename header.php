@@ -19,7 +19,7 @@
 
 	<!-- Chartbeat Analytics  -->
 	<script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!--     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#216CB7">
