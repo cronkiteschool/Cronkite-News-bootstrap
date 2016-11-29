@@ -229,7 +229,7 @@ if (!is_admin()) {
     wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/plugins/modernizr.js', null, null, true );
     wp_enqueue_script( 'image-preloader', get_template_directory_uri() . '/js/plugins/image-preloader.js', null, null, true );
 
-    wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/plugins/wow.min.js', null, null, true );
+    wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/plugins/wow.js', null, '0.1.6', true );
     wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/plugins/slick.min.js', null, null, true );
     wp_enqueue_script( 'owl-js', get_template_directory_uri() . '/js/plugins/owl.carousel.min.js', null, null, true );
     wp_enqueue_script( 'matchHeight', get_template_directory_uri() . '/js/plugins/jquery.matchHeight-min.js', null, null, true );
