@@ -229,24 +229,24 @@ if (!is_admin()) {
     wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/plugins/modernizr.js', null, null, true );
     wp_enqueue_script( 'image-preloader', get_template_directory_uri() . '/js/plugins/image-preloader.js', null, null, true );
 
+    wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/js/plugins/jquery.easing.1.3.js', array( 'jquery' ), '1.3', true );
+    wp_enqueue_script( 'jquery-isotope', get_template_directory_uri() . '/js/plugins/jquery.isotope.js', array( 'jquery' ), '1.5.25', true );
+    wp_enqueue_script( 'jquery-remodal', get_template_directory_uri() . '/js/plugins/jquery.remodal.js', array( 'jquery' ), null, true );
+    wp_enqueue_script( 'jquery-scrolldepth', get_template_directory_uri() . '/js/plugins/jquery.scrolldepth.js', array( 'jquery' ), '0.9.1', true );
+
     wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/plugins/wow.js', null, '0.1.6', true );
     wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/plugins/slick.js', null, '1.4.1', true );
     wp_enqueue_script( 'owl-js', get_template_directory_uri() . '/js/plugins/owl.carousel.min.js', null, null, true );
     wp_enqueue_script( 'matchHeight', get_template_directory_uri() . '/js/plugins/jquery.matchHeight.js', null, '0.5.2', true );
 
-
       //Custom Scripts
     wp_enqueue_script( 'viewport', get_template_directory_uri() . '/js/plugins/viewport-units-buggyfill.js', null, null, true );
 //    wp_enqueue_script( 'google', get_template_directory_uri() . '/js/plugins/_google.maps.api.v3.js', null, null, true );
-    wp_enqueue_script( 'easing', get_template_directory_uri() . '/js/plugins/jquery.easing.1.3.js', null, '1.3', true );
     wp_enqueue_script( 'scroll', get_template_directory_uri() . '/js/plugins/skrollr.js', null, '0.6.29', true );
     wp_enqueue_script( 'scroll_style', get_template_directory_uri() . '/js/plugins/skrollr.stylesheets.js', null, '0.0.4', true );
     wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/plugins/waypoints.js', null, '2.0.3', true );
     wp_enqueue_script( 'waypoints-sticky', get_template_directory_uri() . '/js/plugins/waypoints-sticky.js', null, '2.0.3', true );
 
-
-    wp_enqueue_script( 'isotope', get_template_directory_uri() . '/js/plugins/jquery.isotope.js', null, '1.5.25', true );
-     wp_enqueue_script( 'remodal', get_template_directory_uri() . '/js/plugins/jquery.remodal.js', null, null, true );
     wp_enqueue_script( 'dropdown', get_template_directory_uri() . '/js/plugins/bootstrap-hover-dropdown.min.js', null, null, true );
 
 
