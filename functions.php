@@ -241,8 +241,8 @@ if (!is_admin()) {
     wp_enqueue_script( 'easing', get_template_directory_uri() . '/js/plugins/jquery.easing.1.3.min.js', null, null, true );
     wp_enqueue_script( 'scroll', get_template_directory_uri() . '/js/plugins/skrollr.js', null, '0.6.29', true );
     wp_enqueue_script( 'scroll_style', get_template_directory_uri() . '/js/plugins/skrollr.stylesheets.js', null, '0.0.4', true );
-    wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/plugins/waypoints.min.js', null, null, true );
-    wp_enqueue_script( 'waypoints-sticky', get_template_directory_uri() . '/js/plugins/waypoints-sticky.min.js', null, null, true );
+    wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/plugins/waypoints.js', null, '2.0.3', true );
+    wp_enqueue_script( 'waypoints-sticky', get_template_directory_uri() . '/js/plugins/waypoints-sticky.js', null, '2.0.3', true );
 
 
     wp_enqueue_script( 'isotope', get_template_directory_uri() . '/js/plugins/jquery.isotope.min.js', null, null, true );
