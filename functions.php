@@ -245,7 +245,7 @@ if (!is_admin()) {
     wp_enqueue_script( 'waypoints-sticky', get_template_directory_uri() . '/js/plugins/waypoints-sticky.js', null, '2.0.3', true );
 
 
-    wp_enqueue_script( 'isotope', get_template_directory_uri() . '/js/plugins/jquery.isotope.min.js', null, null, true );
+    wp_enqueue_script( 'isotope', get_template_directory_uri() . '/js/plugins/jquery.isotope.js', null, '1.5.25', true );
      wp_enqueue_script( 'remodal', get_template_directory_uri() . '/js/plugins/jquery.remodal.js', null, null, true );
     wp_enqueue_script( 'dropdown', get_template_directory_uri() . '/js/plugins/bootstrap-hover-dropdown.min.js', null, null, true );
 
