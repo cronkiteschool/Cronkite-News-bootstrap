@@ -260,8 +260,8 @@ if (!is_admin()) {
     wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/css/plugins/font-awesome.css', null, '4.2.0' );
     wp_enqueue_style( 'animate', get_template_directory_uri().'/css/plugins/animate.css', null, null );
     wp_enqueue_style( 'hover', get_template_directory_uri().'/css/plugins/hover.css', null, '1.0.8' );
-    wp_enqueue_style( 'owl', get_template_directory_uri().'/css/plugins/owl.carousel.css', null, null );
-    wp_enqueue_style( 'owl-trans', get_template_directory_uri().'/css/plugins/owl.transitions.css', null, null );
+    wp_enqueue_style( 'owl', get_template_directory_uri().'/css/plugins/owl.carousel.css', null, '1.3.2' );
+    wp_enqueue_style( 'owl-trans', get_template_directory_uri().'/css/plugins/owl.transitions.css', null, '1.3.2' );
     wp_enqueue_style( 'remodal', get_template_directory_uri().'/css/plugins/jquery.remodal.css', null, null );
 
 
