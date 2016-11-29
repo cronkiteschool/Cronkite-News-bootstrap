@@ -257,7 +257,7 @@ if (!is_admin()) {
     wp_enqueue_style( 'bootstrap-customizer', get_template_directory_uri().'/css/core/customizer.css', null, null );
     wp_enqueue_style( 'normalize', get_template_directory_uri().'/css/core/normalize.css', null, null );
     //plugins
-    wp_enqueue_style( 'font-awesome.min', get_template_directory_uri().'/css/plugins/font-awesome.min.css', null, null );
+    wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/css/plugins/font-awesome.css', null, '4.2.0' );
     wp_enqueue_style( 'animate', get_template_directory_uri().'/css/plugins/animate.css', null, null );
     wp_enqueue_style( 'hover', get_template_directory_uri().'/css/plugins/hover.css', null, null );
     wp_enqueue_style( 'owl', get_template_directory_uri().'/css/plugins/owl.carousel.css', null, null );
