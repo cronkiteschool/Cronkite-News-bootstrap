@@ -303,7 +303,7 @@ if (!is_admin()) {
     }
   }
 
-  $checkPeoplePage = explode('/', $_SERVER[REQUEST_URI]);
+  $checkPeoplePage = explode('/', $_SERVER['REQUEST_URI']);
 
   if (!is_search() && !is_single() && $checkPeoplePage[1] != 'people' && $checkPeoplePage[1] != 'category') {
     add_action( 'wp_enqueue_scripts', 'bootstrap_scripts_and_styles' );
