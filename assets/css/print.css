@@ -1,0 +1,5 @@
+@media print {
+  #sub_nav, .cn_navigation .main_nav .nav_links {
+    display: none;
+  }
+}

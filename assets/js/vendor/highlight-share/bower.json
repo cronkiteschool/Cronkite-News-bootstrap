@@ -1,0 +1,38 @@
+{
+  "name": "highlight-share",
+  "homepage": "https://github.com/anythingcodes/highlight-share",
+  "authors": [
+    "Liz Shaw <eshaw@hubspot.com>"
+  ],
+  "description": "Medium-like text selection sharing without dependencies",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anythingcodes/highlight-share.git"
+  },
+  "main": [
+      "dist/highlight-share.js",
+      "dist/highlight-share.css"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node",
+    "es6"
+  ],
+  "keywords": [
+    "medium",
+    "popover",
+    "selection",
+    "share",
+    "sharing",
+    "text"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "gulpfile.babel.js",
+    "yarn.lock",
+    "node_modules",
+    "test"
+  ]
+}

@@ -10,15 +10,15 @@
 
 // Enable shortcodes
     require_once('lib/shortcodes.php');
-    
+
 //  Add widget support shortcodes
     add_filter('widget_text', 'do_shortcode');
-    
+
 // Custom Editor Style Support
     add_editor_style();
 
 // Support for Featured Images
-    add_theme_support( 'post-thumbnails' ); 
+    add_theme_support( 'post-thumbnails' );
 
 // Support for Post Formats
     add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote', 'status' ) );
@@ -78,7 +78,7 @@
             parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
 	    }
     }
-    
+
     /* Display Pages In Navigation Menu */
     if ( ! function_exists( 'bootstrap_menu' ) ) :
 	function bootstrap_menu() {
@@ -96,7 +96,7 @@
 		wp_page_menu($pages_args);
 	}
     endif;
-    
+
     /* Add CLASS attributes to the first <ul> occurence in wp_page_menu */
     function add_menuclass( $ulclass ) {
 	    return preg_replace( '/<ul>/', '<ul class="nav navbar-nav">', $ulclass, 1 );
@@ -120,7 +120,7 @@
             )
         );
 
-        $pagination = str_replace('page-numbers','pagination',$links);
+        $pagination = str_replace("<ul class='page-numbers'>","<ul class='pagination text-center'>",$links);
         echo $pagination;
     }
 
@@ -158,7 +158,7 @@
             'before_title' => '<h5>',
             'after_title' => '</h5>',
         ));
-		
+
 		   register_sidebar( array(
             'id' => 'sidebar_newscast',
             'name' => __( 'Sidebar Archive Newscast' ),
@@ -169,10 +169,30 @@
             'after_title' => '</h5>',
         ));
 
+        register_sidebar( array(
+           'id' => 'sidebar_new_story',
+           'name' => __( 'Sidebar New Story Template - 2020' ),
+           'description' => __( ''),
+           'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+           'after_widget' => '</aside>',
+           'before_title' => '<h5>',
+           'after_title' => '</h5>',
+        ));
+
+        register_sidebar( array(
+           'id' => 'sidebar_author',
+           'name' => __( 'Sidebar Author - 2020' ),
+           'description' => __( ''),
+           'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+           'after_widget' => '</aside>',
+           'before_title' => '<h5>',
+           'after_title' => '</h5>',
+        ));
+
 
 
 // Remove #more anchor from posts
-    function remove_more_jump_link($link) { 
+    function remove_more_jump_link($link) {
         $offset = strpos($link, '#more-');
         if ($offset) { $end = strpos($link, '"',$offset); }
         if ($end) { $link = substr_replace($link, '', $offset, $end-$offset); }
@@ -205,8 +225,8 @@
     remove_action( 'load-update-core.php', 'wp_update_themes' );
     add_filter( 'pre_site_transient_update_themes', create_function( '$a', "return null;" ) );
     wp_clear_scheduled_hook( 'wp_update_themes' );
-    
- 
+
+
 // Disable wordpress jQuery
     function modify_jquery() {
         if (!is_admin()) {
@@ -220,65 +240,132 @@
 *******************************************************************************************************************************/
 if (!is_admin()) {
 
-  function bootstrap_scripts_and_styles() {    
+  function bootstrap_scripts_and_styles() {
+    if (!is_page( 'youth-suicide' ) && !is_page( 'impeachment-sentiment' ) && !is_single() && !is_search()) {
+      // Load JavaScripts
+      wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/plugins/bootstrap.js', array( 'jquery' ), '3.3.1', true );
+      if (!is_single (132417)) {
+        wp_enqueue_script( 'global', get_template_directory_uri() . '/js/global.js', null, null, true );
+      }
+      wp_enqueue_script( 'respond', get_template_directory_uri() . '/js/plugins/respond.js', null, '1.4.0', true );
+      wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/plugins/modernizr.js', null, '2.6.2', true );
+      wp_enqueue_script( 'image-preloader', get_template_directory_uri() . '/js/plugins/image-preloader.js', null, null, true );
 
-// Load JavaScripts
-    wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/plugins/bootstrap.js', array( 'jquery' ), '3.3.1', true );
-    wp_enqueue_script( 'global', get_template_directory_uri() . '/js/global.js', null, null, true );
-    wp_enqueue_script( 'respond', get_template_directory_uri() . '/js/plugins/respond.js', null, '1.4.0', true );
-    wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/plugins/modernizr.js', null, '2.6.2', true );
-    wp_enqueue_script( 'image-preloader', get_template_directory_uri() . '/js/plugins/image-preloader.js', null, null, true );
+      wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/js/plugins/jquery.easing.1.3.js', array( 'jquery' ), '1.3', true );
+      wp_enqueue_script( 'jquery-isotope', get_template_directory_uri() . '/js/plugins/jquery.isotope.js', array( 'jquery' ), '1.5.25', true );
+      wp_enqueue_script( 'jquery-remodal', get_template_directory_uri() . '/js/plugins/jquery.remodal.js', array( 'jquery' ), null, true );
+      wp_enqueue_script( 'jquery-scrolldepth', get_template_directory_uri() . '/js/plugins/jquery.scrolldepth.js', array( 'jquery' ), '0.9.1', true );
 
-    wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/js/plugins/jquery.easing.1.3.js', array( 'jquery' ), '1.3', true );
-    wp_enqueue_script( 'jquery-isotope', get_template_directory_uri() . '/js/plugins/jquery.isotope.js', array( 'jquery' ), '1.5.25', true );
-    wp_enqueue_script( 'jquery-remodal', get_template_directory_uri() . '/js/plugins/jquery.remodal.js', array( 'jquery' ), null, true );
-    wp_enqueue_script( 'jquery-scrolldepth', get_template_directory_uri() . '/js/plugins/jquery.scrolldepth.js', array( 'jquery' ), '0.9.1', true );
-
-    wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/plugins/wow.js', null, '0.1.6', true );
-    wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/plugins/slick.js', null, '1.4.1', true );
-    wp_enqueue_script( 'owl-js', get_template_directory_uri() . '/js/plugins/owl.carousel.min.js', null, null, true );
-    wp_enqueue_script( 'matchHeight', get_template_directory_uri() . '/js/plugins/jquery.matchHeight.js', null, '0.5.2', true );
+      wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/plugins/wow.js', null, '0.1.6', true );
+      wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/plugins/slick.js', null, '1.4.1', true );
+      wp_enqueue_script( 'owl-js', get_template_directory_uri() . '/js/plugins/owl.carousel.min.js', null, null, true );
+      wp_enqueue_script( 'matchHeight', get_template_directory_uri() . '/js/plugins/jquery.matchHeight.js', null, '0.5.2', true );
 
       //Custom Scripts
-    wp_enqueue_script( 'viewport', get_template_directory_uri() . '/js/plugins/viewport-units-buggyfill.js', null, '0.4.2', true );
-//    wp_enqueue_script( 'google', get_template_directory_uri() . '/js/plugins/_google.maps.api.v3.js', null, null, true );
-    wp_enqueue_script( 'scroll', get_template_directory_uri() . '/js/plugins/skrollr.js', null, '0.6.29', true );
-    wp_enqueue_script( 'scroll_style', get_template_directory_uri() . '/js/plugins/skrollr.stylesheets.js', null, '0.0.4', true );
-    wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/plugins/waypoints.js', null, '2.0.3', true );
-    wp_enqueue_script( 'waypoints-sticky', get_template_directory_uri() . '/js/plugins/waypoints-sticky.js', null, '2.0.3', true );
+      if (!is_single (132417)) {
+        wp_enqueue_script( 'viewport', get_template_directory_uri() . '/js/plugins/viewport-units-buggyfill.js', null, '0.4.2', true );
+        // wp_enqueue_script( 'google', get_template_directory_uri() . '/js/plugins/_google.maps.api.v3.js', null, null, true );
+        wp_enqueue_script( 'scroll', get_template_directory_uri() . '/js/plugins/skrollr.js', null, '0.6.29', true );
+        wp_enqueue_script( 'scroll_style', get_template_directory_uri() . '/js/plugins/skrollr.stylesheets.js', null, '0.0.4', true );
+        wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/plugins/waypoints.js', null, '2.0.3', true );
+        wp_enqueue_script( 'waypoints-sticky', get_template_directory_uri() . '/js/plugins/waypoints-sticky.js', null, '2.0.3', true );
 
-    wp_enqueue_script( 'dropdown', get_template_directory_uri() . '/js/plugins/bootstrap-hover-dropdown.min.js', null, null, true );
+        wp_enqueue_script( 'dropdown', get_template_directory_uri() . '/js/plugins/bootstrap-hover-dropdown.min.js', null, null, true );
+      }
+
+  // Load Stylesheets
+      //core
+      wp_enqueue_style( 'normalize', get_template_directory_uri().'/css/core/normalize.css', null, '3.0.1' );
+      if (is_single( 131130 )) {
+
+      } else {
+        wp_enqueue_style( 'bootstrap', get_template_directory_uri().'/css/plugins/bootstrap.css', null, '3.3.1' );
+      }
+      wp_enqueue_style( 'slick', get_template_directory_uri().'/css/plugins/slick.css', null, null );
+      wp_enqueue_style( 'bootstrap-customizer', get_template_directory_uri().'/css/core/customizer.css', null, null );
+      //plugins
+      //wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/css/plugins/font-awesome.css', null, '4.2.0' );
+      wp_enqueue_style( 'animate', get_template_directory_uri().'/css/plugins/animate.css', null, null );
+      wp_enqueue_style( 'hover', get_template_directory_uri().'/css/plugins/hover.css', null, '1.0.8' );
+      wp_enqueue_style( 'owl', get_template_directory_uri().'/css/plugins/owl.carousel.css', null, '1.3.2' );
+      wp_enqueue_style( 'owl', get_template_directory_uri().'/css/plugins/owl.theme.default.css', null, 'null' );
+      wp_enqueue_style( 'owl-trans', get_template_directory_uri().'/css/plugins/owl.transitions.css', null, '1.3.2' );
+      wp_enqueue_style( 'remodal', get_template_directory_uri().'/css/plugins/jquery.remodal.css', null, null );
 
 
-// Load Stylesheets
-    //core
-    wp_enqueue_style( 'normalize', get_template_directory_uri().'/css/core/normalize.css', null, '3.0.1' );
-    wp_enqueue_style( 'bootstrap', get_template_directory_uri().'/css/plugins/bootstrap.css', null, '3.3.1' );
-    wp_enqueue_style( 'slick', get_template_directory_uri().'/css/plugins/slick.css', null, null );
-    wp_enqueue_style( 'bootstrap-customizer', get_template_directory_uri().'/css/core/customizer.css', null, null );
-    //plugins
-    wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/css/plugins/font-awesome.css', null, '4.2.0' );
-    wp_enqueue_style( 'animate', get_template_directory_uri().'/css/plugins/animate.css', null, null );
-    wp_enqueue_style( 'hover', get_template_directory_uri().'/css/plugins/hover.css', null, '1.0.8' );
-    wp_enqueue_style( 'owl', get_template_directory_uri().'/css/plugins/owl.carousel.css', null, '1.3.2' );
-    wp_enqueue_style( 'owl-trans', get_template_directory_uri().'/css/plugins/owl.transitions.css', null, '1.3.2' );
-    wp_enqueue_style( 'remodal', get_template_directory_uri().'/css/plugins/jquery.remodal.css', null, null );
+      //Custom Styles
+      wp_enqueue_style( 'fontello', get_template_directory_uri().'/css/plugins/fontello.css', null, null );
 
-
-    //Custom Styles
-    wp_enqueue_style( 'fontello', get_template_directory_uri().'/css/plugins/fontello.css', null, null );
-
-    //system
-    wp_enqueue_style( 'style', get_template_directory_uri().'/style.css', null, null );/*2nd priority*/
-
-
+      //system
+      if (!is_page( 119949 ) || !is_page(146950)) {
+        wp_enqueue_style( 'style', get_template_directory_uri().'/style.css', null, null );/*2nd priority*/
+      }
+    }
   }
-  add_action( 'wp_enqueue_scripts', 'bootstrap_scripts_and_styles' );
+
+  $checkPeoplePage = explode('/', $_SERVER[REQUEST_URI]);
+
+  if (!is_search() && !is_single() && $checkPeoplePage[1] != 'people' && $checkPeoplePage[1] != 'category') {
+    add_action( 'wp_enqueue_scripts', 'bootstrap_scripts_and_styles' );
+  }
+
+  function bootstrap_scripts_and_styles_old() {
+      // Load JavaScripts
+      wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/plugins/bootstrap.js', array( 'jquery' ), '3.3.1', true );
+      wp_enqueue_script( 'global', get_template_directory_uri() . '/js/global.js', null, null, true );
+      wp_enqueue_script( 'respond', get_template_directory_uri() . '/js/plugins/respond.js', null, '1.4.0', true );
+      wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/plugins/modernizr.js', null, '2.6.2', true );
+      wp_enqueue_script( 'image-preloader', get_template_directory_uri() . '/js/plugins/image-preloader.js', null, null, true );
+
+      wp_enqueue_script( 'jquery-easing', get_template_directory_uri() . '/js/plugins/jquery.easing.1.3.js', array( 'jquery' ), '1.3', true );
+      wp_enqueue_script( 'jquery-isotope', get_template_directory_uri() . '/js/plugins/jquery.isotope.js', array( 'jquery' ), '1.5.25', true );
+      wp_enqueue_script( 'jquery-remodal', get_template_directory_uri() . '/js/plugins/jquery.remodal.js', array( 'jquery' ), null, true );
+      wp_enqueue_script( 'jquery-scrolldepth', get_template_directory_uri() . '/js/plugins/jquery.scrolldepth.js', array( 'jquery' ), '0.9.1', true );
+
+      wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/plugins/wow.js', null, '0.1.6', true );
+      wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/plugins/slick.js', null, '1.4.1', true );
+      wp_enqueue_script( 'owl-js', get_template_directory_uri() . '/js/plugins/owl.carousel.min.js', null, null, true );
+      wp_enqueue_script( 'matchHeight', get_template_directory_uri() . '/js/plugins/jquery.matchHeight.js', null, '0.5.2', true );
+
+      //Custom Scripts
+      wp_enqueue_script( 'viewport', get_template_directory_uri() . '/js/plugins/viewport-units-buggyfill.js', null, '0.4.2', true );
+      // wp_enqueue_script( 'google', get_template_directory_uri() . '/js/plugins/_google.maps.api.v3.js', null, null, true );
+      wp_enqueue_script( 'scroll', get_template_directory_uri() . '/js/plugins/skrollr.js', null, '0.6.29', true );
+      wp_enqueue_script( 'scroll_style', get_template_directory_uri() . '/js/plugins/skrollr.stylesheets.js', null, '0.0.4', true );
+      wp_enqueue_script( 'waypoints', get_template_directory_uri() . '/js/plugins/waypoints.js', null, '2.0.3', true );
+      wp_enqueue_script( 'waypoints-sticky', get_template_directory_uri() . '/js/plugins/waypoints-sticky.js', null, '2.0.3', true );
+      wp_enqueue_script( 'dropdown', get_template_directory_uri() . '/js/plugins/bootstrap-hover-dropdown.min.js', null, null, true );
+
+      // Load Stylesheets
+      //core
+      wp_enqueue_style( 'normalize', get_template_directory_uri().'/css/core/normalize.css', null, '3.0.1' );
+      wp_enqueue_style( 'bootstrap', get_template_directory_uri().'/css/plugins/bootstrap.css', null, '3.3.1' );
+      wp_enqueue_style( 'slick', get_template_directory_uri().'/css/plugins/slick.css', null, null );
+      wp_enqueue_style( 'bootstrap-customizer', get_template_directory_uri().'/css/core/customizer.css', null, null );
+      //plugins
+      //wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/css/plugins/font-awesome.css', null, '4.2.0' );
+      wp_enqueue_style( 'animate', get_template_directory_uri().'/css/plugins/animate.css', null, null );
+      wp_enqueue_style( 'hover', get_template_directory_uri().'/css/plugins/hover.css', null, '1.0.8' );
+      wp_enqueue_style( 'owl', get_template_directory_uri().'/css/plugins/owl.carousel.css', null, '1.3.2' );
+      wp_enqueue_style( 'owl', get_template_directory_uri().'/css/plugins/owl.theme.default.css', null, 'null' );
+      wp_enqueue_style( 'owl-trans', get_template_directory_uri().'/css/plugins/owl.transitions.css', null, '1.3.2' );
+      wp_enqueue_style( 'remodal', get_template_directory_uri().'/css/plugins/jquery.remodal.css', null, null );
+
+      //Custom Styles
+      wp_enqueue_style( 'fontello', get_template_directory_uri().'/css/plugins/fontello.css', null, null );
+
+      //system
+      wp_enqueue_style( 'style', get_template_directory_uri().'/style.css', null, null );/*2nd priority*/
+  }
+
+  if (is_single(114724)) {
+    add_action( 'wp_enqueue_scripts', 'bootstrap_scripts_and_styles_old' );
+  }
 
 }
 
 
-    
+
 /******************************************************************************
 			    Additional Functions
 *******************************************************************************/
@@ -311,7 +398,7 @@ if (!is_admin()) {
         );
         register_post_type( 'slider', $post_type_slider_args );
     }
-    add_action( 'init', 'post_type_slider' );    
+    add_action( 'init', 'post_type_slider' );
 
 
 // For ACF: Options add-on
@@ -491,7 +578,8 @@ function ap_date() {
     else:
         $apmonth = (get_the_time('F'));
     endif;
-    $thedate = get_the_time('l') . ', ' . $apmonth . ' ' . get_the_time('j') . ', ' . get_the_time('Y');
+    //$thedate = get_the_time('l') . ', ' . $apmonth . ' ' . get_the_time('j') . ', ' . get_the_time('Y');
+    $thedate = $apmonth . ' ' . get_the_time('j') . ', ' . get_the_time('Y');
     return $thedate;
 }
 
@@ -501,7 +589,7 @@ add_image_size( 'single-post', 840, 560, true );
 // To use: Create a category, then name the template file single-cat-slug.php
 // From http://justintadlock.com/archives/2008/12/06/creating-single-post-templates-in-wordpress
 define('SINGLE_PATH', TEMPLATEPATH . '/templates');
-add_filter('single_template', 'my_single_template'); 
+add_filter('single_template', 'my_single_template');
 function my_single_template($single) {
 	global $wp_query, $post;
 	foreach((array)get_the_category() as $cat) :
@@ -509,13 +597,424 @@ function my_single_template($single) {
 			return SINGLE_PATH . '/single-cat-' . $cat->slug . '.php';
 	endforeach;
 	return $single;
-}	
+}
 // Remove auto generated feed links
 function my_remove_feeds() {
 	remove_action( 'wp_head', 'feed_links_extra', 3 );
 	remove_action( 'wp_head', 'feed_links', 2 );
 }
-add_action( 'after_setup_theme', 'my_remove_feeds' );	    
-    
-/*******************************************************************************/  
+add_action( 'after_setup_theme', 'my_remove_feeds' );
+
+/*******************************************************************************/
+
+
+// AMP functions
+
+add_filter( 'amp_customizer_is_enabled', '__return_false' );
+
+
+add_filter( 'amp_post_template_file', 'xyz_amp_set_custom_template', 10, 3 );
+
+function xyz_amp_set_custom_template( $file, $type, $post ) {
+	if ( 'single' === $type ) {
+		$file = dirname( __FILE__ ) . '/templates/template-amp.php';
+	}
+	return $file;
+}
+
+add_action( 'amp_post_template_css', 'xyz_amp_additional_css_styles' );
+
+function xyz_amp_additional_css_styles( $amp_template ) {
+	// only CSS here please...
+	?>
+	header.amp-wp-header {
+		padding: 0;
+		background: #234384;
+	}
+	header.amp-wp-header a {
+		background-image: url( 'https://cronkitenews.azpbs.org/wp-content/uploads/2017/11/FB_logo.png' );
+		background-repeat: no-repeat;
+		background-size: contain;
+		display: block;
+		height: 60px;
+		width: 300px;
+		margin: 0 auto;
+		text-indent: -9999px;
+	}
+
+    .amp-wp-byline amp-img {
+		display: none;
+	}
+
+    .amp-wp-footer div p
+    {
+    display: none;
+    }
+
+    .amp-wp-article-content div,   .amp-wp-article-content iframe
+    {
+        width: 100%;
+    }
+
+    .amp-wp-article-content div img
+    {
+        width: 100%;
+        height: 100%;
+    }
+    .embed-responsive-item
+    {
+        width: 100%;
+        height: 300px;
+    }
+    #amp-related-posts p amp-img {
+        margin-right:1em;
+        vertical-align: middle;
+    }
+    #amp-related-posts p {
+    padding-bottom: 10px;
+    }
+    #amp-related-posts p a, #amp-related-posts p a:visited
+    {
+        color: rgb(0, 0, 238);
+    }
+     #amp-related-posts p span
+    {
+        float: right;
+        width: 50%;
+    }
+    .master-slider-parent
+    {
+        display: none;
+    }
+    .amp-wp-footer div a, .amp-wp-footer div a:visited
+    {
+        color: rgb(0,0,238);
+    }
+    .menu-button
+    {
+    display: inline-block;
+    float:right;
+    margin-top: -60px;
+    }
+    #sidebar
+    {
+    background-color: #234384;
+    }
+    #sidebar ul li a
+    {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+
+
+    }
+    #sidebar ul li
+    {
+    padding: 10px;
+    border-bottom: 1px solid white;
+    }
+     #sidebar ul li:last-child
+    {
+    background-color: red;
+    }
+    .amp-wp-footer
+    {
+    background: #234384;
+    }
+    .amp-wp-footer a, .amp-wp-footer div h2, .amp-wp-footer .back-to-top
+    {
+        color: white;
+    }
+    .no-amp
+    {
+        display:none;
+    }
+	<?php
+}
+
+add_filter( 'amp_post_template_analytics', 'xyz_amp_add_custom_analytics' );
+function xyz_amp_add_custom_analytics( $analytics ) {
+	if ( ! is_array( $analytics ) ) {
+		$analytics = array();
+	}
+
+	// https://developers.google.com/analytics/devguides/collection/amp-analytics/
+	$analytics['xyz-googleanalytics'] = array(
+		'type' => 'googleanalytics',
+		'attributes' => array(
+			// 'data-credentials' => 'include',
+		),
+		'config_data' => array(
+			'vars' => array(
+				'account' => "UA-3145657-18"
+			),
+			'triggers' => array(
+				'trackPageview' => array(
+					'on' => 'visible',
+					'request' => 'pageview',
+				),
+			),
+		),
+	);
+
+	// https://www.parsely.com/docs/integration/tracking/google-amp.html
+	$analytics['xyz-parsely'] = array(
+		'type' => 'parsely',
+		'attributes' => array(),
+		'config_data' => array(
+			'vars' => array(
+				'apikey' => 'cronkitenews.azpbs.org',
+			)
+		),
+	);
+
+	return $analytics;
+}
+
+/**
+ * Add related posts to AMP amp_post_article_footer_meta
+ */
+function my_amp_post_article_footer_meta( $parts ) {
+
+    $index = 1;
+
+    array_splice( $parts, $index, 0, array( 'my-related-posts' ) );
+
+    return $parts;
+}
+add_filter( 'amp_post_article_footer_meta', 'my_amp_post_article_footer_meta' );
+
+/**
+ * Designate the template file for related posts
+ */
+function my_amp_related_posts_path( $file, $template_type, $post ) {
+
+    if ( 'my-related-posts' === $template_type ) {
+        $file = get_stylesheet_directory() . '/templates/amp-related-posts.php';
+    }
+    return $file;
+}
+add_filter( 'amp_post_template_file', 'my_amp_related_posts_path', 10, 3 );
+
+
+// Move Yoast to bottom
+function wpcover_move_yoast() {
+    return 'high';
+}
+add_filter( 'wpseo_metabox_prio', 'wpcover_move_yoast');
+
+
+
+// custom post type for students
+function students_CPT() {
+    $cpt_students_labels = array(
+        'name'               => _x( 'Students', 'post type general name' ),
+        'singular_name'      => _x( 'Student', 'post type singular name' ),
+        'add_new'            => _x( 'Add New', 'Student' ),
+        'add_new_item'       => __( 'Add New' ),
+        'edit_item'          => __( 'Edit' ),
+        'new_item'           => __( 'New ' ),
+        'all_items'          => __( 'All' ),
+        'view_item'          => __( 'View' ),
+        'search_items'       => __( 'Search for a student' ),
+        'not_found'          => __( 'No student found' ),
+        'not_found_in_trash' => __( 'No student found in the Trash' ),
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Students'
+    );
+    $cpt_students_args = array(
+        'labels'        => $cpt_students_labels,
+        'description'   => 'Display Student',
+        'public'        => true,
+        'menu_icon'	=> false,
+        'menu_position' => 5,
+        'supports'      => array( 'title', 'thumbnail', 'page-attributes', 'editor' ),
+        'has_archive'   => true,
+        'hierarchical'  => true,
+        'supports'      => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions', 'page-attributes', 'custom-fields', 'post-formats')
+    );
+    register_post_type( 'students', $cpt_students_args );
+}
+add_action( 'init', 'students_CPT' );
+
+if ( function_exists( 'acf_add_options_sub_page' ) ){
+	acf_add_options_sub_page(array(
+		'title'      => 'Student Settings',
+		'parent'     => 'edit.php?post_type=students',
+		'capability' => 'manage_options'
+	));
+}
+
+// custom post type for staff
+function staff_CPT() {
+    $cpt_staff_labels = array(
+        'name'               => _x( 'Staff', 'post type general name' ),
+        'singular_name'      => _x( 'Staff', 'post type singular name' ),
+        'add_new'            => _x( 'Add New', 'Staff' ),
+        'add_new_item'       => __( 'Add New' ),
+        'edit_item'          => __( 'Edit' ),
+        'new_item'           => __( 'New ' ),
+        'all_items'          => __( 'All' ),
+        'view_item'          => __( 'View' ),
+        'search_items'       => __( 'Search for a staff' ),
+        'not_found'          => __( 'No student found' ),
+        'not_found_in_trash' => __( 'No student found in the Trash' ),
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Cronkite Staff'
+    );
+    $cpt_staff_args = array(
+        'labels'        => $cpt_staff_labels,
+        'description'   => 'Display Staff',
+        'public'        => true,
+        'menu_icon'	=> false,
+        'menu_position' => 5,
+        'supports'      => array( 'title', 'thumbnail', 'page-attributes', 'editor' ),
+        'has_archive'   => true,
+        'hierarchical'  => true,
+        'supports'      => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions', 'page-attributes', 'custom-fields', 'post-formats')
+    );
+    register_post_type( 'cn_staff', $cpt_staff_args );
+}
+add_action( 'init', 'staff_CPT' );
+
+
+// custom tags for stories
+function storytags_CPT() {
+    $storytags_labels = array(
+        'name'               => _x( 'Story Tags', 'post type general name' ),
+        'singular_name'      => _x( 'Story Tag', 'post type singular name' ),
+        'add_new'            => _x( 'Add New', 'Story Tag' ),
+        'add_new_item'       => __( 'Add New' ),
+        'edit_item'          => __( 'Edit' ),
+        'new_item'           => __( 'New ' ),
+        'all_items'          => __( 'All' ),
+        'view_item'          => __( 'View' ),
+        'search_items'       => __( 'Search for a story tag' ),
+        'not_found'          => __( 'No story tag found' ),
+        'not_found_in_trash' => __( 'No story tag found in the Trash' ),
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Story Tags'
+    );
+    $storytags_args = array(
+        'labels'        => $storytags_labels,
+        'description'   => 'Display Story Tags',
+        'public'        => true,
+        'menu_icon'	=> false,
+        'menu_position' => 5,
+        'supports'      => array( 'title', 'thumbnail', 'page-attributes', 'editor' ),
+        'has_archive'   => true,
+        'hierarchical'  => true,
+        'supports'      => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions', 'page-attributes', 'custom-fields', 'post-formats')
+    );
+    register_post_type( 'storytags', $storytags_args );
+}
+add_action( 'init', 'storytags_CPT' );
+
+
+// custom post type for staff
+function explore_CPT() {
+    $cpt_explore_labels = array(
+        'name'               => _x( 'Explores', 'post type general name' ),
+        'singular_name'      => _x( 'Explore', 'post type singular name' ),
+        'add_new'            => _x( 'Add New', 'Story' ),
+        'add_new_item'       => __( 'Add New' ),
+        'edit_item'          => __( 'Edit' ),
+        'new_item'           => __( 'New ' ),
+        'all_items'          => __( 'All' ),
+        'view_item'          => __( 'View' ),
+        'search_items'       => __( 'Search for a story' ),
+        'not_found'          => __( 'No student found' ),
+        'not_found_in_trash' => __( 'No student found in the Trash' ),
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Explore Section'
+    );
+    $cpt_explore_args = array(
+        'labels'        => $cpt_explore_labels,
+        'description'   => 'Display Stories',
+        'public'        => true,
+        'menu_icon'	=> false,
+        'menu_position' => 5,
+        'supports'      => array( 'title', 'thumbnail', 'page-attributes', 'editor' ),
+        'has_archive'   => true,
+        'hierarchical'  => true,
+        'supports'      => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions', 'page-attributes', 'custom-fields', 'post-formats')
+    );
+    register_post_type( 'explore_stories', $cpt_explore_args );
+}
+add_action( 'init', 'explore_CPT' );
+
+
+
+// custom post type for election2020
+function election2020_CPT() {
+    $cpt_election2020_labels = array(
+        'name'               => _x( 'Election 2020', 'post type general name' ),
+        'singular_name'      => _x( 'Election 2020', 'post type singular name' ),
+        'add_new'            => _x( 'Add New', 'Election Post' ),
+        'add_new_item'       => __( 'Add New' ),
+        'edit_item'          => __( 'Edit' ),
+        'new_item'           => __( 'New ' ),
+        'all_items'          => __( 'All' ),
+        'view_item'          => __( 'View' ),
+        'search_items'       => __( 'Search for a Election Post' ),
+        'not_found'          => __( 'No posts found' ),
+        'not_found_in_trash' => __( 'No posts found in the Trash' ),
+        'parent_item_colon'  => '',
+        'menu_name'          => 'Election 2020'
+    );
+    $cpt_election2020_args = array(
+        'labels'        => $cpt_election2020_labels,
+        'description'   => 'All Posts',
+        'public'        => true,
+        'menu_icon'	=> false,
+        'menu_position' => 5,
+        'supports'      => array( 'title', 'thumbnail', 'page-attributes', 'editor' ),
+        'has_archive'   => true,
+        'hierarchical'  => true,
+        'supports'      => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions', 'page-attributes', 'custom-fields', 'post-formats')
+    );
+    register_post_type( 'election2020', $cpt_election2020_args );
+}
+add_action( 'init', 'election2020_CPT' );
+
+if ( function_exists( 'acf_add_options_sub_page' ) ){
+	acf_add_options_sub_page(array(
+		'title'      => 'Election Homepage',
+		'parent'     => 'edit.php?post_type=election2020',
+		'capability' => 'manage_options'
+	));
+}
+
+
+function cn_search_query( $query ) {
+	if ( !is_admin() && $query->is_main_query() ) {
+		if ( is_search() ) {
+			$query->set( 'orderby', 'date' );
+		}
+	}
+}
+add_action( 'pre_get_posts', 'cn_search_query' );
+
+function add_file_types_to_uploads($file_types) {
+  $new_filetypes = array();
+  $new_filetypes['svg'] = 'image/svg+xml';
+  $file_types = array_merge($file_types, $new_filetypes );
+  return $file_types;
+}
+add_action('upload_mimes', 'add_file_types_to_uploads');
+
+add_action( 'init', 'custom_init_storytags' );
+function custom_init_storytags() {
+	remove_post_type_support( 'storytags', 'comments' );
+}
+
+/* URL rewrite rule for CN staff people page */
+add_filter('query_vars', 'add_staff_name_var', 0, 1);
+function add_staff_name_var($vars){
+    $vars[] = 'staffname';
+    return $vars;
+}
+
+add_rewrite_rule('^people/([^/]+)/?$','index.php?pagename=people&staffname=$matches[1]','top');
+
 ?>

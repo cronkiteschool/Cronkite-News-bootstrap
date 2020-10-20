@@ -8,7 +8,7 @@ get_header(); ?>
     <main>
         <section id="blog-post" class="light-bg" >
             <div class="container-fluid inner-top-sm inner-bottom classic-blog" style="max-width: 1200px;">
-                <div class="row" style="margin-right: auto; margin-left: auto;>
+                <div class="row" style="margin-right: auto; margin-left: auto;">
                     <div class="col-md-12">
 
                             <div class="post format-single clearfix">

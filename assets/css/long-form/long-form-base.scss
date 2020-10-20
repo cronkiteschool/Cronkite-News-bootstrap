@@ -1,0 +1,965 @@
+$tavirajFontFamily: 'Taviraj', serif;
+$merriweatherFontFamily: 'Merriweather', serif;
+$montserratFontFamily: 'Montserrat', sans-serif;
+$merriweatherSanFontFamily: 'Merriweather Sans', sans-serif;
+$robotoFontFamily: 'Roboto', sans-serif;
+$color: rgba(0,0,0,.08);
+$color2: rgba(0,0,0,.02);
+$cnBlue: #003594;
+$white: #ffffff;
+$black: #000;
+$grey: #D8D8D8;
+$footerHdr: #878792;
+$borderGrey: #F2F2F2;
+$transparency100: rgba(0, 53, 148, 1);
+$transparency75: rgba(0, 53, 148, 0.75);
+$colorSelect:#3694d7;
+$timing:.3s;
+$redAlert: #F31431;
+$caption: #6e6e6e;
+
+.merriweather {
+  font-family: $merriweatherFontFamily;
+}
+
+.montserrat {
+  font-family: $montserratFontFamily;
+}
+
+.roboto {
+  font-family: $robotoFontFamily;
+}
+
+.taviraj {
+  font-family: $tavirajFontFamily;
+}
+
+@mixin single-story-category-hdr {
+  max-width: 1160px;
+  font-weight: 600;
+  font-size: calc(16.4px + 1.55vw);
+  margin-top:18px;
+  @media only screen
+    and (max-width: 660px) {
+      font-size: calc(16.4px + 2.5vw);
+  }
+}
+
+@mixin attr-transition1 ($attr) {
+  -webkit-transition: $attr 0.25s;
+  -moz-transition: $attr 0.25s;
+  -o-transition: $attr 0.25s;
+  transition: $attr 0.25s;
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@mixin caption-text() {
+  max-width: 800px;
+  font-family: $montserratFontFamily;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: $caption;
+  padding-top: 10px;
+  letter-spacing: 0;
+  line-height: 1.2rem;
+}
+
+@mixin sidebar-header() {
+  font-family: $montserratFontFamily;
+  font-size: calc(12.4px + 0.3vw);
+  font-weight: 600;
+  color: $black;
+  border-left: 4px solid $cnBlue;
+  padding-left:15px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  height: auto !important;
+  line-height: 0;
+}
+audio {
+  outline: none;
+  @media only screen
+    and (max-width: 1200px) {
+      margin-top:10px;
+      margin-bottom:10px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.grid-container {
+  &.text-content {
+    max-width: 46.875rem;
+    margin-top:40px;
+  }
+  &.photo-content {
+    max-width: 90rem;
+    margin-top: 40px;
+  }
+}
+
+.grid-padding-x > .cell {
+  &.remove-padding {
+    padding: 0;
+  }
+  @media only screen
+    and (max-width: 780px) {
+      padding-left: 1.45rem;
+      padding-right: 1.45rem;
+  }
+}
+
+#intro-head-photo {
+  .intro-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background:linear-gradient(to bottom, rgb(152, 57, 87), rgb(219, 39, 38));*/
+    padding-left: 5rem;
+    padding-right: 5rem;
+    @media only screen
+      and (max-width: 780px) {
+        padding-left: 1.45rem;
+        padding-right: 1.45rem;
+    }
+    @media only screen
+      and (max-width: 640px) {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+    a {
+      color: $white;
+      text-decoration: underline;
+      border-bottom: none;
+      padding-left: 4px;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    h1 {
+      font-family: $merriweatherFontFamily;
+      max-width: 1000px;
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 4.5rem;
+      padding:0;
+      color: $black;
+      margin: 60px 0 25px 0;
+      @media only screen
+        and (max-width: 800px) {
+          font-size: 2.5rem;
+          line-height: 3.5rem;
+          margin: 40px 0 25px 0;
+      }
+      @media only screen
+        and (max-width: 600px) {
+          font-size: 2.25rem;
+          line-height: 3.25rem;
+          margin: 20px 0 25px 0;
+      }
+    }
+    p {
+      max-width: 800px;
+      font-family: $merriweatherSanFontFamily;
+      color: $caption;
+      font-size:1.25rem;
+      font-size: 300;
+      line-height: 2.25rem;
+      padding:0;
+      margin: 0;
+      margin-bottom:40px;
+      @media only screen
+        and (max-width: 780px) {
+          font-size: 1.15rem;
+          line-height: 2rem;
+      }
+      @media only screen
+        and (max-width: 600px) {
+          margin-bottom:0px;
+      }
+    }
+    hr {
+      width: 100%;
+      border-top:1px solid $white;
+    }
+    .summary {
+      font-family: $merriweatherSanFontFamily;
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 2.25rem;
+      color: $black;
+      margin-top:1.25rem;
+      margin-bottom: 1.25rem;
+      width: 100%;
+    }
+  }
+  .photo-credit-width-1200 {
+    max-width: 75rem;
+    text-align: left;
+    margin:0 auto;
+  }
+  .photo-credit-width-1800 {
+    max-width: 90rem;
+    margin:0 auto;
+  }
+  .grid-padding-x > .cell {
+    &.photo-style-e2e {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .photo-style-fpp {
+
+    }
+  }
+  img {
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  }
+  .photo-credit {
+    display: block;
+    padding:5px 10px;
+    margin:0 auto;
+    margin-top:6px;
+    @include caption-text();
+    max-width: 100%;
+    a {
+      color: $black;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#intro-fadeout-photo {
+  .photos {
+    .img-0 {
+      position: absolute;
+    }
+    .img-1 {
+      position: absolute;
+    }
+    .img-2 {
+      position: absolute;
+    }
+  }
+}
+
+#intro {
+  .grid-padding-x {
+    height: 100vh;
+    @media only screen
+      and (max-width: 1080px) {
+        height: 120vh;
+    }
+    @media only screen
+      and (max-width: 780px) {
+        height: auto;
+    }
+  }
+  .intro-text {
+    display: flex;
+    flex-direction: column;
+    align-items: initial;
+    justify-content: center;
+    background:$black;
+    /*background:linear-gradient(to bottom, rgb(152, 57, 87), rgb(219, 39, 38));*/
+    padding-left: 5rem;
+    padding-right: 5rem;
+    @media only screen
+      and (max-width: 1080px) {
+        padding-top:3rem;
+        padding-bottom:3rem;
+    }
+    @media only screen
+      and (max-width: 780px) {
+        padding-left: 1.45rem;
+        padding-right: 1.45rem;
+    }
+    @media only screen
+      and (max-width: 640px) {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+    a {
+      color: $white;
+      text-decoration: underline;
+      border-bottom: none;
+      padding-left: 4px;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    h1 {
+      font-family: $merriweatherSanFontFamily;
+      width: 100%;
+      font-size: 5rem;
+      font-weight: 700;
+      line-height: 4.5rem;
+      padding:0;
+      color: #fff;
+      margin: 0 0 30px 0;
+      @media only screen
+        and (max-width: 1900px) {
+          font-size: 4.5rem;
+          line-height: 5rem;
+      }
+      @media only screen
+        and (max-width: 1712px) {
+          font-size: 4rem;
+          line-height: 4.5rem;
+      }
+      @media only screen
+        and (max-width: 1560px) {
+          font-size: 3.75rem;
+          line-height: 4.25rem;
+      }
+      @media only screen
+        and (max-width: 1480px) {
+          font-size: 3.5rem;
+          line-height: 4rem;
+      }
+      @media only screen
+        and (max-width: 1400px) {
+          font-size: 3rem;
+          line-height: 4rem;
+      }
+      @media only screen
+        and (max-width: 1180px) {
+          font-size: 4rem;
+          line-height: 4.5rem;
+      }
+      @media only screen
+        and (max-width: 780px) {
+          font-size: 2.8rem;
+          line-height: 3.5rem;
+      }
+      @media only screen
+        and (max-width: 600px) {
+          font-size: 2.2rem;
+          line-height: 2.7rem;
+      }
+    }
+    p {
+      font-family: $merriweatherFontFamily;
+      color: $white;
+      font-size:1.25rem;
+      font-size: 300;
+      line-height: 2.25rem;
+      padding:0;
+      margin: 0 0 15px 0;
+      @media only screen
+        and (max-width: 1560px) {
+          font-size: 1.2rem;
+          line-height: 2.2rem;
+      }
+      @media only screen
+        and (max-width: 780px) {
+          font-size: 1.15rem;
+          line-height: 2rem;
+      }
+    }
+    hr {
+      width: 100%;
+      border-top:1px solid $white;
+    }
+    .summary {
+      font-family: $merriweatherSanFontFamily;
+      font-size: 1.35rem;
+      font-weight: 400;
+      line-height: 2.25rem;
+      color: $white;
+      margin-top:1.25rem;
+      margin-bottom: 1.25rem;
+      width: 100%;
+    }
+  }
+  .background-img {
+    position: relative;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    @media only screen
+      and (max-width: 1080px) {
+        height: 70vh;
+    }
+    @media only screen
+      and (max-width: 780px) {
+        height: 70vh;
+    }
+    .photo-credit {
+      position: absolute;
+      display: block;
+      bottom: 0;
+      right: 0;
+      padding:5px 10px;
+      color:$white;
+      font-family: $merriweatherSanFontFamily;
+      font-weight: 300;
+      font-size:0.85rem;
+      line-height: 1rem;
+      background:rgba(0, 0, 0, 0.75);
+      a {
+        color: $white;
+        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  box-shadow: 0px 10px 32px -5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 10px 32px -5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 10px 32px -5px rgba(0, 0, 0, 0.5);
+}
+
+.stories-list {
+  padding-top:5rem;
+  padding-bottom:5rem;
+  h3 {
+    font-family: $montserratFontFamily;
+    font-size: 1.6rem;
+    letter-spacing: 0;
+    color: $cnBlue;
+    &:hover {
+      color: #000;
+    }
+    @media only screen
+      and (max-width: 780px) {
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.75rem;
+        padding-top: 25px;
+    }
+  }
+  p {
+    font-size: 1.25rem;
+    @media only screen
+      and (max-width: 780px) {
+        font-size: 1.05rem;
+    }
+  }
+  .read-more {
+    font-family: $robotoFontFamily;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid $cnBlue;
+    text-transform: uppercase;
+    color:$cnBlue;
+    padding: 10px 25px;
+    cursor: pointer;
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.text-content {
+  &.author {
+    border-top:1px solid #D8D8D8;
+    padding-top:40px;
+    margin-bottom:40px;
+  }
+  .story-credits-date {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    @media only screen
+      and (max-width: 740px) {
+        margin-top:0px;
+    }
+    .byline {
+      font-family: $merriweatherSanFontFamily;
+      font-size: 1rem;
+      font-weight: normal;
+      line-height: 2rem;
+      margin-bottom: 5px;
+      width: 100%;
+      @media only screen
+        and (max-width: 740px) {
+          font-size: 1rem;
+      }
+      a {
+        margin-left: 2px;
+      }
+    }
+    .pubdate {
+      font-family: $merriweatherSanFontFamily;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.9rem;
+      width: 100%;
+      @media only screen
+        and (max-width: 740px) {
+          font-size: 0.9rem;
+      }
+    }
+    .social {
+
+    }
+  }
+  a {
+    text-decoration: none;
+    color:$black;
+    border-bottom:2px solid $cnBlue;
+    @include attr-transition1(color);
+    &:hover {
+      color: $cnBlue;
+      border-bottom: none;
+    }
+  }
+  h2 {
+    font-family: $merriweatherFontFamily;
+    font-size:1.65rem;
+    letter-spacing: -0.025em;
+    line-height: 2.65rem;
+    margin-top:25px;
+    margin-bottom: 10px;
+    color: $cnBlue;
+    @media only screen
+      and (max-width: 740px) {
+        font-size:1.5rem;
+        line-height: 2.5rem;
+    }
+  }
+  p {
+    font-family: $merriweatherFontFamily;
+    font-weight: 300;
+    font-size: 1.05rem;
+    line-height: 2.05rem;
+    letter-spacing: 0.015em;
+    color: $black;
+    @media only screen
+      and (max-width: 740px) {
+        font-size:1.1rem;
+        line-height: 2.1rem;
+    }
+  }
+  .caption {
+    p {
+      font-family: arial;
+      font-weight: 100;
+      font-size: calc(0.70em + 0.15vw);
+      line-height: calc(0.70em + 0.5vw);
+      letter-spacing: 0;
+      max-width: 45rem;
+      color: #6e6e6e;
+      margin: 0 auto;
+      margin-top: 20px;
+      margin-bottom: 0px;
+    }
+  }
+
+  .wp-caption-text {
+    margin-top:10px;
+    @include caption-text();
+  }
+  .wp-caption {
+    &.alignright {
+      float:right;
+      margin-left:40px;
+      margin-bottom:15px;
+    }
+  }
+  .top_social {
+    list-style: none;
+    align-content: flex-end;
+    flex-direction: row;
+    margin:0;
+    padding:0;
+    margin-top:8px;
+    @media only screen
+      and (max-width: 740px) {
+        align-content: flex-start;
+    }
+    li {
+      display: inline-block;
+      margin-right: 8px;
+    }
+    i {
+      width: 25px;
+      height:25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include attr-transition1(color);
+    }
+    a {
+      width: 40px;
+      height:40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -moz-border-radius: 25px;
+      -webkit-border-radius: 25px;
+      -khtml-border-radius: 25px;
+      border-radius: 25px;
+      border: 1px solid #0a0a0a;
+      @include attr-transition1(border);
+      &:hover {
+        border: 1px solid $cnBlue;
+        i {
+          color: $cnBlue;
+        }
+      }
+    }
+  }
+  .we22-logo {
+    margin:0 auto;
+    text-align: center;
+    margin-top:50px;
+    max-width:100%;
+    @media only screen
+      and (max-width: 740px) {
+        max-width: 100%;
+    }
+  }
+
+  .author_bio {
+    display: flex;
+    flex-direction: row;
+    padding: 18px 0;
+    a {
+      color: $cnBlue;
+      border-bottom: none;
+      &:hover {
+        color: inherit;
+      }
+    }
+    .author_photo {
+      width:400px;
+      &.post {
+        max-width: 140px;
+      }
+    }
+    .bio {
+      padding-left: 0px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &.post {
+        max-width: 80%;
+        @media only screen
+          and (max-width: 690px) {
+            max-width: 70%;
+        }
+      }
+      .name, .name-lg {
+        font-family: $robotoFontFamily;
+        font-weight: 800;
+        font-size: 1.25rem;
+        line-height: 2.25rem;
+        letter-spacing: 0.125px;
+        margin-bottom: 0px;
+        padding:0;
+        color: $cnBlue;
+      }
+      .name-lg {
+        font-size: 2.25em;
+        margin-bottom: 8px;
+      }
+      .team-title {
+        font-family: $robotoFontFamily;
+        font-size:1.125rem;
+        font-weight:200;
+        padding:0;
+        margin-top:12px;
+        margin-bottom:15px;
+        letter-spacing: 0.125px;
+        &.post {
+          font-weight: 400;
+        }
+      }
+      .team-title-lg {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+      }
+      a {
+        margin-right:5px;
+        text-decoration: none;
+        &:hover {
+          color: $black;
+        }
+      }
+      p {
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        line-height: 1.8;
+        color: #2d2d2d;
+      }
+      .member-bio {
+        &.post {
+          p {
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.5;
+          }
+        }
+      }
+      .author_social_links {
+        i {
+          color:#767676;
+          font-size: 1.2em;
+          @include attr-transition1(color);
+          &:hover {
+            color: $cnBlue;
+          }
+        }
+      }
+      .author_social_links_lg {
+        i {
+          color:#767676;
+          font-size: 1.3em;
+          @include attr-transition1(color);
+          &:hover {
+            color: $cnBlue;
+          }
+        }
+      }
+    }
+    .cn-staff-bio-circular, .cn-staff-bio-circular-large {
+      width: 120px;
+      height: 120px;
+      -webkit-border-radius: 120px;
+      -moz-border-radius: 120px;
+      border-radius: 120px;
+      color: #E2E1E1;
+      filter: url('images/gray.svg#grayscale');
+                                             /* Firefox 10+ */
+      filter: gray;                        /* IE6-9 */
+      -webkit-filter: grayscale(100%);     /* Chrome 19+ & Safari 6+ */
+      -webkit-transition: all .6s ease;    /* Fade to color for Chrome and Safari */
+      -webkit-backface-visibility: hidden; /* Fix for transition flickering */;
+      object-fit: cover;
+      object-position: center right;
+      justify-content: center;
+      align-items: center;
+      &.staff {
+        background-color: #111111;
+      }
+    }
+    .cn-staff-bio-circular-large {
+      width:150px;
+      height:150px;
+      -webkit-border-radius: 110px;
+      -moz-border-radius: 110px;
+      border-radius: 110px;
+    }
+  }
+  .comment-form-wrapper {
+    border-top: 1px solid $grey;
+    margin-bottom: 40px;
+    h2 {
+      font-family: $robotoFontFamily;
+      @include sidebar-header;
+    }
+  }
+  .alignright {
+    float: right;
+    max-width:400px;
+    margin-right: -200px;
+    margin-top:10px;
+    padding-left: 25px;
+    padding-bottom:15px;
+    @media only screen
+      and (max-width: 660px) {
+        max-width: 100%;
+        margin-top:0;
+    }
+    img {
+      box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+      @media only screen
+        and (max-width: 660px) {
+          max-width: 100%;
+      }
+    }
+    a {
+      color: #757575;
+      border-bottom: 1px solid #757575;
+      @include attr-transition1(border);
+      &:hover {
+        border:none;
+      }
+    }
+    &.rect {
+      iframe {
+        width:400px;
+        height: 225px;
+        box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+      }
+    }
+    &.square {
+      iframe {
+        width:400px;
+        height: 400px;
+        box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+      }
+    }
+    .wp-caption-text {
+      max-width: 100%;
+    }
+    @media only screen
+      and (max-width: 1080px) {
+        margin-right: -10%;
+    }
+    @media only screen
+      and (max-width: 900px) {
+        margin-right: -8%;
+    }
+    @media only screen
+      and (max-width: 860px) {
+        float:none;
+        margin-right:0;
+        margin:40px auto;
+        padding: 0;
+    }
+  }
+}
+
+.photo-content {
+  .grid-padding-x > .cell {
+    @media only screen
+      and (max-width: 780px) {
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+  }
+
+  img {
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  }
+
+  .wp-caption-text {
+    max-width: 90rem;
+    margin:0 auto;
+    margin-top:10px;
+    p {
+      @include caption-text();
+      max-width: 90rem;
+    }
+    @media only screen
+      and (max-width: 780px) {
+        padding-left: 1.45rem;
+        padding-right: 1.45rem;
+    }
+    a {
+      color: #6e6e6e;
+      border-bottom: 1px solid #757575;
+      @include attr-transition1(border);
+      &:hover {
+        border:none;
+      }
+    }
+  }
+  &.single {
+    max-width: 47rem;
+  }
+}
+
+.video-content {
+  max-width: 47rem;
+  margin-top:30px;
+  margin-bottom:30px;
+  .grid-padding-x > .cell {
+    @media only screen
+      and (max-width: 780px) {
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+  }
+
+  .embed-container {
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  }
+
+  .wp-caption-text {
+    max-width: 90rem;
+    margin:0 auto;
+    margin-top:10px;
+    @include caption-text();
+    p {
+      @include caption-text();
+      max-width: 90rem;
+    }
+    @media only screen
+      and (max-width: 780px) {
+        padding-left: 1.45rem;
+        padding-right: 1.45rem;
+    }
+    a {
+      color: #6e6e6e;
+      border-bottom: 1px solid #757575;
+      @include attr-transition1(border);
+      &:hover {
+        border:none;
+      }
+    }
+  }
+  &.single {
+    max-width: 47rem;
+  }
+}
+
+#full-section-bg {
+  background:#757575;
+  margin-top:50px;
+}
+
+.white-on-black {
+  max-width: 46.875rem;
+  margin:0 auto;
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+  color:$white;
+  h3 {
+    font-family: $merriweatherSanFontFamily;
+    font-size:2rem;
+    letter-spacing: -0.025em;
+    line-height: 3rem;
+    color: $white;
+    margin:0 auto;
+    text-align: center;
+  }
+  ul {
+    max-width: 46.875rem;
+    margin: 0;
+    padding: 0;
+    padding-top:1rem;
+    list-style: none;
+    li {
+      display: inline-block;
+      margin-right: 0px;
+      font-family: $merriweatherSanFontFamily;
+      font-weight: 300;
+      font-size:1.25rem;
+      line-height: 2.5rem;
+      &:after {
+        content: " | ";
+        padding-left:8px;
+        padding-right:8px;
+      }
+      &.last {
+        &:after {
+          content: " ";
+        }
+      }
+      @media only screen
+        and (max-width: 780px) {
+          font-size:0.8rem;
+          line-height: 1.95rem;
+      }
+    }
+  }
+}

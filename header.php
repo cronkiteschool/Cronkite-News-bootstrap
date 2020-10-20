@@ -21,6 +21,9 @@
 	<script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
 <!--     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 
+    <script src="<?php bloginfo('template_directory');?>/js/jquery-3.2.1.min.js"></script>
+
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#216CB7">
 	<meta charset="utf-8">
@@ -30,14 +33,36 @@
     <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="icon">
     <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="shortcut icon">
     <link type="image/png" href="<?php the_field('favicon','options'); ?>"  rel="apple-touch-icon">
-    
+
+
+    <script src="<?php bloginfo('template_directory');?>/js/featherlight.min.js"></script>
+    <link href="<?php bloginfo('template_directory');?>/css/featherlight.min.css" rel="stylesheet">
+
+
+      <?php if ( is_front_page() ) { ?>
+            <link href="<?php bloginfo('template_directory');?>/css/hstyle.css" rel="stylesheet">
+      <?php } ?>
 
     <!-- Load Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href="//fonts.googleapis.com/css?family=Lato:400,900,300,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic" rel="stylesheet">
-     <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre:700|Taviraj:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre:700|Taviraj:400,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Libre+Franklin:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+
+
+    <!--    Font Awesome-->
+    <script src="https://use.fontawesome.com/9e4502c156.js"></script>
+
+		<?php if(is_page('test-page')) { ?>
+			<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<?php } ?>
+
+
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
     <!-- Google Analytics Tracking Code  -->
 
@@ -49,27 +74,27 @@
 
 		if ( ! empty( $categories ) ) {
 			foreach( $categories as $category ) {
-                
+
                 if($output == '')
-                {    
+                {
 			if ($category->name == "Borderlands") {
 			 //$output = "ga('set', 'Borderlands', '"  . esc_html( $category->name ) . "');";
 			$output = "ga('set', 'contentGroup1', 'Borderlands');";
 		      }
 		if ($category->name == "Sustainability") {
-		
+
 		$output = "ga('set', 'contentGroup2', 'Sustainability');";
 	       }
         if ($category->name == "Education") {
-		
+
 		$output = "ga('set', 'contentGroup3', 'Education');";
 	       }
             if ($category->name == "Consumer") {
-	
+
 		$output = "ga('set', 'contentGroup4', 'Consumer');";
 	       }
             if ($category->name == "Future") {
-	
+
 		$output = "ga('set', 'contentGroup5', 'Future');";
 	       }
 	     }
@@ -87,10 +112,11 @@
            ga('create', 'UA-3145657-18', 'auto');
            <?php echo $output ?>
            ga('send', 'pageview');
-          
-				
+
+
 
        </script>
+
 
        <!-- Hotjar Tracking Code for http://cronkitenews.azpbs.org -->
        <script>
@@ -103,6 +129,30 @@
                a.appendChild(r);
            })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
        </script>
+
+    <!-- FB App Configuration for Comment Moderation   -->
+
+    <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '511732915827177',
+      xfbml      : true,
+      version    : 'v2.11'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+    <meta property="fb:app_id" content="511732915827177" />
+
 	<!-- FB instant articles -->
 	<meta property="fb:pages" content="305166330794" />
 
@@ -116,6 +166,8 @@
 		});
 });
 	 </script>
+
+
 
 </head>
 
@@ -133,11 +185,11 @@
         <div class="navbar">
             <div class="navbar-header">
                 <div class="container">
-                 
+
 
 <!--
                     <ul class="social pull-right">
-                    
+
                     <?php if( have_rows('social_box','options') ): ?>
                         <?php while( have_rows('social_box','options') ): the_row();
                             // Declare variables below
@@ -200,7 +252,7 @@
                             <div class="d-content">
                           <?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'fallback_cb' => 'bootstrap_menu', 'menu_class' => 'nav navbar-nav', 'walker' => new bootstrap_navigation() ) ); ?>
                         </div></div>
-                        
+
                     </div>
                     <!-- /.container -->
                 </div>

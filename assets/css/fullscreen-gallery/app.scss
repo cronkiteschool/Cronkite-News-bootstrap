@@ -1,0 +1,518 @@
+$robotoFontFamily: 'Roboto', sans-serif;
+$tavirajFontFamily: 'Taviraj', serif;
+
+$bgColor: #171113;
+$bgColorAlt: #f9f6ed;
+$mainTextColor: #f9f6ed;
+
+$titleFS: calc(16.4px + 2vw);
+$bodyFS: calc(16px + 0.2vw);
+
+
+$white: rgba(255,255,255,1);
+$color2: rgba(255,255,255,.02);
+$cnBlue: #003594;
+$white: #ffffff;
+$black: #0a0a0a;
+$grey: #D8D8D8;
+$footerHdr: #878792;
+$borderGrey: #F2F2F2;
+$transparency100: rgba(0, 53, 148, 1);
+$transparency75: rgba(0, 53, 148, 0.75);
+$colorSelect:#3694d7;
+$timing:.3s;
+$redAlert: #F31431;
+$caption: #767676;
+
+
+@mixin attr-transition1 ($attr) {
+  -webkit-transition: $attr 0.25s;
+  -moz-transition: $attr 0.25s;
+  -o-transition: $attr 0.25s;
+  transition: $attr 0.25s;
+}
+
+.image-holder {
+  img {
+    @media only screen
+      and (min-width: 1024px) {
+        opacity: 0;
+        transform: scale3d(1.1,1.1,1);
+        transform-style: preserve-3d;
+        transition: opacity .7s,transform .7s;
+        display: inline-block;
+
+        .seen {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+    }
+  }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: auto !important;
+  line-height: 0;
+  color: $mainTextColor;
+}
+
+h1 {
+  padding:0;
+  margin:0;
+  line-height: 1em;
+  /*text-shadow: 0px 2px 3px rgba(0,0,0,0.4),
+               0px 4px 7px rgba(0,0,0,0.1),
+               0px 9px 12px rgba(0,0,0,0.1);*/
+
+}
+
+h3 {
+  margin-top: 0;
+  padding-left: 7vw;
+  color: #ffffff;
+}
+
+p {
+  font-family: $robotoFontFamily;
+  line-height: 1.65em;
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  flex-grow: 2;
+  justify-content:space-between;
+  width: 100%;
+  z-index: 10;
+  /*background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px 16px -5px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 5px 16px -5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 5px 16px -5px rgba(0, 0, 0, 0.5);*/
+  div {
+    flex: 100%;
+    padding: 15px 20px;
+    text-align: center;
+    @media only screen
+      and (max-width: 600px) {
+        text-align: left;
+    }
+  }
+  .logo {
+    margin:0 auto;
+    img {
+      width: 50px;
+      /* IE 8 */
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity7550)";
+
+      /* IE 5-7 */
+      filter: alpha(opacity=75);
+
+      /* Netscape */
+      -moz-opacity: 0.75;
+
+      /* Safari 1.x */
+      -khtml-opacity: 0.75;
+
+      /* Good browsers */
+      opacity: 0.75;
+      @media only screen
+        and (max-width: 600px) {
+          width: 40px;
+      }
+    }
+  }
+}
+
+section {
+  display: flex;
+  height: 100vh;
+
+  .photo-gallery {
+    width: 100%;
+    height: 100vh;
+
+    .slide {
+      height: 100vh;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+
+      .photo-credit {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.8);
+        color: #aaa;
+        font-family: $robotoFontFamily;
+        font-size: 0.8em;
+        font-weight: 300;
+        letter-spacing: 1px;
+        padding: 1.5em 1em;
+        text-transform: uppercase;
+      }
+
+      &.image-1 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_30_001.jpg');
+      }
+      &.image-2 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_28_001.jpg');
+      }
+      &.image-3 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_28_002.jpg');
+      }
+      &.image-4 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_28_003.jpg');
+      }
+      &.image-5 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_28_004.jpg');
+      }
+      &.image-6 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_29_001.jpg');
+      }
+      &.image-7 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_29_002.jpg');
+      }
+      &.image-8 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_30_001.jpg');
+      }
+      &.image-9 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_30_002.jpg');
+      }
+      &.image-10 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_30_003.jpg');
+      }
+      &.image-11 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_30_004.jpg');
+      }
+      &.image-12 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_30_005.jpg');
+      }
+      &.image-13 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_30_006.jpg');
+      }
+      &.image-14 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_30_007.jpg');
+      }
+      &.image-15 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_31_001.jpg');
+      }
+      &.image-16 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_31_002.jpg');
+      }
+      &.image-17 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_31_003.jpg');
+      }
+      &.image-18 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_31_004.jpg');
+      }
+      &.image-19 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_31_005.jpg');
+      }
+      &.image-20 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/5_31_006.jpg');
+      }
+      &.image-21 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/6_1_001.jpg');
+      }
+      &.image-22 {
+        background-image: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/06/6_1_002.jpg');
+      }
+    }
+
+    .slick-prev {
+      z-index: 10;
+      width:30px;
+      height:46px;
+      left:10px;
+      background: url('https://cronkitenews.azpbs.org/wp-content/themes/bootstrap/assets/img/prev-icon.png') no-repeat;
+      opacity:0.7;
+      @include attr-transition1(opacity);
+      &:before {
+        color: transparent;
+      }
+      &:hover {
+        opacity:1;
+      }
+    }
+    .slick-next {
+      z-index: 10;
+      width:30px;
+      height:46px;
+      right:10px;
+      background: url('https://cronkitenews.azpbs.org/wp-content/themes/bootstrap/assets/img/next-icon.png') no-repeat;
+      opacity:0.7;
+      @include attr-transition1(opacity);
+      &:before {
+        color: transparent;
+      }
+      &:hover {
+        opacity:1;
+      }
+    }
+    .slick-dots {
+      width: auto;
+      bottom: 10px;
+      z-index: 10;
+      li {
+        button{
+          &:before {
+            font-size:8px;
+            color: $white;
+          }
+        }
+        .slick-active {
+          button{
+            &:before {
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .visual-story-icon {
+    display: inline-block !important;
+    width: 15px;
+    margin-right: 10px;
+  }
+
+  .summary {
+    max-width: 48rem;
+    margin: 0 auto;
+
+
+    &.first-slide {
+      padding-top:6%;
+      @media only screen
+        and (max-width: 1600px) {
+          padding-top: 10%;
+      }
+      @media only screen
+        and (max-width: 1200px) {
+          padding-top: 15%;
+      }
+      @media only screen
+        and (max-width: 800px) {
+          padding-top: 80px;
+          padding-left: 1.5em;
+          padding-right: 1.5em;
+      }
+      @media only screen
+        and (max-width: 600px) { padding-top: 60px;  }
+        @media only screen
+          and (max-width: 400px) { padding-top: 40px;  }
+      @media only screen
+        and (min-device-width : 375px)
+        and (max-device-width : 667px) { padding-top:50px;   }
+      p {
+        @media only screen
+          and (max-width: 800px) {
+            font-size: calc(15px + 0.02vw);
+            padding-right: 2em;
+        }
+        @media only screen
+          and (max-width: 600px) { font-size: calc(12px + 0.02vw);   }
+        @media only screen
+          and (min-device-width : 768px)
+          and (max-device-width : 1024px) { font-size: calc(16px + 0.65vw);   }
+        @media only screen
+          and (min-device-width : 375px)
+          and (max-device-width : 667px) { font-size: calc(13px + 0.02vw);   }
+      }
+    }
+    &.internal-slide {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      p, h5 {
+        @media only screen
+          and (max-width: 1600px) {
+
+        }
+        @media only screen
+          and (max-width: 1200px) {
+
+        }
+        @media only screen
+          and (max-width: 800px) {
+            padding-left: 3.75em;
+            padding-right: 3.75em;
+        }
+        @media only screen
+          and (min-device-width : 375px)
+          and (max-device-width : 667px) { padding-left: 3.75em;
+          padding-right: 3.75em;  }
+      }
+    }
+    a {
+      text-decoration: none;
+      outline:none;
+      i {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width:30px;
+        height:30px;
+        -moz-border-radius: 50%;;
+        -webkit-border-radius: 50%;;
+        -khtml-border-radius: 50%;;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255, 1);
+        margin-right: 10px;
+        margin-top:5px;
+        color: $white;
+        @include attr-transition1(border);
+        @media only screen
+          and (min-device-width : 768px)
+          and (max-device-width : 1024px) { width:30px;
+          height:30px; }
+        @media only screen
+          and (min-device-width : 375px)
+          and (max-device-width : 667px) { width: 25px; height: 25px; }
+        &:hover {
+          border: 1px solid rgba(255,255,255, 0);
+        }
+      }
+    }
+    h1 {
+      font-family: $tavirajFontFamily;
+      font-size: 3.5em;
+      font-weight: 400;
+      line-height: 1.15em;
+      margin: 0;
+      padding: 0 0 .25em 0;
+      @media only screen
+        and (max-width: 800px) {
+          font-size:calc(16px + 6vw);
+      }
+      @media only screen
+        and (max-width: 600px) { font-size:calc(15px + 2vw);  }
+      @media only screen
+        and (min-device-width : 375px)
+        and (max-device-width : 667px) { font-size:calc(16px + 2vw);   }
+    }
+    h5 {
+      font-family: $robotoFontFamily;
+      font-size: 0.9em;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin: 0;
+      padding: 1.5em 0 .9em 0;
+      letter-spacing: 1px;
+      @media only screen
+        and (max-width: 600px) { font-size: calc(12px + 0.02vw);   }
+      @media only screen
+        and (min-device-width : 375px)
+        and (max-device-width : 667px) { font-size: calc(12px + 0.02vw);   }
+      &.date {
+        margin-bottom: 0.5em;
+        font-size: $bodyFS;
+        @media only screen
+          and (min-device-width : 768px)
+          and (max-device-width : 1024px) { font-size: calc(16px + 0.65vw);   }
+      }
+    }
+    p {
+      font-weight: 300;
+      font-size: $bodyFS;
+      letter-spacing: 0.031em;
+      margin: 0 0 18px 0;
+      @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px) { font-size: calc(16px + 0.65vw);   }
+      @media only screen
+        and (max-width: 600px) { font-size: calc(12px + 0.02vw);   }
+
+      &.byline {
+        font-size: 1em;
+        font-weight: 500;
+        padding: 0.25em 0 1em 0;
+        margin:0;
+        @media only screen
+          and (max-width: 600px) { font-size: calc(12px + 0.02vw);   }
+        @media only screen
+          and (min-device-width : 768px)
+          and (max-device-width : 1024px) { font-size: calc(16px + 0.65vw);   }
+        @media only screen
+          and (min-device-width : 375px)
+          and (max-device-width : 667px) { font-size: calc(13px + 0.02vw);   }
+      }
+    }
+  }
+  .internal-mask {
+    background-color: rgba(0,0,0,0.8);
+    @include attr-transition1(background-color);
+    &.fade-out {
+      background-color: rgba(0,0,0,0);
+    }
+  }
+  .bg-text-gradient {
+    width: 100%;
+    height: 100vh;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);
+  }
+
+  .content {
+    max-width: 90rem;
+    margin: 0 auto;
+    border:1px solid #ff0000;
+  }
+  .vid {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    position: absolute;
+    video {
+      width: 100vw;
+      height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+      min-height: 100vh;
+      min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &#intro {
+    position: relative;
+    background-color: $bgColor;
+    .vid {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  &#story {
+    position: relative;
+    background-color: $bgColorAlt;
+    .vid {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px)
+{
+  section {
+    align-items: center !important;
+  }
+
+  h1 {
+    padding-top: 0 !important;
+  }
+}

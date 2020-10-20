@@ -22,11 +22,13 @@ echo '<rss version="2.0" xmlns:content="https://purl.org/rss/1.0/modules/content
             );
 	$loop = new WP_Query( $args );
 	while ( $loop->have_posts() ) : $loop->the_post();
+     $content = wpautop(get_the_content());
+   
 ?>
   <item>
     <title><?php echo the_title(); ?></title>
     <link><?php echo the_permalink(); ?></link>
-	<description><?php echo get_the_content(); ?></description>
+	<description><?php the_field('story_tease'); ?></description>
     <pubDate><?php
     echo date("c", strtotime(mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false))); ?></pubDate>
     <guid><?php echo get_permalink($post->ID); ?></guid>
@@ -60,8 +62,8 @@ echo '<rss version="2.0" xmlns:content="https://purl.org/rss/1.0/modules/content
 					<?php } ?>
               </header>
 
-              <p><?php echo get_the_content(); ?></p>
-              <?php echo the_field('second_text'); ?>
+              <?php echo $content; ?>
+             
 
             <figure class="op-tracker">
     <iframe>
@@ -79,6 +81,33 @@ echo '<rss version="2.0" xmlns:content="https://purl.org/rss/1.0/modules/content
            ga('send', 'pageview', {title: 'POST TITLE'});
 
        </script>
+
+        <script>
+            PARSELY = {
+                autotrack: false,
+                onload: function() {
+                    PARSELY.beacon.trackPageView({
+                        urlref: 'http://facebook.com/instantarticles'
+                    });
+                    return true;
+                }
+            }
+        </script>
+        <div id="parsely-root" style="display: none">
+            <span id="parsely-cfg" data-parsely-site="cronkitenews.azpbs.org"></span>
+        </div>
+        <script>
+            (function(s, p, d) {
+            var h=d.location.protocol, i=p+"-"+s,
+            e=d.getElementById(i), r=d.getElementById(p+"-root"),
+            u=h==="https:"?"d1z2jf7jlzjs58.cloudfront.net"
+            :"static."+p+".com";
+            if (e) return;
+            e = d.createElement(s); e.id = i; e.async = true;
+            e.src = h+"//"+u+"/p.js"; r.appendChild(e);
+            })("script", "parsely", document);
+        </script>
+        <!-- END Parse.ly Include: Standard -->
     </iframe>
 </figure>
             </article>

@@ -40,7 +40,6 @@ print '<?xml version="1.0"?><rss version="2.0">';
     echo the_title();
     echo '</p>';
     echo get_the_content();
-    echo the_field('second_text');
 	echo ']]>';
 	?>
     </description>

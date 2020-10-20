@@ -3,7 +3,7 @@
  * Template Name: News Page
  * Newscast archive
  */
-get_header(); ?>
+get_header('new'); ?>
 
     <section id="hero-inner" class="sub-header">
         <div class="container inner-content">
@@ -19,7 +19,7 @@ get_header(); ?>
         <!-- /.container -->
     </section>
     <main>
-        <section id="blog-post" class="light-bg archive">
+        <section id="blog-post-cat" class="light-bg archive">
             <div class="container inner-top-sm inner-bottom classic-blog">
                 <div class="row">
                     <div class="col-md-9 inner-right-sm">
@@ -61,9 +61,11 @@ get_header(); ?>
                                                         }
                                                     </style>
                                                     <div class='embed-container'>
-                                                        <?php the_field('video_file');?>
-
-
+                                                      <?php
+                                                        $vid = get_field('video_file', false, false);
+                                                         echo '<iframe src="';
+                                                         echo $vid . '" allowfullscreen></iframe>';
+                                                        ?>
                                                     </div>
 
                                                     <h3 style="padding-left: 10px;"><strong> <?php the_title(); ?></strong></h3>

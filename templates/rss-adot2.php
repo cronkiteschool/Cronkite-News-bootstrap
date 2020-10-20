@@ -43,7 +43,7 @@ echo '<?xml version="1.0"?><rss version="2.0">';
 			//Extract feature image, author, blurb
 			$featureimage = get_the_post_thumbnail($thepostid, 'medium');
 			$author = get_post_custom_values('post_author', $thepostid);
-			$blurb = get_post_field('post_content', $thepostid);
+			$blurb = get_post_field('story_tease', $thepostid);
 			echo '<description><![CDATA[';			
 			echo '<br /><h3><strong><a href="' . $postlink . '">' . get_the_title($thepostid) . '</a></strong></h3>';
 			echo 'By ' . $author[0] . '<br />';

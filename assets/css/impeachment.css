@@ -1,0 +1,281 @@
+.backtotop {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-border-radius: 40px;
+  -webkit-border-radius: 40px;
+  border-radius: 40px;
+  /* future proofing */
+  -khtml-border-radius: 40px;
+  /* for old Konqueror browsers */
+  background-color: rgba(0, 53, 148, 0.5);
+  color: #fff;
+  -webkit-transition: background-color 0.25s;
+  -moz-transition: background-color 0.25s;
+  -o-transition: background-color 0.25s;
+  transition: background-color 0.25s; }
+  .backtotop:hover {
+    color: #d7d7d7;
+    background-color: #003594; }
+
+#key, #related-stories {
+  background-color: #ececec; }
+  #key.full-width, #related-stories.full-width {
+    max-width: 100% !important; }
+    #key.full-width .key, #related-stories.full-width .key {
+      display: flex;
+      font-weight: 600;
+      margin-top: 10px;
+      justify-content: center; }
+      @media only screen and (max-width: 725px) {
+        #key.full-width .key, #related-stories.full-width .key {
+          display: flex;
+          flex-wrap: wrap; } }
+      #key.full-width .key li, #related-stories.full-width .key li {
+        display: inline-block;
+        font-weight: normal !important;
+        color: #111;
+        font-size: calc(16.4px + 0.05vw);
+        margin-right: 30px; }
+        @media only screen and (max-width: 725px) {
+          #key.full-width .key li, #related-stories.full-width .key li {
+            display: flex;
+            width: 62%;
+            justify-content: left;
+            margin-bottom: 15px; } }
+        #key.full-width .key li img, #related-stories.full-width .key li img {
+          margin-right: 10px;
+          fill: #b9b9b9; }
+
+#related-stories {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px; }
+  #related-stories .key {
+    display: block !important; }
+    #related-stories .key li {
+      display: block !important;
+      font-weight: normal !important;
+      color: #111;
+      font-size: calc(16.4px + 0.05vw);
+      margin-bottom: 10px !important;
+      margin-right: 0; }
+
+#main_container.impeachment-container {
+  max-width: 74rem;
+  padding-top: 100px; }
+  #main_container.impeachment-container .profile-section {
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 20px; }
+    #main_container.impeachment-container .profile-section.first {
+      padding-top: 40px; }
+    #main_container.impeachment-container .profile-section hr {
+      padding-left: 2em;
+      padding-right: 2em; }
+    #main_container.impeachment-container .profile-section h1 {
+      font-size: 4rem;
+      padding-top: calc(16px + 1vw);
+      padding-bottom: calc(16px + 0.25vw);
+      padding-left: 12rem;
+      padding-right: 12rem; }
+      #main_container.impeachment-container .profile-section h1.profile-title {
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+        font-size: calc(16px + 2vw);
+        color: #003594;
+        /*padding-top: calc(16px + 0.25vw);*/
+        padding: 0; }
+        @media only screen and (max-width: 1400px) {
+          #main_container.impeachment-container .profile-section h1.profile-title {
+            font-size: calc(16px + 0.75vw); } }
+    #main_container.impeachment-container .profile-section p {
+      color: #111; }
+    #main_container.impeachment-container .profile-section small {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 25px; }
+    #main_container.impeachment-container .profile-section .callout {
+      border: none; }
+      #main_container.impeachment-container .profile-section .callout.secondary p {
+        font-size: 1rem; }
+    #main_container.impeachment-container .profile-section .sentiment-list {
+      text-align: left;
+      font-weight: 500;
+      margin-top: 15px; }
+      #main_container.impeachment-container .profile-section .sentiment-list li {
+        margin-bottom: 15px;
+        color: #003594; }
+        #main_container.impeachment-container .profile-section .sentiment-list li img {
+          margin-right: 10px; }
+        #main_container.impeachment-container .profile-section .sentiment-list li.unselected {
+          color: #111; }
+          #main_container.impeachment-container .profile-section .sentiment-list li.unselected img {
+            -webkit-filter: grayscale(100%);
+            /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%); }
+    #main_container.impeachment-container .profile-section table {
+      font-family: 'Libre Caslon Text', serif;
+      padding-bottom: 40px; }
+      #main_container.impeachment-container .profile-section table thead tr {
+        font-family: "Roboto", sans-serif; }
+      #main_container.impeachment-container .profile-section table tbody td .date-impeach {
+        font-family: "Roboto", sans-serif;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        text-decoration: underline;
+        margin-bottom: -12px;
+        display: block; }
+      #main_container.impeachment-container .profile-section table tbody td .fa-twitter, #main_container.impeachment-container .profile-section table tbody td .fa-facebook-square {
+        font-size: 30px; }
+      #main_container.impeachment-container .profile-section table a {
+        font-family: "Roboto", sans-serif; }
+  #main_container.impeachment-container hr {
+    width: 100%;
+    border-bottom: 1px solid #535353;
+    margin: 0 auto;
+    padding-top: calc(16px + 0.15vw);
+    margin-bottom: 40px; }
+#main_container.impeachment-tracker {
+  background-color: #111;
+  padding-top: calc(16px + 6.5vw);
+  padding-left: 12rem;
+  padding-right: 12rem; }
+  @media only screen and (max-width: 1718px) {
+    #main_container.impeachment-tracker {
+      /*padding-top:calc(16.4px + 14vw);*/
+      font-size: calc(16.4px + 3vw);
+      padding-left: 10rem;
+      padding-right: 10rem; } }
+  @media only screen and (max-width: 1600px) {
+    #main_container.impeachment-tracker {
+      /*padding-top:calc(16.4px + 14vw);*/
+      padding-left: 8rem;
+      padding-right: 8rem; } }
+  @media only screen and (max-width: 1536px) {
+    #main_container.impeachment-tracker {
+      /*padding-top:calc(16.4px + 14vw);*/
+      padding-left: 5rem;
+      padding-right: 5rem; } }
+  @media only screen and (max-width: 1400px) {
+    #main_container.impeachment-tracker {
+      /*padding-top:calc(16.4px + 14vw);*/
+      padding-left: 0;
+      padding-right: 0; } }
+  @media only screen and (max-width: 600px) {
+    #main_container.impeachment-tracker {
+      height: initial; } }
+  #main_container.impeachment-tracker .byline {
+    font-family: "Roboto", sans-serif;
+    font-size: calc(16.4px + .01vw);
+    margin: 0;
+    padding: 0; }
+  #main_container.impeachment-tracker h1, #main_container.impeachment-tracker h6 {
+    font-family: 'Libre Caslon Text', serif;
+    font-weight: 400;
+    color: #fff; }
+  #main_container.impeachment-tracker h1 {
+    font-size: calc(16.4px + 2.5vw);
+    padding-top: calc(16px + 0.25vw);
+    padding-bottom: calc(16px + 0.25vw);
+    padding-left: 12rem;
+    padding-right: 12rem; }
+    @media only screen and (max-width: 1400px) {
+      #main_container.impeachment-tracker h1 {
+        /*padding-top:calc(16.4px + 14vw);*/
+        padding-left: 0;
+        padding-right: 0; } }
+    #main_container.impeachment-tracker h1.profile-title {
+      font-family: "Roboto", sans-serif;
+      font-weight: 600;
+      font-size: 3rem;
+      color: #111;
+      /*padding-top: calc(16px + 0.25vw);*/
+      padding: 0; }
+  #main_container.impeachment-tracker h6 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding-top: calc(16px + 0vw);
+    color: #fff;
+    /* underline spacing */ }
+    #main_container.impeachment-tracker h6.under-below {
+      text-decoration-color: #535353 !important;
+      text-decoration: underline;
+      -webkit-text-underline-position: under;
+      -ms-text-underline-position: below;
+      text-underline-position: under; }
+      #main_container.impeachment-tracker h6.under-below.key {
+        display: block;
+        margin: 0;
+        padding: 0;
+        font-weight: normal;
+        font-size: calc(16.4px + 0.025vw); }
+  #main_container.impeachment-tracker hr {
+    width: 100%;
+    border-bottom: 1px solid #535353;
+    margin: 0 auto;
+    padding-top: calc(16px + 0.15vw);
+    margin-bottom: 40px; }
+  #main_container.impeachment-tracker p {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 1.25rem;
+    color: #fff;
+    padding-top: calc(16px + 0.5vw); }
+    @media only screen and (max-width: 980px) {
+      #main_container.impeachment-tracker p {
+        font-size: calc(16px + 0.25vw);
+        line-height: 2; } }
+  #main_container.impeachment-tracker .tabs {
+    width: max-content;
+    margin: 0 auto;
+    text-transform: uppercase; }
+  #main_container.impeachment-tracker .headshot-slider {
+    padding-bottom: 30px; }
+    #main_container.impeachment-tracker .headshot-slider img {
+      width: 200px;
+      -webkit-filter: grayscale(100%);
+      /* Safari 6.0 - 9.0 */
+      filter: grayscale(100%);
+      -webkit-transition: filter 0.25s;
+      -moz-transition: filter 0.25s;
+      -o-transition: filter 0.25s;
+      transition: filter 0.25s; }
+      #main_container.impeachment-tracker .headshot-slider img:hover {
+        -webkit-filter: grayscale(0%);
+        /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%); }
+    #main_container.impeachment-tracker .headshot-slider h6 {
+      font-size: 1rem;
+      color: #fff;
+      text-align: center; }
+    #main_container.impeachment-tracker .headshot-slider .slick-prev {
+      left: 4px; }
+    #main_container.impeachment-tracker .headshot-slider .slick-next {
+      right: 4px; }
+    #main_container.impeachment-tracker .headshot-slider a {
+      outline: none; }
+@media only screen and (max-width: 1560px) {
+  #main_container {
+    /*padding-top:calc(16.4px + 14vw);*/ }
+    #main_container.impeachment-tracker {
+      padding-top: calc(16.4px + 9vw); } }
+@media only screen and (max-width: 1400px) {
+  #main_container {
+    /*padding-top:calc(16.4px + 14vw);*/ }
+    #main_container.impeachment-tracker {
+      padding-top: calc(16.4px + 10vw); } }
+@media only screen and (max-width: 1260px) {
+  #main_container {
+    /*padding-top:calc(16.4px + 14vw);*/ }
+    #main_container.impeachment-tracker {
+      padding-top: calc(16.4px + 11.5vw); } }
+
+/*# sourceMappingURL=impeachment.css.map */
