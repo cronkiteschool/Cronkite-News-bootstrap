@@ -1,4 +1,4 @@
-reated by https://www.gitignore.io/api/osx,linux,windows,wordpress
+Created by https://www.gitignore.io/api/osx,linux,windows,wordpress
 
 ### OSX ###
 *.DS_Store
@@ -69,3 +69,6 @@ $RECYCLE.BIN/
 ### WordPress ###
 error_log
 *.log
+
+# Ignore composer installs
+vendor/
