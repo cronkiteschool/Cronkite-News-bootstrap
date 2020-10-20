@@ -74,7 +74,7 @@ echo '<?xml version="1.0"?><rss version="2.0">';
           the_row();
           $staffID = get_sub_field('cn_staff');
           $cnStaffCount = count($staffID);
-          foreach ($staffID as $key => $val) {
+          foreach ($staffID as $val) {
             $args = array(
                           'post_type'   => 'students',
                           'post_status' => 'publish',
@@ -257,7 +257,7 @@ echo '<?xml version="1.0"?><rss version="2.0">';
               the_row();
               $staffID = get_sub_field('cn_staff');
               $cnStaffCount = count($staffID);
-              foreach ($staffID as $key => $val) {
+              foreach ($staffID as $val) {
                 $args = array(
                               'post_type'   => 'students',
                               'post_status' => 'publish',
@@ -458,7 +458,7 @@ echo '<?xml version="1.0"?><rss version="2.0">';
                   the_row();
                   $staffID = get_sub_field('cn_staff');
                   $cnStaffCount = count($staffID);
-                  foreach ($staffID as $key => $val) {
+                  foreach ($staffID as $val) {
                     $args = array(
                                   'post_type'   => 'students',
                                   'post_status' => 'publish',

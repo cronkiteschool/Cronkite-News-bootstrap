@@ -74,7 +74,7 @@ get_header( 'new2019' ); ?>
                   $staffID = get_sub_field('cn_staff');
                   $cnStaffCount = count($staffID);
 
-                  foreach ($staffID as $key => $val) {
+                  foreach ($staffID as $val) {
                     echo '<!--'.$val.'-->';
                     $args = array(
                                   'post_type'   => 'students',
@@ -141,7 +141,7 @@ get_header( 'new2019' ); ?>
                     echo ' and ';
                   }
                   $sepCounter = 0;
-                  foreach ($externalAuthorRepeater as $key => $val ) {
+                  foreach ($externalAuthorRepeater as $val ) {
                     $sepCounter++;
                     echo $val['external_authors'];
                     if ($val['author_title_site'] != '' || $val['author_title_site'] != 'other') {
@@ -226,7 +226,7 @@ get_header( 'new2019' ); ?>
               if ( $isvid ) { // if we have a video load the video instead of the carousel
 
                 function linkifyYouTubeURLs($text) {
-                    $text = preg_replace('~(?#!js YouTubeId Rev:20160125_1800)
+                    return preg_replace('~(?#!js YouTubeId Rev:20160125_1800)
                         # Match non-linked youtube URL in the wild. (Rev:20130823)
                         https?://          # Required scheme. Either http or https.
                         (?:[0-9A-Z-]+\.)?  # Optional subdomain.
@@ -250,7 +250,6 @@ get_header( 'new2019' ); ?>
                         [?=&+%\w.-]*       # Consume any URL (query) remainder.
                         ~ix', '$1',
                         $text);
-                    return $text;
                 }
 
                 $host = parse_url ($isvid);
@@ -354,7 +353,7 @@ get_header( 'new2019' ); ?>
                 $staffID = get_sub_field('cn_staff');
                 $photogID = get_sub_field('cn_photographers');
 
-                foreach ($staffID as $key => $val) {
+                foreach ($staffID as $val) {
                   echo '<div class="author_bio">';
                   $args = array(
                                 'post_type'   => 'students',
@@ -414,7 +413,7 @@ get_header( 'new2019' ); ?>
 
 
                  // show photogs
-                 foreach ($photogID as $key => $val) {
+                 foreach ($photogID as $val) {
                    echo '<div class="author_bio">';
                    $args = array(
                                  'post_type'   => 'students',

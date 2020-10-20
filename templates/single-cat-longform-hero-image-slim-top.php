@@ -134,7 +134,7 @@ get_header( 'longformhero' ); ?>
                                               the_row();
                                               $staffID = get_sub_field('cn_staff');
                                               $cnStaffCount = count($staffID);
-                                              foreach ($staffID as $key => $val) {
+                                              foreach ($staffID as $val) {
                                                 $args = array(
                                                               'post_type'   => 'students',
                                                               'post_status' => 'publish',

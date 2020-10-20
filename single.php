@@ -78,13 +78,13 @@
                $externalAuthorRepeater = $groupFields['external_authors_repeater'];
 
                $normalizeChars = array(
-                  'Š'=>'S', 'š'=>'s', 'Ð'=>'Dj','Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A',
-                  'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I',
+                  'Š'=>'S', 'š'=>'s', 'Ð'=>'Dj','Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Ã'=>'A', 'Ä'=>'A',
+                  'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I',
                   'Ï'=>'I', 'Ñ'=>'N', 'Ń'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U',
-                  'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss','à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a',
-                  'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i',
+                  'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss','à'=>'a', 'á'=>'a', 'ã'=>'a', 'ä'=>'a',
+                  'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i',
                   'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ń'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u',
-                  'ú'=>'u', 'û'=>'u', 'ü'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ƒ'=>'f',
+                  'ú'=>'u', 'û'=>'u', 'ü'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ƒ'=>'f',
                   'ă'=>'a', 'î'=>'i', 'â'=>'a', 'ș'=>'s', 'ț'=>'t', 'Ă'=>'A', 'Î'=>'I', 'Â'=>'A', 'Ș'=>'S', 'Ț'=>'T',
               );
 
@@ -97,7 +97,7 @@
                    $staffID = get_sub_field('cn_staff');
                    $cnStaffCount = count($staffID);
 
-                   foreach ($staffID as $key => $val) {
+                   foreach ($staffID as $val) {
                      $args = array(
                                    'post_type'   => 'students',
                                    'post_status' => 'publish',
@@ -137,7 +137,7 @@
                      echo ' and ';
                    }
                    $sepCounter = 0;
-                   foreach ($externalAuthorRepeater as $key => $val ) {
+                   foreach ($externalAuthorRepeater as $val ) {
                      $sepCounter++;
                      echo $val['external_authors'];
                      if ($val['author_title_site'] != '' || $val['author_title_site'] != 'other') {
@@ -209,7 +209,7 @@
                if ( $isvid ) { // if we have a video load the video instead of the carousel
 
                  function linkifyYouTubeURLs($text) {
-                     $text = preg_replace('~(?#!js YouTubeId Rev:20160125_1800)
+                     return preg_replace('~(?#!js YouTubeId Rev:20160125_1800)
                          # Match non-linked youtube URL in the wild. (Rev:20130823)
                          https?://          # Required scheme. Either http or https.
                          (?:[0-9A-Z-]+\.)?  # Optional subdomain.
@@ -233,7 +233,6 @@
                          [?=&+%\w.-]*       # Consume any URL (query) remainder.
                          ~ix', '$1',
                          $text);
-                     return $text;
                  }
 
                  $host = parse_url ($isvid);
@@ -269,22 +268,15 @@
                      $imageCount = count(get_field('slider_images'));
                      $postImages = get_sub_field('images');
                      $photoCaption = get_sub_field('description');
-
-                     if ($imageCount == 1) {
-                 ?>
-                     <div>
-                       <img src="<?php echo $postImages; ?>" width="800" alt="" title="" />
-                       <div class="asset-caption"><?php echo $photoCaption; ?></div>
+                                          <div>
+                           <img src="
+                     echo $postImages;
+                     " width="800" alt="" title="" />
+                           <div class="asset-caption">
+                     echo $photoCaption;
                      </div>
-                 <?php
-                     } else {
-                 ?>
-                     <div>
-                       <img src="<?php echo $postImages; ?>" width="800" alt="" title="" />
-                       <div class="asset-caption"><?php echo $photoCaption; ?></div>
-                     </div>
-                 <?php
-                     }
+                         </div>
+                     
                    }
                  ?>
                  </div>
@@ -350,7 +342,7 @@
                  $photogID = get_sub_field('cn_photographers');
                  $broadcastID = get_sub_field('cn_broadcast_reporters');
 
-                 foreach ($staffID as $key => $val) {
+                 foreach ($staffID as $val) {
                    echo '<div class="author_bio">';
                    $args = array(
                                  'post_type'   => 'students',
@@ -423,7 +415,7 @@
                   }
 
                   // show broadcast
-                  foreach ($broadcastID as $key => $val) {
+                  foreach ($broadcastID as $val) {
                     echo '<div class="author_bio">';
                     $args = array(
                                   'post_type'   => 'students',
@@ -499,7 +491,7 @@
 
 
                   // show photogs
-                  foreach ($photogID as $key => $val) {
+                  foreach ($photogID as $val) {
                     echo '<div class="author_bio">';
                     $args = array(
                                   'post_type'   => 'students',

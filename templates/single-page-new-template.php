@@ -31,11 +31,14 @@ get_header('new-long-form'); ?>
           <?php $font = "font-family:".get_sub_field('font-family').";" ?>
         <?php } else if (get_sub_field('font-family') == 'montserrat') { ?>
           <?php $font = "font-family:".get_sub_field('font-family').";" ?>
-        <?php } else if (get_sub_field('font-family') == 'roboto') { ?>
-          <?php $font = "font-family:".get_sub_field('font-family').";" ?>
-        <?php } else { ?>
-          <?php $font = "font-family:".get_sub_field('font-family').";" ?>
-        <?php }?>
+        <?php } else {
+    ?>
+          <?php 
+    $font = "font-family:".get_sub_field('font-family').";" ?>
+    
+    ?>
+        <?php 
+}?>
 
         <?php if (get_sub_field('photo_position_leftright') != '') { ?>
           <?php $position = "background-position:".get_sub_field('photo_position_leftright')." center !important"; ?>
@@ -77,12 +80,7 @@ get_header('new-long-form'); ?>
           $introPhotoWidth = 'photo-credit-width-1800';
         }
 
-        // check photo style
-        if (get_sub_field('photo_size') == 'photo-style-e2e') {
-          $photoStyle = get_sub_field('photo_size');
-        } else {
-          $photoStyle = get_sub_field('photo_size');
-        }
+        $photoStyle = get_sub_field('photo_size');
       ?>
 
       <div class="large-12 medium-12 small-12 cell text-center <?php echo $photoStyle; ?>">
@@ -118,12 +116,7 @@ get_header('new-long-form'); ?>
           $introPhotoWidth = 'photo-credit-width-1800';
         }
 
-        // check photo style
-        if (get_sub_field('photo_size') == 'photo-style-e2e') {
-          $photoStyle = get_sub_field('photo_size');
-        } else {
-          $photoStyle = get_sub_field('photo_size');
-        }
+        $photoStyle = get_sub_field('photo_size');
       ?>
 
       <div class="large-12 medium-12 small-12 cell text-center <?php echo $photoStyle; ?>">

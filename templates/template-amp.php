@@ -57,7 +57,7 @@ $isvid = get_field ('video_file', false, false);
 if ( $isvid ) { // if we have a video load the video instead of the carousel
 
     function linkifyYouTubeURLs($text) {
-        $text = preg_replace('~(?#!js YouTubeId Rev:20160125_1800)
+        return preg_replace('~(?#!js YouTubeId Rev:20160125_1800)
             # Match non-linked youtube URL in the wild. (Rev:20130823)
             https?://          # Required scheme. Either http or https.
             (?:[0-9A-Z-]+\.)?  # Optional subdomain.
@@ -81,7 +81,6 @@ if ( $isvid ) { // if we have a video load the video instead of the carousel
             [?=&+%\w.-]*       # Consume any URL (query) remainder.
             ~ix', '$1',
             $text);
-        return $text;
     }
 
     $host = parse_url ($isvid);
