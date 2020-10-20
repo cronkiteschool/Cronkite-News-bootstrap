@@ -35,7 +35,7 @@ get_header( 'longformhero' ); ?>
 
                                             	</div>
 												</div>
-                                        <?php endwhile; ?>
+<?php endwhile; ?>
                                     <?php endif; wp_reset_query(); ?>
                                                 
                                               

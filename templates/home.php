@@ -329,7 +329,7 @@ get_header('new'); ?>
                         </div>
                     </div>
                     <!--end of .col-->
-                  <?php endwhile; ?>
+<?php endwhile; ?>
                 <?php endif; wp_reset_query(); ?>
 
       </div>

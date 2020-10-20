@@ -64,8 +64,8 @@
 }
 
 		?>
-    
-    
+
+
 
 	<script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -113,22 +113,22 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
-    
+
     <meta property="fb:app_id" content="511732915827177" />
-    
+
 	<!-- FB instant articles -->
 	<meta property="fb:pages" content="305166330794" />
 
     <?php wp_head(); ?>
 		<script src="<?php bloginfo('template_directory');?>/js/plugins/jquery.scrolldepth.js"></script>
-           
+
     <script>
       $(document).ready(function() { 
         $('.dropdown-toggle').dropdown();
         });
     </script>
 
-    
+
 	 <script>
 	 jQuery(function() {
 		 jQuery.scrollDepth({
@@ -138,7 +138,7 @@
 });
 
     </script>
-  
+
 
 </head>
 
@@ -171,13 +171,13 @@
     <li style=" background-color:#222;"><a href="https://cronkitenews.azpbs.org/2017/12/07/about-project-racial-divide/"> About the Project </a> </li>
   </ul>
 </div>
-        
-      
-  
-    
-        
-        
-     
+
+
+
+
+
+
+
   </div><!-- /.container-fluid -->
 </nav>
 </header>

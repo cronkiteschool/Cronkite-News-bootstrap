@@ -21,7 +21,7 @@ get_header('new'); ?>
 
                                     <?php //the_content(); ?>
 
-                                    <?php endwhile; else: ?>
+<?php endwhile; else: ?>
 
                                     <?php endif; ?>
 

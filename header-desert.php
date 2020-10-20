@@ -23,7 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-   
+
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#216CB7">
@@ -42,8 +42,8 @@
     <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre:700|Taviraj:400,700" rel="stylesheet">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-    
+
+
     <!-- Google Analytics Tracking Code  -->
 
 		<?php
@@ -67,8 +67,8 @@
 }
 
 		?>
-    
-    
+
+
 
 	<script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -102,14 +102,14 @@
 
     <?php wp_head(); ?>
 		<script src="<?php bloginfo('template_directory');?>/js/plugins/jquery.scrolldepth.js"></script>
-           
+
     <script>
       $(document).ready(function() { 
         $('.dropdown-toggle').dropdown();
         });
     </script>
 
-    
+
 	 <script>
 	 jQuery(function() {
 		 jQuery.scrollDepth({
@@ -119,7 +119,7 @@
 });
 
     </script>
-  
+
 
 </head>
 
@@ -157,7 +157,7 @@
     <li><a href="https://cronkitenews.azpbs.org/2017/04/28/about-development-in-the-desert/"> About the Project </a> </li>
   </ul>
 </div>
-     
+
   </div><!-- /.container-fluid -->
 </nav>
     </header>

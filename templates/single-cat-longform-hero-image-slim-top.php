@@ -45,7 +45,7 @@ get_header( 'longformhero' ); ?>
                                                  <?php echo $text; ?>
                                             	</div>
 												</div>
-                                        <?php endwhile; ?>
+<?php endwhile; ?>
                                     <?php endif; wp_reset_query(); ?>‘’
 
                                       </div>
@@ -69,7 +69,7 @@ get_header( 'longformhero' ); ?>
 
                                             	</div>
 												</div>
-                                        <?php endwhile; ?>
+<?php endwhile; ?>
                                     <?php endif; wp_reset_query(); ?>
 
                                   <?php } ?>

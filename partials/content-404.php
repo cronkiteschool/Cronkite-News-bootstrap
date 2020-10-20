@@ -1,4 +1,4 @@
-    <!-- main body container -->
+<!-- main body container -->
     <div id="main_container" class="grid-container page-not-found">
 
       <!-- story content -->

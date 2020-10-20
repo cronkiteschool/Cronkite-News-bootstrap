@@ -199,7 +199,7 @@
                             <li>
                                 <a target="_blank" href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" /></a>
                             </li>
-                        <?php endwhile; ?>
+<?php endwhile; ?>
                     <?php endif; wp_reset_query(); ?>
 
                     </ul>

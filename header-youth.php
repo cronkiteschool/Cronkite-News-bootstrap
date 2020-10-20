@@ -40,8 +40,8 @@
     <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre:700|Taviraj:400,700" rel="stylesheet">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    
-    
+
+
     <!-- Google Analytics Tracking Code  -->
 
 		<?php
@@ -65,8 +65,8 @@
 }
 
 		?>
-    
-    
+
+
 
 	<script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -100,14 +100,14 @@
 
     <?php wp_head(); ?>
 		<script src="<?php bloginfo('template_directory');?>/js/plugins/jquery.scrolldepth.js"></script>
-           
+
     <script>
       $(document).ready(function() { 
         $('.dropdown-toggle').dropdown();
         });
     </script>
 
-    
+
 	 <script>
 	 jQuery(function() {
 		 jQuery.scrollDepth({
@@ -117,7 +117,7 @@
 });
 
     </script>
-  
+
 
 </head>
 
@@ -157,11 +157,11 @@
   </ul>
 </div>
 -->
-        
-      
-  
+
+
+
       <ul class="nav navbar-nav navbar-right" style="background-color:#2F4995;">
-        
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Health <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -175,25 +175,25 @@
           <ul class="dropdown-menu">
             <li><a href="https://cronkitenews.azpbs.org/2017/08/03/youth-sports-bullying-and-hazing/">Bullying</a></li>
             <li><a href="https://cronkitenews.azpbs.org/2017/08/03/at-risk-youth-sports/">At risk</a></li>
-       
+
          </ul>
         </li>  
-          
+
            <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Professional <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="https://cronkitenews.azpbs.org/2017/08/04/club-sports-and-how-they-can-affect-a-players-future/">Clubs</a></li>
             <li><a href="https://cronkitenews.azpbs.org/2017/08/04/youth-sports-invest-early-advance-training/">Training</a></li>
-       
+
          </ul>
         </li>  
         <li><a href="https://cronkitenews.azpbs.org/2017/08/04/youth-sports-numbers/"> By the numbers   </a></li>  
         <li><a href=" https://cronkitenews.azpbs.org/2017/08/04/about-the-project/"> About </a></li>  
       </ul>
-    
-        
-        
-     
+
+
+
+
   </div><!-- /.container-fluid -->
 </nav>
 </header>

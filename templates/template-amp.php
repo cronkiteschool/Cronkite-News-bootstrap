@@ -16,7 +16,7 @@
 <body class="<?php echo esc_attr( $this->get( 'body_class' ) ); ?>">
 
 <?php $this->load_parts( array( 'header-bar-custom' ) ); ?>
-    
+
 <amp-sidebar id="sidebar"
   layout="nodisplay"
   side="right">
@@ -35,15 +35,15 @@
    <li class="newscast"> <a href="https://cronkitenews.azpbs.org/sitenewscast/">Newscast</a></li>
   </ul>
 </amp-sidebar>  
-    
+
 <article class="amp-wp-article">
 
 	<header class="amp-wp-article-header">
 		<h1 class="amp-wp-title"><?php echo wp_kses_data( $this->get( 'post_title' ) ); ?></h1>
 		<div class="amp-wp-meta amp-wp-byline">
-    
+
             <?php the_field('post_author'); ?>
-       
+
         </div>
         <div class="amp-wp-meta amp-wp-posted-on">
 	       <time datetime="<?php echo esc_attr( date( 'c', $this->get( 'post_publish_timestamp' ) ) ); ?>">
@@ -51,7 +51,7 @@
 	       </time>
         </div>
 	</header>             
-    
+
 <?php
 $isvid = get_field ('video_file', false, false);
 if ( $isvid ) { // if we have a video load the video instead of the carousel
@@ -106,16 +106,16 @@ if ( $isvid ) { // if we have a video load the video instead of the carousel
 <?php
 }
     else { ?>
-  
+
    <?php $this->load_parts( array( 'featured-image' ) ); ?>
-    
+
   <?php } ?>
-    
+
 
 	<div class="amp-wp-article-content">
 		<?php echo $this->get( 'post_amp_content' ); // amphtml content; no kses ?>
-        
-        
+
+
 	</div>
 
 	<footer class="amp-wp-article-footer">

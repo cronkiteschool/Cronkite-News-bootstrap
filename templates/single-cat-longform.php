@@ -51,7 +51,7 @@ get_header(); ?>
 
                                             	</div>
 												</div>
-                                        <?php endwhile; ?>
+<?php endwhile; ?>
                                     <?php endif; wp_reset_query(); ?>
                                 </div>
                                 <div class="col-xs-12 col-md-offset-2 col-md-8">

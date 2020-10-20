@@ -48,7 +48,7 @@ get_header( 'azracialdivide' ); ?>
 
                                             	</div>
 												</div>
-                                        <?php endwhile; ?>
+<?php endwhile; ?>
                                     <?php endif; wp_reset_query(); ?>                
                                                 
                                       </div>            
@@ -70,7 +70,7 @@ get_header( 'azracialdivide' ); ?>
 
                                             	</div>
 												</div>
-                                        <?php endwhile; ?>
+<?php endwhile; ?>
                                     <?php endif; wp_reset_query(); ?>
                                                 
                                   <?php } ?>            

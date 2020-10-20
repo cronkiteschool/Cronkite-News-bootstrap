@@ -140,7 +140,7 @@ get_header( 'election'); ?>
                         // Use variables below ?>
                     <div class="col-xs-12 col-sm-4 inner-top-sm ">
                       <div class="kicker-modern" id="horizon_box">
-    
+
                         <?php if($customLinks) { ?>
                           <a target="_blank" href='https://www.azpbs.org/arizonahorizon'>
                              <h3> ARIZONA HORIZON </h3></a>
@@ -163,7 +163,7 @@ get_header( 'election'); ?>
 
                     </div>
                     <!--end of .col-->
-                    <?php endwhile; ?>
+<?php endwhile; ?>
                       <?php endif; wp_reset_query(); ?>
                     
                     
@@ -206,7 +206,7 @@ get_header( 'election'); ?>
                         // Use variables below ?>
                     <div class="col-sm-4 inner-top-sm ">
                       <div class="kicker-modern">
-    
+
                         <?php if($customLinks) { ?>
                           <a target="_blank" href="//<?php echo $customLinks; ?>">
                                          <img class='awards_image' src="<?php echo $icon['sizes']['awards_logo']; ?>" />
@@ -225,7 +225,7 @@ get_header( 'election'); ?>
 
                     </div>
                     <!--end of .col-->
-                    <?php endwhile; ?>
+<?php endwhile; ?>
                       <?php endif; wp_reset_query(); ?>
 
       </div>
@@ -369,7 +369,7 @@ get_header( 'election'); ?>
                                             </a>
                       </figure>
                     </div>
-                    <?php endwhile; ?>
+<?php endwhile; ?>
                       <?php endif; wp_reset_query(); ?>
 
                         <!-- /.thumb -->

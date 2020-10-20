@@ -117,11 +117,11 @@
         <div class="navbar">
             <div class="navbar-header">
                 <div class="container">
-                 
+
 
 <!--
                     <ul class="social pull-right">
-                    
+
                     <?php if( have_rows('social_box','options') ): ?>
                         <?php while( have_rows('social_box','options') ): the_row();
                             // Declare variables below
@@ -131,7 +131,7 @@
                             <li>
                                 <a target="_blank" href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" /></a>
                             </li>
-                        <?php endwhile; ?>
+<?php endwhile; ?>
                     <?php endif; wp_reset_query(); ?>
 
                     </ul>
@@ -184,7 +184,7 @@
                             <div class="d-content">
                           <?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'fallback_cb' => 'bootstrap_menu', 'menu_class' => 'nav navbar-nav', 'walker' => new bootstrap_navigation() ) ); ?>
                         </div></div>
-                        
+
                     </div>
                     <!-- /.container -->
                 </div>
