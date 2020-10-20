@@ -96,6 +96,8 @@
     #main_container .sp-stories-sm.large-5 .debates h6 {
       color: #000;
       margin-bottom: 0; }
+    #main_container .sp-stories-sm.large-5 .debates:nth-child(4) {
+      display: none; }
     #main_container .sp-stories-sm.large-5 .no-bullet li {
       padding: 4px 0; }
       #main_container .sp-stories-sm.large-5 .no-bullet li a {
