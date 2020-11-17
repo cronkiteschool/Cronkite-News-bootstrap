@@ -1191,7 +1191,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
                 }
 
                 $table_data[$i]['file_path'] = $plugin['file_path'];
-                $table_data[$i]['url']       = isset( $plugin['source'] ) ? $plugin['source'] : 'repo';
+                $table_data[$i]['url']       = $plugin['source'] ?? 'repo';
 
                 $i++;
             }
