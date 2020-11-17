@@ -9,37 +9,255 @@
 
 
 // Enable shortcodes
-    require_once('lib/shortcodes.php');
+require_once('lib/shortcodes.php');
 
 //  Add widget support shortcodes
-    add_filter('widget_text', 'do_shortcode');
+add_filter('widget_text', 'do_shortcode');
 
 // Custom Editor Style Support
-    add_editor_style();
+add_editor_style();
 
 // Support for Featured Images
-    add_theme_support( 'post-thumbnails' );
+add_theme_support( 'post-thumbnails' );
 
 // Support for Post Formats
-    add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote', 'status' ) );
+add_theme_support( 'post-formats', array( 'aside', 'image', 'link', 'quote', 'status' ) );
 
 // Custom Background
-    add_theme_support( 'custom-background', array('default-color' => 'fff'));
+add_theme_support( 'custom-background', array('default-color' => 'fff'));
 
 // Custom Header
-    add_theme_support( 'custom-header', array(
-        'default-image' => get_template_directory_uri() . '/images/custom-logo.png',
-        'height'        => '200',
-        'flex-height'    => true,
-        'uploads'       => true,
-        'header-text'   => false
-    ) );
+add_theme_support( 'custom-header', array(
+    'default-image' => get_template_directory_uri() . '/images/custom-logo.png',
+    'height'        => '200',
+    'flex-height'    => true,
+    'uploads'       => true,
+    'header-text'   => false
+) );
+
+// custom image sizes
+add_image_size('related-story-photo', 400, 400);
+add_image_size('awards_logo', 540, 304 );
+add_image_size('slider', 208, 180);
 
 // Register Navigation Menu
-    register_nav_menus( array(
-        'header-menu' => 'Header Menu',
-        'footer-menu' => 'Footer Menu'
-    ) );
+register_nav_menus( array(
+    'header-menu' => 'Header Menu',
+    'footer-menu' => 'Footer Menu'
+) );
+
+/* Added: Sunday, Nov. 3rd, 2020 - Custom rss feed */
+add_action( 'init', 'newRSSFeed' );
+function newRSSFeed() {
+   add_feed( 'cronkitenewsfeed', 'newRSSFeedCallback' );
+}
+
+/* This code seeks the template for your RSS feed */
+function newRSSFeedCallback(){
+    get_template_part( 'rss', 'cronkitenewsfeed' ); // need to be in small case.
+}
+
+// get author for stories
+function getStoryAuthors($getPID) {
+  $finalAuthors = '';
+  $externalSites = array('boise-state-public-radio' => "https://www.boisestatepublicradio.org",
+                         'colorado-public-radio' => "https://www.cpr.org/",
+                         'cronkite-borderlands-project' => "https://cronkitenews.azpbs.org/category/borderlands/",
+                         'elemental-reports' => "https://www.elementalreports.com/",
+                         'globalsport-matters' => "https://www.globalsportmatters.com/",
+                         'howard-center-for-investigative-journalism' => "https://cronkite.asu.edu/real-world-experiences/howard-center-for-investigative-journalism",
+                         'KJZZ' => "https://www.kjzz.org",
+                         'KPCC' => "https://www.scpr.org/",
+                         'KUNC' => "https://www.kunc.org/",
+                         'KUER' => "https://www.kunc.org/post/one-got-away-look-glen-canyon-40-years-after-it-was-filled#stream/0",
+                         'LAIST' => "https://laist.com/",
+                         'PBS-SoCal' => "https://www.pbssocal.org/",
+                         'Rocky-Mountain-PBS' => "http://www.rmpbs.org/home/",
+                         'special-to-cronkite-news' => ""
+                        );
+  $externalAuthorCount = 1;
+  $internalAuthorCount = 0;
+  $commaSeparator = ',';
+  $andSeparator = ' and ';
+  $cnStaffCount = 0;
+  $newCheck = 0;
+
+  // bypass group not showing repeater field issue
+  $groupFields = get_field('byline_info', $getPID);
+  $externalAuthorRepeater = $groupFields['external_authors_repeater'];
+
+  $normalizeChars = array(
+     'Š'=>'S', 'š'=>'s', 'Ð'=>'Dj','Ž'=>'Z', 'ž'=>'z', 'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A',
+     'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E', 'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I',
+     'Ï'=>'I', 'Ñ'=>'N', 'Ń'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U',
+     'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss','à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a',
+     'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i',
+     'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ń'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u',
+     'ú'=>'u', 'û'=>'u', 'ü'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', 'ƒ'=>'f',
+     'ă'=>'a', 'î'=>'i', 'â'=>'a', 'ș'=>'s', 'ț'=>'t', 'Ă'=>'A', 'Î'=>'I', 'Â'=>'A', 'Ș'=>'S', 'Ț'=>'T',
+ );
+
+ if (have_rows('byline_info', $getPID)) {
+    $sepCounter = 0;
+    while (have_rows('byline_info', $getPID)) {
+      the_row();
+      $staffID = get_sub_field('cn_staff');
+      $cnStaffCount = count($staffID);
+
+      foreach ($staffID as $key => $val) {
+        $args = array(
+                      'post_type'   => 'students',
+                      'post_status' => 'publish',
+                      'p' => $val
+                    );
+
+        $staffDetails = new WP_Query( $args );
+        if ($staffDetails->have_posts()) {
+          while ($staffDetails->have_posts()) {
+            $staffDetails->the_post();
+            $sepCounter++;
+
+            $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
+            $staffNameURLSafe = strtr($staffNameURLSafe, $normalizeChars);
+
+            $finalAuthors .= get_the_title($val);
+            if ($sepCounter != $cnStaffCount) {
+              if ($sepCounter == ($cnStaffCount - 1)) {
+                $finalAuthors .= $andSeparator.' ';
+              } else {
+                $finalAuthors .=  $commaSeparator.' ';
+              }
+            }
+          }
+        }
+        $newCheck++;
+      }
+    }
+
+
+    if (count($externalAuthorRepeater) > 0 && $externalAuthorRepeater != '') {
+      $extStaffCount = count($externalAuthorRepeater);
+      if ($groupFields['cn_staff'] != '') {
+        $finalAuthors .= ' and ';
+      }
+      $sepCounter = 0;
+      foreach ($externalAuthorRepeater as $key => $val ) {
+        $sepCounter++;
+        $finalAuthors .= $val['external_authors'];
+
+        if ($sepCounter != $extStaffCount) {
+          if ($sepCounter == ($extStaffCount - 1)) {
+            $finalAuthors .= $andSeparator.' ';
+          } else {
+            $finalAuthors .= $commaSeparator.' ';
+          }
+        }
+      }
+      $newCheck++;
+    }
+  }
+
+  if ($newCheck == 0 && get_field('post_author') != '') {
+    //echo '<!--HERE BYLINE OLD-->';
+    //echo '<span class="author_name">By ';
+    if ($postAuthor = get_field('post_author')) {
+      $finalAuthors .= $postAuthor;
+    }
+  }
+  wp_reset_query();
+  return $finalAuthors;
+}
+
+function hook_parselyJSON() {
+    if (is_page()) {
+      $pageType = 'WebPage';
+      $headline = get_the_title(get_the_ID());
+      $storyURL = addcslashes(get_the_permalink(get_the_ID()), '/');
+      $imgURL = '';
+  ?>
+
+    <!-- BEGIN Parsely JSON-LD -->
+    <meta name="wp-parsely_version" id="wp-parsely_version" content="2.2"/>
+    <script type="application/ld+json">
+      {"@context":"http:\/\/schema.org","@type":"<? echo $pageType; ?>","headline":"<? echo $headline; ?>","url":"<? echo $storyURL; ?>"}
+    </script>
+
+  <?php
+    } else if (is_single()) {
+      $pageType = 'NewsArticle';
+      $publisher = 'Cronkite News - Arizona PBS';
+      $headline = html_entity_decode(get_the_title(get_the_ID()));
+      $storyURL = addcslashes(get_the_permalink(get_the_ID()), '/');
+      $dateCreated = '';
+      $datePublished = get_the_time('c', get_the_ID());
+      $datePublished = new DateTime($datePublished);
+      $dateCreated = $datePublished->format(DateTime::ATOM);
+      $dateModified = $dateCreated;
+
+      // keywords
+      $rawKeywords = get_the_tags(get_the_ID());
+      if ($rawKeywords) {
+        foreach($rawKeywords as $tag) {
+          $keywords .= '"'.$tag->name.'",';
+        }
+      }
+      $keywords = substr($keywords, 0, -1);
+
+      // categories
+      $rawCats = wp_get_post_categories(get_the_ID());
+      foreach($rawCats as $cid){
+        $cat = get_category( $cid );
+        if ($cat->name != 'New Long Form' || $cat->name != "Editor's Picks" || $cat->name != "Big Boy" || $cat->name != "Longform hero image slim") {
+          $articleSection = $cat->name;
+        }
+      }
+
+      // get authors
+      $rawAuthors = str_replace(' and ', ',', getStoryAuthors(get_the_ID()));
+      $splitAuthors = explode(',', $rawAuthors);
+      foreach ($splitAuthors as $k => $v) {
+        $creators .= '"'.trim($v).'",';
+        $authors .= '{"@type":"Person","name":"'. trim($v) . '"},';
+      }
+      $creators = substr($creators, 0, -1);
+      $authors = substr($authors, 0, -1);
+
+      // get image url
+      $imgURL = addcslashes(get_the_post_thumbnail_url(get_the_ID(), 'thumbnail'), '/');
+  ?>
+      <!-- BEGIN Parsely JSON-LD -->
+    	<script type="application/ld+json">
+    		{"@context":"http:\/\/schema.org",
+        "@type":"<? echo $pageType; ?>",
+        "mainEntityOfPage":{"@type":"WebPage","@id":"<? echo $storyURL; ?>"},
+        "headline":"<? echo $headline; ?>",
+        "url":"<? echo $storyURL; ?>",
+        "thumbnailUrl":"<? echo $imgURL; ?>",
+        "image":{"@type":"ImageObject","url":"<? echo $imgURL; ?>"},
+        "dateCreated":"<? echo $dateCreated; ?>",
+        "datePublished":"<? echo $dateCreated; ?>",
+        "dateModified":"<? echo $dateModified; ?>",
+        "articleSection":"<? echo $articleSection; ?>",
+        "author":[<? echo $authors; ?>],
+        "creator":[<? echo $creators; ?>],
+        "publisher":{"@type":"Organization","name":"<? echo $publisher; ?>"},
+        "keywords":[<? echo $keywords; ?>]}
+    	</script>
+  <?php
+    }
+}
+add_action('wp_head', 'hook_parselyJSON');
+
+
+function hook_parselyTrack() {
+  ?>
+  <!-- START Parse.ly Include: Standard -->
+  <script data-cfasync="false" id="parsely-cfg" data-parsely-site="cronkitenews.azpbs.org" src="//cdn.parsely.com/keys/cronkitenews.azpbs.org/p.js"></script>
+  <!-- END Parse.ly Include: Standard -->
+  <?
+}
+add_action('wp_footer', 'hook_parselyTrack');
+
 
 // Navigation Menu Adjustments
 
@@ -303,7 +521,7 @@ if (!is_admin()) {
     }
   }
 
-  $checkPeoplePage = explode('/', $_SERVER['REQUEST_URI']);
+  $checkPeoplePage = explode('/', $_SERVER[REQUEST_URI]);
 
   if (!is_search() && !is_single() && $checkPeoplePage[1] != 'people' && $checkPeoplePage[1] != 'category') {
     add_action( 'wp_enqueue_scripts', 'bootstrap_scripts_and_styles' );
@@ -467,10 +685,6 @@ function admin_logo_custom_url(){
     return ($site_url);
 }
 add_filter('login_headerurl', 'admin_logo_custom_url');
-
-
-add_image_size('awards_logo', 540, 304 );
-add_image_size('slider', 208, 180);
 
 function new_excerpt_more( $more ) {
     return '.';

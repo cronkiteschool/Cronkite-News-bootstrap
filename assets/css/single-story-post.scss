@@ -57,7 +57,7 @@ body {
 
 @mixin sidebar-header() {
   font-family: $robotoFontFamily;
-  font-size: calc(12.4px + 0.3vw);
+  font-size: 1.1rem;
   font-weight: 600;
   color: $black;
   border-left: 4px solid $cnBlue;
@@ -279,11 +279,9 @@ body {
         float: right;
         display: inline-flex;
         flex-direction: column;
-        width:40%;
+        width:30%;
         margin: 0.5em 0 0.5em 1em;
-        padding: 0.5em 0.25em;
-        /*border-top: 1px solid $grey;
-        border-bottom: 1px solid $grey;*/
+        padding: 0.5em 0rem;
         @media only screen
           and (max-width: 660px) {
             float: none;
@@ -293,34 +291,44 @@ body {
             margin-left: 0;
             margin-bottom: 1em;
         }
-        a {
-          order:2;
+        h4 {
+          order:1;
+          width: 100%;
+          font-family: $robotoFontFamily;
+          @include sidebar-header;
+          font-size: 0.95rem;
         }
-        p {
-          padding: 0;
-          margin: 6px 0;
-          line-height: 1.4;
-          &:first-child {
-            order:1;
+        .story {
+          display: flex;
+          order:2;
+          flex-flow: column;
+          .img {
             width: 100%;
-            font-family: $robotoFontFamily;
-            @include sidebar-header;
+            order:1;
           }
-          order:3;
-          //:not(:first-child) {
-          a {
-            display: flex;
-            width: 100% !important;
-            font-family: $robotoFontFamily;
-            font-size: 0.95em;
-            font-weight: 500;
-            line-height: 0;
-            text-decoration:none;
-            margin-top:6px;
-            line-height: 1.5;
+          .headline {
+            width: 100%;
+            padding: 0;
+            margin: 0;
             order:2;
-            &:hover {
-              text-decoration: underline;
+            background-color: #f2f2f2;
+            p {
+              line-height: 1.2;
+              letter-spacing: 0;
+              margin-top: 5px;
+              margin-bottom: 0;
+              padding:0.25rem 0.75rem 0.75rem;
+              a {
+                width: 100% !important;
+                font-family: $robotoFontFamily;
+                font-size: 0.85rem;
+                font-weight: 400;
+                text-decoration:none;
+                order:2;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
             }
           }
         }
@@ -477,12 +485,21 @@ body {
         flex-direction: row;
         box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
         img {
-
+          @media only screen
+            and (max-width: 660px) {
+              height: 90px;
+          }
         }
         em {
           font-size: 1rem;
           line-height: 2rem;
           padding:15px 25px;
+          @media only screen
+            and (max-width: 660px) {
+              font-size: 0.8rem;
+              line-height: 1rem;
+              padding:5px 10px;
+          }
         }
       }
       .regular {
@@ -591,6 +608,21 @@ body {
             @include attr-transition1(color);
             &:hover {
               color: $cnBlue;
+            }
+          }
+        }
+        .links-container {
+          display: flex;
+          align-items: center;
+          .author-read-more {
+            margin-right: 25px;
+            .label.secondary {
+              font-size:0.9rem;
+              background:#f2f2f2;
+              color: $black;
+              &:hover {
+                color: $cnBlue;
+              }
             }
           }
         }

@@ -16,27 +16,31 @@ get_header('new'); ?>
   </section>
   <section id="hero" style="background-color:#FFF;">
 
-    <?php $arg = array(
-                'post_type'	    => 'slider',
-                'order'		    => 'ASC',
-                'orderby'	    => 'menu_order',
-                'posts_per_page'    => 1
-            );
-            $the_query = new WP_Query( $arg );
-            if ( $the_query->have_posts() ) : ?>
-
-      <?php while ( $the_query->have_posts() ) : $the_query->the_post();
-                    $do_not_duplicate = $post->ID; ?>
-        <!-- BEGIN of Post -->
+    <?php
+      $home_main_storyID = get_field('home_main_story', 24);
+      if ($home_main_storyID) {
+        // override $post
+        $post = $home_main_storyID;
+        setup_postdata( $post );
+    ?>
       <div class="container">
       <div class="row">
       <div class="col-xs-12 col-md-8" style="padding:0;">
-        <div class="item" style="background: url(<?php echo wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ;?>) center top no-repeat; background-size: cover;">
+        <?php if (get_field('main_custom_photo', 24) == '') { ?>
+        <div class="item" style="background: url(<?php echo wp_get_attachment_url( get_post_thumbnail_id($home_main_storyID)); ?>) center top no-repeat; background-size: cover;">
+        <?php } else { ?>
+        <div class="item" style="background: url(<?php echo get_field('main_custom_photo', 24); ?>) center top no-repeat; background-size: cover;">
+        <?php } ?>
 
-          <div class="tinter" style="height: 429px;">
-
+          <div class="tinter" style="height: 501px;">
             <div class="hero-caption animated fadeIn">
-                <?php the_content(); ?>
+                <h1 class="animate fadeInDown light-color" style="margin-left: 0px;">
+                  <?php if (get_field('use_short_headline', $home_main_storyID) == 'yes' && get_field('homepage_headline', $home_main_storyID) != '') { ?>
+                    <a href="<?php echo get_permalink($home_main_storyID); ?>"><?php echo get_field('homepage_headline', $home_main_storyID); ?></a>
+                  <?php } else { ?>
+                    <a href="<?php echo get_permalink($home_main_storyID); ?>"><?php echo get_the_title($home_main_storyID); ?></a>
+                  <?php } ?>
+                </h1>
             </div>
             <!-- /.caption -->
           </div>
@@ -45,20 +49,68 @@ get_header('new'); ?>
         <!-- tinter -->
 
           </div>
-     <?php endwhile; ?>
+     <?php } ?>
           <!-- END of Post -->
-          <?php endif; wp_reset_query(); ?>
+        <?php  wp_reset_query(); ?>
 
-    <div class="col-xs-12 col-md-4" style="padding:0; height:429px; background-color:#234384;">
+    <div class="col-xs-12 col-md-4" style="padding:0; min-height:501px; background-color:#234384;">
 <!--        <h4 style="color:white; text-align:center;font-weight: bold; padding-top:10px; margin-bottom: 0px;"> Latest stories </h4>-->
 
         <div class="row">
 
                <div class="col-xs-12">
 
+                   <style>
+                     .home-list {
+                       color: #fff;
+                       margin-top:10px;
+                       margin-left: 25px;
+                       margin-right: 25px;
+                     }
+                     .home-list li {
+                       border-bottom: 1px solid #295dc5;
+                       padding-top:10px;
+                       padding-bottom:10px;
+                     }
+                     .home-list li:last-child {
+                       padding-top:10px;
+                       padding-bottom:10px;
+                       border-bottom: none;
+                     }
+                     .home-list li a {
+                       font-size:1rem;
+                     }
+                     .home-list li a:hover {
+                       color: #fff;
+                       text-decoration: underline;
+                     }
+                     .home-list li a img {
+                       visibility: unset !important;
+                     }
+                   </style>
+
                    <ul class="home-list">
 
-                         <?php the_field('top_content_box'); ?>
+                     <?php
+                        $top_side_stories = get_field('top_side_stories');
+                        if( $top_side_stories ) {
+                     ?>
+                        <?php
+                            foreach( $top_side_stories as $post ) {
+                              // Setup this post for WP functions (variable must be named $post).
+                              setup_postdata($post);
+                        ?>
+                            <li>
+                              <a href="<?php the_permalink(); ?>">
+                                <?php the_title(); ?>
+                              </a>
+                            </li>
+                        <?php } ?>
+                      <?php
+                        // Reset the global post object so that the rest of the page works correctly.
+                        wp_reset_postdata();
+                      ?>
+                      <?php } ?>
 
                    </ul>
             </div>
@@ -429,6 +481,7 @@ get_header('new'); ?>
                min-width:600px;
                min-height:500px;
                background: url('https://cronkitenews.azpbs.org/wp-content/uploads/2020/10/Election-2020-Clean-BG-Digital.jpg') no-repeat;
+               background-size: cover;
              }
              #featured-section.content .election-2020 .main {
                width: 100%;
@@ -477,7 +530,7 @@ get_header('new'); ?>
              }
              #featured-section.content .long-term-feature h3 {
                font-size: 16px;
-               margin-bottom:5px;               
+               margin-bottom:5px;
                color:#000;
              }
              #featured-section.content .long-term-feature h4 {
@@ -500,6 +553,18 @@ get_header('new'); ?>
              }
              #featured-section.content .long-term-feature ul li {
                padding-bottom:10px;
+             }
+             @media only screen
+               and (max-width: 1000px) {
+                 #featured-section.content {
+                   flex-direction: column;
+                 }
+                 #featured-section.content .election-2020 {
+                   min-width: 100%
+                 }
+                 #featured-section.content .long-term-feature {
+                   min-width: 100%
+                 }
              }
            </style>
 

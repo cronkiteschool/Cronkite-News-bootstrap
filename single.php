@@ -126,7 +126,11 @@
                      $newCheck++;
                    }
                    if ($cnStaffCount > 0 && $staffID != '') {
-                     echo '/Cronkite News</span>';
+                     if (get_sub_field('cn_project') != '') {
+                       echo '/'.str_replace(' For ', ' for ', ucwords(str_replace('-', ' ', get_sub_field('cn_project'))));
+                     } else {
+                       echo '/Cronkite News</span>';
+                     }
                    }
                  }
                  //wp_reset_query();
@@ -400,6 +404,8 @@
 
                         }
 
+                        echo '<div class="links-container">';
+
                         if( have_rows('social_media_outlets') ) {
                           echo '<div class="author_social_links">';
                           while ( have_rows('social_media_outlets') ) {
@@ -416,6 +422,9 @@
                           }
                           echo '</div>';
                         }
+
+                        echo '</div>';
+
                         echo '</div>';
                       }
                     }
@@ -449,7 +458,7 @@
                            echo '</div>';
                          }
 
-                         echo '<div class="bio">';
+                         echo '<div class="bio post">';
 
                          if (get_the_title($val) != '') {
                            if ($staffNameURLSafe == 'staff') {
@@ -473,6 +482,8 @@
 
                          }
 
+                         echo '<div class="links-container">';
+
                          if( have_rows('social_media_outlets') ) {
                            echo '<div class="author_social_links">';
                            while ( have_rows('social_media_outlets') ) {
@@ -491,6 +502,9 @@
                            }
                            echo '</div>';
                          }
+
+                         echo '</div>';
+
                          echo '</div>';
                        }
                      }
@@ -525,7 +539,7 @@
                            echo '</div>';
                          }
 
-                         echo '<div class="bio">';
+                         echo '<div class="bio post">';
 
                          if (get_the_title($val) != '') {
                            echo '<p class="name"><a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title($val).'</a></p>';
@@ -545,6 +559,8 @@
 
                          }
 
+                         echo '<div class="links-container">';
+
                          if( have_rows('social_media_outlets') ) {
                            echo '<div class="author_social_links">';
                            while ( have_rows('social_media_outlets') ) {
@@ -563,6 +579,9 @@
                            }
                            echo '</div>';
                          }
+
+                         echo '</div>';
+
                          echo '</div>';
                        }
                      }

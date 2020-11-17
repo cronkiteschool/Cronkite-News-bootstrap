@@ -475,6 +475,49 @@ $caption: #767676;
     margin-bottom: 25px;
     text-transform: uppercase;
   }
+
+  .large-6 {
+    &.more-coverage-story {
+      h6 {
+        font-size: 1rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .medium-6 {
+    &.more-coverage-story {
+      h6 {
+        font-size: 1rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .small-6 {
+    &.more-coverage-story {
+      h6 {
+        font-size: 1rem;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .proposition {
+    a {
+      text-decoration: none;
+      &:hover {
+        h6 {
+          color: #000;
+        }
+      }
+    }
+    h6 {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+  }
+
   .more-coverage-story {
     min-height: 210px;
     margin-bottom:25px;

@@ -373,7 +373,12 @@ add_shortcode ('next-chapter', 'nextchapter');
 
 function related_box_left( $atts, $content = null ) {
 
-    $result = '<div class="related-story-box-left"><p><strong>' . $atts[ 'box-title' ] . '</strong></p><a href="'. $atts[ 'link' ] . '"><img src="'. $atts[ 'image' ] . '" style="width:100%;"/></a><p><a href="'. $atts[ 'link' ] . '">'. $atts[ 'headline' ] .'</a></p></div>' ;
+    $result = '<div class="related-story-box-left"><h4><strong>' . $atts[ 'box-title' ] . '</strong></h4>';
+    $result .= '<div class="story">';
+    $result .= '<div class="img"><a href="'. $atts[ 'link' ] . '" '.$target.'><img src="'. $atts[ 'image' ] . '" style="width:100%;"/></a></div>';
+    $result .= '<div class="headline"><p><a href="'. $atts[ 'link' ] . '" '.$target.'>'. $atts[ 'headline' ] .' <i class="fas fa-angle-right"></i></a></p></div>';
+    $result .= '</div>';
+    $result .= '</div>';
 
     return $result;
 }
@@ -384,7 +389,12 @@ function related_box_right( $atts, $content = null ) {
       $target = 'target="'.$atts[ 'target' ].'"';
     }
 
-    $result = '<div class="related-story-box-right"><p><strong>' . $atts[ 'box-title' ] . '</strong></p><a href="'. $atts[ 'link' ] . '" '.$target.'><img src="'. $atts[ 'image' ] . '" style="width:100%;"/></a><p><a href="'. $atts[ 'link' ] . '" '.$target.'>'. $atts[ 'headline' ] .'</a></p></div>' ;
+    $result = '<div class="related-story-box-right"><h4><strong>' . $atts[ 'box-title' ] . '</strong></h4>';
+    $result .= '<div class="story">';
+    $result .= '<div class="img"><a href="'. $atts[ 'link' ] . '" '.$target.'><img src="'. $atts[ 'image' ] . '" style="width:100%;"/></a></div>';
+    $result .= '<div class="headline"><p><a href="'. $atts[ 'link' ] . '" '.$target.'>'. $atts[ 'headline' ] .' <i class="fas fa-angle-right"></i></a></p></div>';
+    $result .= '</div>';
+    $result .= '</div>';
 
     return $result;
 }

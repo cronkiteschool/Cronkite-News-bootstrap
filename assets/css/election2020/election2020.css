@@ -330,6 +330,22 @@
     padding-left: 15px;
     margin-bottom: 25px;
     text-transform: uppercase; }
+  #more-coverage .large-6.more-coverage-story h6 {
+    font-size: 1rem;
+    font-weight: 400; }
+  #more-coverage .medium-6.more-coverage-story h6 {
+    font-size: 1rem;
+    font-weight: 400; }
+  #more-coverage .small-6.more-coverage-story h6 {
+    font-size: 1rem;
+    font-weight: 400; }
+  #more-coverage .proposition a {
+    text-decoration: none; }
+    #more-coverage .proposition a:hover h6 {
+      color: #000; }
+  #more-coverage .proposition h6 {
+    font-size: 1rem;
+    font-weight: 400; }
   #more-coverage .more-coverage-story {
     min-height: 210px;
     margin-bottom: 25px;
