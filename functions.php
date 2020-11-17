@@ -101,37 +101,39 @@ function getStoryAuthors($getPID) {
     $sepCounter = 0;
     while (have_rows('byline_info', $getPID)) {
       the_row();
-      $staffID = get_sub_field('cn_staff');
-      $cnStaffCount = count($staffID);
+	  $staffID = get_sub_field('cn_staff');
+	  if (is_array($staffID)) {
+		$cnStaffCount = count($staffID);
 
-      foreach ($staffID as $key => $val) {
-        $args = array(
-                      'post_type'   => 'students',
-                      'post_status' => 'publish',
-                      'p' => $val
-                    );
+		foreach ($staffID as $key => $val) {
+			$args = array(
+						'post_type'   => 'students',
+						'post_status' => 'publish',
+						'p' => $val
+						);
 
-        $staffDetails = new WP_Query( $args );
-        if ($staffDetails->have_posts()) {
-          while ($staffDetails->have_posts()) {
-            $staffDetails->the_post();
-            $sepCounter++;
+			$staffDetails = new WP_Query( $args );
+			if ($staffDetails->have_posts()) {
+			while ($staffDetails->have_posts()) {
+				$staffDetails->the_post();
+				$sepCounter++;
 
-            $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
-            $staffNameURLSafe = strtr($staffNameURLSafe, $normalizeChars);
+				$staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
+				$staffNameURLSafe = strtr($staffNameURLSafe, $normalizeChars);
 
-            $finalAuthors .= get_the_title($val);
-            if ($sepCounter != $cnStaffCount) {
-              if ($sepCounter == ($cnStaffCount - 1)) {
-                $finalAuthors .= $andSeparator.' ';
-              } else {
-                $finalAuthors .=  $commaSeparator.' ';
-              }
-            }
-          }
-        }
-        $newCheck++;
-      }
+				$finalAuthors .= get_the_title($val);
+				if ($sepCounter != $cnStaffCount) {
+				if ($sepCounter == ($cnStaffCount - 1)) {
+					$finalAuthors .= $andSeparator.' ';
+				} else {
+					$finalAuthors .=  $commaSeparator.' ';
+				}
+				}
+			}
+			}
+			$newCheck++;
+		}
+	  }
     }
 
 
