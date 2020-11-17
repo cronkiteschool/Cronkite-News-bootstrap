@@ -69,3 +69,4 @@ $RECYCLE.BIN/
 ### WordPress ###
 error_log
 *.log
+.php_cs.cache
