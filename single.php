@@ -350,7 +350,7 @@
                while (have_rows('byline_info')) {
                  the_row();
 
-                 $staffID = get_sub_field('cn_staff');
+                 $staffID = get_sub_field('cn_staff') ?? [];
                  $photogID = get_sub_field('cn_photographers') ?? [];
                  $broadcastID = get_sub_field('cn_broadcast_reporters') ?? [];
 
