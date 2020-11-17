@@ -5,104 +5,95 @@
  */
 get_header(); ?>
 
-	<main>
-		<section id="blog-post" class="light-bg" >
-			<div class="container-fluid inner-top-sm inner-bottom classic-blog" style="max-width: 1200px;">
-				<div class="row" style="margin-right: auto; margin-left: auto;">
-					<div class="col-md-12">
+    <main>
+        <section id="blog-post" class="light-bg" >
+            <div class="container-fluid inner-top-sm inner-bottom classic-blog" style="max-width: 1200px;">
+                <div class="row" style="margin-right: auto; margin-left: auto;">
+                    <div class="col-md-12">
 
-							<div class="post format-single clearfix">
+                            <div class="post format-single clearfix">
 
-								
-								<div class="post-content post-content-single clearfix">
-									<?php if ( have_posts() ) : ?>
-										<?php
-										while ( have_posts() ) :
-											the_post();
-											?>
-											<!-- BEGIN of POST-->
-											<article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-										  <div class="breadcrumbs">
-											<?php
-											$verticals = get_the_category();
-											$separator = ' | ';
-											$output    = '';
-											if ( ! empty( $verticals ) ) {
-												foreach ( $verticals as $category ) {
+                                
+                                <div class="post-content post-content-single clearfix">
+                                    <?php if (have_posts()) : ?>
+                                        <?php while (have_posts()) : the_post(); ?><!-- BEGIN of POST-->
+                                            <article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+  										<div class="breadcrumbs">
+<?php
+                        $verticals = get_the_category ();
+                        $separator = ' | ';
+                        $output = '';
+                          if ( ! empty( $verticals ) ) {
+                            foreach( $verticals as $category ) {
 
-													if ( ( $category->name != 'Uncategorized' ) && ( $category->name != 'Longform' ) ) {
-																  $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . strtoupper( esc_html( $category->name ) ) . '</a>' . $separator;
-													}
-												}
-												echo trim( $output, $separator );
-											}
-											?>
-					  </div>
+                              if (($category->name != "Uncategorized") && ($category->name != "Longform")) {
+                            $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ). '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . strtoupper(esc_html( $category->name )) . '</a>' . $separator;
+                            }
 
-			  <h1><?php the_title(); ?></h1>
+                        }
+                        echo trim( $output, $separator );
+                      }
+                        ?>
+                      </div>
+
+              <h1><?php the_title(); ?></h1>
 
 											<div id="top-img-holder"> 
-											<?php if ( have_rows( 'top_full_image' ) ) : ?>
-												<?php
-												while ( have_rows( 'top_full_image' ) ) :
-													the_row();
-													// Declare variables below
-													$icon = get_sub_field( 'fimage' );
-													$text = get_sub_field( 'fcaption' );  // Use variables below
-													?>
-												<img  style="width:100%;height:auto;" src="<?php echo $icon; ?>" />
+                                    <?php if( have_rows('top_full_image') ): ?>
+                                        <?php while( have_rows('top_full_image') ): the_row();
+                                            // Declare variables below
+                                            $icon = get_sub_field('fimage');
+                                            $text = get_sub_field('fcaption');  // Use variables below ?>
+                                                <img  style="width:100%;height:auto;" src="<?php echo $icon; ?>" />
 
-												<div class="carousel-captions"> <!-- captions -->
-															<?php echo $text; ?>
+                                                <div class="carousel-captions"> <!-- captions -->
+                                                 <?php echo $text; ?>
 
+                                            	</div>
 												</div>
-												</div>
-												<?php endwhile; ?>
-												<?php
-									endif;
-											wp_reset_query();
-											?>
-								</div>
-								<div class="col-xs-12 col-md-offset-2 col-md-8">
-								<h6 class="story-info"><?php if ( $postAuthor = get_field( 'post_author' ) ) { ?>
-								<a href="<?php echo site_url(); ?>?s=<?php echo $postAuthor; ?>">
-								By <?php echo $postAuthor; ?> |
-								<?php } ?>
-											<?php if ( $siteTitle = get_field( 'site_title' ) ) { ?>
-									<a href="http://<?php the_field( 'site_url' ); ?>"><?php echo $siteTitle; ?></a></h6>
-								<?php } ?>
-								<h6 class="story-info-date"><?php echo ap_date(); ?></h6>
+                                        <?php endwhile; ?>
+                                    <?php endif; wp_reset_query(); ?>
+                                </div>
+                                <div class="col-xs-12 col-md-offset-2 col-md-8">
+                                <h6 class="story-info"><?php if($postAuthor = get_field('post_author')) {?>
+                                <a href="<?php echo site_url(); ?>?s=<?php echo $postAuthor; ?>">
+                                By <?php echo $postAuthor; ?> |
+                                <?php } ?>
+                                <?php if( $siteTitle = get_field('site_title')) {?>
+                                    <a href="http://<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?></a></h6>
+                                <?php } ?>
+                                <h6 class="story-info-date"><?php echo ap_date(); ?></h6>
 
-												<?php the_content(); ?>
-												<?php the_field( 'second_text' ); ?>
-											</article>
-										<?php endwhile; ?><!-- END of POST-->
-									<?php endif; ?>
-												</div>
-								</div>
+                                                <?php the_content(); ?>
+                                                <?php the_field('second_text'); ?>
+                                            </article>
+                                        <?php endwhile; ?><!-- END of POST-->
+                                    <?php endif; ?>
+                                                </div>
+                                </div>
 
-							</div>
+                            </div>
 
 
-							<div class="comment-form-wrapper">
-								<h2>Leave a Comment</h2>
+                            <div class="comment-form-wrapper">
+                                <h2>Leave a Comment</h2>
 
-					<?php echo do_shortcode( '[fbcomments]' ); ?>
+					<?php echo do_shortcode('[fbcomments]'); ?>
 
-								<div id="response"></div>
-							</div>
-							<!-- /.comment-form-wrapper -->
+                                <div id="response"></div>
+                            </div>
+                            <!-- /.comment-form-wrapper -->
 
-						<!-- END of .row-->
-						</div>
-					</div>
+                        <!-- END of .row-->
+                        </div>
+                    </div>
 
-					<!-- END of .container-->
-				</div>
-				<!-- /.row -->
-			</div>
-			<!-- /.container -->
-		</section>
-	</main>
+                    <!-- END of .container-->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </section>
+    </main>
 
 <?php get_footer(); ?>
