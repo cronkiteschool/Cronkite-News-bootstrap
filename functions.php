@@ -179,7 +179,7 @@ function hook_parselyJSON() {
     <!-- BEGIN Parsely JSON-LD -->
     <meta name="wp-parsely_version" id="wp-parsely_version" content="2.2"/>
     <script type="application/ld+json">
-      {"@context":"http:\/\/schema.org","@type":"<? echo $pageType; ?>","headline":"<? echo $headline; ?>","url":"<? echo $storyURL; ?>"}
+      {"@context":"http:\/\/schema.org","@type":"<?php echo $pageType; ?>","headline":"<?php echo $headline; ?>","url":"<?php echo $storyURL; ?>"}
     </script>
 
   <?php
@@ -228,20 +228,20 @@ function hook_parselyJSON() {
       <!-- BEGIN Parsely JSON-LD -->
     	<script type="application/ld+json">
     		{"@context":"http:\/\/schema.org",
-        "@type":"<? echo $pageType; ?>",
-        "mainEntityOfPage":{"@type":"WebPage","@id":"<? echo $storyURL; ?>"},
-        "headline":"<? echo $headline; ?>",
-        "url":"<? echo $storyURL; ?>",
-        "thumbnailUrl":"<? echo $imgURL; ?>",
-        "image":{"@type":"ImageObject","url":"<? echo $imgURL; ?>"},
-        "dateCreated":"<? echo $dateCreated; ?>",
-        "datePublished":"<? echo $dateCreated; ?>",
-        "dateModified":"<? echo $dateModified; ?>",
-        "articleSection":"<? echo $articleSection; ?>",
-        "author":[<? echo $authors; ?>],
-        "creator":[<? echo $creators; ?>],
-        "publisher":{"@type":"Organization","name":"<? echo $publisher; ?>"},
-        "keywords":[<? echo $keywords; ?>]}
+        "@type":"<?php echo $pageType; ?>",
+        "mainEntityOfPage":{"@type":"WebPage","@id":"<?php echo $storyURL; ?>"},
+        "headline":"<?php echo $headline; ?>",
+        "url":"<?php echo $storyURL; ?>",
+        "thumbnailUrl":"<?php echo $imgURL; ?>",
+        "image":{"@type":"ImageObject","url":"<?php echo $imgURL; ?>"},
+        "dateCreated":"<?php echo $dateCreated; ?>",
+        "datePublished":"<?php echo $dateCreated; ?>",
+        "dateModified":"<?php echo $dateModified; ?>",
+        "articleSection":"<?php echo $articleSection; ?>",
+        "author":[<?php echo $authors; ?>],
+        "creator":[<?php echo $creators; ?>],
+        "publisher":{"@type":"Organization","name":"<?php echo $publisher; ?>"},
+        "keywords":[<?php echo $keywords; ?>]}
     	</script>
   <?php
     }
@@ -254,7 +254,7 @@ function hook_parselyTrack() {
   <!-- START Parse.ly Include: Standard -->
   <script data-cfasync="false" id="parsely-cfg" data-parsely-site="cronkitenews.azpbs.org" src="//cdn.parsely.com/keys/cronkitenews.azpbs.org/p.js"></script>
   <!-- END Parse.ly Include: Standard -->
-  <?
+  <?php
 }
 add_action('wp_footer', 'hook_parselyTrack');
 
