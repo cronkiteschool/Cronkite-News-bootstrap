@@ -7,5 +7,5 @@
 ?>
 
 <!-- Sidebar -->
-<?php dynamic_sidebar('Sidebar Right'); ?>
+<?php dynamic_sidebar( 'Sidebar Right' ); ?>
 <!-- End Sidebar -->
