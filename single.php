@@ -95,36 +95,39 @@
                  while (have_rows('byline_info')) {
                    the_row();
                    $staffID = get_sub_field('cn_staff');
-                   $cnStaffCount = count($staffID);
+                   if (is_array($staffID)) {
+					   $cnStaffCount = count($staffID);
 
-                   foreach ($staffID as $key => $val) {
-                     $args = array(
-                                   'post_type'   => 'students',
-                                   'post_status' => 'publish',
-                                   'p' => $val
-                                 );
+					   foreach ($staffID as $key => $val) {
+						 $args = array(
+									   'post_type'   => 'students',
+									   'post_status' => 'publish',
+									   'p' => $val
+									 );
 
-                     $staffDetails = new WP_Query( $args );
-                     if ($staffDetails->have_posts()) {
-                       while ($staffDetails->have_posts()) {
-                         $staffDetails->the_post();
-                         $sepCounter++;
+						 $staffDetails = new WP_Query( $args );
+						 if ($staffDetails->have_posts()) {
+						   while ($staffDetails->have_posts()) {
+							 $staffDetails->the_post();
+							 $sepCounter++;
 
-                         $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
-                         $staffNameURLSafe = strtr($staffNameURLSafe, $normalizeChars);
+							 $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
+							 $staffNameURLSafe = strtr($staffNameURLSafe, $normalizeChars);
 
-                         echo '<a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title($val).'</a>';
-                         if ($sepCounter != $cnStaffCount) {
-                           if ($sepCounter == ($cnStaffCount - 1)) {
-                             echo $andSeparator.' ';
-                           } else {
-                             echo $commaSeparator.' ';
-                           }
-                         }
-                       }
-                     }
-                     $newCheck++;
+							 echo '<a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title($val).'</a>';
+							 if ($sepCounter != $cnStaffCount) {
+							   if ($sepCounter == ($cnStaffCount - 1)) {
+								 echo $andSeparator.' ';
+							   } else {
+								 echo $commaSeparator.' ';
+							   }
+							 }
+						   }
+						 }
+						 $newCheck++;
+					   }
                    }
+
                    if ($cnStaffCount > 0 && $staffID != '') {
                      if (get_sub_field('cn_project') != '') {
                        echo '/'.str_replace(' For ', ' for ', ucwords(str_replace('-', ' ', get_sub_field('cn_project'))));
