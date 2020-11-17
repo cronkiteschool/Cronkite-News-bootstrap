@@ -354,83 +354,84 @@
                  $photogID = get_sub_field('cn_photographers');
                  $broadcastID = get_sub_field('cn_broadcast_reporters');
 
-                 foreach ($staffID as $key => $val) {
-                   echo '<div class="author_bio">';
-                   $args = array(
-                                 'post_type'   => 'students',
-                                 'post_status' => 'publish',
-                                 'p' => $val
-                                );
+                 if (is_array($staffID)) {
+					 foreach ($staffID as $key => $val) {
+					   echo '<div class="author_bio">';
+					   $args = array(
+									 'post_type'   => 'students',
+									 'post_status' => 'publish',
+									 'p' => $val
+									);
 
-                    $staffDetails = new WP_Query( $args );
-                    if ($staffDetails->have_posts()) {
+						$staffDetails = new WP_Query( $args );
+						if ($staffDetails->have_posts()) {
 
-                      while ($staffDetails->have_posts()) {
-                        $staffDetails->the_post();
+						  while ($staffDetails->have_posts()) {
+							$staffDetails->the_post();
 
-                        $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
+							$staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
 
-                        if (get_field('student_photo') != '') {
-                          echo '<div class="author_photo post">';
-                          if ($staffNameURLSafe == 'staff') {
-                            echo '<img src="'.get_field('student_photo').'" class="cn-staff-bio-circular staff" alt="'.get_the_title($staffID).'" />';
-                          } else {
-                            echo '<a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/"><img src="'.get_field('student_photo').'" class="cn-staff-bio-circular" alt="'.get_the_title($staffID).'" /></a>';
-                          }
-                          echo '</div>';
-                        }
+							if (get_field('student_photo') != '') {
+							  echo '<div class="author_photo post">';
+							  if ($staffNameURLSafe == 'staff') {
+								echo '<img src="'.get_field('student_photo').'" class="cn-staff-bio-circular staff" alt="'.get_the_title($staffID).'" />';
+							  } else {
+								echo '<a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/"><img src="'.get_field('student_photo').'" class="cn-staff-bio-circular" alt="'.get_the_title($staffID).'" /></a>';
+							  }
+							  echo '</div>';
+							}
 
-                        echo '<div class="bio post">';
+							echo '<div class="bio post">';
 
-                        if (get_the_title($val) != '') {
-                          if ($staffNameURLSafe == 'staff') {
-                            echo '<p class="name">'.get_the_title($val).'</p>';
-                          } else {
-                            echo '<p class="name"><a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title($val).'</a></p>';
-                          }
-                        } else {
-                          echo '<p class="name">'.'No author name found.'.'</p>';
-                        }
+							if (get_the_title($val) != '') {
+							  if ($staffNameURLSafe == 'staff') {
+								echo '<p class="name">'.get_the_title($val).'</p>';
+							  } else {
+								echo '<p class="name"><a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title($val).'</a></p>';
+							  }
+							} else {
+							  echo '<p class="name">'.'No author name found.'.'</p>';
+							}
 
-                        if (get_field('student_title') != '') {
-                          echo '<span class="team-title post">'.ucwords(str_replace('-', ' ', get_field('student_title'))).'</span>';
-                        } else if (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
-                          echo '<span class="team-title post">'.ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau')))).'</span>';
-                        }
+							if (get_field('student_title') != '') {
+							  echo '<span class="team-title post">'.ucwords(str_replace('-', ' ', get_field('student_title'))).'</span>';
+							} else if (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
+							  echo '<span class="team-title post">'.ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau')))).'</span>';
+							}
 
-                        if (get_field('biography') != '') {
-                          echo '<span class="member-bio post">'.get_field('biography').'</span>';
-                        } else {
+							if (get_field('biography') != '') {
+							  echo '<span class="member-bio post">'.get_field('biography').'</span>';
+							} else {
 
-                        }
+							}
 
-                        echo '<div class="links-container">';
+							echo '<div class="links-container">';
 
-                        if( have_rows('social_media_outlets') ) {
-                          echo '<div class="author_social_links">';
-                          while ( have_rows('social_media_outlets') ) {
-                            the_row();
-                            if (get_sub_field('social_media_type') != '' && get_sub_field('social_media_handle') != '') {
-                              if (get_sub_field('social_media_type') == 'twitter') {
-                      ?>
-                                <a href="https://www.twitter.com/<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <?php } else if (get_sub_field('social_media_type') == 'email') { ?>
-                                <a href="mailto:<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fas fa-envelope"></i></a>
-                      <?php
-                              }
-                            }
-                          }
-                          echo '</div>';
-                        }
+							if( have_rows('social_media_outlets') ) {
+							  echo '<div class="author_social_links">';
+							  while ( have_rows('social_media_outlets') ) {
+								the_row();
+								if (get_sub_field('social_media_type') != '' && get_sub_field('social_media_handle') != '') {
+								  if (get_sub_field('social_media_type') == 'twitter') {
+						  ?>
+									<a href="https://www.twitter.com/<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
+							<?php } else if (get_sub_field('social_media_type') == 'email') { ?>
+									<a href="mailto:<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fas fa-envelope"></i></a>
+						  <?php
+								  }
+								}
+							  }
+							  echo '</div>';
+							}
 
-                        echo '</div>';
+							echo '</div>';
 
-                        echo '</div>';
-                      }
-                    }
-                    echo '</div>';
+							echo '</div>';
+						  }
+						}
+						echo '</div>';
+					  }
                   }
-
                   // show broadcast
                   if (is_array($broadcastID)) {
 					  foreach ($broadcastID as $key => $val) {
