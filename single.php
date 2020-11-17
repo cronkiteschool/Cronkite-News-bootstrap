@@ -513,6 +513,7 @@
 
 
                   // show photogs
+                  if (is_array($photogID)) {
                   foreach ($photogID as $key => $val) {
                     echo '<div class="author_bio">';
                     $args = array(
@@ -586,6 +587,7 @@
                        }
                      }
                      echo '</div>';
+                   }
                    }
                 }
               }
