@@ -101,7 +101,7 @@ function getStoryAuthors($getPID) {
     $sepCounter = 0;
     while (have_rows('byline_info', $getPID)) {
       the_row();
-      $staffID = get_sub_field('cn_staff');
+      $staffID = get_sub_field('cn_staff') ?? [];
       $cnStaffCount = count($staffID);
 
       foreach ($staffID as $key => $val) {
