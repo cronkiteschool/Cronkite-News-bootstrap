@@ -135,7 +135,7 @@ function getStoryAuthors($getPID) {
     }
 
 
-    if (count($externalAuthorRepeater) > 0 && $externalAuthorRepeater != '') {
+    if ($externalAuthorRepeater && count($externalAuthorRepeater) > 0 && $externalAuthorRepeater != '') {
       $extStaffCount = count($externalAuthorRepeater);
       if ($groupFields['cn_staff'] != '') {
         $finalAuthors .= ' and ';
