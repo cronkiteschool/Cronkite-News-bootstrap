@@ -31,7 +31,7 @@
       }
     ?>
     </ul>
-<? } ?>
+<?php } ?>
 
 
 <!-- Cronkite News Faculty and Staff -->
@@ -199,7 +199,7 @@
       }
     ?>
     </ul>
-<? } ?>
+<?php } ?>
 
 <p style="font-size: 0.8em;line-height: 22px;">Health stories are supported, in part, through a generous grant from the <a href="https://www.rwjf.org/" target="_blank">Robert Wood Johnson Foundation</a>, the nation’s largest philanthropy dedicated solely to health. The funding helped establish the <a href="https://cronkite.asu.edu/real-world-experiences/professional-programs/health-journalism" target="_blank">Southwest Health Reporting Initiative</a>, which provides health care news and information with a focus on Latino, Native American and Spanish-speaking border communities across the Southwest.</p>
 <p style="font-size: 0.8em;line-height: 22px;">Sustainability stories are supported, in part, through a generous grant from the Corporation for Public Broadcasting. CPB is a private, nonprofit corporation created by Congress in 1967 that is the steward of the federal government’s investment in public broadcasting. The funding established <a href="https://elementalreports.com/" target="_blank">Elemental: Covering Sustainability</a>, a multimedia collaboration between <a href="https://cronkitenews.azpbs.org/" target="_blank">Cronkite News</a>, <a href="https://azpbs.org/" target="_blank">Arizona PBS</a>, <a href="https://kjzz.org/" target="_blank">KJZZ</a>, <a href="https://www.scpr.org/" target="_blank">KPCC</a>, <a href="http://www.rmpbs.org/home/" target="_blank">Rocky Mountain PBS</a> and <a href="https://www.pbssocal.org/" target="_blank">PBS SoCal</a>.</p>
