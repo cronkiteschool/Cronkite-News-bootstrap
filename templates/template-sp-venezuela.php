@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Template Name: Special Project - Venezuela
  * Story template without sidebar
  */
+
 get_header('longformhero'); ?>
     <style>
       .custom-row {
@@ -85,39 +87,39 @@ get_header('longformhero'); ?>
                 <!-- END of .row-->
 
                 <?php if (get_the_ID() != 119536) { ?>
-                <?php
-                  $args = array(
+                    <?php
+                    $args = array(
                               'posts_per_page' => -1,
                               'cat' => 12896,
                               'orderby' => 'publish_date',
                               'order' => 'ASC'
                               );
-                  $query = new WP_Query($args);
-                ?>
-                <?php
-                  if ($query->have_posts()) {
-                      while ($query->have_posts()) {
-                          $query->the_post();
-                          echo "<!-- ".get_the_ID()."-->"; ?>
+                    $query = new WP_Query($args);
+                    ?>
+                    <?php
+                    if ($query->have_posts()) {
+                        while ($query->have_posts()) {
+                            $query->the_post();
+                            echo "<!-- " . get_the_ID() . "-->"; ?>
                   <!-- show all posts -->
                   <div class="row" style="margin-right: auto; margin-left: auto;margin-top:25px;margin-bottom:25px;">
                       <div class="col-md-2 col-lg-3"></div>
                       <div class="col-xs-12 col-md-3 col-lg-2" style="padding:0px;">
-                        <a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php echo '<img style="width:100%;height:auto;" src="'.get_the_post_thumbnail_url(get_the_ID(), 'large').'">'; ?></a>
+                        <a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php echo '<img style="width:100%;height:auto;" src="' . get_the_post_thumbnail_url(get_the_ID(), 'large') . '">'; ?></a>
                       </div>
                       <div class="col-xs-12 col-md-5 col-lg-4 story-entry">
                           <h2><a class="sp-title" href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
                           <div class="entry" style="margin-top:8px;">
-                            <?php echo get_field('story_tease', get_the_ID()); ?>
+                              <?php echo get_field('story_tease', get_the_ID()); ?>
                           </div>
                       </div>
                       <div class="col-md-2 col-lg-3"></div>
                   </div>
                   <!-- END of .row-->
-                <?php
-                      } ?>
-                <?php
-                  } ?>
+                            <?php
+                        } ?>
+                        <?php
+                    } ?>
                 <?php } else { ?>
                   <!-- show all posts -->
                   <div class="row" style="margin-right: auto; margin-left: auto;margin-top:25px;margin-bottom:25px;">

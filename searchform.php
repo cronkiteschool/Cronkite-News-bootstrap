@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Searchform
  *
  * Custom template for search form
  */
+
 ?>
 
 

@@ -1,7 +1,9 @@
 <?php
+
 /**
  * Footer
  */
+
 ?>
 
 <footer class="dark-bg">
@@ -23,8 +25,9 @@
                 <br><br>
                 <ul class="social">
 
-                    <?php if (have_rows('social_box', 'options')): ?>
-                        <?php while (have_rows('social_box', 'options')): the_row();
+                    <?php if (have_rows('social_box', 'options')) : ?>
+                        <?php while (have_rows('social_box', 'options')) :
+                            the_row();
                             // Declare variables below
                             $icon = get_sub_field('social_icon', 'options');
                             $link = get_sub_field('social_link', 'options');
@@ -33,7 +36,8 @@
                                 <a target="_blank" href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" /></a>
                             </li>
                         <?php endwhile; ?>
-                    <?php endif; wp_reset_query(); ?>
+                    <?php endif;
+                    wp_reset_query(); ?>
 
                 </ul>
                 <br>
@@ -58,7 +62,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="copyright-box">
-                        <?php echo str_replace('<p>', '<p>&copy; '.date('Y').' ', get_field('copyright', 'options'));?>
+                        <?php echo str_replace('<p>', '<p>&copy; ' . date('Y') . ' ', get_field('copyright', 'options'));?>
                     </div>
                 </div>
             </div>
@@ -114,16 +118,16 @@ twq('track','PageView');
  * @param {Array|Object|NodeList} scope=null - Object/NodeList/Array that forEach is iterating over, to use as the this value when executing callback.
  * @returns {}
  */
-	var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
+    var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.call(t))for(var c in t)Object.prototype.hasOwnProperty.call(t,c)&&o.call(r,t[c],c,t);else for(var e=0,l=t.length;l>e;e++)o.call(r,t[e],e,t)};
 
-	var hamburgers = document.querySelectorAll(".hamburger");
-	if (hamburgers.length > 0) {
-		forEach(hamburgers, function(hamburger) {
-			hamburger.addEventListener("click", function() {
-				this.classList.toggle("is-active");
-			}, false);
-		});
-	}
+    var hamburgers = document.querySelectorAll(".hamburger");
+    if (hamburgers.length > 0) {
+        forEach(hamburgers, function(hamburger) {
+            hamburger.addEventListener("click", function() {
+                this.classList.toggle("is-active");
+            }, false);
+        });
+    }
 
   // Search: expand on click
   $('.search-box img').click(function() {
@@ -143,42 +147,42 @@ twq('track','PageView');
   });
 
 
-	jQuery(document).ready(function() {
-		jQuery('.hamburger').click(function() {
-			if (jQuery('.hamburger.is-active').length) {
-				jQuery('#sub_nav').addClass('open').removeClass('close');
-				jQuery('.sub_nav').removeClass('slideOutUp').addClass('slideInDown');
-				jQuery('.sub_nav').css("display", "block");
-			} else {
-				jQuery('#sub_nav').addClass('close').removeClass('open');
-				jQuery('.sub_nav').removeClass('slideInDown').addClass('slideOutUp');
+    jQuery(document).ready(function() {
+        jQuery('.hamburger').click(function() {
+            if (jQuery('.hamburger.is-active').length) {
+                jQuery('#sub_nav').addClass('open').removeClass('close');
+                jQuery('.sub_nav').removeClass('slideOutUp').addClass('slideInDown');
+                jQuery('.sub_nav').css("display", "block");
+            } else {
+                jQuery('#sub_nav').addClass('close').removeClass('open');
+                jQuery('.sub_nav').removeClass('slideInDown').addClass('slideOutUp');
         jQuery('.sub_nav').css("display", "none");
-			}
-		});
+            }
+        });
 
 
-		var $window = $(window);
+        var $window = $(window);
 
-		function checkWidth() {
-				var windowsize = $window.width();
-				if (windowsize > 800) {
-						jQuery(window).scroll(function (event) {
-								var scroll = $(window).scrollTop();
-								if (scroll >= 250) {
-									console.log('HERE!');
-									jQuery('#sub_nav').removeClass('slideInDown').addClass('slideOutUp');
-								} else if (scroll < 250) {
-									console.log('HERE <!');
-									jQuery('#sub_nav').removeClass('slideOutUp').addClass('slideInDown');
-								}
-						});
-				}
-		}
-		// Execute on load
-		checkWidth();
-		// Bind event listener
-		jQuery(window).resize(checkWidth);
-	});
+        function checkWidth() {
+                var windowsize = $window.width();
+                if (windowsize > 800) {
+                        jQuery(window).scroll(function (event) {
+                                var scroll = $(window).scrollTop();
+                                if (scroll >= 250) {
+                                    console.log('HERE!');
+                                    jQuery('#sub_nav').removeClass('slideInDown').addClass('slideOutUp');
+                                } else if (scroll < 250) {
+                                    console.log('HERE <!');
+                                    jQuery('#sub_nav').removeClass('slideOutUp').addClass('slideInDown');
+                                }
+                        });
+                }
+        }
+        // Execute on load
+        checkWidth();
+        // Bind event listener
+        jQuery(window).resize(checkWidth);
+    });
 </script>
 
 </body>

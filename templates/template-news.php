@@ -31,16 +31,16 @@ get_header('new'); ?>
                                         <?php global $post;?>
 
                                             <?php $arg = array(
-                                            'post_type'	    => 'post',
-                                            'order'		    => 'DESC',
-                                            'orderby'	    => 'date',
+                                            'post_type'     => 'post',
+                                            'order'         => 'DESC',
+                                            'orderby'       => 'date',
                                             'posts_per_page'    => 1,
                                             'category_name' =>  'newscast'
                                         );
                                         $the_query = new WP_Query($arg);
-                                        if ($the_query->have_posts()) : ?>
-
-                                                <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+if ($the_query->have_posts()) : ?>
+                                                <?php while ($the_query->have_posts()) :
+                                                    $the_query->the_post(); ?>
                                                     <style>
                                                         .embed-container {
                                                             position: relative;
@@ -70,17 +70,18 @@ get_header('new'); ?>
 
                                                     <h3 style="padding-left: 10px;"><strong> <?php the_title(); ?></strong></h3>
                                                     <?php the_excerpt(); ?>
-                                                        <?php endwhile;?>
+                                                <?php endwhile;?>
 
-                                                            <?php endif; wp_reset_query(); ?>
+<?php endif;
+wp_reset_query(); ?>
                                     </div>
                                 </div>
                                 <div class="post-content post-content-news">
-                                    <?php query_posts('post_type=post&category_name=newscast&post_status=publish&posts_per_page=8&paged='. get_query_var('paged')); ?>
+                                    <?php query_posts('post_type=post&category_name=newscast&post_status=publish&posts_per_page=8&paged=' . get_query_var('paged')); ?>
 
                                         <?php if (have_posts()) :
-
-                                            while (have_posts()) : the_post();
+                                            while (have_posts()) :
+                                                the_post();
 
                                                 ?>
 
@@ -110,13 +111,14 @@ get_header('new'); ?>
 
                                                     <!-- END of .post-type-->
                                                     <?php $number++; ?>
-                                                        <?php endwhile; ?>
+                                            <?php endwhile; ?>
                                                             <!-- END of Post -->
                                                             <div class="blog-pagination">
                                                                 <?php bootstrap_pagination(); ?>
                                                             </div>
 
-                                                            <?php endif; wp_reset_query(); ?>
+                                        <?php endif;
+                                        wp_reset_query(); ?>
 
                                                                 <div class="row">
                                                                     <div class="col-sm-12 inner-right-xs-archive text-left">

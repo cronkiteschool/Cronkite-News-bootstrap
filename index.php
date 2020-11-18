@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Index
  *
  * Standard loop for the front-page
  */
+
 get_header(); ?>
 
 <section id="hero-inner" class="sub-header">
@@ -13,7 +15,7 @@ get_header(); ?>
                 <?php
                 if (is_home() && get_option('page_for_posts')) {
                     $blog_page_id = get_option('page_for_posts');
-                    echo '<h1>'.get_page($blog_page_id)->post_title.'</h1>';
+                    echo '<h1>' . get_page($blog_page_id)->post_title . '</h1>';
                 }
                 ?>
             </div>
@@ -36,9 +38,9 @@ get_header(); ?>
                             <?php
                             if (is_home() && get_option('page_for_posts')) {
                                 $blog_page_id = get_option('page_for_posts');
-                                echo '<div class="content-blog">'.get_page($blog_page_id)->post_content.'</div>'; ?>
+                                echo '<div class="content-blog">' . get_page($blog_page_id)->post_content . '</div>'; ?>
 
-                               <?php
+                                <?php
                             }  ?>
 
                             <div class="custom-line">
@@ -58,7 +60,8 @@ get_header(); ?>
                             </div>
 
                             <?php if (have_posts()) : ?>
-                                <?php while (have_posts()) : the_post(); ?><!-- BEGIN of POST-->
+                                <?php while (have_posts()) :
+                                    the_post(); ?><!-- BEGIN of POST-->
                                     <article class="post-content post-content-blog" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                                         <figure class="icon-overlay icn-link post-media">
                                             <h3>

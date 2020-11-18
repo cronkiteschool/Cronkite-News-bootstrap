@@ -18,36 +18,37 @@ print '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http
   <atom:link href="https://cronkitenews.azpbs.org/rss-feed/" rel="self" type="application/rss+xml" />
 <?php
     $args = array(
-                'post_type'	    => 'post',
+                'post_type'     => 'post',
                 'posts_per_page'    => 10
             );
     $loop = new WP_Query($args);
-    while ($loop->have_posts()) : $loop->the_post();
-?>
+    while ($loop->have_posts()) :
+        $loop->the_post();
+        ?>
   <item>
     <title><?php echo the_title(); ?></title>
     <link><?php echo the_permalink(); ?></link>
     <description>
-    <?php
-    echo '<![CDATA[';
-    echo '<p>';
-    echo get_field('post_author');
-    echo '</p>';
-    echo '<p>';
-    echo ap_date();
-    echo '</p>';
-    echo '<p>';
-    echo the_title();
-    echo '</p>';
+        <?php
+        echo '<![CDATA[';
+        echo '<p>';
+        echo get_field('post_author');
+        echo '</p>';
+        echo '<p>';
+        echo ap_date();
+        echo '</p>';
+        echo '<p>';
+        echo the_title();
+        echo '</p>';
     //echo get_the_content();
-    $content = explode('<hr style="width:100%;">', get_the_content());
-    echo $content[0];
-    echo ']]>';
-    ?>
+        $content = explode('<hr style="width:100%;">', get_the_content());
+        echo $content[0];
+        echo ']]>';
+        ?>
     </description>
     <pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false); ?></pubDate>
     <guid><?php echo get_permalink($post->ID); ?></guid>
   </item>
-<?php endwhile; ?>
+    <?php endwhile; ?>
 </channel>
 </rss>

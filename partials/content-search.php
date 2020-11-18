@@ -31,14 +31,14 @@
               </div>
             </div>
 
-      <?php
+                <?php
             }
         } else {
             ?>
 
-      <?php
+            <?php
         }
-      ?>
+        ?>
         <div class="grid-x grid-margin-x story-results-stack">
           <div class="large-12 medium-12 small-12 cell">
             <?php bootstrap_pagination(); ?>
@@ -46,7 +46,7 @@
         </div>
       <?php
         wp_reset_query();
-      ?>
+        ?>
 
     </div>
 

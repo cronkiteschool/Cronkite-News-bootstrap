@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Template Name: Longform hero image
  * Story template without sidebar
  */
+
 get_header('longformhero'); ?>
 
 <script src="<?php bloginfo('template_directory');?>/js/jquery.waypoints.min.js"></script>
@@ -15,28 +17,31 @@ get_header('longformhero'); ?>
                             <div class="clearfix">
 
                                     <?php if (have_posts()) : ?>
-                                        <?php while (have_posts()) : the_post(); ?><!-- BEGIN of POST-->
+                                        <?php while (have_posts()) :
+                                            the_post(); ?><!-- BEGIN of POST-->
                                             <article  id="post-<?php the_ID(); ?>" <?php post_class(); ?> style="border:none;">
 
              
 
-								<div id="top-img-holder"> 
-                                    <?php if (have_rows('top_full_image')): ?>
-                                        <?php while (have_rows('top_full_image')): the_row();
+                                <div id="top-img-holder"> 
+                                            <?php if (have_rows('top_full_image')) : ?>
+                                                <?php while (have_rows('top_full_image')) :
+                                                    the_row();
                                             // Declare variables below
-                                            $icon = get_sub_field('fimage');
-                                            $text = get_sub_field('fcaption');  // Use variables below?>
+                                                    $icon = get_sub_field('fimage');
+                                                    $text = get_sub_field('fcaption');  // Use variables below?>
                                                 <img class="img-responsive" style="width:100%;height:100%;" src="<?php echo $icon; ?>" />
-                                        <?php if ($imgheadline = get_field('headline_over_image')) {?>
+                                                    <?php if ($imgheadline = get_field('headline_over_image')) {?>
                                         <h1 class="animated fadeIn desktop-only" id="headline_over_image" style="color:<?php the_field('color_of_headline_over_image');?>;font-size:<?php the_field('headline_over_image_font_size');?>;<?php the_field('additional_headline_over_image_styling');?>"> <?php the_field('headline_over_image'); ?> </h1>
-                                        <?php } ?>
+                                                    <?php } ?>
                                                 <div class="carousel-captions"> <!-- captions -->
-                                                 <?php echo $text; ?>
+                                                    <?php echo $text; ?>
 
-                                            	</div>
-												</div>
-                                        <?php endwhile; ?>
-                                    <?php endif; wp_reset_query(); ?>
+                                                </div>
+                                                </div>
+                                                <?php endwhile; ?>
+                                            <?php endif;
+                                            wp_reset_query(); ?>
                                                 
                                               
                               
@@ -46,11 +51,11 @@ get_header('longformhero'); ?>
                                     
                                 <h6 class="story-info"><?php if ($postAuthor = get_field('post_author')) {?>
                                 <a href="<?php echo site_url(); ?>?s=<?php echo $postAuthor; ?>">
-                                 <?php echo $postAuthor; ?> |
-                                <?php } ?>
-                                <?php if ($siteTitle = get_field('site_title')) {?>
+                                    <?php echo $postAuthor; ?> |
+                                                       <?php } ?>
+                                            <?php if ($siteTitle = get_field('site_title')) {?>
                                     <a href="http://<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?></a></h6>
-                                <?php } ?>
+                                            <?php } ?>
                                 <h6 class="story-info-date"><?php echo ap_date(); ?></h6>
 
                                                 <?php the_content(); ?>
@@ -70,7 +75,7 @@ get_header('longformhero'); ?>
                             <div class="comment-form-wrapper">
                                 <h2>Leave a Comment</h2>
 
-					<?php echo do_shortcode('[fbcomments]'); ?>
+                    <?php echo do_shortcode('[fbcomments]'); ?>
 
                                 <div id="response"></div>
                             </div>

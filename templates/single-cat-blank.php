@@ -10,7 +10,7 @@ get_header('new2019'); ?>
             <div class="container-fluid inner-top-sm inner-bottom classic-blog">
                 <div class="row">
                     <div class="col-md-12">
-						<?php the_content(); ?>
+                        <?php the_content(); ?>
                     </div>
                 </div>
                 <!-- /.row -->

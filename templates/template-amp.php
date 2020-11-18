@@ -1,14 +1,14 @@
 <!doctype html>
 <html amp <?php echo AMP_HTML_Utils::build_attributes_string($this->get('html_tag_attributes')); ?>>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-	<?php do_action('amp_post_template_head', $this); ?>
-	<style amp-custom>
-		<?php $this->load_parts(array( 'style' )); ?>
-		<?php do_action('amp_post_template_css', $this); ?>
-	</style>
+    <?php do_action('amp_post_template_head', $this); ?>
+    <style amp-custom>
+        <?php $this->load_parts(array( 'style' )); ?>
+        <?php do_action('amp_post_template_css', $this); ?>
+    </style>
     <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
     <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
 </head>
@@ -38,19 +38,19 @@
     
 <article class="amp-wp-article">
 
-	<header class="amp-wp-article-header">
-		<h1 class="amp-wp-title"><?php echo wp_kses_data($this->get('post_title')); ?></h1>
-		<div class="amp-wp-meta amp-wp-byline">
+    <header class="amp-wp-article-header">
+        <h1 class="amp-wp-title"><?php echo wp_kses_data($this->get('post_title')); ?></h1>
+        <div class="amp-wp-meta amp-wp-byline">
     
             <?php the_field('post_author'); ?>
        
         </div>
         <div class="amp-wp-meta amp-wp-posted-on">
-	       <time datetime="<?php echo esc_attr(date('c', $this->get('post_publish_timestamp'))); ?>">
-		      <?php echo get_the_date(); ?>
-	       </time>
+           <time datetime="<?php echo esc_attr(date('c', $this->get('post_publish_timestamp'))); ?>">
+              <?php echo get_the_date(); ?>
+           </time>
         </div>
-	</header>             
+    </header>             
     
 <?php
 $isvid = get_field('video_file', false, false);
@@ -106,23 +106,22 @@ if ($isvid) { // if we have a video load the video instead of the carousel
     <?php echo $myembed; ?>
 
 
-<?php
+    <?php
 } else { ?>
-  
-   <?php $this->load_parts(array( 'featured-image' )); ?>
+    <?php $this->load_parts(array( 'featured-image' )); ?>
     
-  <?php } ?>
+<?php } ?>
     
 
-	<div class="amp-wp-article-content">
-		<?php echo $this->get('post_amp_content'); // amphtml content; no kses?>
+    <div class="amp-wp-article-content">
+        <?php echo $this->get('post_amp_content'); // amphtml content; no kses?>
         
         
-	</div>
+    </div>
 
-	<footer class="amp-wp-article-footer">
-		<?php $this->load_parts(apply_filters('amp_post_article_footer_meta', array( 'meta-taxonomy-custom' ))); ?>
-	</footer>
+    <footer class="amp-wp-article-footer">
+        <?php $this->load_parts(apply_filters('amp_post_article_footer_meta', array( 'meta-taxonomy-custom' ))); ?>
+    </footer>
 
 </article>
 

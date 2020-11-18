@@ -29,11 +29,12 @@ get_header(); ?>
                                     <?php //dynamic_sidebar4'Sidebar Archive');?>
                                     <div class="filter-box clearfix">
 
-                                        <?php $month = (isset($_GET['monthOption']) && !empty($_GET['monthOption'])) ? $_GET['monthOption']: ""; ?>
-                                        <?php $years = (isset($_GET['yearOption']) && !empty($_GET['yearOption'])) ? $_GET['yearOption']: ""; ?>
+                                        <?php $month = (isset($_GET['monthOption']) && !empty($_GET['monthOption'])) ? $_GET['monthOption'] : ""; ?>
+                                        <?php $years = (isset($_GET['yearOption']) && !empty($_GET['yearOption'])) ? $_GET['yearOption'] : ""; ?>
 
 
-                                        <?php  $startYear = 2014; $curYear = date('Y'); ?>
+                                        <?php  $startYear = 2014;
+                                        $curYear = date('Y'); ?>
 
                                         <form id="form-filter" method="get">
                                             <select name="monthOption">
@@ -63,19 +64,19 @@ get_header(); ?>
                                     </div>
 
                                     <?php $args = array(
-                                        'post_type'	    => 'post',
-                                        'order'		    => 'ASC',
-                                        'orderby'	    => 'date',
+                                        'post_type'     => 'post',
+                                        'order'         => 'ASC',
+                                        'orderby'       => 'date',
                                         'posts_per_page'    => -1,
                                         'monthnum' => $month,
                                         'year' => $years,
 
                                     );
                                     $the_query = new WP_Query($args);
-                                    if ($the_query->have_posts()) : ?>
-
-                                            <?php while ($the_query->have_posts()) : $the_query->the_post();
-                                            $do_not_duplicate = $post->ID; ?><!-- BEGIN of POST -->
+if ($the_query->have_posts()) : ?>
+                                            <?php while ($the_query->have_posts()) :
+                                                $the_query->the_post();
+                                                $do_not_duplicate = $post->ID; ?><!-- BEGIN of POST -->
                                             <div class="archive-list">
                                                 <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                                                 <?php global $post;
@@ -85,14 +86,14 @@ get_header(); ?>
                                                 ?>
                                                 <h5>Category: <?php echo $catPost ?></h5>
                                                 <ul>
-                                                    <li><?php wp_get_archives('cat='.$catID); ?></li>
+                                                    <li><?php wp_get_archives('cat=' . $catID); ?></li>
                                                 </ul>
                                                 </div><!-- END of .post-type-->
                                             <?php endwhile; ?><!-- END of POST -->
 
-                                    <?php else : ?>
+<?php else : ?>
                                         <h3>Sorry, no results found</h3>
-                                    <?php endif; ?>
+<?php endif; ?>
                                 </div>
                             </div>
                             <!-- END of .col-->

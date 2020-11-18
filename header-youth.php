@@ -1,11 +1,13 @@
 <?php
+
 /**
  * Header
  */
+
 ?>
 <!DOCTYPE html>
 <!--[if IE]>
-	<script src="<?php bloginfo('template_url'); ?>/js/plugins/html5shiv.js"></script>
+    <script src="<?php bloginfo('template_url'); ?>/js/plugins/html5shiv.js"></script>
 <![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9 ie8" lang="en" ><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
@@ -17,16 +19,16 @@
 
 <head>
 
-	<!-- Chartbeat Analytics  -->
-	<script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+    <!-- Chartbeat Analytics  -->
+    <script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
 
    <script src="<?php bloginfo('template_directory');?>/js/jquery-3.2.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#216CB7">
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#216CB7">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Add Favicon -->
     <link type="image/png" href="<?php the_field('favicon', 'options'); ?>" rel="icon">
@@ -44,7 +46,7 @@
     
     <!-- Google Analytics Tracking Code  -->
 
-		<?php
+        <?php
     // get the category for GA
         $post = get_post();
         $categories = get_the_category($post -> ID);
@@ -67,7 +69,7 @@
     
     
 
-	<script>
+    <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -75,11 +77,11 @@
 
            ga('create', 'UA-3145657-18', 'auto');
            ga('send', 'pageview');
-					 <?php
-                     if ($output) {
-                         echo $output;
-                     }
-                     ?>
+                     <?php
+                        if ($output) {
+                            echo $output;
+                        }
+                        ?>
 
        </script>
 
@@ -94,11 +96,11 @@
                a.appendChild(r);
            })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
        </script>
-	<!-- FB instant articles -->
-	<meta property="fb:pages" content="305166330794" />
+    <!-- FB instant articles -->
+    <meta property="fb:pages" content="305166330794" />
 
     <?php wp_head(); ?>
-		<script src="<?php bloginfo('template_directory');?>/js/plugins/jquery.scrolldepth.js"></script>
+        <script src="<?php bloginfo('template_directory');?>/js/plugins/jquery.scrolldepth.js"></script>
            
     <script>
       $(document).ready(function() { 
@@ -107,12 +109,12 @@
     </script>
 
     
-	 <script>
-	 jQuery(function() {
-		 jQuery.scrollDepth({
-		  minHeight: 1000,
-		  userTiming: false
-		});
+     <script>
+     jQuery(function() {
+         jQuery.scrollDepth({
+          minHeight: 1000,
+          userTiming: false
+        });
 });
 
     </script>

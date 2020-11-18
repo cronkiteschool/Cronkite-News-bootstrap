@@ -48,19 +48,19 @@ get_header('new2019'); ?>
                     <div class="asset-caption">The Metropolitan Water District of Southern California, which has already signed a drought contingency plan, started to withdraw its allocation of water from Lake Mead in January, and is storing the water in Southern California reservoirs. Hoover Dam, as seen from the Mike O’Callaghan-Pat Tillman Memorial Bridge, forms Lake Mead, the largest reservoir in the nation. (Photo by Jordan Evans/Cronkite News)</div>
                   </div>
 
-                  <?php the_content(); ?>
+                    <?php the_content(); ?>
 
                   <!-- byline and date -->
                   <div class="byline">
                     <span class="author_name">&mdash; <a href="#">Dylan Simard</a>, Cronkite News</span>
                   </div>
                 </article>
-          <?php
+                    <?php
                 }
             }
             /* Restore original Post Data */
             wp_reset_postdata();
-          ?>
+            ?>
 
         </div>
 

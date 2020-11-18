@@ -1,7 +1,9 @@
 <?php
+
 /**
  * Template Name: MLK
  */
+
 get_header('mlk'); ?>
 
   <div class="full-screen-intro">

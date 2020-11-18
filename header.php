@@ -1,11 +1,13 @@
 <?php
+
 /**
  * Header
  */
+
 ?>
 <!DOCTYPE html>
 <!--[if IE]>
-	<script src="<?php bloginfo('template_url'); ?>/js/plugins/html5shiv.js"></script>
+    <script src="<?php bloginfo('template_url'); ?>/js/plugins/html5shiv.js"></script>
 <![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9 ie8" lang="en" ><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
@@ -17,17 +19,17 @@
 
 <head>
 
-	<!-- Chartbeat Analytics  -->
-	<script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
+    <!-- Chartbeat Analytics  -->
+    <script type='text/javascript'>var _sf_startpt=(new Date()).getTime()</script>
 <!--     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 
     <script src="<?php bloginfo('template_directory');?>/js/jquery-3.2.1.min.js"></script>
 
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#216CB7">
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#216CB7">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Add Favicon -->
     <link type="image/png" href="<?php the_field('favicon', 'options'); ?>" rel="icon">
@@ -49,24 +51,24 @@
     <link href="//fonts.googleapis.com/css?family=Lato:400,900,300,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Averia+Serif+Libre:700|Taviraj:400,700" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Libre+Franklin:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 
 
     <!--    Font Awesome-->
     <script src="https://use.fontawesome.com/9e4502c156.js"></script>
 
-		<?php if (is_page('test-page')) { ?>
-			<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-		<?php } ?>
+        <?php if (is_page('test-page')) { ?>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <?php } ?>
 
 
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
     <!-- Google Analytics Tracking Code  -->
 
-		<?php
+        <?php
     // get the category for GA
         $post = get_post();
         $categories = get_the_category($post -> ID);
@@ -97,7 +99,7 @@
 
         ?>
 
-	<script>
+    <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -147,19 +149,19 @@
 
     <meta property="fb:app_id" content="511732915827177" />
 
-	<!-- FB instant articles -->
-	<meta property="fb:pages" content="305166330794" />
+    <!-- FB instant articles -->
+    <meta property="fb:pages" content="305166330794" />
 
     <?php wp_head(); ?>
-<!-- 		<script src="<?php bloginfo('template_directory');?>/js/plugins/jquery.scrolldepth.js"></script> -->
-	 <script>
-	 jQuery(function() {
-		 jQuery.scrollDepth({
-		  minHeight: 1000,
-		  userTiming: false
-		});
+<!--        <script src="<?php bloginfo('template_directory');?>/js/plugins/jquery.scrolldepth.js"></script> -->
+     <script>
+     jQuery(function() {
+         jQuery.scrollDepth({
+          minHeight: 1000,
+          userTiming: false
+        });
 });
-	 </script>
+     </script>
 
 
 
@@ -184,8 +186,9 @@
 <!--
                     <ul class="social pull-right">
 
-                    <?php if (have_rows('social_box', 'options')): ?>
-                        <?php while (have_rows('social_box', 'options')): the_row();
+                    <?php if (have_rows('social_box', 'options')) : ?>
+                        <?php while (have_rows('social_box', 'options')) :
+                            the_row();
                             // Declare variables below
                             $icon = get_sub_field('social_icon', 'options');
                             $link = get_sub_field('social_link', 'options');
@@ -194,7 +197,8 @@
                                 <a target="_blank" href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" /></a>
                             </li>
                         <?php endwhile; ?>
-                    <?php endif; wp_reset_query(); ?>
+                    <?php endif;
+                    wp_reset_query(); ?>
 
                     </ul>
 -->

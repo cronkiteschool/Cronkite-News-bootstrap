@@ -1,4 +1,5 @@
 <?php
+
 /**
 * Template Name: Cronkite News Feed
 * Date: Sunday, Nov. 8th, 2020
@@ -15,7 +16,7 @@ $description = "Cronkite News is the news division of Arizona PBS, the world's l
 $lang = 'en-us';
 $email = 'cronkitenews@asu.edu';
 $author = 'Cronkite News';
-$copyright = '&copyright; '.date('Y').' Cronkite News';
+$copyright = '&copyright; ' . date('Y') . ' Cronkite News';
 
 
 
@@ -45,7 +46,7 @@ $xmlWriter->startElement('channel');
   $xmlWriter->writeElement('language', $lang);
   $xmlWriter->writeElement('copyright', $copyright);
   $xmlWriter->writeElement('description', $description);
-  $xmlWriter->writeElement('managingEditor', $email.' ('.$author.')');
+  $xmlWriter->writeElement('managingEditor', $email . ' (' . $author . ')');
   $xmlWriter->writeElement('pubDate', mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false));
   $xmlWriter->writeElement('lastBuildDate', mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false));
   $xmlWriter->writeElement('sy:updatePeriod', apply_filters('rss_update_period', 'hourly'));
@@ -53,7 +54,7 @@ $xmlWriter->startElement('channel');
 
     // query
     $args = array(
-                  'post_type'	    => 'post',
+                  'post_type'       => 'post',
                   'posts_per_page'    => $postCount
               );
     $loop = new WP_Query($args);
@@ -117,9 +118,9 @@ $xmlWriter->startElement('channel');
 
                                 if ($sepCounter != $cnStaffCount) {
                                     if ($sepCounter == ($cnStaffCount - 1)) {
-                                        $authorName .= $andSeparator.' ';
+                                        $authorName .= $andSeparator . ' ';
                                     } else {
-                                        $authorName .= $commaSeparator.' ';
+                                        $authorName .= $commaSeparator . ' ';
                                     }
                                 }
                             }
@@ -136,9 +137,9 @@ $xmlWriter->startElement('channel');
 
                         if ($sepCounter != $cnStaffCount) {
                             if ($sepCounter == ($cnStaffCount - 1)) {
-                                $authorName .= $andSeparator.' ';
+                                $authorName .= $andSeparator . ' ';
                             } else {
-                                $authorName .= $commaSeparator.' ';
+                                $authorName .= $commaSeparator . ' ';
                             }
                         }
                     }
@@ -149,8 +150,8 @@ $xmlWriter->startElement('channel');
 
         $originalDate = $val['updateDate'];
         $pubDate = date("D, d M Y", strtotime($originalDate));
-        $pubDate = $pubDate .' 0:15:00 +0000';
-        $finalContent = '<p>'.$authorName.'</p><p>'.$apDateStory.'</p>'.$content.'<p>For more stories from Cronkite News, visit <a href="https://cronkitenews.azpbs.org/?utm_source=referral&utm_medium=referral&utm_campaign=client" target="_blank">cronkitenews.azpbs.org.</a></p>';
+        $pubDate = $pubDate . ' 0:15:00 +0000';
+        $finalContent = '<p>' . $authorName . '</p><p>' . $apDateStory . '</p>' . $content . '<p>For more stories from Cronkite News, visit <a href="https://cronkitenews.azpbs.org/?utm_source=referral&utm_medium=referral&utm_campaign=client" target="_blank">cronkitenews.azpbs.org.</a></p>';
 
         $xmlWriter->startElement('item');
         $xmlWriter->writeElement('title', $clientTitle);
@@ -168,7 +169,7 @@ $xmlWriter->startElement('channel');
         $xmlWriter->endElement();
     }
 
-   $xmlWriter->endElement();
-$xmlWriter->endElement();
-$xmlWriter->endDocument();
-$xmlWriter->flush();
+    $xmlWriter->endElement();
+    $xmlWriter->endElement();
+    $xmlWriter->endDocument();
+    $xmlWriter->flush();

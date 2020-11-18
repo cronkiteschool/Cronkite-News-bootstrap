@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Single
  *
  * Loop container for single post content
  */
+
 get_header(); ?>
 <main>
     <section id="blog-post" class="light-bg">
@@ -14,8 +16,9 @@ get_header(); ?>
                         <div class="post format-single clearfix">
 
                             <div id="owl-work" class="owl-carousel owl-inner-pagination owl-inner-nav post-media">
-                                <?php if (have_rows('slider_images')): ?>
-                                    <?php while (have_rows('slider_images')): the_row();
+                                <?php if (have_rows('slider_images')) : ?>
+                                    <?php while (have_rows('slider_images')) :
+                                        the_row();
                                         // Declare variables below
                                         $icon = get_sub_field('images');
                                         $text = get_sub_field('author_text');  // Use variables below?>
@@ -39,12 +42,14 @@ get_header(); ?>
 
                                         </div>
                                     <?php endwhile; ?>
-                                <?php endif; wp_reset_query(); ?>
+                                <?php endif;
+                                wp_reset_query(); ?>
                             </div>
 
                             <div class="post-content post-content-single clearfix">
                                 <?php if (have_posts()) : ?>
-                                    <?php while (have_posts()) : the_post(); ?><!-- BEGIN of POST-->
+                                    <?php while (have_posts()) :
+                                        the_post(); ?><!-- BEGIN of POST-->
                                         <article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                                             <h2><?php the_title(); ?></h2>
                                             <h6 class="story-info">

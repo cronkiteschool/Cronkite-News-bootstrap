@@ -17,12 +17,14 @@ get_header('new'); ?>
                         <div class="sidemeta">
                             <div class="post format-gallery">
                                 <div class="content-blog page-nosidebar">
-                                    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                                    <?php if (have_posts()) :
+                                        while (have_posts()) :
+                                            the_post(); ?>
 
-                                    <?php //the_content();?>
+                                            <?php //the_content();?>
 
-                                    <?php endwhile; else: ?>
-
+                                        <?php endwhile;
+                                    else : ?>
                                     <?php endif; ?>
 
                                     <?php get_template_part('partials/content', 'misc'); ?>

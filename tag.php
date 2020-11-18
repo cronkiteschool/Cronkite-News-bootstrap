@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Template Name : Tags
  * Standard loop for Any tag
  */
+
 get_header(); ?>
 
 <section id="hero-inner" class="sub-header">
@@ -38,16 +40,15 @@ get_header(); ?>
                                 <?php
                                 $paged = get_query_var('paged');
                                 if ($paged < 2) { ?>
-                                <?php if (have_posts()) : ?>
-                               
-                                            
+                                    <?php if (have_posts()) : ?>
                                                 <div class="post-image">
                                                     <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
                                                 </div>
                                         
                                       
 
-                                <?php endif; wp_reset_query(); ?>
+                                    <?php endif;
+                                    wp_reset_query(); ?>
 
                                 <?php  } ?>
                                 
@@ -57,7 +58,8 @@ get_header(); ?>
             
 
                             <?php if (have_posts()) : ?>
-                                <?php while (have_posts()) : the_post(); ?><!-- BEGIN of Post -->
+                                <?php while (have_posts()) :
+                                    the_post(); ?><!-- BEGIN of Post -->
                                     <article class="post-content" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                                         <h2>
                                             <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(sprintf(__('Permalink to %s'), the_title_attribute('echo=0'))); ?>" rel="bookmark">

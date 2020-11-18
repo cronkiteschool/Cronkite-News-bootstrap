@@ -31,16 +31,16 @@ get_header(); ?>
                                         <?php global $post;?>
         
                                         <?php $arg = array(
-                                            'post_type'	    => 'post',
-                                            'order'		    => 'DESC',
-                                            'orderby'	    => 'date',
+                                            'post_type'     => 'post',
+                                            'order'         => 'DESC',
+                                            'orderby'       => 'date',
                                             'posts_per_page'    => 1,
                                             'category_name' =>  'cronkite-sports-on-fox'
                                         );
                                         $the_query = new WP_Query($arg);
-                                        if ($the_query->have_posts()) : ?>
-        
-                                                <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+if ($the_query->have_posts()) : ?>
+                                                <?php while ($the_query->have_posts()) :
+                                                    $the_query->the_post(); ?>
                                                            <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'>
                                                            <?php the_field('video_file');?>
                                                      
@@ -51,17 +51,19 @@ get_header(); ?>
                                                            <?php the_excerpt(); ?>
                                                 <?php endwhile;?>
         
-                                        <?php endif; wp_reset_query(); ?>
+<?php endif;
+wp_reset_query(); ?>
                                     </div>
                                 </div>
                                 
                                 <div class="post-content post-content-news">
-                                    <?php query_posts('post_type=post&category_name=cronkite-sports-on-fox&post_status=publish&posts_per_page=8&paged='. get_query_var('paged')); ?>
+                                    <?php query_posts('post_type=post&category_name=cronkite-sports-on-fox&post_status=publish&posts_per_page=8&paged=' . get_query_var('paged')); ?>
 
                                     <?php if (have_posts()) : ?>
                                         <?php $number = 0; ?>
 
-                                        <?php while (have_posts()) : the_post(); ?>
+                                        <?php while (have_posts()) :
+                                            the_post(); ?>
                                             <div class="row news-box">
                                                 <div class="col-sm-3 inner-right-xs-archive text-left">
                                                     <figure>
@@ -86,7 +88,8 @@ get_header(); ?>
                                         <?php endwhile; ?><!-- END of Post -->
                                         <div class="blog-pagination"> <?php bootstrap_pagination(); ?></div>
 
-                                    <?php endif; wp_reset_query(); ?>
+                                    <?php endif;
+                                    wp_reset_query(); ?>
 
                                     <div class="row">
                                         <div class="col-sm-12 inner-right-xs-archive text-left">
@@ -143,18 +146,20 @@ get_header(); ?>
 
 
     <div class="remodal" data-remodal-id="modal-members" >
-        <?php query_posts('post_type=post&category_name=cronkite-sports-on-fox&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
+        <?php query_posts('post_type=post&category_name=cronkite-sports-on-fox&post_status=publish&posts_per_page=-1&paged=' . get_query_var('paged')); ?>
 
                 <?php if (have_posts()) : ?>
                     <?php $number = 0; ?>
 
-                    <?php while (have_posts()) : the_post(); ?>
+                    <?php while (have_posts()) :
+                        the_post(); ?>
                         <div class="popup-box" member-number="<?= $number; ?>">
                             <?php the_field('video_file');?>
                         </div>
-                     <?php $number++; ?>
-                <?php endwhile; ?><!-- END of Post -->
-                <?php endif; wp_reset_query(); ?>
+                        <?php $number++; ?>
+                    <?php endwhile; ?><!-- END of Post -->
+                <?php endif;
+                wp_reset_query(); ?>
     </div>
 
 <?php get_footer(); ?>

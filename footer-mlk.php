@@ -1,7 +1,9 @@
 <?php
+
 /**
  * Footer
  */
+
 ?>
 
     <!-- scripts -->
@@ -50,10 +52,10 @@
 
     <!-- scripts -->
     <div class="hidden">
-    	<script type="text/javascript">
+        <script type="text/javascript">
         function preloader() {
-        	if (document.images) {
-        		var img3 = new Image();
+            if (document.images) {
+                var img3 = new Image();
             var img4 = new Image();
             var img5 = new Image();
             var img6 = new Image();
@@ -61,31 +63,31 @@
             var img8 = new Image();
             var img9 = new Image();
 
-        		img3.src = "https://cronkitenews.azpbs.org/wp-content/uploads/2020/07/mlk-3.jpg";
+                img3.src = "https://cronkitenews.azpbs.org/wp-content/uploads/2020/07/mlk-3.jpg";
             img4.src = "https://cronkitenews.azpbs.org/wp-content/uploads/2020/07/mlk-4.jpg";
             img5.src = "https://cronkitenews.azpbs.org/wp-content/uploads/2020/07/mlk-5.jpg";
             img6.src = "https://cronkitenews.azpbs.org/wp-content/uploads/2020/07/mlk-6.jpg";
             img7.src = "https://cronkitenews.azpbs.org/wp-content/uploads/2020/07/mlk-7.jpg";
             img8.src = "https://cronkitenews.azpbs.org/wp-content/uploads/2020/07/mlk-8.jpg";
             img9.src = "https://cronkitenews.azpbs.org/wp-content/uploads/2020/07/mlk-10.jpg";
-        	}
+            }
         }
 
         function addLoadEvent(func) {
-        	var oldonload = window.onload;
-        	if (typeof window.onload != 'function') {
-        		window.onload = func;
-        	} else {
-        		window.onload = function() {
-        			if (oldonload) {
-        				oldonload();
-        			}
-        			func();
-        		}
-        	}
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function() {
+                    if (oldonload) {
+                        oldonload();
+                    }
+                    func();
+                }
+            }
         }
         addLoadEvent(preloader);
-    	</script>
+        </script>
     </div>
 
     <script src="<?php bloginfo('template_directory');?>/assets/js/mlk/js/vendor/jquery.js"></script>

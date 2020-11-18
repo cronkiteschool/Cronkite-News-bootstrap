@@ -1,7 +1,9 @@
 <?php
+
 /**
  * Footer
  */
+
 ?>
 
   <!-- footer -->
@@ -283,16 +285,16 @@
       });
 
       jQuery('.hamburger').click(function() {
-  			if (jQuery('.hamburger.is-active').length) {
-  				jQuery('#sub_nav').addClass('open').removeClass('close');
-  				jQuery('.sub_nav').removeClass('slideOutUp').addClass('slideInDown');
-  				jQuery('.sub_nav').css("display", "block");
-  			} else {
-  				jQuery('#sub_nav').addClass('close').removeClass('open');
-  				jQuery('.sub_nav').removeClass('slideInDown').addClass('slideOutUp');
+            if (jQuery('.hamburger.is-active').length) {
+                jQuery('#sub_nav').addClass('open').removeClass('close');
+                jQuery('.sub_nav').removeClass('slideOutUp').addClass('slideInDown');
+                jQuery('.sub_nav').css("display", "block");
+            } else {
+                jQuery('#sub_nav').addClass('close').removeClass('open');
+                jQuery('.sub_nav').removeClass('slideInDown').addClass('slideOutUp');
           jQuery('.sub_nav').css("display", "none");
-  			}
-  		});
+            }
+        });
 
       $('.dropdown-el').click(function(e) {
         e.preventDefault();

@@ -1,9 +1,11 @@
 <?php
+
 /**
  * Archive
  *
  * Standard archive page
  */
+
 get_header(); ?>
 
     <section id="hero-inner" class="sub-header">
@@ -34,12 +36,13 @@ get_header(); ?>
                                         $catID = get_cat_ID($catPost)
                                     ?>
 
-                                    <?php query_posts('post_type=post&category_name='.$catPost.'&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
+                                    <?php query_posts('post_type=post&category_name=' . $catPost . '&post_status=publish&posts_per_page=-1&paged=' . get_query_var('paged')); ?>
 
                                     <?php if (have_posts()) : ?>
                                         <?php $number = 0; ?>
 
-                                        <?php while (have_posts()) : the_post(); ?>
+                                        <?php while (have_posts()) :
+                                            the_post(); ?>
                                             <div class="row news-box">
                                                 <div class="col-sm-3 inner-right-xs-archive text-left">
                                                     <figure>  <?php the_post_thumbnail('full', array('class' => 'img-responsive')); ?></figure>
@@ -50,17 +53,17 @@ get_header(); ?>
                                                     <!--<a href="#modal-members" class="watch" member-number="<?= $number; ?>" >
                                                         <h2><span class="post-title"><?php the_title(); ?></span></h2>
                                                     </a> -->
-													<a href="<?php the_permalink(); ?>" class="watch">
+                                                    <a href="<?php the_permalink(); ?>" class="watch">
                                                         <h2><span class="post-title"><?php the_title(); ?></span></h2>
                                                     </a> 
-													
+                                                    
                                                     <div class="show-link clearfix">
                                                         <?php the_excerpt(); ?>
                                                        
                                                        
-                                                       <?php if (have_rows('video_file')): ?>
+                                                       <?php if (have_rows('video_file')) : ?>
                                                            <a href="#modal-members" member-number="<?= $number; ?>" class="watch"><i class="icon-videocam"></i></a>
-                                                        <?php endif; ?>
+                                                       <?php endif; ?>
                                                     </div>
                                                 </div>
 
@@ -68,7 +71,8 @@ get_header(); ?>
                                             <?php $number++; ?>
                                         <?php endwhile; ?><!-- END of Post -->
                                         <div class="blog-pagination"> <?php bootstrap_pagination(); ?></div>
-                                    <?php endif; wp_reset_query(); ?>
+                                    <?php endif;
+                                    wp_reset_query(); ?>
 
                                 </div>
                             </div>
@@ -106,22 +110,24 @@ get_header(); ?>
     </main>
 
 
-      <?php if (have_rows('video_file')): ?>
+      <?php if (have_rows('video_file')) : ?>
         <div class="remodal" data-remodal-id="modal-members" >
-            <?php query_posts('post_type=post&category_name='.$catPost.'&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
+            <?php query_posts('post_type=post&category_name=' . $catPost . '&post_status=publish&posts_per_page=-1&paged=' . get_query_var('paged')); ?>
     
             <?php if (have_posts()) : ?>
                 <?php $number = 0; ?>
     
-                <?php while (have_posts()) : the_post(); ?>
+                <?php while (have_posts()) :
+                    the_post(); ?>
                     <div class="popup-box" member-number="<?= $number; ?>">
                         <?php the_field('video_file');?>
                     </div>
                     <?php $number++; ?>
                 <?php endwhile; ?><!-- END of Post -->
-            <?php endif; wp_reset_query(); ?>
+            <?php endif;
+            wp_reset_query(); ?>
         </div>
-    <?php endif; ?>
+      <?php endif; ?>
 
    <!-- Remove Facebook Comments -->
 

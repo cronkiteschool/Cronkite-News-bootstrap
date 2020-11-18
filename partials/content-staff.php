@@ -17,7 +17,7 @@
             echo '<div class="author_bio">';
 
             $args = array(
-                 'name'           => '"'.$search_staff_name.'"',
+                 'name'           => '"' . $search_staff_name . '"',
                  'post_type'      => 'students',
                  'post_status'    => 'publish',
                  'posts_per_page' => 1
@@ -33,22 +33,22 @@
 
                     if (get_field('student_photo') != '') {
                         echo '<div class="author_photo">';
-                        echo '<img src="'.get_field('student_photo').'" class="cn-staff-bio-circular-large" alt="'.get_the_title($staffID).'" />';
+                        echo '<img src="' . get_field('student_photo') . '" class="cn-staff-bio-circular-large" alt="' . get_the_title($staffID) . '" />';
                         echo '</div>';
                     }
 
                     echo '<div class="bio">';
 
                     if (get_the_title($val) != '') {
-                        echo '<p class="name-lg">'.get_the_title($val).'</p>';
+                        echo '<p class="name-lg">' . get_the_title($val) . '</p>';
                     } else {
-                        echo '<p class="name-lg">'.'No author name found.'.'</p>';
+                        echo '<p class="name-lg">' . 'No author name found.' . '</p>';
                     }
 
                     if (get_field('student_title') != '') {
-                        echo '<span class="team-title-lg">'.ucwords(str_replace('-', ' ', get_field('student_title'))).'</span>';
+                        echo '<span class="team-title-lg">' . ucwords(str_replace('-', ' ', get_field('student_title'))) . '</span>';
                     } elseif (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
-                        echo '<span class="team-title-lg">'.ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau')))).'</span>';
+                        echo '<span class="team-title-lg">' . ucwords(str_replace('-', ' ', get_field('team'))) . ' ' . ucwords(str_replace('-', ' ', get_field('role'))) . ', ' . str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau')))) . '</span>';
                     }
 
                     if (get_field('biography') != '') {
@@ -64,11 +64,11 @@
                                 if (get_sub_field('social_media_type') == 'twitter') {
                                     ?>
                        <a href="https://www.twitter.com/<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
-               <?php
+                                    <?php
                                 } elseif (get_sub_field('social_media_type') == 'email') { ?>
                        <a href="mailto:<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fas fa-envelope"></i></a>
-             <?php
-                     }
+                                    <?php
+                                }
                             }
                         }
                         echo '</div>';
@@ -78,7 +78,7 @@
             }
             echo '</div>';
             wp_reset_query();
-          ?>
+            ?>
         </div>
 
         <div id="latest-stories" class="large-8 medium-12 small-12 cell story-content">
@@ -95,22 +95,22 @@
               'post_status'    => 'publish',
               'suppress_filters' => false,
               'posts_per_page' => -1,
-              'meta_query'	=> array(
+              'meta_query'  => array(
                 'relation' => 'OR',
                     array(
-                        'key'		=> 'byline_info_cn_staff',
-                        'compare'	=> 'LIKE',
-                        'value'		=> '"'.$staffProID[0]->ID.'"'
+                        'key'       => 'byline_info_cn_staff',
+                        'compare'   => 'LIKE',
+                        'value'     => '"' . $staffProID[0]->ID . '"'
                     ),
                 array(
-                  'key'		=> 'byline_info_cn_photographers',
-                  'compare'	=> 'LIKE',
-                  'value'		=> '"'.$staffProID[0]->ID.'"'
+                  'key'     => 'byline_info_cn_photographers',
+                  'compare' => 'LIKE',
+                  'value'       => '"' . $staffProID[0]->ID . '"'
                 ),
                 array(
-                  'key'		=> 'byline_info_cn_broadcast_reporters',
-                  'compare'	=> 'LIKE',
-                  'value'		=> '"'.$staffProID[0]->ID.'"'
+                  'key'     => 'byline_info_cn_broadcast_reporters',
+                  'compare' => 'LIKE',
+                  'value'       => '"' . $staffProID[0]->ID . '"'
                 )
                 )
              );
@@ -135,7 +135,7 @@
                     <hr />
                   </div>
                 </div>
-          <?php
+                    <?php
                 }
             } else {
                 ?>
@@ -144,10 +144,10 @@
                   <p>No stories found for this reporter.</p>
                 </div>
               </div>
-          <?php
+                <?php
             }
             wp_reset_query();
-          ?>
+            ?>
 
         </div>
 

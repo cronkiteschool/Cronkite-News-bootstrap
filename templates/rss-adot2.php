@@ -11,18 +11,19 @@ echo '<?xml version="1.0"?><rss version="2.0">';
 
 <?php
     $args = array(
-                'post_type'	    => 'slider',
-                'order'		    => 'ASC',
-                'orderby'	    => 'menu_order',
+                'post_type'     => 'slider',
+                'order'         => 'ASC',
+                'orderby'       => 'menu_order',
                 'posts_per_page'    => -1
             );
     $loop = new WP_Query($args);
-    while ($loop->have_posts()) : $loop->the_post();
+    while ($loop->have_posts()) :
+        $loop->the_post();
         //Extract slider html and find the link
         $content = get_the_content();
         
         //echo $content;
-        $DOM = new DOMDocument;
+        $DOM = new DOMDocument();
         $DOM->loadHTML($content);
         $anchors = $DOM->getElementsByTagName('a');
         $postlink =  $anchors->item(0)->getAttribute('href');
@@ -51,43 +52,46 @@ echo '<?xml version="1.0"?><rss version="2.0">';
             echo '<br />]]></description>';
             echo '</item>';
         }
-        endwhile;
+    endwhile;
         wp_reset_query();
                 
         // Query home page for the custom fields we need
-        if (have_rows('latest_news_box', 24)) : while (have_rows('latest_news_box', 24)) : the_row();
+    if (have_rows('latest_news_box', 24)) :
+        while (have_rows('latest_news_box', 24)) :
+            the_row();
             $posts = get_sub_field('post_box');
-            if ($posts): foreach ($posts as $post): setup_postdata($post);
-                //echo 'loop! ';
-                //echo '<title>' . the_title() . '</title>';
-                $link = 'blank';
-                if (get_field("url_link")) {
-                    $link = get_field('url_link');
-                } else {
-                    $link = get_the_permalink();
-                }
-                $title = get_the_title();
+            if ($posts) :
+                foreach ($posts as $post) :
+                    setup_postdata($post);
+                                //echo 'loop! ';
+                                //echo '<title>' . the_title() . '</title>';
+                    $link = 'blank';
+                    if (get_field("url_link")) {
+                        $link = get_field('url_link');
+                    } else {
+                        $link = get_the_permalink();
+                    }
+                    $title = get_the_title();
                 
-                echo '<item>';
-                echo '<guid>' . $link . '</guid>';
-                echo '<title>' . $title . '</title>';
-                ?>
-				<pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></pubDate>
-				 <?php
-                echo '<description><![CDATA[';
+                    echo '<item>';
+                    echo '<guid>' . $link . '</guid>';
+                    echo '<title>' . $title . '</title>';
+                    ?>
+                <pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></pubDate>
+                    <?php
+                    echo '<description><![CDATA[';
                 
-                echo '<h3><strong><a href="' . $link . '">' . $title . '</a></strong></h3>';
+                    echo '<h3><strong><a href="' . $link . '">' . $title . '</a></strong></h3>';
                 
-                echo ']]></description>';
-                echo '</item>
+                    echo ']]></description>';
+                    echo '</item>
 				';
-            
-            endforeach;
+                endforeach;
             endif;
         endwhile;
-        endif;
+    endif;
         wp_reset_query();
-        ?>
+    ?>
 <?php /* Extra item for the teaser */ ?>
   <item>
     <title>For more stories, go to cronkitenews.azpbs.org and follow us @cronkitenews</title>

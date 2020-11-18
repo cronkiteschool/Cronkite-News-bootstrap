@@ -7,4 +7,4 @@
 
    <?php get_template_part('partials/content', 'search'); ?>
 
- <?php get_footer('new2020'); ?>
+ <?php get_footer('new2020');
