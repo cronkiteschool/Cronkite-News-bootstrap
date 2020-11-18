@@ -30,8 +30,8 @@
     </div>
     <div class="large-12 cell">
       <div class="youth-suicide-stories">
-        <?php if( have_rows('stories') ): ?>
-            <?php while( have_rows('stories') ): the_row(); ?>
+        <?php if (have_rows('stories')): ?>
+            <?php while (have_rows('stories')): the_row(); ?>
               <div>
                 <a href="<?php echo get_sub_field('story_link'); ?>">
                   <img src="<?php echo get_sub_field('photo'); ?>" />
@@ -54,8 +54,8 @@
     </div>
     <div class="large-12 cell">
       <div class="youth-suicide-stories">
-        <?php if( have_rows('videos') ): ?>
-            <?php while( have_rows('videos') ): the_row(); ?>
+        <?php if (have_rows('videos')): ?>
+            <?php while (have_rows('videos')): the_row(); ?>
               <div>
                 <a href="<?php echo get_sub_field('video_link'); ?>">
                   <img src="<?php echo get_sub_field('photo'); ?>" />

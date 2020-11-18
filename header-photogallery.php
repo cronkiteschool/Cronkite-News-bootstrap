@@ -12,9 +12,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Add Favicon -->
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="icon">
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="shortcut icon">
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>"  rel="apple-touch-icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>" rel="icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>" rel="shortcut icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>"  rel="apple-touch-icon">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3145657-18"></script>
@@ -22,7 +22,7 @@
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
-			<?php //echo $output ?>
+			<?php //echo $output?>
 			gtag('config', 'UA-3145657-18');
 		</script>
 

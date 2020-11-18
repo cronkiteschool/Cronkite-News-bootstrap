@@ -8,26 +8,28 @@
 
       <h1 class="single-story-hdr"><?php the_title(); ?></h1>
       <?php if (have_posts()) { ?>
-          <?php while (have_posts()) { the_post(); ?>
+          <?php while (have_posts()) {
+    the_post(); ?>
               <?php the_content(); ?>
-          <?php } ?>
+          <?php
+} ?>
       <?php } ?>
 
 
 
 <!-- Cronkite News location -->
 <h2 class="cn_sub_head-2">Locations</h2>
-<?php if( have_rows('cn_locations') ) { ?>
+<?php if (have_rows('cn_locations')) { ?>
     <ul class="cn-locations">
     <?php
-      while ( have_rows('cn_locations') ) {
-        the_row();
-        echo '<li><img src="'.get_sub_field('cn_location_photo').'" alt="'.get_sub_field('cn_location_name').'" />';
-        echo '<h4 class="staff-title">'.get_sub_field('cn_location_name').'</h4>';
-        echo '<span class="team-title">'.get_sub_field('cn_location_address').'</span>';
-        echo '<span class="team-title">'.get_sub_field('cn_location_phone').'</span>';
-        echo '<span class="team-title"><a href="mailto:'.get_sub_field('cn_location_email').'" target="_blank">'.get_sub_field('cn_location_email').'</a></span>';
-        echo '</li>';
+      while (have_rows('cn_locations')) {
+          the_row();
+          echo '<li><img src="'.get_sub_field('cn_location_photo').'" alt="'.get_sub_field('cn_location_name').'" />';
+          echo '<h4 class="staff-title">'.get_sub_field('cn_location_name').'</h4>';
+          echo '<span class="team-title">'.get_sub_field('cn_location_address').'</span>';
+          echo '<span class="team-title">'.get_sub_field('cn_location_phone').'</span>';
+          echo '<span class="team-title"><a href="mailto:'.get_sub_field('cn_location_email').'" target="_blank">'.get_sub_field('cn_location_email').'</a></span>';
+          echo '</li>';
       }
     ?>
     </ul>
@@ -43,71 +45,68 @@
                 'post__not_in' => array(122183),
                 'posts_per_page' => '-1',
                 'meta_key'    => 'lastname',
-              	'orderby'			=> 'lastname',
-              	'order'				=> 'ASC'
+                  'orderby'			=> 'lastname',
+                  'order'				=> 'ASC'
                );
 
-  $cnstaff = new WP_Query( $args );
-  if( $cnstaff->have_posts() ) {
-  ?>
+  $cnstaff = new WP_Query($args);
+  if ($cnstaff->have_posts()) {
+      ?>
     <ul class="cn-staff-list">
       <?php
-        while( $cnstaff->have_posts() ) {
-          $cnstaff->the_post();
-          ?>
+        while ($cnstaff->have_posts()) {
+            $cnstaff->the_post(); ?>
           <li>
             <?php
               $middlename = '';
-              if (str_word_count(get_the_title()) == 2) {
+            if (str_word_count(get_the_title()) == 2) {
                 list($firstname, $lastname) = explode(' ', get_the_title());
-              } else if (str_word_count(get_the_title())  > 2) {
+            } elseif (str_word_count(get_the_title())  > 2) {
                 list($firstname, $middlename, $lastname) = explode(' ', get_the_title());
-              }
+            }
 
-              if (get_field('cn_staff_photo') != '') {
+            if (get_field('cn_staff_photo') != '') {
                 echo '<img src="'.get_field('cn_staff_photo').'" class="cn-staff-circular" alt="'.get_the_title().'" title="'.get_the_title().'" />';
-              } else {
+            } else {
                 echo '<span class="cn-staff-circular empty"> </span>';
-              }
+            }
 
 
-              if (get_the_title() != '') {
+            if (get_the_title() != '') {
                 echo '<h4 class="staff-title">'.get_the_title().'</h4>';
-              }
-              if (get_field('cn_staff_title') != '') {
+            }
+            if (get_field('cn_staff_title') != '') {
                 echo '<span class="team-title">'.get_field('cn_staff_title').'</span>';
-              }
-              /*social_media_outlets
-                -social_media_type
-                -social_media_handle*/
-            ?>
+            }
+            /*social_media_outlets
+              -social_media_type
+              -social_media_handle*/ ?>
               <div class="staff-social-links">
             <?php
-              if( have_rows('cn_staff_contact') ) {
-                while ( have_rows('cn_staff_contact') ) {
-                  the_row();
-                  if (get_sub_field('contact_outlet') != '' && get_sub_field('social_media_handle') != '') {
-                    if (get_sub_field('contact_outlet') == 'twitter') {
-            ?>
+              if (have_rows('cn_staff_contact')) {
+                  while (have_rows('cn_staff_contact')) {
+                      the_row();
+                      if (get_sub_field('contact_outlet') != '' && get_sub_field('social_media_handle') != '') {
+                          if (get_sub_field('contact_outlet') == 'twitter') {
+                              ?>
                       <a href="https://www.twitter.com/<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fab fa-twitter-square"></i></a>
-              <?php } else if (get_sub_field('contact_outlet') == 'email') { ?>
+              <?php
+                          } elseif (get_sub_field('contact_outlet') == 'email') { ?>
                       <a href="mailto:<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fas fa-envelope-square"></i></a>
             <?php
                     }
+                      }
                   }
-                }
-              }
-            ?>
+              } ?>
               </div>
           </li>
           <?php
         }
-        wp_reset_postdata();
-      ?>
+      wp_reset_postdata(); ?>
     </ul>
   <?php
   } else {
-    esc_html_e( 'No staff found.', 'text-domain' );
+      esc_html_e('No staff found.', 'text-domain');
   }
 ?>
 
@@ -121,81 +120,79 @@
                 'post_status' => 'publish',
                 'posts_per_page' => '-1',
                 'meta_key'    => 'lastname',
-              	'orderby'			=> 'lastname',
-              	'order'				=> 'ASC'
+                  'orderby'			=> 'lastname',
+                  'order'				=> 'ASC'
                );
 
-  $students = new WP_Query( $args );
-  if( $students->have_posts() ) {
-  ?>
+  $students = new WP_Query($args);
+  if ($students->have_posts()) {
+      ?>
     <ul class="student-staff-list">
       <?php
-        while( $students->have_posts() ) {
-          $students->the_post();
-          if ($currentSemester == get_field('semester')) {
-      ?>
+        while ($students->have_posts()) {
+            $students->the_post();
+            if ($currentSemester == get_field('semester')) {
+                ?>
           <li>
             <?php
-              $staffNameURLSafe = str_replace("&#8217;", "", str_replace('.', '', str_replace(' ', '-', strtolower(get_the_title($val)))));              
-              if (get_field('student_photo') != '') {
-                echo '<a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/"><img src="'.get_field('student_photo').'" class="cn-staff-circular" /></a>';
-              } else {
-                echo '<span class="cn-staff-circular empty"> </span>';
-              }
-              if (get_the_title() != '') {
-                echo '<h4 class="staff-title"><a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title().'</a></h4>';
-              }
-              if (get_field('student_title') != '') {
-                echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('student_title'))).'</span>';
-              } else if (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
-                echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau')))).'</span>';
-              }
-              /*social_media_outlets
-                -social_media_type
-                -social_media_handle*/
-            ?>
+              $staffNameURLSafe = str_replace("&#8217;", "", str_replace('.', '', str_replace(' ', '-', strtolower(get_the_title($val)))));
+                if (get_field('student_photo') != '') {
+                    echo '<a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/"><img src="'.get_field('student_photo').'" class="cn-staff-circular" /></a>';
+                } else {
+                    echo '<span class="cn-staff-circular empty"> </span>';
+                }
+                if (get_the_title() != '') {
+                    echo '<h4 class="staff-title"><a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title().'</a></h4>';
+                }
+                if (get_field('student_title') != '') {
+                    echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('student_title'))).'</span>';
+                } elseif (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
+                    echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau')))).'</span>';
+                }
+                /*social_media_outlets
+                  -social_media_type
+                  -social_media_handle*/ ?>
               <div class="staff-social-links">
             <?php
-              if( have_rows('social_media_outlets') ) {
-                while ( have_rows('social_media_outlets') ) {
-                  the_row();
-                  if (get_sub_field('social_media_type') != '' && get_sub_field('social_media_handle') != '') {
-                    if (get_sub_field('social_media_type') == 'twitter') {
-            ?>
+              if (have_rows('social_media_outlets')) {
+                  while (have_rows('social_media_outlets')) {
+                      the_row();
+                      if (get_sub_field('social_media_type') != '' && get_sub_field('social_media_handle') != '') {
+                          if (get_sub_field('social_media_type') == 'twitter') {
+                              ?>
                       <a href="https://www.twitter.com/<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fab fa-twitter-square"></i></a>
-              <?php } else if (get_sub_field('social_media_type') == 'email') { ?>
+              <?php
+                          } elseif (get_sub_field('social_media_type') == 'email') { ?>
                       <a href="mailto:<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fas fa-envelope-square"></i></a>
-              <?php } else if (get_sub_field('social_media_type') == 'instagram') { ?>
+              <?php } elseif (get_sub_field('social_media_type') == 'instagram') { ?>
                       <a href="https://www.instagram.com/<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fab fa-instagram"></i></a>
-              <?php } else if (get_sub_field('social_media_type') == 'facebook') { ?>
+              <?php } elseif (get_sub_field('social_media_type') == 'facebook') { ?>
                       <a href="https://www.facebook.com/<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fab fa-facebook-square"></i></a>
             <?php
                     }
+                      }
                   }
-                }
-              }
-            ?>
+              } ?>
               </div>
           </li>
           <?php
-          }
+            }
         }
-        wp_reset_postdata();
-      ?>
+      wp_reset_postdata(); ?>
     </ul>
   <?php
   } else {
-    esc_html_e( 'No students found.', 'text-domain' );
+      esc_html_e('No students found.', 'text-domain');
   }
 ?>
 
 <h2 class="cn_sub_head-2">Our partners</h2>
-<?php if( have_rows('our_partners') ) { ?>
+<?php if (have_rows('our_partners')) { ?>
     <ul class="our_partners">
     <?php
-      while ( have_rows('our_partners') ) {
-        the_row();
-        echo '<li><a href="'.get_sub_field('partner_link').'" target="_blank"><img src="'.get_sub_field('partner_logo').'" alt="'.get_sub_field('partners_name').'" /></a></li>';
+      while (have_rows('our_partners')) {
+          the_row();
+          echo '<li><a href="'.get_sub_field('partner_link').'" target="_blank"><img src="'.get_sub_field('partner_logo').'" alt="'.get_sub_field('partners_name').'" /></a></li>';
       }
     ?>
     </ul>

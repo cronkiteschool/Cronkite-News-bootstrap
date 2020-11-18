@@ -17,40 +17,39 @@
 
 <head>
 	<?php
-	// get the category for GA
-	$post = get_post();
-	$categories = get_the_category ($post -> ID);
-	$output = '';
+    // get the category for GA
+    $post = get_post();
+    $categories = get_the_category($post -> ID);
+    $output = '';
 
-	if ( ! empty( $categories ) ) {
-		foreach( $categories as $category ) {
+    if (! empty($categories)) {
+        foreach ($categories as $category) {
+            if ($output == '') {
+                if ($category->name == "Borderlands") {
+                    //$output = "ga('set', 'Borderlands', '"  . esc_html( $category->name ) . "');";
+                    //$output = "ga('set', 'contentGroup1', 'Borderlands');";
+                    $output = "gtag('set', {'contentGroup1': 'Borderlands'});";
+                }
+                if ($category->name == "Sustainability") {
+                    //$output = "ga('set', 'contentGroup2', 'Sustainability');";
+                    $output = "gtag('set', {'contentGroup2': 'Sustainability'});";
+                }
+                if ($category->name == "Education") {
+                    //$output = "ga('set', 'contentGroup3', 'Education');";
+                    $output = "gtag('set', {'contentGroup3': 'Education'});";
+                }
+                if ($category->name == "Consumer") {
+                    //$output = "ga('set', 'contentGroup4', 'Consumer');";
+                    $output = "gtag('set', {'contentGroup4': 'Consumer'});";
+                }
+                if ($category->name == "Future") {
+                    $output = "ga('set', 'contentGroup5', 'Future');";
+                }
+            }
+        }
+    }
 
-		if($output == '') {
-			if ($category->name == "Borderlands") {
-			 //$output = "ga('set', 'Borderlands', '"  . esc_html( $category->name ) . "');";
-			//$output = "ga('set', 'contentGroup1', 'Borderlands');";
-				$output = "gtag('set', {'contentGroup1': 'Borderlands'});";
-			}
-			if ($category->name == "Sustainability") {
-				//$output = "ga('set', 'contentGroup2', 'Sustainability');";
-				$output = "gtag('set', {'contentGroup2': 'Sustainability'});";
-			}
-			if ($category->name == "Education") {
-				//$output = "ga('set', 'contentGroup3', 'Education');";
-				$output = "gtag('set', {'contentGroup3': 'Education'});";
-			}
-			if ($category->name == "Consumer") {
-				//$output = "ga('set', 'contentGroup4', 'Consumer');";
-				$output = "gtag('set', {'contentGroup4': 'Consumer'});";
-			}
-			if ($category->name == "Future") {
-				$output = "ga('set', 'contentGroup5', 'Future');";
-			}
-		}
-	}
-}
-
-	?>
+    ?>
 
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-3145657-18"></script>
@@ -58,7 +57,7 @@
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
-		<?php //echo $output ?>
+		<?php //echo $output?>
 		gtag('config', 'UA-3145657-18');
 	</script>
 
@@ -73,16 +72,16 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Add Favicon -->
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="icon">
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="shortcut icon">
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>"  rel="apple-touch-icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>" rel="icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>" rel="shortcut icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>"  rel="apple-touch-icon">
 
 
     <script src="<?php bloginfo('template_directory');?>/js/featherlight.min.js"></script>
     <link href="<?php bloginfo('template_directory');?>/css/featherlight.min.css" rel="stylesheet">
 
 
-      <?php if ( is_front_page() ) { ?>
+      <?php if (is_front_page()) { ?>
             <link href="<?php bloginfo('template_directory');?>/css/hstyle.css" rel="stylesheet">
       <?php } ?>
 
@@ -102,7 +101,7 @@
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
 
-		<?php if(is_page('test-page')) { ?>
+		<?php if (is_page('test-page')) { ?>
 			<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 		<?php } ?>
 
@@ -218,17 +217,17 @@
             <!-- top navigation -->
             <ul class="top_links">
 							<?php
-								$args = array(
-									'menu' => 'Header Nav - 2019',
-									'container'     => false,
-									'items_wrap'    => '%3$s',
-									'depth'         => 1,
-									'fallback_cb'   => false,
-									'menu_id' 			=> '',
-									'menu_class'		=> ''
-									);
-								wp_nav_menu($args);
-							?>
+                                $args = array(
+                                    'menu' => 'Header Nav - 2019',
+                                    'container'     => false,
+                                    'items_wrap'    => '%3$s',
+                                    'depth'         => 1,
+                                    'fallback_cb'   => false,
+                                    'menu_id' 			=> '',
+                                    'menu_class'		=> ''
+                                    );
+                                wp_nav_menu($args);
+                            ?>
 							<li><a href="https://cronkitenews.azpbs.org/election-2020"><img src="https://cronkitenews.azpbs.org/wp-content/uploads/2020/10/election2020-small-1-logo.png" alt="Election 2020" title="Election 2020" style="vertical-align:baseline;height:16px;" /></a></li>
             </ul>
           </div>
@@ -252,17 +251,17 @@
             </form>
           </li>
           <?php
-						$args = array(
-							'menu' => 'Subnav - 2019',
-							'container'     => false,
-							'items_wrap'    => '%3$s',
-							'depth'         => 1,
-							'fallback_cb'   => false,
-							'menu_id' 			=> '',
-							'menu_class'		=> ''
-							);
-						wp_nav_menu($args);
-					?>
+                        $args = array(
+                            'menu' => 'Subnav - 2019',
+                            'container'     => false,
+                            'items_wrap'    => '%3$s',
+                            'depth'         => 1,
+                            'fallback_cb'   => false,
+                            'menu_id' 			=> '',
+                            'menu_class'		=> ''
+                            );
+                        wp_nav_menu($args);
+                    ?>
 					<li class="top_links_m first"><a href="https://cronkitenews.azpbs.org/election-2020"><img src="https://cronkitenews.azpbs.org/wp-content/uploads/2020/10/election2020-small-1-logo.png" alt="Election 2020" title="Election 2020" style="vertical-align:baseline;height:16px;" /></a></li>
 					<li class="top_links_m"><a href="https://cronkitenews.azpbs.org/sitenewscast/">Newscast</a></li>
           <li class="top_links_m"><a href="https://cronkitenews.azpbs.org/audio/">Audio</a></li>

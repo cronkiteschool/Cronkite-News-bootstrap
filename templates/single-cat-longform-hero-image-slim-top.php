@@ -3,7 +3,7 @@
  * Template Name: Longform hero image slim top
  * Story template without sidebar
  */
-get_header( 'longformhero' ); ?>
+get_header('longformhero'); ?>
 
 <script src="<?php bloginfo('template_directory');?>/js/jquery.waypoints.min.js"></script>
     <main>
@@ -21,7 +21,7 @@ get_header( 'longformhero' ); ?>
 
 
 
-                                    <?php if(get_field('autoplay_bg_video')) { ?>
+                                    <?php if (get_field('autoplay_bg_video')) { ?>
                                     <div class="desktop-only">
                             <video autoplay muted loop style="z-index:-1;width:2000px; overflow-x:hidden; height:auto;">
                                 <source src="<?php the_field('autoplay_bg_video'); ?>" type="video/mp4">
@@ -32,13 +32,13 @@ get_header( 'longformhero' ); ?>
 
                             <div class="small-devices-only">
                                 <div id="top-img-holder">
-                                    <?php if( have_rows('top_full_image') ): ?>
-                                        <?php while( have_rows('top_full_image') ): the_row();
+                                    <?php if (have_rows('top_full_image')): ?>
+                                        <?php while (have_rows('top_full_image')): the_row();
                                             // Declare variables below
                                             $icon = get_sub_field('fimage');
-                                            $text = get_sub_field('fcaption');  // Use variables below ?>
+                                            $text = get_sub_field('fcaption');  // Use variables below?>
                                                 <img class="img-responsive" style="width:100%;height:100%;" src="<?php echo $icon; ?>" />
-                                        <?php if($imgheadline = get_field('headline_over_image')) {?>
+                                        <?php if ($imgheadline = get_field('headline_over_image')) {?>
                                         <h1 class="animated fadeIn desktop-only" id="headline_over_image" style="color:<?php the_field('color_of_headline_over_image');?>;font-size:<?php the_field('headline_over_image_font_size');?>;<?php the_field('additional_headline_over_image_styling');?>"> <?php the_field('headline_over_image'); ?> </h1>
                                         <?php } ?>
                                         <div class="carousel-captions" style="padding-left:20px; padding-right:20px;"> <!--         captions -->
@@ -55,13 +55,13 @@ get_header( 'longformhero' ); ?>
 								<div id="top-img-holder" class="col-xs-12 col-md-offset-2 col-md-8">
 
                                   <h1 style="font-family: 'Libre Baskerville', serif;color:#111;font-size:calc(16.4px + 2.5vw);margin-top:calc(16.4px + 5vw);text-align:center;"><?php the_field('lf_custom_title');?></h1>
-                                    <?php if( have_rows('top_full_image') ): ?>
-                                        <?php while( have_rows('top_full_image') ): the_row();
+                                    <?php if (have_rows('top_full_image')): ?>
+                                        <?php while (have_rows('top_full_image')): the_row();
                                             // Declare variables below
                                             $icon = get_sub_field('fimage');
-                                            $text = get_sub_field('fcaption');  // Use variables below ?>
+                                            $text = get_sub_field('fcaption');  // Use variables below?>
                                                 <img class="img-responsive" style="width:100%;height:100%;" src="<?php echo $icon; ?>" />
-                                        <?php if($imgheadline = get_field('headline_over_image')) {?>
+                                        <?php if ($imgheadline = get_field('headline_over_image')) {?>
                                         <h1 class="animated fadeIn desktop-only" id="headline_over_image" style="color:<?php the_field('color_of_headline_over_image');?>;font-size:<?php the_field('headline_over_image_font_size');?>;<?php the_field('additional_headline_over_image_styling');?>"> <?php the_field('headline_over_image'); ?> </h1>
                                         <?php } ?>
                                         <div class="carousel-captions"  style="padding: 0px 20px; padding-bottom:10px;"> <!--         captions -->
@@ -104,22 +104,22 @@ get_header( 'longformhero' ); ?>
                                         $externalStaffTotalCounter = 0;
 
                                         if (have_rows('byline_info', get_the_ID())) {
-                                          while (have_rows('byline_info', get_the_ID())) {
-                                            the_row();
-                                            $staffID = get_sub_field('cn_staff');
-                                            if ($staffID == '') {
-                                              $cnStaffTotalCounter = 0;
-                                            } else {
-                                              $cnStaffTotalCounter = count($staffID);
-                                            }
-
-                                            if (have_rows('external_authors_repeater')) {
-                                              while (have_rows('external_authors_repeater')) {
+                                            while (have_rows('byline_info', get_the_ID())) {
                                                 the_row();
-                                                $externalStaffTotalCounter++;
-                                              }
+                                                $staffID = get_sub_field('cn_staff');
+                                                if ($staffID == '') {
+                                                    $cnStaffTotalCounter = 0;
+                                                } else {
+                                                    $cnStaffTotalCounter = count($staffID);
+                                                }
+
+                                                if (have_rows('external_authors_repeater')) {
+                                                    while (have_rows('external_authors_repeater')) {
+                                                        the_row();
+                                                        $externalStaffTotalCounter++;
+                                                    }
+                                                }
                                             }
-                                          }
                                         }
 
 
@@ -127,86 +127,86 @@ get_header( 'longformhero' ); ?>
                                         echo '<!--'.get_the_ID().' '.$externalStaffTotalCounter.'-->';
 
                                         if ($cnStaffTotalCounter > 0) {
-                                          if (have_rows('byline_info')) {
-                                            $sepCounter = 0;
-                                            echo '<h6 class="story-info">By ';
-                                            while (have_rows('byline_info')) {
-                                              the_row();
-                                              $staffID = get_sub_field('cn_staff');
-                                              $cnStaffCount = count($staffID);
-                                              foreach ($staffID as $key => $val) {
-                                                $args = array(
+                                            if (have_rows('byline_info')) {
+                                                $sepCounter = 0;
+                                                echo '<h6 class="story-info">By ';
+                                                while (have_rows('byline_info')) {
+                                                    the_row();
+                                                    $staffID = get_sub_field('cn_staff');
+                                                    $cnStaffCount = count($staffID);
+                                                    foreach ($staffID as $key => $val) {
+                                                        $args = array(
                                                               'post_type'   => 'students',
                                                               'post_status' => 'publish',
                                                               'p' => $val
                                                             );
 
-                                                $staffDetails = new WP_Query( $args );
-                                                if ($staffDetails->have_posts()) {
-                                                  while ($staffDetails->have_posts()) {
-                                                    $staffDetails->the_post();
-                                                    $sepCounter++;
-                                                    echo '<a href="'.site_url().'?s='.get_the_title($val).'">'.get_the_title($val).'</a>';
-                                                    if ($sepCounter != $cnStaffCount) {
-                                                      if ($sepCounter == ($cnStaffCount - 1)) {
-                                                        echo $andSeparator.' ';
-                                                      } else {
-                                                        echo $commaSeparator.' ';
-                                                      }
+                                                        $staffDetails = new WP_Query($args);
+                                                        if ($staffDetails->have_posts()) {
+                                                            while ($staffDetails->have_posts()) {
+                                                                $staffDetails->the_post();
+                                                                $sepCounter++;
+                                                                echo '<a href="'.site_url().'?s='.get_the_title($val).'">'.get_the_title($val).'</a>';
+                                                                if ($sepCounter != $cnStaffCount) {
+                                                                    if ($sepCounter == ($cnStaffCount - 1)) {
+                                                                        echo $andSeparator.' ';
+                                                                    } else {
+                                                                        echo $commaSeparator.' ';
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
                                                     }
-                                                  }
                                                 }
-                                              }
+                                                echo '/Cronkite News</span>';
                                             }
-                                            echo '/Cronkite News</span>';
-                                          }
-                                        } else if ($externalStaffTotalCounter > 0) {
-
-                                          if (have_rows('byline_info')) {
-                                            $sepCounter = 0;
-                                            echo '<h6 class="story-info">By ';
-                                            while (have_rows('byline_info')) {
-                                              the_row();
-                                              if ( have_rows( 'external_authors_repeater' ) ) {
-                                                if ($cnStaffTotalCounter > 0) {
-                                                  echo ' and ';
-                                                }
+                                        } elseif ($externalStaffTotalCounter > 0) {
+                                            if (have_rows('byline_info')) {
                                                 $sepCounter = 0;
-                                                while ( have_rows( 'external_authors_repeater' ) ) {
-                                                  the_row();
-                                                  $sepCounter++;
-                                                  echo '<!--'.$sepCounter.'-->';
-                                                  echo get_sub_field( 'external_authors' );
+                                                echo '<h6 class="story-info">By ';
+                                                while (have_rows('byline_info')) {
+                                                    the_row();
+                                                    if (have_rows('external_authors_repeater')) {
+                                                        if ($cnStaffTotalCounter > 0) {
+                                                            echo ' and ';
+                                                        }
+                                                        $sepCounter = 0;
+                                                        while (have_rows('external_authors_repeater')) {
+                                                            the_row();
+                                                            $sepCounter++;
+                                                            echo '<!--'.$sepCounter.'-->';
+                                                            echo get_sub_field('external_authors');
 
-                                                  if ($sepCounter != $externalStaffTotalCounter) {
-                                                    if ($sepCounter == ($externalStaffTotalCounter - 1)) {
-                                                      echo $andSeparator.' ';
-                                                    } else {
-                                                      echo $commaSeparator.' ';
-                                                    }
-                                                  }
+                                                            if ($sepCounter != $externalStaffTotalCounter) {
+                                                                if ($sepCounter == ($externalStaffTotalCounter - 1)) {
+                                                                    echo $andSeparator.' ';
+                                                                } else {
+                                                                    echo $commaSeparator.' ';
+                                                                }
+                                                            }
 
-                                                  if (get_sub_field('author_title_site') != '' || get_sub_field('author_title_site') != 'other') {
-                                                    if (array_key_exists(get_sub_field('author_title_site'), $externalSites) == true) {
-                                                      echo '/<a href="'.$externalSites[get_sub_field('author_title_site')].'" target="_blank">'.ucwords(str_replace('-', ' ', get_sub_field('author_title_site'))).'</a>';
-                                                    } else {
-                                                      echo '/'.ucwords(str_replace('-', ' ', get_sub_field('author_title_site')));
+                                                            if (get_sub_field('author_title_site') != '' || get_sub_field('author_title_site') != 'other') {
+                                                                if (array_key_exists(get_sub_field('author_title_site'), $externalSites) == true) {
+                                                                    echo '/<a href="'.$externalSites[get_sub_field('author_title_site')].'" target="_blank">'.ucwords(str_replace('-', ' ', get_sub_field('author_title_site'))).'</a>';
+                                                                } else {
+                                                                    echo '/'.ucwords(str_replace('-', ' ', get_sub_field('author_title_site')));
+                                                                }
+                                                            }
+                                                        }
                                                     }
-                                                  }
                                                 }
-                                              }
                                             }
-                                          }
-
                                         } else {
-                                    ?>
-                                        <h6 class="story-info"><?php if($postAuthor = get_field('post_author')) {?>
+                                            ?>
+                                        <h6 class="story-info"><?php if ($postAuthor = get_field('post_author')) {?>
                                         <a href="<?php echo site_url(); ?>?s=<?php echo $postAuthor; ?>">
-                                        By <?php echo $postAuthor; ?>/<?php } ?></a><?php if( $siteTitle = get_field('site_title')) {
-                                             $url = get_field('site_url');
-                                             $url = esc_url( $url ); ?><a href="<?php echo $url; ?>"><?php echo $siteTitle; ?></a>
-                                        <?php } ?>
-                                    <?php } ?>
+                                        By <?php echo $postAuthor; ?>/<?php } ?></a><?php if ($siteTitle = get_field('site_title')) {
+                                                $url = get_field('site_url');
+                                                $url = esc_url($url); ?><a href="<?php echo $url; ?>"><?php echo $siteTitle; ?></a>
+                                        <?php
+                                            } ?>
+                                    <?php
+                                        } ?>
                                       <?php wp_reset_query(); ?>
                                       | <span class="bylinedate"><?php echo ap_date(); ?></span></h6>
                                       <?php wp_reset_query(); ?>
@@ -216,7 +216,7 @@ get_header( 'longformhero' ); ?>
 
                                 <?php
                                   if (get_the_ID() == 132417) {
-                                ?>
+                                      ?>
 
                                     <style>
                                     /* Popup box BEGIN */
@@ -402,16 +402,13 @@ get_header( 'longformhero' ); ?>
 
 
                                 <?php
-                                    the_content();
-                                ?>
+                                    the_content(); ?>
                                 <script
                                   src="https://cronkitenews.azpbs.org/wp-content/themes/bootstrap/js/jquery-3.2.1.min.js"
                                   crossorigin="anonymous"></script>
                                 <?php
-
                                   } else {
-
-                                    the_content();
+                                      the_content();
                                   }
                                   ?>
 

@@ -56,7 +56,7 @@
   <!-- Add This Social Sharing -->
   <?php if (is_single()) { ?>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-555a00cd1124129e" async="async"></script>
-  <?php } else if (!is_page('impeachment-sentiment')) { ?>
+  <?php } elseif (!is_page('impeachment-sentiment')) { ?>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-555a00cd1124129e" async="async"></script>
   <?php } ?>
 

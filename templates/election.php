@@ -2,21 +2,21 @@
 /*
  * Template Name: Election Page
  */
-get_header( 'election'); ?>
+get_header('election'); ?>
 
 
 <?php
 
 
-  function gridpost($item) {
-
-    echo '<div class="matchHeight item bordered no-top-border" style="margin-top: 10px;"><figure>';
-  //echo 'test: ' . get_field ("url_link", $item);
-  //echo 'postid: ' . $item -> ID;
-    $postid = $item -> ID;
-    $permalink = get_the_permalink($postid);
-    $url_link = get_field ("url_link", $item);
-    $verticals = get_the_category ($postid);
+  function gridpost($item)
+  {
+      echo '<div class="matchHeight item bordered no-top-border" style="margin-top: 10px;"><figure>';
+      //echo 'test: ' . get_field ("url_link", $item);
+      //echo 'postid: ' . $item -> ID;
+      $postid = $item -> ID;
+      $permalink = get_the_permalink($postid);
+      $url_link = get_field("url_link", $item);
+      $verticals = get_the_category($postid);
 //    $separator = ' | ';
 //    $output = '';
 //      if ( ! empty( $verticals ) ) {
@@ -30,44 +30,42 @@ get_header( 'election'); ?>
 //    }
 //    echo trim( $output, $separator );
 //    echo "</div>";
-//}
+      //}
 
-      if( $url_link ): // post goes offsite (extremely rare)
+      if ($url_link): // post goes offsite (extremely rare)
 
         echo '<a target="_blank" href="//';
-          echo $url_link;
-          echo '">';
-          echo get_the_post_thumbnail($postid, 'full', array('class' => 'img-responsive'));
-          echo '</a>';
-        else:
+      echo $url_link;
+      echo '">';
+      echo get_the_post_thumbnail($postid, 'full', array('class' => 'img-responsive'));
+      echo '</a>'; else:
             echo '<a href="';
-            echo $permalink;
-            echo '">';
-          echo get_the_post_thumbnail($postid, 'full', array('class' => 'img-responsive'));
-            echo '</a>';
-        endif;
+      echo $permalink;
+      echo '">';
+      echo get_the_post_thumbnail($postid, 'full', array('class' => 'img-responsive'));
+      echo '</a>';
+      endif;
 
-        echo '<figcaption>';
-        echo '<div class="info"><h4>';
+      echo '<figcaption>';
+      echo '<div class="info"><h4>';
 
-      if( $url_link ): // post goes offsite (extremely rare)
+      if ($url_link): // post goes offsite (extremely rare)
             echo '<a target="_blank" href="//';
-            echo $url_link;
-            echo '">';
-            echo get_the_title($postid);
-            echo '</a>';
-          else:
+      echo $url_link;
+      echo '">';
+      echo get_the_title($postid);
+      echo '</a>'; else:
             echo '<a href="';
-            echo $permalink;
-            echo '">';
-            echo get_the_title($postid);
-            echo '</a>';
-          endif;
-          echo '</h4></div><!-- /.info --></figcaption></figure></div><!-- /item -->';
+      echo $permalink;
+      echo '">';
+      echo get_the_title($postid);
+      echo '</a>';
+      endif;
+      echo '</h4></div><!-- /.info --></figcaption></figure></div><!-- /item -->';
   }
 
-  if( have_rows('latest_news_box')): // check for repeater fields
-  while ( have_rows('latest_news_box')) : the_row(); // loop through the repeater fields
+  if (have_rows('latest_news_box')): // check for repeater fields
+  while (have_rows('latest_news_box')) : the_row(); // loop through the repeater fields
 
   $posts = get_sub_field('post_box'); // all the latest news is now loaded in $posts
 
@@ -128,8 +126,8 @@ get_header( 'election'); ?>
 <!--     -->
 
                     
-                <?php if( have_rows('horizon_box') ): ?>
-                  <?php while( have_rows('horizon_box') ): the_row();
+                <?php if (have_rows('horizon_box')): ?>
+                  <?php while (have_rows('horizon_box')): the_row();
                         // Declare variables below
                         $icon = get_sub_field('horizon_box_image');
                         $title = get_sub_field('horizon_box_title');
@@ -137,11 +135,11 @@ get_header( 'election'); ?>
                         $link = get_sub_field('horizon_box_link');
                         $customLinks = get_sub_field('h_custom_link');
 
-                        // Use variables below ?>
+                        // Use variables below?>
                     <div class="col-xs-12 col-sm-4 inner-top-sm ">
                       <div class="kicker-modern" id="horizon_box">
     
-                        <?php if($customLinks) { ?>
+                        <?php if ($customLinks) { ?>
                           <a target="_blank" href='https://www.azpbs.org/arizonahorizon'>
                              <h3> ARIZONA HORIZON </h3></a>
                           <a target="_blank" href="//<?php echo $customLinks; ?>">
@@ -194,8 +192,8 @@ get_header( 'election'); ?>
     <div class="container inner">
       <div class="row">
 
-                <?php if( have_rows('area_works_box') ): ?>
-                  <?php while( have_rows('area_works_box') ): the_row();
+                <?php if (have_rows('area_works_box')): ?>
+                  <?php while (have_rows('area_works_box')): the_row();
                         // Declare variables below
                         $icon = get_sub_field('area_works_image');
                         $title = get_sub_field('area_works_title');
@@ -203,11 +201,11 @@ get_header( 'election'); ?>
                         $link = get_sub_field('area_works_link');
                         $customLinks = get_sub_field('custom_link');
 
-                        // Use variables below ?>
+                        // Use variables below?>
                     <div class="col-sm-4 inner-top-sm ">
                       <div class="kicker-modern">
     
-                        <?php if($customLinks) { ?>
+                        <?php if ($customLinks) { ?>
                           <a target="_blank" href="//<?php echo $customLinks; ?>">
                                          <img class='awards_image' src="<?php echo $icon['sizes']['awards_logo']; ?>" />
                                     </a>
@@ -357,12 +355,12 @@ get_header( 'election'); ?>
             <div class="col-sm-8 inner-top-sm">
               <div class="row thumbs gap-xs pbsthumbs">
 
-                <?php if( have_rows('images_box') ): ?>
-                  <?php while( have_rows('images_box') ): the_row();
+                <?php if (have_rows('images_box')): ?>
+                  <?php while (have_rows('images_box')): the_row();
                                     // Declare variables below
                                     $icon = get_sub_field('arizona_images');
                                     $link = get_sub_field('arizona_links');
-                                    // Use variables below ?>
+                                    // Use variables below?>
                     <div class="col-xs-3 thumb">
                       <figure> <a href="<?php echo $link; ?>" target="_blank">
                                                 <img src="<?php  echo $icon; ?>" alt="">

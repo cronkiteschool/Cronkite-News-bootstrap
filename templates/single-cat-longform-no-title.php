@@ -20,29 +20,27 @@ get_header(); ?>
                                             <article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   										<div class="breadcrumbs">
 <?php
-                        $verticals = get_the_category ();
+                        $verticals = get_the_category();
                         $separator = ' | ';
                         $output = '';
-                          if ( ! empty( $verticals ) ) {
-                            foreach( $verticals as $category ) {
-
-                              if (($category->name != "Uncategorized") && ($category->name != "Longform") && ($category->name != "Longform No Title")) {
-                            $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ). '" alt="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . strtoupper(esc_html( $category->name )) . '</a>' . $separator;
-                            }
-
-                        }
-                        echo trim( $output, $separator );
-                      }
+                          if (! empty($verticals)) {
+                              foreach ($verticals as $category) {
+                                  if (($category->name != "Uncategorized") && ($category->name != "Longform") && ($category->name != "Longform No Title")) {
+                                      $output .= '<a href="' . esc_url(get_category_link($category->term_id)). '" alt="' . esc_attr(sprintf(__('View all posts in %s', 'textdomain'), $category->name)) . '">' . strtoupper(esc_html($category->name)) . '</a>' . $separator;
+                                  }
+                              }
+                              echo trim($output, $separator);
+                          }
                         ?>
                       </div>
 
 
 											<div id="owl-work" class="owl-carousel owl-inner-pagination owl-inner-nav post-media">
-                                    <?php if( have_rows('slider_images') ): ?>
-                                        <?php while( have_rows('slider_images') ): the_row();
+                                    <?php if (have_rows('slider_images')): ?>
+                                        <?php while (have_rows('slider_images')): the_row();
                                             // Declare variables below
                                             $icon = get_sub_field('images');
-                                            $text = get_sub_field('description');  // Use variables below ?>
+                                            $text = get_sub_field('description');  // Use variables below?>
                                                 <div class="item">
                                                 <img src="<?php echo $icon; ?>" />
 
@@ -55,11 +53,11 @@ get_header(); ?>
                                     <?php endif; wp_reset_query(); ?>
                                 </div>
 
-                                <h6 class="story-info"><?php if($postAuthor = get_field('post_author')) {?>
+                                <h6 class="story-info"><?php if ($postAuthor = get_field('post_author')) {?>
                                 <a href="<?php echo site_url(); ?>?s=<?php echo $postAuthor; ?>">
                                 By <?php echo $postAuthor; ?> |
                                 <?php } ?>
-                                <?php if( $siteTitle = get_field('site_title')) {?>
+                                <?php if ($siteTitle = get_field('site_title')) {?>
                                     <a href="//<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?></a></h6>
                                 <?php } ?>
                                 <h6 class="story-info-date"><?php echo ap_date(); ?></h6>

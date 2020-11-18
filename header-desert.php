@@ -31,9 +31,9 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Add Favicon -->
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="icon">
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="shortcut icon">
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>"  rel="apple-touch-icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>" rel="icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>" rel="shortcut icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>"  rel="apple-touch-icon">
 
     <!-- Load Google Fonts -->
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -47,26 +47,25 @@
     <!-- Google Analytics Tracking Code  -->
 
 		<?php
-	// get the category for GA
-		$post = get_post();
-		$categories = get_the_category ($post -> ID);
-		$output = '';
+    // get the category for GA
+        $post = get_post();
+        $categories = get_the_category($post -> ID);
+        $output = '';
 
-		if ( ! empty( $categories ) ) {
-			foreach( $categories as $category ) {
+        if (! empty($categories)) {
+            foreach ($categories as $category) {
+                if ($category->name == "Borderlands") {
+                    // $output = "ga('set', 'contentGroup1', '"  . esc_html( $category->name ) . "');";
+                    $output = "ga('set', 'contentGroup1', 'Borderlands');";
+                }
+                if ($category->name == "Sustainability") {
+                    // $output = "ga('set', 'contentGroup2', '"  . esc_html( $category->name ) . "');";
+                    $output = "ga('set', 'contentGroup2', 'My Group Name');";
+                }
+            }
+        }
 
-			if ($category->name == "Borderlands") {
-			// $output = "ga('set', 'contentGroup1', '"  . esc_html( $category->name ) . "');";
-			$output = "ga('set', 'contentGroup1', 'Borderlands');";
-		}
-		if ($category->name == "Sustainability") {
-		// $output = "ga('set', 'contentGroup2', '"  . esc_html( $category->name ) . "');";
-		$output = "ga('set', 'contentGroup2', 'My Group Name');";
-	}
-	}
-}
-
-		?>
+        ?>
     
     
 
@@ -79,10 +78,10 @@
            ga('create', 'UA-3145657-18', 'auto');
            ga('send', 'pageview');
 					 <?php
-					 if ($output) {
-						 echo $output;
-					 }
-					 ?>
+                     if ($output) {
+                         echo $output;
+                     }
+                     ?>
 
        </script>
 

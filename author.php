@@ -14,24 +14,24 @@ get_header(); ?>
                         <div class="post format-single clearfix">
 
                             <div id="owl-work" class="owl-carousel owl-inner-pagination owl-inner-nav post-media">
-                                <?php if( have_rows('slider_images') ): ?>
-                                    <?php while( have_rows('slider_images') ): the_row();
+                                <?php if (have_rows('slider_images')): ?>
+                                    <?php while (have_rows('slider_images')): the_row();
                                         // Declare variables below
                                         $icon = get_sub_field('images');
-                                        $text = get_sub_field('author_text');  // Use variables below ?>
+                                        $text = get_sub_field('author_text');  // Use variables below?>
                                         <div class="item">
                                             <img src="<?php echo $icon; ?>" />
                                             <div class="custom-line">
-                                                <?php if($labelInfo  = get_field('label_info')) : ?>
+                                                <?php if ($labelInfo  = get_field('label_info')) : ?>
                                                     <?php echo $labelInfo; ?>
                                                 <?php endif; ?>
-                                                <?php if($postAuthor = get_field('post_author')) {?>
-                                                    <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                                <?php if ($postAuthor = get_field('post_author')) {?>
+                                                    <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><?php echo $postAuthor; ?> | </a>
                                                 <?php } ?>
-                                                <?php if( $siteTitle = get_field('site_title')) {?>
+                                                <?php if ($siteTitle = get_field('site_title')) {?>
                                                     <a href="<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?> | </a>
                                                 <?php } ?>
-                                                <?php if($twitterTitle = get_field('twitter_title')) {?>
+                                                <?php if ($twitterTitle = get_field('twitter_title')) {?>
                                                     <a href="<?php the_field('twitter_url'); ?>" class="custom-line-links"> <i class="icon-twitter"></i> <?php echo $twitterTitle; ?> </a>
                                                 <?php } ?>
 
@@ -48,8 +48,8 @@ get_header(); ?>
                                         <article  id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                                             <h2><?php the_title(); ?></h2>
                                             <h6 class="story-info">
-                                                <?php if($postAuthor = get_field('post_author')) {?>
-                                                    By   <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php echo $postAuthor; ?> | </a>
+                                                <?php if ($postAuthor = get_field('post_author')) {?>
+                                                    By   <a href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>"><?php echo $postAuthor; ?> | </a>
                                                 <?php } ?>
                                                 <span> <?php echo ap_date(); ?></span>
                                             </h6>
@@ -64,9 +64,9 @@ get_header(); ?>
                             <figure>
                                 <figcaption class="author-details">
                                     <h3>Search for more stories by this reporter:</h3>
-                                    <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                                    <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url(home_url('/')); ?>">
 
-                                        <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search stories by Author' ); ?>" />
+                                        <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e('Search stories by Author'); ?>" />
                                         <input type="hidden" class="form-control" name="author_name" />
 
                                         <button type="submit"  class="btn btn-default btn-submit icon-right-open" name="submit" id="searchsubmit"></button>

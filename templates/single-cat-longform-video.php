@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Longform Video 
+ * Template Name: Longform Video
  * Story template without sidebar with video top
  */
 get_header(); ?>
@@ -59,11 +59,11 @@ get_header(); ?>
 -->
                                                 
                                 <div class="col-xs-12 col-md-offset-2 col-md-8">
-                                <h6 class="story-info"><?php if($postAuthor = get_field('post_author')) {?>
+                                <h6 class="story-info"><?php if ($postAuthor = get_field('post_author')) {?>
                                 <a href="<?php echo site_url(); ?>?s=<?php echo $postAuthor; ?>">
                                 By <?php echo $postAuthor; ?> |
                                 <?php } ?>
-                                <?php if( $siteTitle = get_field('site_title')) {?>
+                                <?php if ($siteTitle = get_field('site_title')) {?>
                                     <a href="http://<?php the_field('site_url'); ?>"><?php echo $siteTitle; ?></a></h6>
                                 <?php } ?>
                                 <h6 class="story-info-date"><?php echo ap_date(); ?></h6>

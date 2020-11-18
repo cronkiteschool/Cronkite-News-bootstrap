@@ -37,8 +37,8 @@ get_header('new'); ?>
                                             'posts_per_page'    => 1,
                                             'category_name' =>  'newscast'
                                         );
-                                        $the_query = new WP_Query( $arg );
-                                        if ( $the_query->have_posts() ) : ?>
+                                        $the_query = new WP_Query($arg);
+                                        if ($the_query->have_posts()) : ?>
 
                                                 <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                                                     <style>
@@ -78,9 +78,9 @@ get_header('new'); ?>
                                 <div class="post-content post-content-news">
                                     <?php query_posts('post_type=post&category_name=newscast&post_status=publish&posts_per_page=8&paged='. get_query_var('paged')); ?>
 
-                                        <?php if ( have_posts() ) :
+                                        <?php if (have_posts()) :
 
-                                            while ( have_posts() ) : the_post();
+                                            while (have_posts()) : the_post();
 
                                                 ?>
 
@@ -132,8 +132,8 @@ get_header('new'); ?>
                             <figure>
                                 <figcaption class="author-details">
                                     <h3>Search for more stories and video:</h3>
-                                    <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                                        <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search Stories and Videos' ); ?>" />
+                                    <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url(home_url('/')); ?>">
+                                        <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e('Search Stories and Videos'); ?>" />
                                         <button type="submit" class="btn btn-default btn-submit icon-right-open" name="submit" id="searchsubmit"></button>
                                     </form>
                                 </figcaption>

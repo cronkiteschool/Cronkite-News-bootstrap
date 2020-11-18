@@ -37,8 +37,8 @@ get_header(); ?>
                                             'posts_per_page'    => 1,
                                             'category_name' =>  'cronkite-sports-on-fox'
                                         );
-                                        $the_query = new WP_Query( $arg );
-                                        if ( $the_query->have_posts() ) : ?>
+                                        $the_query = new WP_Query($arg);
+                                        if ($the_query->have_posts()) : ?>
         
                                                 <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
                                                            <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'>
@@ -58,10 +58,10 @@ get_header(); ?>
                                 <div class="post-content post-content-news">
                                     <?php query_posts('post_type=post&category_name=cronkite-sports-on-fox&post_status=publish&posts_per_page=8&paged='. get_query_var('paged')); ?>
 
-                                    <?php if ( have_posts() ) : ?>
+                                    <?php if (have_posts()) : ?>
                                         <?php $number = 0; ?>
 
-                                        <?php while ( have_posts() ) : the_post(); ?>
+                                        <?php while (have_posts()) : the_post(); ?>
                                             <div class="row news-box">
                                                 <div class="col-sm-3 inner-right-xs-archive text-left">
                                                     <figure>
@@ -90,7 +90,7 @@ get_header(); ?>
 
                                     <div class="row">
                                         <div class="col-sm-12 inner-right-xs-archive text-left">
-                                            <div class="watch-icon"> <?php wp_get_archives( $args ); ?></div>
+                                            <div class="watch-icon"> <?php wp_get_archives($args); ?></div>
                                         </div>
                                     </div>
                                 </div>
@@ -102,8 +102,8 @@ get_header(); ?>
                             <figure>
                                 <figcaption class="author-details">
                                     <h3>Search for more stories and video:</h3>
-                                    <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                                        <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Search Stories and Videos' ); ?>" />
+                                    <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url(home_url('/')); ?>">
+                                        <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e('Search Stories and Videos'); ?>" />
                                         <input type="hidden" name="post_type" value="news" />
                                         <button type="submit"  class="btn btn-default btn-submit icon-right-open" name="submit" id="searchsubmit"></button>
                                     </form>
@@ -145,10 +145,10 @@ get_header(); ?>
     <div class="remodal" data-remodal-id="modal-members" >
         <?php query_posts('post_type=post&category_name=cronkite-sports-on-fox&post_status=publish&posts_per_page=-1&paged='. get_query_var('paged')); ?>
 
-                <?php if ( have_posts() ) : ?>
+                <?php if (have_posts()) : ?>
                     <?php $number = 0; ?>
 
-                    <?php while ( have_posts() ) : the_post(); ?>
+                    <?php while (have_posts()) : the_post(); ?>
                         <div class="popup-box" member-number="<?= $number; ?>">
                             <?php the_field('video_file');?>
                         </div>

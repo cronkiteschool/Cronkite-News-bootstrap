@@ -3,7 +3,7 @@
  * Template Name: New Template - 2020
  * Story template without sidebar
  */
-get_header( 'new2019' ); ?>
+get_header('new2019'); ?>
 
     <!-- main body container -->
     <div id="main_container" class="grid-container single-story-post">
@@ -14,22 +14,21 @@ get_header( 'new2019' ); ?>
           <!-- breadcrumbs -->
           <?php
             $categories = get_the_category();
-            if ( ! empty( $categories ) ) {
-          ?>
+            if (! empty($categories)) {
+                ?>
             <nav aria-label="Cronkite News: Breadcrumbs" role="navigation">
               <ul class="breadcrumbs">
                 <li>
                   <?php
                     $catCount = count($categories);
-                    foreach ($categories as $key => $val) {
-                      if ($categories[$key]->name != 'New 2020') {
-                        echo '<a href="' . esc_url( get_category_link( $categories[$key]->term_id ) ) . '">' . esc_html( $categories[$key]->name ) . '</a>';
+                foreach ($categories as $key => $val) {
+                    if ($categories[$key]->name != 'New 2020') {
+                        echo '<a href="' . esc_url(get_category_link($categories[$key]->term_id)) . '">' . esc_html($categories[$key]->name) . '</a>';
                         if ($catCount > 1) {
-                          echo '  ';
+                            echo '  ';
                         }
-                      }
                     }
-                  ?>
+                } ?>
                 </li>
               </ul>
             </nav>
@@ -67,114 +66,113 @@ get_header( 'new2019' ); ?>
               $externalAuthorRepeater = $groupFields['external_authors_repeater'];
 
               if (have_rows('byline_info')) {
-                $sepCounter = 0;
-                echo '<span class="author_name">By ';
-                while (have_rows('byline_info')) {
-                  the_row();
-                  $staffID = get_sub_field('cn_staff');
-                  $cnStaffCount = count($staffID);
+                  $sepCounter = 0;
+                  echo '<span class="author_name">By ';
+                  while (have_rows('byline_info')) {
+                      the_row();
+                      $staffID = get_sub_field('cn_staff');
+                      $cnStaffCount = count($staffID);
 
-                  foreach ($staffID as $key => $val) {
-                    echo '<!--'.$val.'-->';
-                    $args = array(
+                      foreach ($staffID as $key => $val) {
+                          echo '<!--'.$val.'-->';
+                          $args = array(
                                   'post_type'   => 'students',
                                   'post_status' => 'publish',
                                   'p' => $val
                                 );
 
-                    $staffDetails = new WP_Query( $args );
-                    if ($staffDetails->have_posts()) {
-                      while ($staffDetails->have_posts()) {
-                        $staffDetails->the_post();
-                        $sepCounter++;
+                          $staffDetails = new WP_Query($args);
+                          if ($staffDetails->have_posts()) {
+                              while ($staffDetails->have_posts()) {
+                                  $staffDetails->the_post();
+                                  $sepCounter++;
 
-                        $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
+                                  $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
 
-                        if (get_field('student_photo') != '') {
-                          $staffPhoto = get_field('student_photo');
-                        } else {
-                          $staffPhoto = '';
-                        }
+                                  if (get_field('student_photo') != '') {
+                                      $staffPhoto = get_field('student_photo');
+                                  } else {
+                                      $staffPhoto = '';
+                                  }
 
-                        if (get_field('student_title') != '') {
-                          $staffTitle = ucwords(str_replace('-', ' ', get_field('student_title')));
-                        } else if (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
-                          $staffTitle = ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau'))));
-                        }
+                                  if (get_field('student_title') != '') {
+                                      $staffTitle = ucwords(str_replace('-', ' ', get_field('student_title')));
+                                  } elseif (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
+                                      $staffTitle = ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau'))));
+                                  }
 
-                        if( have_rows('social_media_outlets') ) {
-                          while ( have_rows('social_media_outlets') ) {
-                            the_row();
-                            if (get_sub_field('social_media_type') != '' && get_sub_field('social_media_handle') != '') {
-                              if (get_sub_field('social_media_type') == 'twitter') {
-                                $twitterPopUp = 'https://www.twitter.com/'.get_sub_field('social_media_handle');
-                              } else if (get_sub_field('social_media_type') == 'email') {
-                                $mailPopUp = get_sub_field('social_media_handle');
-                              } else if (get_sub_field('social_media_type') == 'instagram') {
-                                $IGPopUp = 'https://www.instagram.com/'.get_sub_field('social_media_handle');
+                                  if (have_rows('social_media_outlets')) {
+                                      while (have_rows('social_media_outlets')) {
+                                          the_row();
+                                          if (get_sub_field('social_media_type') != '' && get_sub_field('social_media_handle') != '') {
+                                              if (get_sub_field('social_media_type') == 'twitter') {
+                                                  $twitterPopUp = 'https://www.twitter.com/'.get_sub_field('social_media_handle');
+                                              } elseif (get_sub_field('social_media_type') == 'email') {
+                                                  $mailPopUp = get_sub_field('social_media_handle');
+                                              } elseif (get_sub_field('social_media_type') == 'instagram') {
+                                                  $IGPopUp = 'https://www.instagram.com/'.get_sub_field('social_media_handle');
+                                              }
+                                          }
+                                      }
+                                  }
+
+                                  echo '<a class="staff-link" href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/" data-staff-photo="'.$staffPhoto.'" data-staff-name="'.get_the_title($val).'" data-staff-title="'.$staffTitle.'" data-staff-twitter="'.$twitterPopUp.'" data-staff-mail="'.$mailPopUp.'" data-staff-IG="'.$IGPopUp.'">'.get_the_title($val).'</a>';
+
+                                  if ($sepCounter != $cnStaffCount) {
+                                      if ($sepCounter == ($cnStaffCount - 1)) {
+                                          echo $andSeparator.' ';
+                                      } else {
+                                          echo $commaSeparator.' ';
+                                      }
+                                  }
                               }
-                            }
                           }
-                        }
+                      }
+                      if ($cnStaffCount > 0 && $staffID != '') {
+                          echo '/Cronkite News</span>';
+                      }
+                  }
+                  //wp_reset_query();
 
-                        echo '<a class="staff-link" href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/" data-staff-photo="'.$staffPhoto.'" data-staff-name="'.get_the_title($val).'" data-staff-title="'.$staffTitle.'" data-staff-twitter="'.$twitterPopUp.'" data-staff-mail="'.$mailPopUp.'" data-staff-IG="'.$IGPopUp.'">'.get_the_title($val).'</a>';
-
-                        if ($sepCounter != $cnStaffCount) {
-                          if ($sepCounter == ($cnStaffCount - 1)) {
-                            echo $andSeparator.' ';
-                          } else {
-                            echo $commaSeparator.' ';
+                  if (count($externalAuthorRepeater) > 0) {
+                      $extStaffCount = count($externalAuthorRepeater);
+                      if ($groupFields['cn_staff'] != '') {
+                          echo ' and ';
+                      }
+                      $sepCounter = 0;
+                      foreach ($externalAuthorRepeater as $key => $val) {
+                          $sepCounter++;
+                          echo $val['external_authors'];
+                          if ($val['author_title_site'] != '' || $val['author_title_site'] != 'other') {
+                              if (array_key_exists($val['author_title_site'], $externalSites) == true) {
+                                  echo '/<a href="'.$externalSites[$val['author_title_site']].'" target="_blank">'.ucwords(str_replace('-', ' ', $val['author_title_site'])).'</a>';
+                              }
                           }
-                        }
+                          if ($sepCounter != $extStaffCount) {
+                              if ($sepCounter == ($extStaffCount - 1)) {
+                                  echo $andSeparator.' ';
+                              } else {
+                                  echo $commaSeparator.' ';
+                              }
+                          }
                       }
-                    }
+                      echo '</span>';
                   }
-                  if ($cnStaffCount > 0 && $staffID != '') {
-                    echo '/Cronkite News</span>';
-                  }
-                }
-                //wp_reset_query();
-
-                if (count($externalAuthorRepeater) > 0) {
-                  $extStaffCount = count($externalAuthorRepeater);
-                  if ($groupFields['cn_staff'] != '') {
-                    echo ' and ';
-                  }
-                  $sepCounter = 0;
-                  foreach ($externalAuthorRepeater as $key => $val ) {
-                    $sepCounter++;
-                    echo $val['external_authors'];
-                    if ($val['author_title_site'] != '' || $val['author_title_site'] != 'other') {
-                      if (array_key_exists($val['author_title_site'], $externalSites) == true) {
-                        echo '/<a href="'.$externalSites[$val['author_title_site']].'" target="_blank">'.ucwords(str_replace('-', ' ', $val['author_title_site'])).'</a>';
-                      }
-                    }
-                    if ($sepCounter != $extStaffCount) {
-                      if ($sepCounter == ($extStaffCount - 1)) {
-                        echo $andSeparator.' ';
-                      } else {
-                        echo $commaSeparator.' ';
-                      }
-                    }
-                  }
-                  echo '</span>';
-                }
-
               } else {
-                echo '<span class="author_name">By ';
-                if ($postAuthor = get_field('post_author')) {
-            ?>
+                  echo '<span class="author_name">By ';
+                  if ($postAuthor = get_field('post_author')) {
+                      ?>
                 <a href="<?php echo site_url(); ?>?s=<?php echo $postAuthor; ?>">
                 <?php echo $postAuthor; ?></a>/
-                <?php } ?>
                 <?php
-                if( $siteTitle = get_field('site_title')) {
-                   $url = get_field('site_url');
-                   $url = esc_url( $url );
-                ?><a href="<?php echo $url; ?>"><?php echo $siteTitle; ?></a>
+                  } ?>
+                <?php
+                if ($siteTitle = get_field('site_title')) {
+                    $url = get_field('site_url');
+                    $url = esc_url($url); ?><a href="<?php echo $url; ?>"><?php echo $siteTitle; ?></a>
                 <?php
                 }
-                echo '</span>';
+                  echo '</span>';
               }
               wp_reset_query();
             ?>
@@ -222,11 +220,13 @@ get_header( 'new2019' ); ?>
 
             <!-- story photo/video/slideshow -->
             <?php
-              $isvid = get_field ('video_file', false, false);
-              if ( $isvid ) { // if we have a video load the video instead of the carousel
+              $isvid = get_field('video_file', false, false);
+              if ($isvid) { // if we have a video load the video instead of the carousel
 
-                function linkifyYouTubeURLs($text) {
-                    $text = preg_replace('~(?#!js YouTubeId Rev:20160125_1800)
+                  function linkifyYouTubeURLs($text)
+                  {
+                      $text = preg_replace(
+                          '~(?#!js YouTubeId Rev:20160125_1800)
                         # Match non-linked youtube URL in the wild. (Rev:20130823)
                         https?://          # Required scheme. Either http or https.
                         (?:[0-9A-Z-]+\.)?  # Optional subdomain.
@@ -248,58 +248,60 @@ get_header( 'new2019' ); ?>
                           )                # End recognized pre-linked alts.
                         )                  # End negative lookahead assertion.
                         [?=&+%\w.-]*       # Consume any URL (query) remainder.
-                        ~ix', '$1',
-                        $text);
-                    return $text;
-                }
+                        ~ix',
+                          '$1',
+                          $text
+                      );
+                      return $text;
+                  }
 
-                $host = parse_url ($isvid);
-                $isjpg = false;
+                  $host = parse_url($isvid);
+                  $isjpg = false;
 
-                if ($host['host'] == 'www.youtube.com') {
-                  $id = linkifyYouTubeURLs ($isvid);
-                  $vidlink = $isvid;
-                  echo '<div id="video-holder">';
+                  if ($host['host'] == 'www.youtube.com') {
+                      $id = linkifyYouTubeURLs($isvid);
+                      $vidlink = $isvid;
+                      echo '<div id="video-holder">';
 
-                  echo '<div class="video-wrap">';
-                  echo '<div class="video">';
-                  echo '<div class="close-video"><i class="fas fa-times"></i></div>';
-                  echo '<div class="plyr__video-embed responsive-embed widescreen" id="player">';
-                  //echo '<iframe width="800" height="500" src="'.$vidlink.'?rel=0" frameborder="0" gesture="media" allowfullscreen></iframe>';
-                  echo '<iframe
+                      echo '<div class="video-wrap">';
+                      echo '<div class="video">';
+                      echo '<div class="close-video"><i class="fas fa-times"></i></div>';
+                      echo '<div class="plyr__video-embed responsive-embed widescreen" id="player">';
+                      //echo '<iframe width="800" height="500" src="'.$vidlink.'?rel=0" frameborder="0" gesture="media" allowfullscreen></iframe>';
+                      echo '<iframe
                       src="'.$vidlink.'?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
                       allowfullscreen
                       allowtransparency
                       allow="autoplay"
                   ></iframe>';
-                  echo '</div>';
-                  echo '<div class="asset-caption">'.get_field('video_caption').'</div>';
-                  echo '</div>';
-                  echo '</div>';
-                  echo '</div>';
-                }
-              } else if( have_rows('slider_images') ) { ?>
+                      echo '</div>';
+                      echo '<div class="asset-caption">'.get_field('video_caption').'</div>';
+                      echo '</div>';
+                      echo '</div>';
+                      echo '</div>';
+                  }
+              } elseif (have_rows('slider_images')) { ?>
                 <div id="story-photo" class="story-photos">
                 <?php
-                  while( have_rows('slider_images') ) {
-                    the_row();
-                    $imageCount = count(get_field('slider_images'));
-                    $postImages = get_sub_field('images');
-                    $photoCaption = get_sub_field('description');
+                  while (have_rows('slider_images')) {
+                      the_row();
+                      $imageCount = count(get_field('slider_images'));
+                      $postImages = get_sub_field('images');
+                      $photoCaption = get_sub_field('description');
 
-                    if ($imageCount == 1) {
-                ?>
+                      if ($imageCount == 1) {
+                          ?>
                       <img src="<?php echo $postImages; ?>" width="800" alt="" title="" />
                       <div class="asset-caption"><?php echo $photoCaption; ?></div>
                 <?php
-                    } else {
-                ?>
+                      } else {
+                          ?>
                     <div>
                       <img src="<?php echo $postImages; ?>" width="800" alt="" title="" />
                       <div class="asset-caption"><?php echo $photoCaption; ?></div>
                     </div>
                 <?php
-                    }
+                      }
                   }
                 ?>
                 </div>
@@ -314,25 +316,25 @@ get_header( 'new2019' ); ?>
             <!-- Cronkite News - story tags -->
             <?php
               if (get_field('st_html')['tags'] != '' && get_field('st_html')['tags'] != 0) {
-                $args = array(
+                  $args = array(
                               'post_type'   => 'storytags',
                               'post_status' => 'publish',
                               'p' => get_field('st_html')['tags'],
                               'posts_per_page' => 1
                              );
 
-                $storyTag = new WP_Query( $args );
-                if( $storyTag->have_posts() ) {
-                  echo '<div class="story_tag">';
-                  while( $storyTag->have_posts() ) {
-                    $storyTag->the_post();
+                  $storyTag = new WP_Query($args);
+                  if ($storyTag->have_posts()) {
+                      echo '<div class="story_tag">';
+                      while ($storyTag->have_posts()) {
+                          $storyTag->the_post();
 
-                    if (get_field('story_html_tag') != '') {
-                      echo get_field('story_html_tag');
-                    }
+                          if (get_field('story_html_tag') != '') {
+                              echo get_field('story_html_tag');
+                          }
+                      }
+                      echo '</div>';
                   }
-                  echo '</div>';
-                }
               }
               wp_reset_query();
             ?>
@@ -342,139 +344,139 @@ get_header( 'new2019' ); ?>
           <?php
 
             if (have_rows('byline_info')) {
-              while (have_rows('byline_info')) {
-                the_row();
-              }
+                while (have_rows('byline_info')) {
+                    the_row();
+                }
             }
 
             if (have_rows('byline_info')) {
-              while (have_rows('byline_info')) {
-                the_row();
+                while (have_rows('byline_info')) {
+                    the_row();
 
-                $staffID = get_sub_field('cn_staff');
-                $photogID = get_sub_field('cn_photographers');
+                    $staffID = get_sub_field('cn_staff');
+                    $photogID = get_sub_field('cn_photographers');
 
-                foreach ($staffID as $key => $val) {
-                  echo '<div class="author_bio">';
-                  $args = array(
+                    foreach ($staffID as $key => $val) {
+                        echo '<div class="author_bio">';
+                        $args = array(
                                 'post_type'   => 'students',
                                 'post_status' => 'publish',
                                 'p' => $val
                                );
 
-                   $staffDetails = new WP_Query( $args );
-                   if ($staffDetails->have_posts()) {
+                        $staffDetails = new WP_Query($args);
+                        if ($staffDetails->have_posts()) {
+                            while ($staffDetails->have_posts()) {
+                                $staffDetails->the_post();
 
-                     while ($staffDetails->have_posts()) {
-                       $staffDetails->the_post();
+                                $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
 
-                       $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
+                                if (get_field('student_photo') != '') {
+                                    echo '<div class="author_photo">';
+                                    echo '<a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/"><img src="'.get_field('student_photo').'" class="cn-staff-bio-circular" alt="'.get_the_title($staffID).'" /></a>';
+                                    echo '</div>';
+                                }
 
-                       if (get_field('student_photo') != '') {
-                         echo '<div class="author_photo">';
-                         echo '<a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/"><img src="'.get_field('student_photo').'" class="cn-staff-bio-circular" alt="'.get_the_title($staffID).'" /></a>';
-                         echo '</div>';
-                       }
+                                echo '<div class="bio">';
 
-                       echo '<div class="bio">';
+                                if (get_the_title($val) != '') {
+                                    echo '<p class="name"><a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title($val).'</a></p>';
+                                } else {
+                                    echo '<p class="name">'.'No author name found.'.'</p>';
+                                }
 
-                       if (get_the_title($val) != '') {
-                         echo '<p class="name"><a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title($val).'</a></p>';
-                       } else {
-                         echo '<p class="name">'.'No author name found.'.'</p>';
-                       }
+                                if (get_field('student_title') != '') {
+                                    echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('student_title'))).'</span>';
+                                } elseif (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
+                                    echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau')))).'</span>';
+                                }
 
-                       if (get_field('student_title') != '') {
-                         echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('student_title'))).'</span>';
-                       } else if (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
-                         echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau')))).'</span>';
-                       }
-
-                       if( have_rows('social_media_outlets') ) {
-                         echo '<div class="author_social_links">';
-                         while ( have_rows('social_media_outlets') ) {
-                           the_row();
-                           if (get_sub_field('social_media_type') != '' && get_sub_field('social_media_handle') != '') {
-                             if (get_sub_field('social_media_type') == 'twitter') {
-                     ?>
+                                if (have_rows('social_media_outlets')) {
+                                    echo '<div class="author_social_links">';
+                                    while (have_rows('social_media_outlets')) {
+                                        the_row();
+                                        if (get_sub_field('social_media_type') != '' && get_sub_field('social_media_handle') != '') {
+                                            if (get_sub_field('social_media_type') == 'twitter') {
+                                                ?>
                                <a href="https://www.twitter.com/<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
-                       <?php } else if (get_sub_field('social_media_type') == 'email') { ?>
+                       <?php
+                                            } elseif (get_sub_field('social_media_type') == 'email') { ?>
                                <a href="mailto:<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fas fa-envelope"></i></a>
                      <?php
                              }
-                           }
-                         }
-                         echo '</div>';
-                       }
-                       echo '</div>';
-                     }
-                   }
-                   echo '</div>';
-                 }
+                                        }
+                                    }
+                                    echo '</div>';
+                                }
+                                echo '</div>';
+                            }
+                        }
+                        echo '</div>';
+                    }
 
 
-                 // show photogs
-                 foreach ($photogID as $key => $val) {
-                   echo '<div class="author_bio">';
-                   $args = array(
+                    // show photogs
+                    foreach ($photogID as $key => $val) {
+                        echo '<div class="author_bio">';
+                        $args = array(
                                  'post_type'   => 'students',
                                  'post_status' => 'publish',
                                  'p' => $val
                                 );
 
-                    $staffDetails = new WP_Query( $args );
-                    if ($staffDetails->have_posts()) {
+                        $staffDetails = new WP_Query($args);
+                        if ($staffDetails->have_posts()) {
+                            while ($staffDetails->have_posts()) {
+                                $staffDetails->the_post();
 
-                      while ($staffDetails->have_posts()) {
-                        $staffDetails->the_post();
+                                $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
 
-                        $staffNameURLSafe = str_replace(' ', '-', strtolower(get_the_title($val)));
+                                if (get_field('student_photo') != '') {
+                                    echo '<div class="author_photo">';
+                                    echo '<a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/"><img src="'.get_field('student_photo').'" class="cn-staff-bio-circular" alt="'.get_the_title($staffID).'" /></a>';
+                                    echo '</div>';
+                                }
 
-                        if (get_field('student_photo') != '') {
-                          echo '<div class="author_photo">';
-                          echo '<a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/"><img src="'.get_field('student_photo').'" class="cn-staff-bio-circular" alt="'.get_the_title($staffID).'" /></a>';
-                          echo '</div>';
-                        }
+                                echo '<div class="bio">';
 
-                        echo '<div class="bio">';
+                                if (get_the_title($val) != '') {
+                                    echo '<p class="name"><a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title($val).'</a></p>';
+                                } else {
+                                    echo '<p class="name">'.'No author name found.'.'</p>';
+                                }
 
-                        if (get_the_title($val) != '') {
-                          echo '<p class="name"><a href="https://cronkitenews.azpbs.org/people/'.$staffNameURLSafe.'/">'.get_the_title($val).'</a></p>';
-                        } else {
-                          echo '<p class="name">'.'No author name found.'.'</p>';
-                        }
+                                if (get_field('student_title') != '') {
+                                    echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('student_title'))).'</span>';
+                                } elseif (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
+                                    echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau')))).'</span>';
+                                }
 
-                        if (get_field('student_title') != '') {
-                          echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('student_title'))).'</span>';
-                        } else if (get_field('team') != '' || get_field('role') != '' || get_field('bureau') != '') {
-                          echo '<span class="team-title">'.ucwords(str_replace('-', ' ', get_field('team'))).' '.ucwords(str_replace('-', ' ', get_field('role'))).', '.str_replace('Washington Dc', 'Washington, D.C.', ucwords(str_replace('-', ' ', get_field('bureau')))).'</span>';
-                        }
-
-                        if( have_rows('social_media_outlets') ) {
-                          echo '<div class="author_social_links">';
-                          while ( have_rows('social_media_outlets') ) {
-                            the_row();
-                            if (get_sub_field('social_media_type') != '' && get_sub_field('social_media_handle') != '') {
-                              if (get_sub_field('social_media_type') == 'twitter') {
-                      ?>
+                                if (have_rows('social_media_outlets')) {
+                                    echo '<div class="author_social_links">';
+                                    while (have_rows('social_media_outlets')) {
+                                        the_row();
+                                        if (get_sub_field('social_media_type') != '' && get_sub_field('social_media_handle') != '') {
+                                            if (get_sub_field('social_media_type') == 'twitter') {
+                                                ?>
                                 <a href="https://www.twitter.com/<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <?php } else if (get_sub_field('social_media_type') == 'email') { ?>
+                        <?php
+                                            } elseif (get_sub_field('social_media_type') == 'email') { ?>
                                 <a href="mailto:<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fas fa-envelope"></i></a>
-                        <?php } else if (get_sub_field('social_media_type') == 'instagram') { ?>
+                        <?php } elseif (get_sub_field('social_media_type') == 'instagram') { ?>
                                 <a href="https://www.instagram.com/<?php echo get_sub_field('social_media_handle'); ?>" target="_blank"><i class="fab fa-instagram"></i></a>
                       <?php
                               }
+                                        }
+                                    }
+                                    echo '</div>';
+                                }
+                                echo '</div>';
                             }
-                          }
-                          echo '</div>';
                         }
                         echo '</div>';
-                      }
                     }
-                    echo '</div>';
-                  }
-               }
-             }
+                }
+            }
             wp_reset_query();
          ?>
 

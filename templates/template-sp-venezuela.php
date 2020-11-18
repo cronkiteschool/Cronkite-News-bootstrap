@@ -3,7 +3,7 @@
  * Template Name: Special Project - Venezuela
  * Story template without sidebar
  */
-get_header( 'longformhero' ); ?>
+get_header('longformhero'); ?>
     <style>
       .custom-row {
         height:350px;
@@ -78,7 +78,7 @@ get_header( 'longformhero' ); ?>
                       <?php } else { ?>
                         <h1><?php echo get_the_title(); ?></h1>
                       <?php } ?>
-                      <?php echo preg_replace ('/<p>/i', '<p style="font-size:18px;line-height:28px;">', get_field('sp_introduction')); ?>
+                      <?php echo preg_replace('/<p>/i', '<p style="font-size:18px;line-height:28px;">', get_field('sp_introduction')); ?>
                     </div>
                     <div class="col-md-2 col-lg-3"></div>
                 </div>
@@ -92,18 +92,18 @@ get_header( 'longformhero' ); ?>
                               'orderby' => 'publish_date',
                               'order' => 'ASC'
                               );
-                  $query = new WP_Query( $args );
+                  $query = new WP_Query($args);
                 ?>
                 <?php
-                  if ( $query->have_posts() ) {
-                    while ( $query->have_posts() ) { $query->the_post();
-                      echo "<!-- ".get_the_ID()."-->";
-                ?>
+                  if ($query->have_posts()) {
+                      while ($query->have_posts()) {
+                          $query->the_post();
+                          echo "<!-- ".get_the_ID()."-->"; ?>
                   <!-- show all posts -->
                   <div class="row" style="margin-right: auto; margin-left: auto;margin-top:25px;margin-bottom:25px;">
                       <div class="col-md-2 col-lg-3"></div>
                       <div class="col-xs-12 col-md-3 col-lg-2" style="padding:0px;">
-                        <a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php echo '<img style="width:100%;height:auto;" src="'.get_the_post_thumbnail_url( get_the_ID(), 'large' ).'">'; ?></a>
+                        <a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php echo '<img style="width:100%;height:auto;" src="'.get_the_post_thumbnail_url(get_the_ID(), 'large').'">'; ?></a>
                       </div>
                       <div class="col-xs-12 col-md-5 col-lg-4 story-entry">
                           <h2><a class="sp-title" href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
@@ -114,8 +114,10 @@ get_header( 'longformhero' ); ?>
                       <div class="col-md-2 col-lg-3"></div>
                   </div>
                   <!-- END of .row-->
-                <?php } ?>
-                <?php } ?>
+                <?php
+                      } ?>
+                <?php
+                  } ?>
                 <?php } else { ?>
                   <!-- show all posts -->
                   <div class="row" style="margin-right: auto; margin-left: auto;margin-top:25px;margin-bottom:25px;">
@@ -135,7 +137,7 @@ get_header( 'longformhero' ); ?>
                       <div class="col-md-3 col-lg-3"></div>
                       <div class="col-xs-12 col-md-6 col-lg-6 sp-mobile-about" style="">
                         <h2 style="margin-bottom:10px;">About the project</h2>
-                        <?php echo preg_replace ('/<p>/i', '<p style="font-size:18px;line-height:28px;">', get_field('sp_about_the_project')); ?>
+                        <?php echo preg_replace('/<p>/i', '<p style="font-size:18px;line-height:28px;">', get_field('sp_about_the_project')); ?>
                       </div>
                       <div class="col-md-3 col-lg-3"></div>
                   </div>

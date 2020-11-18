@@ -30,16 +30,16 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <!-- Add Favicon -->
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="icon">
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>" rel="shortcut icon">
-    <link type="image/png" href="<?php the_field('favicon','options'); ?>"  rel="apple-touch-icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>" rel="icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>" rel="shortcut icon">
+    <link type="image/png" href="<?php the_field('favicon', 'options'); ?>"  rel="apple-touch-icon">
 
 
     <script src="<?php bloginfo('template_directory');?>/js/featherlight.min.js"></script>
     <link href="<?php bloginfo('template_directory');?>/css/featherlight.min.css" rel="stylesheet">
 
 
-      <?php if ( is_front_page() ) { ?>
+      <?php if (is_front_page()) { ?>
             <link href="<?php bloginfo('template_directory');?>/css/hstyle.css" rel="stylesheet">
       <?php } ?>
 
@@ -57,7 +57,7 @@
     <!--    Font Awesome-->
     <script src="https://use.fontawesome.com/9e4502c156.js"></script>
 
-		<?php if(is_page('test-page')) { ?>
+		<?php if (is_page('test-page')) { ?>
 			<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 		<?php } ?>
 
@@ -67,41 +67,35 @@
     <!-- Google Analytics Tracking Code  -->
 
 		<?php
-	// get the category for GA
-		$post = get_post();
-		$categories = get_the_category ($post -> ID);
-		$output = '';
+    // get the category for GA
+        $post = get_post();
+        $categories = get_the_category($post -> ID);
+        $output = '';
 
-		if ( ! empty( $categories ) ) {
-			foreach( $categories as $category ) {
-
-                if($output == '')
-                {
-			if ($category->name == "Borderlands") {
-			 //$output = "ga('set', 'Borderlands', '"  . esc_html( $category->name ) . "');";
-			$output = "ga('set', 'contentGroup1', 'Borderlands');";
-		      }
-		if ($category->name == "Sustainability") {
-
-		$output = "ga('set', 'contentGroup2', 'Sustainability');";
-	       }
-        if ($category->name == "Education") {
-
-		$output = "ga('set', 'contentGroup3', 'Education');";
-	       }
-            if ($category->name == "Consumer") {
-
-		$output = "ga('set', 'contentGroup4', 'Consumer');";
-	       }
-            if ($category->name == "Future") {
-
-		$output = "ga('set', 'contentGroup5', 'Future');";
-	       }
-	     }
+        if (! empty($categories)) {
+            foreach ($categories as $category) {
+                if ($output == '') {
+                    if ($category->name == "Borderlands") {
+                        //$output = "ga('set', 'Borderlands', '"  . esc_html( $category->name ) . "');";
+                        $output = "ga('set', 'contentGroup1', 'Borderlands');";
+                    }
+                    if ($category->name == "Sustainability") {
+                        $output = "ga('set', 'contentGroup2', 'Sustainability');";
+                    }
+                    if ($category->name == "Education") {
+                        $output = "ga('set', 'contentGroup3', 'Education');";
+                    }
+                    if ($category->name == "Consumer") {
+                        $output = "ga('set', 'contentGroup4', 'Consumer');";
+                    }
+                    if ($category->name == "Future") {
+                        $output = "ga('set', 'contentGroup5', 'Future');";
+                    }
+                }
+            }
         }
-}
 
-		?>
+        ?>
 
 	<script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -190,12 +184,12 @@
 <!--
                     <ul class="social pull-right">
 
-                    <?php if( have_rows('social_box','options') ): ?>
-                        <?php while( have_rows('social_box','options') ): the_row();
+                    <?php if (have_rows('social_box', 'options')): ?>
+                        <?php while (have_rows('social_box', 'options')): the_row();
                             // Declare variables below
-                            $icon = get_sub_field('social_icon','options');
-                            $link = get_sub_field('social_link','options');
-                            // Use variables below ?>
+                            $icon = get_sub_field('social_icon', 'options');
+                            $link = get_sub_field('social_link', 'options');
+                            // Use variables below?>
                             <li>
                                 <a target="_blank" href="<?php echo $link; ?>"><img src="<?php echo $icon; ?>" /></a>
                             </li>
@@ -231,7 +225,7 @@
 
                                 <!-- ============================================================= MAIN NAVIGATION ============================================================= -->
                         <div class="menuClass">
-                          <?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'fallback_cb' => 'bootstrap_menu', 'menu_class' => 'nav navbar-nav', 'walker' => new bootstrap_navigation() ) ); ?>
+                          <?php wp_nav_menu(array( 'theme_location' => 'header-menu', 'fallback_cb' => 'bootstrap_menu', 'menu_class' => 'nav navbar-nav', 'walker' => new bootstrap_navigation() )); ?>
                                  </div>
                                 <!-- ============================================================= MAIN NAVIGATION : END ============================================================= -->
                       <div class="search-parent" id="header-search-parent">
@@ -240,8 +234,8 @@
                                <i class="icon-search"></i>
                                 <div class="dropdown-menu">
 -->
-                                   <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-                                       <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e( 'Type to search' ); ?>" />
+                                   <form method="get" class="navbar-form search" id="searchform" action="<?php echo esc_url(home_url('/')); ?>">
+                                       <input type="text" class="form-control" name="s" id="s" placeholder="<?php esc_attr_e('Type to search'); ?>" />
                                        <button type="submit"  class="btn btn-default btn-submit icon-right-open" name="submit" id="searchsubmit"></button>
                                    </form>
 <!--                                </div>-->
@@ -250,7 +244,7 @@
                         <div class="sectionDropDown">
                             <button class="dbtn"><span class="glyphicon glyphicon-ok"></span> </button>
                             <div class="d-content">
-                          <?php wp_nav_menu( array( 'theme_location' => 'header-menu', 'fallback_cb' => 'bootstrap_menu', 'menu_class' => 'nav navbar-nav', 'walker' => new bootstrap_navigation() ) ); ?>
+                          <?php wp_nav_menu(array( 'theme_location' => 'header-menu', 'fallback_cb' => 'bootstrap_menu', 'menu_class' => 'nav navbar-nav', 'walker' => new bootstrap_navigation() )); ?>
                         </div></div>
 
                     </div>
