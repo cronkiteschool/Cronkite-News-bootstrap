@@ -266,11 +266,11 @@ add_action('wp_footer', 'hook_parselyTrack');
     /* Add class to navigation sub-menu */
     class bootstrap_navigation extends Walker_Nav_Menu {
 
-	function start_lvl(&$output, $depth = 0, $args = array()) {
+	public function start_lvl(&$output, $depth = 0, $args = array()) {
 	   $output .= "\n<ul class=\"dropdown-menu\">\n";
 	}
 
-	function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
+	public function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
 	    $item_html = '';
 	    parent::start_el($item_html, $item, $depth, $args);
 
@@ -281,7 +281,7 @@ add_action('wp_footer', 'hook_parselyTrack');
 	    $output .= $item_html;
 	 }
 
-	function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
+	public function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
 	    if ( $element->current )
             $element->classes[] = 'active';
             $element->is_dropdown = !empty( $children_elements[$element->ID] );
